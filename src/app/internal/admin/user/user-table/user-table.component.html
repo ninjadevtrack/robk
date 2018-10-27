@@ -1,0 +1,18 @@
+<div class="flex-table">
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Email</th>
+			<th width="100px"></th>
+		</thead>
+		<tbody class="m-b-s font-size-l">
+			<tr *ngFor="let user of users">
+				<td>{{user.lastName}} {{user.firstName}}</td>
+				<td>{{user.email}}</td>
+				<td class="text-right">
+					<user-menu [model]="user" (onUserEvent)="onUserChanged($event)"></user-menu>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

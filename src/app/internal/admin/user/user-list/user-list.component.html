@@ -1,0 +1,12 @@
+<div class="m-t-3xl m-b-3xl">
+	<div class="p-l-l p-r-l">
+		<mat-tab-group>
+			<mat-tab label="Active ({{activeUsers.length}})">
+				<user-table [users]="activeUsers"></user-table>
+			</mat-tab>
+			<mat-tab label="Archived ({{archivedUsers.length}})">
+				<user-table [users]="archivedUsers"></user-table>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

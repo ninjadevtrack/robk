@@ -1,0 +1,7 @@
+<button class="menu-button" mat-button [matMenuTriggerFor]="menu">
+  <img src="/assets/img/menu.svg">
+</button>
+<mat-menu #menu="matMenu" yPosition="below" xPosition="after" [overlapTrigger]="false">
+  <button mat-menu-item class="main-menu-nested-item" (click)="view()">View</button>
+  <button mat-menu-item class="main-menu-nested-item" (click)="edit()">Edit</button>
+</mat-menu>

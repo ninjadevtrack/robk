@@ -1,0 +1,22 @@
+<div>
+  <h2 class="text-center p-b-l font-color-pale">User</h2>
+
+  <data-field header="Name" data="{{ model.name }}" [isSmall]="false"></data-field>
+  <data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
+  <data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
+
+  <div class="data-field">
+    <div class="header">
+      Roles
+    </div>
+    <div *ngFor="let role of model.roles" class="data">
+      {{role}}
+    </div>
+  </div>
+
+  <div class="justifying-containter">
+    <button mat-button class="mat-primary font-size-l button-l" (click)="onClose()">
+      CLOSE
+    </button>
+  </div>
+</div>

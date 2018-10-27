@@ -1,0 +1,58 @@
+<div class="card-form">
+  <div class="card-form__header"></div>
+  <div class="card-form__body" >
+    <form novalidate [formGroup]="mpForm">
+      <div class="card">
+        <div class="m-b-l">
+            <span class="card-h1">
+                {{mpForm.controls['name'].value}}
+            </span>
+        </div>
+        <div class="m-b-l">
+          <mat-form-field class="full-width">
+              <input formControlName="clientName"
+              name="clientName"
+              required
+              matInput
+              type="string"
+              placeholder="Client Name">
+          </mat-form-field>
+        </div>
+        <div class="m-b-l">
+          <mat-form-field class="full-width">
+            <input formControlName="name"
+                   name="name"
+                   required
+                   matInput
+                   type="string"
+                   placeholder="MP Name">
+          </mat-form-field>
+        </div>
+        <div class="m-b-l">
+          <mat-form-field class="full-width">
+            <textarea formControlName="description"
+                   name="description"
+                   matInput
+                   type="string"
+                   placeholder="Description">
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-form__footer">
+    <div class="flex-container p-t p-b p-l p-r text-center">
+      <div>
+        <button mat-raised-button class="mat-primary" [disabled]="!mpForm.valid" (click)="save()">
+          OK
+        </button>
+      </div>
+      <div>
+        <button mat-button class="mat-primary" type="button" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

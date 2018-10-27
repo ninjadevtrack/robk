@@ -1,0 +1,20 @@
+<div class="flex-table">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Last updated</th>
+    <th width="100px"></th>
+    </thead>
+    <tbody class="m-b-s font-size-l">
+    <tr *ngFor="let mediaPlan of mediaPlans">
+      <td><a routerLink="/i/mediaplans/{{mediaPlan._id}}">{{mediaPlan.name}}</a></td>
+      <td>{{mediaPlan.description}}</td>
+      <td>{{mediaPlan.updatedAt |  date:'dd/MM/yyyy'}}</td>
+      <td class="text-right">
+        <media-plan-menu [isActive]="isActive" [model]="mediaPlan" (onMediaPlanEvent)="onMediaPlanChanged($event)"></media-plan-menu>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

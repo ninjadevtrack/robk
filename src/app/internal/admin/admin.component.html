@@ -1,0 +1,17 @@
+<div class="m-t-6xl">
+	<div class="m-t-3xl m-r m-l">
+		<mat-card class="default-min-height">
+			<div class="p-l-l p-r-l m-b-xl">
+				<div class="secondary-menu">
+					<a [routerLink]=" ['/i/admin/'] "
+					   routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+						<u>Users</u>
+					</a>
+				</div>
+			</div>
+			<div class="">
+				<router-outlet></router-outlet>
+			</div>
+		</mat-card>
+	</div>
+</div>

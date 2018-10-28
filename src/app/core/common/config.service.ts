@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../../environments/environment";
 
-export namespace JUConsts {
+export namespace Consts {
     export const PROJECT_NAME: string = 'TECHTON PLANNER';
     export const API_URL: string = environment.apiURL;
     export const AUTH_TOKEN_KEY: string = 'ju_auth_token';
@@ -13,131 +13,131 @@ export class ConfigService {
     public TECHTON_PLANNER_API = {
         Auth: {
             signIn: () => {
-                return `${JUConsts.API_URL}/v1/user/signin`;
+                return `${Consts.API_URL}/v1/user/signin`;
             },
             signUp: () => {
-                return `${JUConsts.API_URL}/v1/user/signup`;
+                return `${Consts.API_URL}/v1/user/signup`;
             },
             recoverPwd: () => {
-                return `${JUConsts.API_URL}/v1/user/recoverpwd`;
+                return `${Consts.API_URL}/v1/user/recoverpwd`;
             },
             validateToken: () => {
-                return `${JUConsts.API_URL}/v1/user/validatetoken`;
+                return `${Consts.API_URL}/v1/user/validatetoken`;
             },
             validateRecoveryPwdToken: () => {
-                return `${JUConsts.API_URL}/v1/user/validaterecoverpwdtoken`;
+                return `${Consts.API_URL}/v1/user/validaterecoverpwdtoken`;
             },
             setPassword: () => {
-                return `${JUConsts.API_URL}/v1/user/setpwd`;
+                return `${Consts.API_URL}/v1/user/setpwd`;
             }
         },
         User: {
             profile: () => {
-                return `${JUConsts.API_URL}/v1/user/profile`;
+                return `${Consts.API_URL}/v1/user/profile`;
             },
             dafaultWithId: (id) => {
-                return `${JUConsts.API_URL}/v1/users/${id}`
+                return `${Consts.API_URL}/v1/users/${id}`
             },
             getAll: () => {
-                return `${JUConsts.API_URL}/v1/users`;
+                return `${Consts.API_URL}/v1/users`;
             },
             getAllActive: () => {
-                return `${JUConsts.API_URL}/v1/users/active`;
+                return `${Consts.API_URL}/v1/users/active`;
             },
             getAllArchived: () => {
-                return `${JUConsts.API_URL}/v1/users/archived`;
+                return `${Consts.API_URL}/v1/users/archived`;
             }
         },
         MediaPlan: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/mediaplans`;
+                return `${Consts.API_URL}/v1/mediaplans`;
             },
             dafaultWithId: (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplans/${id}`
+                return `${Consts.API_URL}/v1/mediaplans/${id}`
             },
             getAllActive: () => {
-                return `${JUConsts.API_URL}/v1/mediaplans/active`;
+                return `${Consts.API_URL}/v1/mediaplans/active`;
             },
             getAllArchived: () => {
-                return `${JUConsts.API_URL}/v1/mediaplans/archived`;
+                return `${Consts.API_URL}/v1/mediaplans/archived`;
             },
             activate:  (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplans/${id}/activate`;
+                return `${Consts.API_URL}/v1/mediaplans/${id}/activate`;
             },
             archive:  (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplans/${id}/archive`;
+                return `${Consts.API_URL}/v1/mediaplans/${id}/archive`;
             },
             getRecords:  (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplans/${id}/records`;
+                return `${Consts.API_URL}/v1/mediaplans/${id}/records`;
             },
             duplicate: (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplans/${id}/duplicate`
+                return `${Consts.API_URL}/v1/mediaplans/${id}/duplicate`
             }
         },
         MediaPlanRecord: {
             dafault: () => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords`
+                return `${Consts.API_URL}/v1/mediaplanrecords`
             },
             dafaultWithId: (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords/${id}`
+                return `${Consts.API_URL}/v1/mediaplanrecords/${id}`
             },
             duplicate: (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords/${id}/duplicate`
+                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/duplicate`
             },
             activate:  (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords/${id}/activate`;
+                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/activate`;
             },
             archive:  (id) => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords/${id}/archive`;
+                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/archive`;
             },
             calculateKPIs:  () => {
-                return `${JUConsts.API_URL}/v1/mediaplanrecords/calculatekpis`;
+                return `${Consts.API_URL}/v1/mediaplanrecords/calculatekpis`;
             }
         },
         Campaign: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/campaigns`;
+                return `${Consts.API_URL}/v1/campaigns`;
             },
             getRecords:  (id) => {
-                return `${JUConsts.API_URL}/v1/campaigns/${id}/records`;
+                return `${Consts.API_URL}/v1/campaigns/${id}/records`;
             },
             dafaultWithId: (id) => {
-                return `${JUConsts.API_URL}/v1/campaigns/${id}`
+                return `${Consts.API_URL}/v1/campaigns/${id}`
             },
             duplicate: (id) => {
-                return `${JUConsts.API_URL}/v1/campaigns/${id}/duplicate`
+                return `${Consts.API_URL}/v1/campaigns/${id}/duplicate`
             }
         },
         DSP: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/dsps`;
+                return `${Consts.API_URL}/v1/dsps`;
             },
             extended: () => {
-                return `${JUConsts.API_URL}/v1/dsps/extended`;
+                return `${Consts.API_URL}/v1/dsps/extended`;
             },
             getFormats: (dsp) => {
-                return `${JUConsts.API_URL}/v1/dsps/${dsp}/formats`;
+                return `${Consts.API_URL}/v1/dsps/${dsp}/formats`;
             },
             getBuyingModels: (dsp, format) => {
-                return `${JUConsts.API_URL}/v1/dsps/${dsp}/formats/${format}/buyingmodels`;
+                return `${Consts.API_URL}/v1/dsps/${dsp}/formats/${format}/buyingmodels`;
             },
             getTargets: (dsp, format) => {
-                return `${JUConsts.API_URL}/v1/dsps/${dsp}/formats/${format}/targets`;
+                return `${Consts.API_URL}/v1/dsps/${dsp}/formats/${format}/targets`;
             }
         },
         Goal: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/goals`;
+                return `${Consts.API_URL}/v1/goals`;
             }
         },
         Genders: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/genders`;
+                return `${Consts.API_URL}/v1/genders`;
             }
         },
         Regions: {
             default: () => {
-                return `${JUConsts.API_URL}/v1/regions`;
+                return `${Consts.API_URL}/v1/regions`;
             }
         }
     };

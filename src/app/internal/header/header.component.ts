@@ -3,7 +3,7 @@ import {
     OnInit
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { JUConsts } from '../../core/common/config.service';
+import { Consts } from '../../core/common/config.service';
 import { AuthStorageService } from '../../core/common/auth-storage.service';
 import { UserService } from '../../core/user/user.service';
 import { PermissionsEnum} from '../../core/common/permissions.enum';
@@ -51,12 +51,12 @@ export class InternalHeaderComponent implements OnInit {
             // Just an approximation
             this.showAdminMenu = this.permissions.indexOf(PermissionsEnum.USERS_ADD) !== -1;
 
-            this._session.setItem(JUConsts.USER_PERMISSIONS, JSON.stringify(user.permissions));
+            this._session.setItem(Consts.USER_PERMISSIONS, JSON.stringify(user.permissions));
         });
     }
 
     public signOut() {
-        this._session.removeItem(JUConsts.AUTH_TOKEN_KEY);
+        this._session.removeItem(Consts.AUTH_TOKEN_KEY);
         this._router.navigate(['/']);
     }
 }

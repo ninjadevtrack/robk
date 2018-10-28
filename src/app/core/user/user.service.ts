@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { ConfigService } from '../common';
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { HttpJWT } from '../http-jwt.provider';
 import { UserModel, UsersResultModel } from './model/user.model';

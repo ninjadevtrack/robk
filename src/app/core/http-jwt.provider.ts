@@ -9,7 +9,7 @@ import {
 } from '@angular/http';
 import { Router } from '@angular/router';
 import { HttpBasic } from './http-basic.provider';
-import { JUConsts } from './common/config.service';
+import { Consts } from './common/config.service';
 import { AuthStorageService } from './common/auth-storage.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -30,7 +30,7 @@ export class HttpJWT extends Http {
     }
 
     public request(req: Request, options?: RequestOptionsArgs): Observable<Response> {
-        let token = this._session.getItem(JUConsts.AUTH_TOKEN_KEY);
+        let token = this._session.getItem(Consts.AUTH_TOKEN_KEY);
         req.headers.set('Authorization', token);
         return super.request(req, options).catch(this.catchAuthError(this, req, options));
     }

@@ -5,7 +5,7 @@ import {
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { SetPasswordModel } from '../../core/auth/models/set-password.model';
-import { JUConsts } from '../../core/common/config.service';
+import { Consts } from '../../core/common/config.service';
 import { ServerErrorModel } from '../../core/common/models/server-error.model';
 import { AuthStorageService } from '../../core/common/auth-storage.service';
 

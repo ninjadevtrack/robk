@@ -15,7 +15,7 @@ export class HttpHelperService {
             .pipe(map((res) => {
                 return of(res);
             })).pipe(catchError((res) => {
-                return throwError(res.json());
+                return throwError(of(res));
             }));
     }
 
@@ -24,7 +24,7 @@ export class HttpHelperService {
             .pipe(map((res) => {
                 return of(res);
             })).pipe(catchError((res) => {
-                return throwError(res.json());
+                return throwError(of(res));
             }));
     }
 
@@ -33,7 +33,7 @@ export class HttpHelperService {
             .pipe(map((res) => {
                 return of(res);
             })).pipe(catchError((res) => {
-                return throwError(res.json());
+                return throwError(of(res));
             }));
     }
 
@@ -42,7 +42,7 @@ export class HttpHelperService {
             .pipe(map((res) => {
                 return of(res);
             })).pipe(catchError((res) => {
-                return throwError(res.json());
+                return throwError(of(res));
             }));
     }
 }

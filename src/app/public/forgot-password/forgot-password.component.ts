@@ -5,7 +5,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { RecoverPasswordModel } from '../../core/auth/models/recover-password.model';
-import { JUConsts } from '../../core/common/config.service';
+import { Consts } from '../../core/common/config.service';
 import { ServerErrorModel } from '../../core/common/models/server-error.model';
 import { AuthStorageService } from '../../core/common/auth-storage.service';
 
@@ -46,7 +46,7 @@ export class ForgotPasswordComponent implements OnInit {
 
             switch (serverError.code) {
                 case 'OBJECT_NOT_FOUND':
-                    this.serverErrorMessage = `There is no user with email ${this.model.email} in ${JUConsts.PROJECT_NAME}`;
+                    this.serverErrorMessage = `There is no user with email ${this.model.email} in ${Consts.PROJECT_NAME}`;
                     break;
                 default:
                     this.serverErrorMessage = 'Some error occured on the server';

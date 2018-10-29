@@ -20,12 +20,12 @@ export class UserListComponent implements OnInit {
 
     public ngOnInit() {
         // Get active users
-        this._userService.getAllActive().subscribe((users: any) => {
-            this.activeUsers = users;
+        this._userService.getAllActive().subscribe((usersResult: any) => {
+            this.activeUsers = usersResult.docs;
         });
         // Get archived users
-        this._userService.getAllArchived().subscribe((users: any) => {
-            this.archivedUsers = users;
+        this._userService.getAllArchived().subscribe((usersResult: any) => {
+            this.archivedUsers = usersResult.docs;
         });
     }
 }

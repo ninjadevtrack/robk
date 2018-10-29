@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatAutocompleteModule,
@@ -63,6 +63,8 @@ import { FakeStorage } from './core/fake-storage';
 import { AuthStorageService } from './core/common/auth-storage.service';
 import { AuthService } from './core/auth/auth.service';
 import { UserService } from './core/user/user.service';
+import { HttpBasic } from './core/http-basic.provider';
+import { HttpJWT } from './core/http-jwt.provider';
 import { WindowRefService } from './core/window.service';
 import { SmoothScrollService } from './core/smooth-scroll.service';
 import { CustomBrowserXhr } from './core/custom-browser-xhr.service';
@@ -105,6 +107,8 @@ const APP_PROVIDERS = [
     AuthService,
     AuthStorageService,
     FakeStorage,
+    HttpBasic,
+    HttpJWT,
     WindowRefService,
     SmoothScrollService,
     CustomBrowserXhr,
@@ -191,7 +195,7 @@ type StoreType = {
         MatToolbarModule,
         MatTooltipModule,
         MatStepperModule,
-        HttpClientModule,
+        HttpModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

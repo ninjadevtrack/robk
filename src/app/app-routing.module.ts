@@ -27,7 +27,7 @@ const routes: Routes = [
                     { path: '', component: UserListComponent }
                 ]
             },
-            { path: 'mediaplans', component: ProjectListComponent }
+            { path: 'projects', component: ProjectListComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

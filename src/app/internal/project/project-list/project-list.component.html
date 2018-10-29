@@ -3,10 +3,10 @@
     <div class="p-l-l p-r-l p-b-3xl">
       <mat-tab-group>
         <mat-tab label="Active ({{activeProjects?.length}})">
-          <media-plan-table [mediaPlans]="activeProjects" [isActive]="true" (onMediaPlansEvent)="getAllMediaPlans()"></media-plan-table>
+          <project-table [mediaPlans]="activeProjects" [isActive]="true" (onMediaPlansEvent)="getAllMediaPlans()"></project-table>
         </mat-tab>
         <mat-tab label="Archived ({{archiveProjects?.length}})">
-          <media-plan-table [mediaPlans]="archiveProjects" [isActive]="false" (onMediaPlansEvent)="getAllMediaPlans()"></media-plan-table>
+          <project-table [mediaPlans]="archiveProjects" [isActive]="false" (onMediaPlansEvent)="getAllMediaPlans()"></project-table>
         </mat-tab>
       </mat-tab-group>
     </div>

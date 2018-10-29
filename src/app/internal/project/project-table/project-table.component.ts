@@ -8,7 +8,7 @@ import {
 import { IProject } from "../../../core/project/model/project.model";
 
 @Component({
-    selector: 'media-plan-table',
+    selector: 'project-table',
     styleUrls: [ './project-table.component.css'],
     templateUrl: './project-table.component.html'
 })

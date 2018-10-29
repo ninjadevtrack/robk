@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { SignInModel } from '../../core/auth/models/sign-in.model';
 import { Consts } from '../../core/common/config.service';
-import { ServerErrorModel } from '../../core/common/models/server-error.model';
 import { AuthStorageService } from '../../core/common/auth-storage.service';
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'sign-in',
@@ -36,11 +36,11 @@ export class SignInComponent implements OnInit {
       this.serverErrorMessage = undefined;
 
       this._authService.signIn(this.model).subscribe((res) => {
-          let accessToken = res.token;
+          const accessToken = res.token;
           this._session.setItem(Consts.AUTH_TOKEN_KEY, accessToken);
           this._router.navigate(['/i']);
-      }, (serverError: ServerErrorModel) => {
-          this.serverErrorMessage = serverError.message;
+      }, (serverError: HttpErrorResponse) => {
+          this.serverErrorMessage = serverError.error.message;
       });
   }
 }

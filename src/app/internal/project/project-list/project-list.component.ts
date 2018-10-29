@@ -26,10 +26,10 @@ export class ProjectListComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.getAllMediaPlans();
+        this.getAllProjects();
     }
 
-    private getAllMediaPlans() {
+    private getAllProjects() {
         // Get active users
         this.getActiveProjects();
         // Get archived users

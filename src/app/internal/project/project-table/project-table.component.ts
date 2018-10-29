@@ -14,16 +14,16 @@ import { IProject } from "../../../core/project/model/project.model";
 })
 export class ProjectTableComponent implements OnInit {
 
-    @Input() mediaPlans: IProject[];
+    @Input() projects: IProject[];
     @Input() isActive: boolean;
-    @Output() onMediaPlansEvent = new EventEmitter();
+    @Output() onProjectsEvent = new EventEmitter();
 
     constructor () { }
 
     public ngOnInit() { }
 
     onMediaPlanChanged(event: any){
-        this.onMediaPlansEvent.emit();
+        this.onProjectsEvent.emit();
     }
 
 }

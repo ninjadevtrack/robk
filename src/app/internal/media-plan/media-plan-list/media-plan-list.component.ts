@@ -4,8 +4,8 @@ import {
     HostListener
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { IMediaPlan } from "../../../core/media-plan/model/media-plan.model";
-import { MediaPlanService } from "../../../core/media-plan/media-plan.service";
+import { IProject } from "../../../core/project/model/project.model";
+import { ProjectService } from "../../../core/project/project.service";
 import { MediaPlanAddComponent } from "../media-plan-add/media-plan-add.component";
 
 @Component({
@@ -14,12 +14,12 @@ import { MediaPlanAddComponent } from "../media-plan-add/media-plan-add.componen
     templateUrl: './media-plan-list.component.html'
 })
 export class MediaPlanListComponent implements OnInit {
-    public activeMediaPlans: IMediaPlan[] = [];
-    public archiveMediaPlans: IMediaPlan[] = [];
+    public activeMediaPlans: IProject[] = [];
+    public archiveMediaPlans: IProject[] = [];
     addMediaPlanDialogOpened: boolean;
 
     constructor(
-        private _mediaPlanService: MediaPlanService,
+        private _mediaPlanService: ProjectService,
         private _dialog: MatDialog
     ) {
         this.addMediaPlanDialogOpened = false;

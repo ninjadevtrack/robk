@@ -48,96 +48,24 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/users/archived`;
             }
         },
-        MediaPlan: {
+        Project: {
             default: () => {
-                return `${Consts.API_URL}/v1/mediaplans`;
+                return `${Consts.API_URL}/v1/projects`;
             },
             dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/mediaplans/${id}`
+                return `${Consts.API_URL}/v1/projects/${id}`
             },
             getAllActive: () => {
-                return `${Consts.API_URL}/v1/mediaplans/active`;
+                return `${Consts.API_URL}/v1/projects/active`;
             },
             getAllArchived: () => {
-                return `${Consts.API_URL}/v1/mediaplans/archived`;
+                return `${Consts.API_URL}/v1/projects/archived`;
             },
             activate:  (id) => {
-                return `${Consts.API_URL}/v1/mediaplans/${id}/activate`;
+                return `${Consts.API_URL}/v1/projects/${id}/activate`;
             },
             archive:  (id) => {
-                return `${Consts.API_URL}/v1/mediaplans/${id}/archive`;
-            },
-            getRecords:  (id) => {
-                return `${Consts.API_URL}/v1/mediaplans/${id}/records`;
-            },
-            duplicate: (id) => {
-                return `${Consts.API_URL}/v1/mediaplans/${id}/duplicate`
-            }
-        },
-        MediaPlanRecord: {
-            dafault: () => {
-                return `${Consts.API_URL}/v1/mediaplanrecords`
-            },
-            dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/mediaplanrecords/${id}`
-            },
-            duplicate: (id) => {
-                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/duplicate`
-            },
-            activate:  (id) => {
-                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/activate`;
-            },
-            archive:  (id) => {
-                return `${Consts.API_URL}/v1/mediaplanrecords/${id}/archive`;
-            },
-            calculateKPIs:  () => {
-                return `${Consts.API_URL}/v1/mediaplanrecords/calculatekpis`;
-            }
-        },
-        Campaign: {
-            default: () => {
-                return `${Consts.API_URL}/v1/campaigns`;
-            },
-            getRecords:  (id) => {
-                return `${Consts.API_URL}/v1/campaigns/${id}/records`;
-            },
-            dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/campaigns/${id}`
-            },
-            duplicate: (id) => {
-                return `${Consts.API_URL}/v1/campaigns/${id}/duplicate`
-            }
-        },
-        DSP: {
-            default: () => {
-                return `${Consts.API_URL}/v1/dsps`;
-            },
-            extended: () => {
-                return `${Consts.API_URL}/v1/dsps/extended`;
-            },
-            getFormats: (dsp) => {
-                return `${Consts.API_URL}/v1/dsps/${dsp}/formats`;
-            },
-            getBuyingModels: (dsp, format) => {
-                return `${Consts.API_URL}/v1/dsps/${dsp}/formats/${format}/buyingmodels`;
-            },
-            getTargets: (dsp, format) => {
-                return `${Consts.API_URL}/v1/dsps/${dsp}/formats/${format}/targets`;
-            }
-        },
-        Goal: {
-            default: () => {
-                return `${Consts.API_URL}/v1/goals`;
-            }
-        },
-        Genders: {
-            default: () => {
-                return `${Consts.API_URL}/v1/genders`;
-            }
-        },
-        Regions: {
-            default: () => {
-                return `${Consts.API_URL}/v1/regions`;
+                return `${Consts.API_URL}/v1/projects/${id}/archive`;
             }
         }
     };

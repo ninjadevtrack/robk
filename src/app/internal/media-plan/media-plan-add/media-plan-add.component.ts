@@ -4,9 +4,9 @@ import {
     OnInit
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { MediaPlanModel } from "../../../core/media-plan/model/media-plan.model";
+import { ProjectModel } from "../../../core/project/model/project.model";
 import { ServerErrorModel } from "../../../core/common";
-import { MediaPlanService } from "../../../core/media-plan/media-plan.service";
+import { ProjectService } from "../../../core/project/project.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
 
@@ -20,7 +20,7 @@ export class MediaPlanAddComponent implements OnInit {
     serverErrorMessage: string;
 
     constructor(
-        private _mediaPlanService: MediaPlanService,
+        private _mediaPlanService: ProjectService,
         public dialogRef: MatDialogRef<MediaPlanAddComponent>,
         private _formBuilder: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -28,7 +28,6 @@ export class MediaPlanAddComponent implements OnInit {
     ngOnInit() {
         this.mpForm = this._formBuilder.group({
             name: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            clientName: ['', [Validators.required, Validators.maxLength(40), NotSpacesStringValidator()]],
             description: ['', [Validators.maxLength(120)]]
         });
     }
@@ -38,9 +37,8 @@ export class MediaPlanAddComponent implements OnInit {
     }
 
     buildModelFromForm(){
-        let model = new MediaPlanModel();
+        let model = new ProjectModel();
         model.name = this.mpForm.controls['name'].value;
-        model.clientName = this.mpForm.controls['clientName'].value;
         model.description = this.mpForm.controls['description'].value;
         return model;
     }

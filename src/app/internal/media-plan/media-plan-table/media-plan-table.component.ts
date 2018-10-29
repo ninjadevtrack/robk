@@ -5,7 +5,7 @@ import {
     Output,
     EventEmitter
 } from '@angular/core';
-import { IMediaPlan } from "../../../core/media-plan/model/media-plan.model";
+import { IProject } from "../../../core/project/model/project.model";
 
 @Component({
     selector: 'media-plan-table',
@@ -14,7 +14,7 @@ import { IMediaPlan } from "../../../core/media-plan/model/media-plan.model";
 })
 export class MediaPlanTableComponent implements OnInit {
 
-    @Input() mediaPlans: IMediaPlan[];
+    @Input() mediaPlans: IProject[];
     @Input() isActive: boolean;
     @Output() onMediaPlansEvent = new EventEmitter();
 

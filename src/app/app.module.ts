@@ -93,14 +93,14 @@ import { MediaPlanEditComponent } from './internal/media-plan/media-plan-edit/me
 import { MediaPlanMenuComponent } from './internal/media-plan/media-plan-menu/media-plan-menu.component';
 import { MediaPlanTableComponent } from './internal/media-plan/media-plan-table/media-plan-table.component';
 import { MediaPlanListComponent } from "./internal/media-plan/media-plan-list/media-plan-list.component";
-import { MediaPlanService } from "./core/media-plan/media-plan.service";
+import { ProjectService } from "./core/project/project.service";
 
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     ConfigService,
     UserService,
-    MediaPlanService,
+    ProjectService,
     AuthService,
     AuthStorageService,
     FakeStorage,

@@ -6,8 +6,8 @@ import {
     EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { MediaPlanModel } from "../../../core/media-plan/model/media-plan.model";
-import { MediaPlanService } from "../../../core/media-plan/media-plan.service";
+import { ProjectModel } from "../../../core/project/model/project.model";
+import { ProjectService } from "../../../core/project/project.service";
 // import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
 import { saveAs } from 'file-saver/FileSaver';
 
@@ -19,21 +19,15 @@ import { saveAs } from 'file-saver/FileSaver';
 export class MediaPlanMenuComponent implements OnInit {
 
     @Input() isActive: boolean;
-    @Input() model: MediaPlanModel;
+    @Input() model: ProjectModel;
     @Output() onMediaPlanEvent = new EventEmitter<string>();
 
     constructor(
-        private _mediaPlanService: MediaPlanService,
+        private _mediaPlanService: ProjectService,
         private _dialog: MatDialog
     ) { }
 
     ngOnInit() {
-    }
-
-    duplicate() {
-        this._mediaPlanService.duplicate(this.model._id).subscribe((result: any) => {
-            this.onMediaPlanEvent.emit(this.model._id);
-        });
     }
 
     archive() {

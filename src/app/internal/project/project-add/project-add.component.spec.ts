@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaPlanMenuComponent } from './media-plan-menu.component';
+import { ProjectAddComponent } from './project-add.component';
 
-describe('MediaPlanMenuComponent', () => {
-  let component: MediaPlanMenuComponent;
-  let fixture: ComponentFixture<MediaPlanMenuComponent>;
+describe('ProjectAddComponent', () => {
+  let component: ProjectAddComponent;
+  let fixture: ComponentFixture<ProjectAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MediaPlanMenuComponent ]
+      declarations: [ ProjectAddComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MediaPlanMenuComponent);
+    fixture = TestBed.createComponent(ProjectAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

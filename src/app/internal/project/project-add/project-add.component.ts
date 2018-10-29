@@ -12,16 +12,16 @@ import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-st
 
 @Component({
     selector: 'media-plan-add',
-    templateUrl: './media-plan-add.component.html'
+    templateUrl: './project-add.component.html'
 })
-export class MediaPlanAddComponent implements OnInit {
+export class ProjectAddComponent implements OnInit {
 
     mpForm: FormGroup;
     serverErrorMessage: string;
 
     constructor(
-        private _mediaPlanService: ProjectService,
-        public dialogRef: MatDialogRef<MediaPlanAddComponent>,
+        private _projectService: ProjectService,
+        public dialogRef: MatDialogRef<ProjectAddComponent>,
         private _formBuilder: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -47,7 +47,7 @@ export class MediaPlanAddComponent implements OnInit {
 
         this.serverErrorMessage = undefined;
 
-        this._mediaPlanService.add(this.buildModelFromForm()).subscribe((res) => {
+        this._projectService.add(this.buildModelFromForm()).subscribe((res) => {
             this.dialogRef.close(true);
         }, (serverError: ServerErrorModel) => {
             this.serverErrorMessage = serverError.message;

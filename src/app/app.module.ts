@@ -88,11 +88,11 @@ import { SettingsComponent } from './internal/admin/settings/settings.component'
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
 import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
 import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
-import { MediaPlanAddComponent } from './internal/media-plan/media-plan-add/media-plan-add.component';
-import { MediaPlanEditComponent } from './internal/media-plan/media-plan-edit/media-plan-edit.component';
-import { MediaPlanMenuComponent } from './internal/media-plan/media-plan-menu/media-plan-menu.component';
-import { MediaPlanTableComponent } from './internal/media-plan/media-plan-table/media-plan-table.component';
-import { MediaPlanListComponent } from "./internal/media-plan/media-plan-list/media-plan-list.component";
+import { ProjectAddComponent } from './internal/project/project-add/project-add.component';
+import { ProjectEditComponent } from './internal/project/project-edit/project-edit.component';
+import { ProjectMenuComponent } from './internal/project/project-menu/project-menu.component';
+import { ProjectTableComponent } from './internal/project/project-table/project-table.component';
+import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
 import { ProjectService } from "./core/project/project.service";
 
 // Application wide providers
@@ -143,16 +143,16 @@ type StoreType = {
         NumberWithSeparatorPipe,
         UserMenuComponent,
         UserViewComponent,
-        MediaPlanListComponent,
-        MediaPlanAddComponent,
-        MediaPlanEditComponent,
-        MediaPlanMenuComponent,
-        MediaPlanTableComponent
+        ProjectListComponent,
+        ProjectAddComponent,
+        ProjectEditComponent,
+        ProjectMenuComponent,
+        ProjectTableComponent
     ],
     entryComponents: [
         UserViewComponent,
-        MediaPlanEditComponent,
-        MediaPlanAddComponent
+        ProjectEditComponent,
+        ProjectAddComponent
     ],
     imports: [
         BrowserModule,

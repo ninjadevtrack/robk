@@ -4,7 +4,7 @@ import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.
 import {InternalEntryComponent} from "./internal/internal-entry.component";
 import {HomeComponent} from "./public/home";
 import {UserListComponent} from "./internal/admin/user/user-list/user-list.component";
-import {MediaPlanListComponent} from "./internal/media-plan/media-plan-list/media-plan-list.component";
+import {ProjectListComponent} from "./internal/project/project-list/project-list.component";
 import {AdminComponent} from "./internal/admin/admin.component";
 import {SetPasswordComponent} from "./public/set-password/set-password.component";
 import {PublicEntryComponent} from "./public/public-entry.component";
@@ -27,7 +27,7 @@ const routes: Routes = [
                     { path: '', component: UserListComponent }
                 ]
             },
-            { path: 'mediaplans', component: MediaPlanListComponent }
+            { path: 'mediaplans', component: ProjectListComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

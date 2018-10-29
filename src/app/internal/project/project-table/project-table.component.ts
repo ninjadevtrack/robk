@@ -9,10 +9,10 @@ import { IProject } from "../../../core/project/model/project.model";
 
 @Component({
     selector: 'media-plan-table',
-    styleUrls: [ './media-plan-table.component.css'],
-    templateUrl: './media-plan-table.component.html'
+    styleUrls: [ './project-table.component.css'],
+    templateUrl: './project-table.component.html'
 })
-export class MediaPlanTableComponent implements OnInit {
+export class ProjectTableComponent implements OnInit {
 
     @Input() mediaPlans: IProject[];
     @Input() isActive: boolean;

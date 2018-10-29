@@ -4,22 +4,22 @@ import {
     HostListener
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { IProject } from "../../../core/project/model/project.model";
+import {IProject, ProjectModel} from "../../../core/project/model/project.model";
 import { ProjectService } from "../../../core/project/project.service";
-import { MediaPlanAddComponent } from "../media-plan-add/media-plan-add.component";
+import { ProjectAddComponent } from "../project-add/project-add.component";
 
 @Component({
-    selector: 'media-plan-list',
-    styleUrls: [ './media-plan-list.component.css' ],
-    templateUrl: './media-plan-list.component.html'
+    selector: 'project-list',
+    styleUrls: [ './project-list.component.css' ],
+    templateUrl: './project-list.component.html'
 })
-export class MediaPlanListComponent implements OnInit {
-    public activeMediaPlans: IProject[] = [];
-    public archiveMediaPlans: IProject[] = [];
+export class ProjectListComponent implements OnInit {
+    public activeProjects: IProject[] = [];
+    public archiveProjects: IProject[] = [];
     addMediaPlanDialogOpened: boolean;
 
     constructor(
-        private _mediaPlanService: ProjectService,
+        private _projectService: ProjectService,
         private _dialog: MatDialog
     ) {
         this.addMediaPlanDialogOpened = false;
@@ -31,31 +31,31 @@ export class MediaPlanListComponent implements OnInit {
 
     private getAllMediaPlans() {
         // Get active users
-        this.getActiveMediaPlans();
+        this.getActiveProjects();
         // Get archived users
-        this.getArchivedMediaPlans();
+        this.getArchivedProjects();
     }
 
-    private getArchivedMediaPlans() {
-        this._mediaPlanService.getAllArchived().subscribe((mediasResult: any) => {
-            this.archiveMediaPlans = mediasResult.docs;
+    private getArchivedProjects() {
+        this._projectService.getAllArchived().subscribe((projects: ProjectModel[]) => {
+            this.archiveProjects = projects;
         });
     }
 
-    private getActiveMediaPlans() {
-        this._mediaPlanService.getAllActive().subscribe((mediasResult: any) => {
-            this.activeMediaPlans = mediasResult.docs;
+    private getActiveProjects() {
+        this._projectService.getAllActive().subscribe((projects: ProjectModel[]) => {
+            this.activeProjects = projects;
         });
     }
 
     addMediaPlan() {
         if(!this.addMediaPlanDialogOpened) {
-            let dialogRef = this._dialog.open(MediaPlanAddComponent, {});
+            let dialogRef = this._dialog.open(ProjectAddComponent, {});
             this.addMediaPlanDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if(result) {
-                    this.getActiveMediaPlans();
+                    this.getActiveProjects();
                 }
                 this.addMediaPlanDialogOpened = false;
             });

@@ -8,7 +8,7 @@ import { SetPasswordComponent } from './public/set-password/set-password.compone
 import { ProfileComponent } from './internal/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
-import { MediaPlanListComponent } from "./internal/media-plan/media-plan-list/media-plan-list.component";
+import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -26,7 +26,7 @@ export const ROUTES: Routes = [
                     { path: '', component: UserListComponent }
                 ]
             },
-            { path: 'mediaplans', component: MediaPlanListComponent }
+            { path: 'mediaplans', component: ProjectListComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

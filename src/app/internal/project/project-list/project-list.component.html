@@ -1,0 +1,18 @@
+<div class="m-t-6xl">
+  <div class="m-t-3xl m-b-3xl">
+    <div class="p-l-l p-r-l p-b-3xl">
+      <mat-tab-group>
+        <mat-tab label="Active ({{activeProjects?.length}})">
+          <media-plan-table [mediaPlans]="activeProjects" [isActive]="true" (onMediaPlansEvent)="getAllMediaPlans()"></media-plan-table>
+        </mat-tab>
+        <mat-tab label="Archived ({{archiveProjects?.length}})">
+          <media-plan-table [mediaPlans]="archiveProjects" [isActive]="false" (onMediaPlansEvent)="getAllMediaPlans()"></media-plan-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div class="floating-button">
+    <button mat-fab class="font-size-2xl font-weight-300" (click)="addMediaPlan()">+</button>
+  </div>
+</div>
+

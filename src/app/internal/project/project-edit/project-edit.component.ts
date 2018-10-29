@@ -6,10 +6,10 @@ import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-st
 
 @Component({
     selector: 'media-plan-edit',
-    templateUrl: './media-plan-edit.component.html',
-    styleUrls: ['./media-plan-edit.component.scss']
+    templateUrl: './project-edit.component.html',
+    styleUrls: ['./project-edit.component.scss']
 })
-export class MediaPlanEditComponent implements OnInit {
+export class ProjectEditComponent implements OnInit {
 
     mpForm: FormGroup;
     serverErrorMessage: string;
@@ -19,7 +19,7 @@ export class MediaPlanEditComponent implements OnInit {
     @Output() updated: EventEmitter<IProject> = new EventEmitter<IProject>();
 
     constructor(
-        private _mediaPlanService: ProjectService,
+        private _projectService: ProjectService,
         private _formBuilder: FormBuilder
     ) { }
 
@@ -30,7 +30,7 @@ export class MediaPlanEditComponent implements OnInit {
             description: ['', [Validators.maxLength(120)]]
         });
 
-        this._mediaPlanService.get(this.mediaPlanId).subscribe((mp: IProject) => {
+        this._projectService.get(this.mediaPlanId).subscribe((mp: IProject) => {
             this.setFormValues(mp);
         });
     }
@@ -48,7 +48,7 @@ export class MediaPlanEditComponent implements OnInit {
     }
 
     save() {
-        this._mediaPlanService.update(this.mediaPlanId, this.buildModelFromForm()).subscribe((mediaPlan: IProject) => {
+        this._projectService.update(this.mediaPlanId, this.buildModelFromForm()).subscribe((mediaPlan: IProject) => {
             this.updated.emit(mediaPlan);
         });
     }

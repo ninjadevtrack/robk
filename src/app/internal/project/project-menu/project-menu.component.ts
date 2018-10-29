@@ -13,17 +13,17 @@ import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
     selector: 'media-plan-menu',
-    templateUrl: './media-plan-menu.component.html',
-    styleUrls: ['./media-plan-menu.component.css']
+    templateUrl: './project-menu.component.html',
+    styleUrls: ['./project-menu.component.css']
 })
-export class MediaPlanMenuComponent implements OnInit {
+export class ProjectMenuComponent implements OnInit {
 
     @Input() isActive: boolean;
     @Input() model: ProjectModel;
     @Output() onMediaPlanEvent = new EventEmitter<string>();
 
     constructor(
-        private _mediaPlanService: ProjectService,
+        private _projectService: ProjectService,
         private _dialog: MatDialog
     ) { }
 
@@ -31,13 +31,13 @@ export class MediaPlanMenuComponent implements OnInit {
     }
 
     archive() {
-        this._mediaPlanService.archive(this.model._id).subscribe((result: any) => {
+        this._projectService.archive(this.model._id).subscribe((result: any) => {
             this.onMediaPlanEvent.emit(this.model._id);
         });
     }
 
     activate() {
-        this._mediaPlanService.activate(this.model._id).subscribe((result: any) => {
+        this._projectService.activate(this.model._id).subscribe((result: any) => {
             this.onMediaPlanEvent.emit(this.model._id);
         });
     }

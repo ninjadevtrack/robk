@@ -86,7 +86,7 @@ import { NoContentComponent } from './public/no-content';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/styles.scss';
 import '../assets/styles/headings.css';
-// import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
 import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
@@ -144,6 +144,7 @@ type StoreType = {
         HomeComponent,
         NoContentComponent,
         XLargeDirective,
+        DeleteDialogComponent,
         SettingsComponent,
         NumberWithSeparatorPipe,
         UserMenuComponent,
@@ -155,6 +156,7 @@ type StoreType = {
         MediaPlanTableComponent
     ],
     entryComponents: [
+        DeleteDialogComponent,
         UserViewComponent,
         MediaPlanEditComponent,
         MediaPlanAddComponent

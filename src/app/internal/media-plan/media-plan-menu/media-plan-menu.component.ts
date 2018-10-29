@@ -8,7 +8,7 @@ import {
 import { MatDialog } from '@angular/material';
 import { MediaPlanModel } from "../../../core/media-plan/model/media-plan.model";
 import { MediaPlanService } from "../../../core/media-plan/media-plan.service";
-// import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
+import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
 import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
@@ -50,22 +50,22 @@ export class MediaPlanMenuComponent implements OnInit {
 
     delete() {
 
-        // let dialogRef = this._dialog.open(DeleteDialogComponent, {
-        //     data: {
-        //         id: this.model._id,
-        //         name: this.model.name
-        //     }
-        // });
-        //
-        // dialogRef.afterClosed().subscribe( (result) => {
-        //
-        //     if (result.deleted){
-        //         this._mediaPlanService.delete(this.model._id).subscribe((result) => {
-        //             this.onMediaPlanEvent.emit(this.model._id);
-        //         });
-        //     }
-        //
-        // });
+        let dialogRef = this._dialog.open(DeleteDialogComponent, {
+            data: {
+                id: this.model._id,
+                name: this.model.name
+            }
+        });
+
+        dialogRef.afterClosed().subscribe( (result) => {
+
+            if (result.deleted){
+                this._mediaPlanService.delete(this.model._id).subscribe((result) => {
+                    this.onMediaPlanEvent.emit(this.model._id);
+                });
+            }
+
+        });
     }
 
 }

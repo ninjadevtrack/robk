@@ -82,7 +82,6 @@ import { InternalEntryComponent } from './internal/internal-entry.component';
 import { InternalHeaderComponent } from './internal/header/header.component';
 import { NoContentComponent } from './public/no-content';
 import { XLargeDirective } from './public/home/x-large';
-import '../assets/styles/styles.scss';
 import '../assets/styles/headings.css';
 // import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from './internal/admin/settings/settings.component';

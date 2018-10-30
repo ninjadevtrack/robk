@@ -93,8 +93,8 @@ import { ProjectMenuComponent } from './internal/project/project-menu/project-me
 import { ProjectTableComponent } from './internal/project/project-table/project-table.component';
 import { ProjectListComponent } from './internal/project/project-list/project-list.component';
 import { ProjectService } from './core/project/project.service';
-import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
 import { ProjectViewComponent } from './internal/project/project-view/project-view.component';
+import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -149,14 +149,13 @@ type StoreType = {
         ProjectEditComponent,
         ProjectMenuComponent,
         ProjectTableComponent,
-        DeleteDialogComponent,
-        ProjectViewComponent
+        ProjectViewComponent,
+        EntityDeleteComponent
     ],
     entryComponents: [
         UserViewComponent,
         ProjectEditComponent,
-        ProjectAddComponent,
-        DeleteDialogComponent
+        ProjectAddComponent
     ],
     imports: [
         BrowserModule,

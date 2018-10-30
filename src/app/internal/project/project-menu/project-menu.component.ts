@@ -8,12 +8,12 @@ import {
 import { MatDialog } from '@angular/material';
 import { ProjectModel } from "../../../core/project/model/project.model";
 import { ProjectService } from "../../../core/project/project.service";
-import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
 import { saveAs } from 'file-saver/FileSaver';
-import {ProjectEditComponent} from "../project-edit/project-edit.component";
+import { ProjectEditComponent } from "../project-edit/project-edit.component";
+import { EntityDeleteComponent } from '../../entity-delete/entity-delete.component';
 
 @Component({
-    selector: 'media-plan-menu',
+    selector: 'project-menu',
     templateUrl: './project-menu.component.html',
     styleUrls: ['./project-menu.component.css']
 })
@@ -69,7 +69,7 @@ export class ProjectMenuComponent implements OnInit {
 
     delete() {
 
-        const dialogRef = this._dialog.open(DeleteDialogComponent, {
+        const dialogRef = this._dialog.open(EntityDeleteComponent, {
             data: {
                 id: this.model._id,
                 name: this.model.name

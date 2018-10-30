@@ -1,58 +1,42 @@
-<div class="card-form">
-  <div class="card-form__header"></div>
-  <div class="card-form__body" >
-    <form novalidate [formGroup]="mpForm">
-      <div class="card">
-        <div class="m-b-l">
-            <span class="card-h1">
-                {{mpForm.controls['name'].value}}
-            </span>
-        </div>
-        <div class="m-b-l">
-          <mat-form-field class="full-width">
-              <input formControlName="clientName"
-              name="clientName"
-              required
-              matInput
-              type="string"
-              placeholder="Client Name">
-          </mat-form-field>
-        </div>
-        <div class="m-b-l">
-          <mat-form-field class="full-width">
-            <input formControlName="name"
-                   name="name"
-                   required
-                   matInput
-                   type="string"
-                   placeholder="MP Name">
-          </mat-form-field>
-        </div>
-        <div class="m-b-l">
-          <mat-form-field class="full-width">
-            <textarea formControlName="description"
-                   name="description"
-                   matInput
-                   type="string"
-                   placeholder="Description">
-            </textarea>
-          </mat-form-field>
-        </div>
-      </div>
-    </form>
+<div>
+  <h2 class="text-center p-b-l font-color-pale">Edit Project</h2>
+
+  <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
+    {{serverErrorMessage}}
   </div>
-  <div class="card-form__footer">
-    <div class="flex-container p-t p-b p-l p-r text-center">
-      <div>
-        <button mat-raised-button class="mat-primary" [disabled]="!mpForm.valid" (click)="save()">
-          OK
-        </button>
-      </div>
-      <div>
-        <button mat-button class="mat-primary" type="button" (click)="cancel()">
-          Cancel
+
+  <form novalidate [formGroup]="form" (ngSubmit)="save()" class="m-t-3xl">
+    <div>
+      <mat-form-field class="pop-up-field">
+        <input
+                formControlName="name"
+                name="name"
+                matInput
+                placeholder="Name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="pop-up-field">
+        <textarea
+                formControlName="description"
+                name="description"
+                matInput
+                placeholder="Description"
+                type="text">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="m-t-l p-b-l justifying-containter">
+      <div class="m-t-xl">
+        <button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
+          SAVE
         </button>
       </div>
     </div>
-  </div>
+    <div class="justifying-containter">
+      <button mat-button class="mat-primary font-size-l button-l" (click)="cancel()">
+        CANCEL
+      </button>
+    </div>
+  </form>
 </div>

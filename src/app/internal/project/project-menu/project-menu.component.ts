@@ -10,6 +10,7 @@ import { ProjectModel } from "../../../core/project/model/project.model";
 import { ProjectService } from "../../../core/project/project.service";
 import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
 import { saveAs } from 'file-saver/FileSaver';
+import {ProjectEditComponent} from "../project-edit/project-edit.component";
 
 @Component({
     selector: 'media-plan-menu',
@@ -21,6 +22,7 @@ export class ProjectMenuComponent implements OnInit {
     @Input() isActive: boolean;
     @Input() model: ProjectModel;
     @Output() onProjectEvent = new EventEmitter<string>();
+    editProjectDialogOpened: boolean = false;
 
 
     constructor(
@@ -44,12 +46,30 @@ export class ProjectMenuComponent implements OnInit {
     }
 
     update() {
-        console.log('Updating...');
+
+        if (!this.editProjectDialogOpened) {
+
+            const dialogRef = this._dialog.open(ProjectEditComponent, {
+                data: {
+                    id: this.model._id
+                }
+            });
+
+            this.editProjectDialogOpened = true;
+
+            dialogRef.afterClosed().subscribe((result) => {
+                if (result) {
+                    this.onProjectEvent.emit(this.model._id);
+                }
+
+                this.editProjectDialogOpened = false;
+            });
+        }
     }
 
     delete() {
 
-        let dialogRef = this._dialog.open(DeleteDialogComponent, {
+        const dialogRef = this._dialog.open(DeleteDialogComponent, {
             data: {
                 id: this.model._id,
                 name: this.model.name

@@ -42,6 +42,10 @@ export class ProjectMenuComponent implements OnInit {
         });
     }
 
+    update() {
+        console.log('Updating...');
+    }
+
     delete() {
 
         // let dialogRef = this._dialog.open(DeleteDialogComponent, {

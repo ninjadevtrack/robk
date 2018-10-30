@@ -9,6 +9,7 @@ import { ProfileComponent } from './internal/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
+import { ProjectViewComponent } from "./internal/project/project-view/project-view.component";
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -26,7 +27,8 @@ export const ROUTES: Routes = [
                     { path: '', component: UserListComponent }
                 ]
             },
-            { path: 'projects', component: ProjectListComponent }
+            { path: 'projects', component: ProjectListComponent },
+            { path: 'projects/:id', component: ProjectViewComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

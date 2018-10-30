@@ -96,6 +96,7 @@ import { ProjectTableComponent } from './internal/project/project-table/project-
 import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
 import { ProjectService } from "./core/project/project.service";
 import {DeleteDialogComponent} from "./internal/delete-dialog/delete-dialog.component";
+import { ProjectViewComponent } from './internal/project/project-view/project-view.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -150,7 +151,8 @@ type StoreType = {
         ProjectEditComponent,
         ProjectMenuComponent,
         ProjectTableComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        ProjectViewComponent
     ],
     entryComponents: [
         UserViewComponent,

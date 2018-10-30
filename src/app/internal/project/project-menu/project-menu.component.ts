@@ -22,6 +22,7 @@ export class ProjectMenuComponent implements OnInit {
     @Input() model: ProjectModel;
     @Output() onProjectEvent = new EventEmitter<string>();
 
+
     constructor(
         private _projectService: ProjectService,
         private _dialog: MatDialog

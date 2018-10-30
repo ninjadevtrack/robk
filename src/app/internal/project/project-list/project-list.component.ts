@@ -16,13 +16,13 @@ import { ProjectAddComponent } from "../project-add/project-add.component";
 export class ProjectListComponent implements OnInit {
     public activeProjects: IProject[] = [];
     public archiveProjects: IProject[] = [];
-    addMediaPlanDialogOpened: boolean;
+    addProjectDialogOpened: boolean;
 
     constructor(
         private _projectService: ProjectService,
         private _dialog: MatDialog
     ) {
-        this.addMediaPlanDialogOpened = false;
+        this.addProjectDialogOpened = false;
     }
 
     public ngOnInit() {
@@ -49,15 +49,15 @@ export class ProjectListComponent implements OnInit {
     }
 
     addMediaPlan() {
-        if(!this.addMediaPlanDialogOpened) {
+        if(!this.addProjectDialogOpened) {
             let dialogRef = this._dialog.open(ProjectAddComponent, {});
-            this.addMediaPlanDialogOpened = true;
+            this.addProjectDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if(result) {
                     this.getActiveProjects();
                 }
-                this.addMediaPlanDialogOpened = false;
+                this.addProjectDialogOpened = false;
             });
         }
     }

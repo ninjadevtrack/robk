@@ -12,7 +12,7 @@
       <td>{{mediaPlan.description}}</td>
       <td>{{mediaPlan.updatedAt |  date:'dd/MM/yyyy'}}</td>
       <td class="text-right">
-        <media-plan-menu [isActive]="isActive" [model]="mediaPlan" (onMediaPlanEvent)="onMediaPlanChanged($event)"></media-plan-menu>
+        <media-plan-menu [isActive]="isActive" [model]="mediaPlan" (onProjectEvent)="onMediaPlanChanged($event)"></media-plan-menu>
       </td>
     </tr>
     </tbody>

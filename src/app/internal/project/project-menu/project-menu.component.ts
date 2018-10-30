@@ -8,7 +8,7 @@ import {
 import { MatDialog } from '@angular/material';
 import { ProjectModel } from "../../../core/project/model/project.model";
 import { ProjectService } from "../../../core/project/project.service";
-// import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
+import { DeleteDialogComponent } from "../../delete-dialog/delete-dialog.component";
 import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
@@ -20,7 +20,7 @@ export class ProjectMenuComponent implements OnInit {
 
     @Input() isActive: boolean;
     @Input() model: ProjectModel;
-    @Output() onMediaPlanEvent = new EventEmitter<string>();
+    @Output() onProjectEvent = new EventEmitter<string>();
 
     constructor(
         private _projectService: ProjectService,
@@ -32,13 +32,13 @@ export class ProjectMenuComponent implements OnInit {
 
     archive() {
         this._projectService.archive(this.model._id).subscribe((result: any) => {
-            this.onMediaPlanEvent.emit(this.model._id);
+            this.onProjectEvent.emit(this.model._id);
         });
     }
 
     activate() {
         this._projectService.activate(this.model._id).subscribe((result: any) => {
-            this.onMediaPlanEvent.emit(this.model._id);
+            this.onProjectEvent.emit(this.model._id);
         });
     }
 
@@ -48,22 +48,22 @@ export class ProjectMenuComponent implements OnInit {
 
     delete() {
 
-        // let dialogRef = this._dialog.open(DeleteDialogComponent, {
-        //     data: {
-        //         id: this.model._id,
-        //         name: this.model.name
-        //     }
-        // });
-        //
-        // dialogRef.afterClosed().subscribe( (result) => {
-        //
-        //     if (result.deleted){
-        //         this._mediaPlanService.delete(this.model._id).subscribe((result) => {
-        //             this.onMediaPlanEvent.emit(this.model._id);
-        //         });
-        //     }
-        //
-        // });
+        let dialogRef = this._dialog.open(DeleteDialogComponent, {
+            data: {
+                id: this.model._id,
+                name: this.model.name
+            }
+        });
+
+        dialogRef.afterClosed().subscribe( (result) => {
+
+            if (result.deleted){
+                this._projectService.delete(this.model._id).subscribe((result) => {
+                    this.onProjectEvent.emit(this.model._id);
+                });
+            }
+
+        });
     }
 
 }

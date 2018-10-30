@@ -41,11 +41,11 @@ export class ProjectService {
     }
 
     public activate(id: string): Observable<ProjectModel> {
-        return this._httpHelper.put(true, this._configService.TECHTON_PLANNER_API.Project.activate(id), {});
+        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.Project.activate(id));
     }
 
     public archive(id: string): Observable<ProjectModel> {
-        return this._httpHelper.put(true, this._configService.TECHTON_PLANNER_API.Project.archive(id), {});
+        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.Project.archive(id));
     }
 
 }

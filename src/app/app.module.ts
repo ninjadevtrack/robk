@@ -80,11 +80,9 @@ import { PublicFooterComponent } from './public/footer/footer.component';
 import { PublicHeaderComponent } from './public/header/header.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { InternalHeaderComponent } from './internal/header/header.component';
-import { DeleteDialogComponent } from "./internal/delete-dialog/delete-dialog.component";
 import { NoContentComponent } from './public/no-content';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
-// import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
 import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
@@ -93,9 +91,9 @@ import { ProjectAddComponent } from './internal/project/project-add/project-add.
 import { ProjectEditComponent } from './internal/project/project-edit/project-edit.component';
 import { ProjectMenuComponent } from './internal/project/project-menu/project-menu.component';
 import { ProjectTableComponent } from './internal/project/project-table/project-table.component';
-import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
-import { ProjectService } from "./core/project/project.service";
-import {DeleteDialogComponent} from "./internal/delete-dialog/delete-dialog.component";
+import { ProjectListComponent } from './internal/project/project-list/project-list.component';
+import { ProjectService } from './core/project/project.service';
+import { DeleteDialogComponent } from './internal/delete-dialog/delete-dialog.component';
 import { ProjectViewComponent } from './internal/project/project-view/project-view.component';
 
 // Application wide providers

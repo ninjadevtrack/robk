@@ -7,12 +7,12 @@
     <th width="100px"></th>
     </thead>
     <tbody class="m-b-s font-size-l">
-    <tr *ngFor="let mediaPlan of projects">
-      <td><a routerLink="/i/mediaplans/{{mediaPlan._id}}">{{mediaPlan.name}}</a></td>
-      <td>{{mediaPlan.description}}</td>
-      <td>{{mediaPlan.updatedAt |  date:'dd/MM/yyyy'}}</td>
+    <tr *ngFor="let project of projects">
+      <td><a routerLink="/i/projects/{{project._id}}">{{project.name}}</a></td>
+      <td>{{project.description}}</td>
+      <td>{{project.updatedAt | date:'dd/MM/yyyy'}}</td>
       <td class="text-right">
-        <media-plan-menu [isActive]="isActive" [model]="mediaPlan" (onProjectEvent)="onMediaPlanChanged($event)"></media-plan-menu>
+        <media-plan-menu [isActive]="isActive" [model]="project" (onProjectEvent)="onMediaPlanChanged($event)"></media-plan-menu>
       </td>
     </tr>
     </tbody>

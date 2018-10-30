@@ -155,7 +155,8 @@ type StoreType = {
     entryComponents: [
         UserViewComponent,
         ProjectEditComponent,
-        ProjectAddComponent
+        ProjectAddComponent,
+        EntityDeleteComponent
     ],
     imports: [
         BrowserModule,

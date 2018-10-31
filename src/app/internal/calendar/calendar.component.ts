@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarEventTimesChangedEvent} from 'angular-calendar';
+import { addHours, addDays } from 'date-fns';
 
 @Component({
   selector: 'app-calendar',
@@ -11,27 +12,9 @@ export class CalendarComponent implements OnInit {
 
     view: string = 'week';
     viewDate: Date = new Date();
-
-    events: CalendarEvent[] = [
-        {
-            title: 'Draggable event',
-            color: colors.yellow,
-            start: new Date(),
-            draggable: true
-        },
-        {
-            title: 'A non draggable event',
-            color: colors.red,
-            start: new Date()
-        },
-        {
-            title: 'One more draggable event',
-            color: colors.red,
-            start: new Date(),
-            draggable: true
-        }
-    ];
-
+    daysCount: number = 5;
+    events: CalendarEvent[] = [];
+    eventsPerDayCount: number = 4;
     refresh: Subject<any> = new Subject();
 
     eventTimesChanged({
@@ -48,6 +31,27 @@ export class CalendarComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        this.initEvents();
+    }
+
+    initEvents () {
+        let start;
+        for (let i = 0; i < this.daysCount; i++) {
+            for (let j = 0; j < this.eventsPerDayCount; j++) {
+                start = addHours( addDays(new Date(), i), -j);
+                this.events.push({
+                    title: 'Event 2',
+                    color: colors.blue,
+                    start: start,
+                    end: addHours(start, 2),
+                    draggable: true,
+                    resizable: {
+                        beforeStart: true, // this allows you to configure the sides the event is resizable from
+                        afterEnd: true
+                    }
+                });
+            }
+        }
     }
 
 }

@@ -10,7 +10,7 @@ export namespace Consts {
 
 @Injectable()
 export class ConfigService {
-    public TECHTON_PLANNER_API = {
+    public API = {
         Auth: {
             signIn: () => {
                 return `${Consts.API_URL}/v1/user/signin`;

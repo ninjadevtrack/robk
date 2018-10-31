@@ -10,6 +10,7 @@ import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
 import { ProjectViewComponent } from "./internal/project/project-view/project-view.component";
+import { CalendarComponent } from './internal/calendar/calendar.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -28,7 +29,8 @@ export const ROUTES: Routes = [
                 ]
             },
             { path: 'projects', component: ProjectListComponent },
-            { path: 'projects/:id', component: ProjectViewComponent }
+            { path: 'projects/:id', component: ProjectViewComponent },
+            { path: 'calendar', component: CalendarComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

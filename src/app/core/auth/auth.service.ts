@@ -16,26 +16,26 @@ export class AuthService {
         private _httpHelper: HttpHelperService) { }
 
     public validateToken(): Observable<any> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.Auth.validateToken());
+        return this._httpHelper.get(true, this._configService.API.Auth.validateToken());
     }
 
     public signIn(signInModel: SignInModel): Observable<ISignInResult> {
-        return this._httpHelper.post(false, this._configService.TECHTON_PLANNER_API.Auth.signIn(), signInModel);
+        return this._httpHelper.post(false, this._configService.API.Auth.signIn(), signInModel);
     }
 
     public signUp(signUpModel: SignUpModel): Observable<any> {
-        return this._httpHelper.post(false, this._configService.TECHTON_PLANNER_API.Auth.signUp(), signUpModel);
+        return this._httpHelper.post(false, this._configService.API.Auth.signUp(), signUpModel);
     }
 
     public recoverPassword(recoverPasswordModel: RecoverPasswordModel): Observable<any> {
-        return this._httpHelper.post(false, this._configService.TECHTON_PLANNER_API.Auth.recoverPwd(), recoverPasswordModel);
+        return this._httpHelper.post(false, this._configService.API.Auth.recoverPwd(), recoverPasswordModel);
     };
 
     public validateRecoveryPasswordToken(token: string): Observable<any> {
-        return this._httpHelper.post(false, this._configService.TECHTON_PLANNER_API.Auth.validateRecoveryPwdToken(), {recoverPwdToken: token });
+        return this._httpHelper.post(false, this._configService.API.Auth.validateRecoveryPwdToken(), {recoverPwdToken: token });
     }
 
     public setPassword(setPasswordModel: SetPasswordModel): Observable<any> {
-        return this._httpHelper.post(false, this._configService.TECHTON_PLANNER_API.Auth.setPassword(), setPasswordModel);
+        return this._httpHelper.post(false, this._configService.API.Auth.setPassword(), setPasswordModel);
     }
 }

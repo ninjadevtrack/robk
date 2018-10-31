@@ -12,22 +12,22 @@ export class UserService {
     }
 
     public profile(): Observable<UserModel> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.User.profile());
+        return this._httpHelper.get(true, this._configService.API.User.profile());
     }
 
     public get(id: string): Observable<UserModel> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.User.dafaultWithId(id));
+        return this._httpHelper.get(true, this._configService.API.User.dafaultWithId(id));
     }
 
     public getAll(): Observable<UsersResultModel> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.User.getAll());
+        return this._httpHelper.get(true, this._configService.API.User.getAll());
     }
 
     public getAllActive(): Observable<UsersResultModel> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.User.getAllActive());
+        return this._httpHelper.get(true, this._configService.API.User.getAllActive());
     }
 
     public getAllArchived(): Observable<UsersResultModel> {
-        return this._httpHelper.get(true, this._configService.TECHTON_PLANNER_API.User.getAllArchived());
+        return this._httpHelper.get(true, this._configService.API.User.getAllArchived());
     }
 }

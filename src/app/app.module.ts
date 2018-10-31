@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -95,6 +97,8 @@ import { ProjectListComponent } from './internal/project/project-list/project-li
 import { ProjectService } from './core/project/project.service';
 import { ProjectViewComponent } from './internal/project/project-view/project-view.component';
 import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
+import { CalendarComponent } from './internal/calendar/calendar.component';
+import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -150,7 +154,8 @@ type StoreType = {
         ProjectMenuComponent,
         ProjectTableComponent,
         ProjectViewComponent,
-        EntityDeleteComponent
+        EntityDeleteComponent,
+        CalendarComponent
     ],
     entryComponents: [
         UserViewComponent,
@@ -161,6 +166,11 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory
+        }),
+        DemoUtilsModule,
         FormsModule,
         ReactiveFormsModule,
         MatAutocompleteModule,

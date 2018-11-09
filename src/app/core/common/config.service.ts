@@ -36,7 +36,7 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/user/profile`;
             },
             dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/users/${id}`
+                return `${Consts.API_URL}/v1/users/${id}`;
             },
             getAll: () => {
                 return `${Consts.API_URL}/v1/users`;
@@ -53,7 +53,7 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/enrollments`;
             },
             dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/enrollments/${id}`
+                return `${Consts.API_URL}/v1/enrollments/${id}`;
             },
             getAllActive: () => {
                 return `${Consts.API_URL}/v1/enrollments/active`;
@@ -66,6 +66,26 @@ export class ConfigService {
             },
             archive:  (id) => {
                 return `${Consts.API_URL}/v1/enrollments/${id}/archive`;
+            }
+        },
+        Service: {
+            default: () => {
+                return `${Consts.API_URL}/v1/services`;
+            },
+            dafaultWithId: (id) => {
+                return `${Consts.API_URL}/v1/services/${id}`;
+            },
+            getAllActive: () => {
+                return `${Consts.API_URL}/v1/services/active`;
+            },
+            getAllArchived: () => {
+                return `${Consts.API_URL}/v1/services/archived`;
+            },
+            activate:  (id) => {
+                return `${Consts.API_URL}/v1/services/${id}/activate`;
+            },
+            archive:  (id) => {
+                return `${Consts.API_URL}/v1/services/${id}/archive`;
             }
         }
     };

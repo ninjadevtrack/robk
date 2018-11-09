@@ -99,6 +99,13 @@ import { EnrollmentViewComponent } from './internal/enrollment/enrollment-view/e
 import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
+import { ServiceService } from './core/service/service.service';
+import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
+import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
+import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
+import { ServiceMenuComponent } from './internal/admin/service/service-menu/service-menu.component';
+import { ServiceTableComponent } from './internal/admin/service/service-table/service-table.component';
+import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -106,6 +113,7 @@ const APP_PROVIDERS = [
     ConfigService,
     UserService,
     EnrollmentService,
+    ServiceService,
     AuthService,
     AuthStorageService,
     FakeStorage,
@@ -155,12 +163,20 @@ type StoreType = {
         EnrollmentTableComponent,
         EnrollmentViewComponent,
         EntityDeleteComponent,
+        ServiceListComponent,
+        ServiceAddComponent,
+        ServiceEditComponent,
+        ServiceMenuComponent,
+        ServiceTableComponent,
+        ServiceViewComponent,
         CalendarComponent
     ],
     entryComponents: [
         UserViewComponent,
         EnrollmentEditComponent,
         EnrollmentAddComponent,
+        ServiceEditComponent,
+        ServiceAddComponent,
         EntityDeleteComponent
     ],
     imports: [

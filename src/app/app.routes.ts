@@ -11,6 +11,7 @@ import { UserListComponent } from './internal/admin/user/user-list/user-list.com
 import { EnrollmentListComponent } from "./internal/enrollment/enrollment-list/enrollment-list.component";
 import { EnrollmentViewComponent } from "./internal/enrollment/enrollment-view/enrollment-view.component";
 import { CalendarComponent } from './internal/calendar/calendar.component';
+import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -25,7 +26,8 @@ export const ROUTES: Routes = [
             { path: 'profile', component: ProfileComponent },
             { path: 'admin', component: AdminComponent,
                 children: [
-                    { path: '', component: UserListComponent }
+                    { path: '', component: UserListComponent },
+                    { path: 'services', component: ServiceListComponent }
                 ]
             },
             { path: 'enrollments', component: EnrollmentListComponent },

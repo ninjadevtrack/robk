@@ -8,8 +8,8 @@ import { SetPasswordComponent } from './public/set-password/set-password.compone
 import { ProfileComponent } from './internal/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
-import { ProjectListComponent } from "./internal/project/project-list/project-list.component";
-import { ProjectViewComponent } from "./internal/project/project-view/project-view.component";
+import { EnrollmentListComponent } from "./internal/enrollment/enrollment-list/enrollment-list.component";
+import { EnrollmentViewComponent } from "./internal/enrollment/enrollment-view/enrollment-view.component";
 import { CalendarComponent } from './internal/calendar/calendar.component';
 
 export const ROUTES: Routes = [
@@ -28,8 +28,8 @@ export const ROUTES: Routes = [
                     { path: '', component: UserListComponent }
                 ]
             },
-            { path: 'projects', component: ProjectListComponent },
-            { path: 'projects/:id', component: ProjectViewComponent },
+            { path: 'enrollments', component: EnrollmentListComponent },
+            { path: 'enrollments/:id', component: EnrollmentViewComponent },
             { path: 'calendar', component: CalendarComponent }
         ]
     },

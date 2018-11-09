@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaPlanComponent } from './project-list.component';
+import { MediaPlanComponent } from './enrollment-list.component';
 
 describe('MediaPlanComponent', () => {
   let component: MediaPlanComponent;

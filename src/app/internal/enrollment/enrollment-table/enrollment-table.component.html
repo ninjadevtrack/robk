@@ -1,0 +1,24 @@
+<div class="flex-table">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Last updated</th>
+    <th width="100px"></th>
+    </thead>
+    <tbody class="m-b-s font-size-l">
+    <tr *ngFor="let enrollment of enrollments">
+      <td>
+        <a routerLink="/i/enrollments/{{enrollment._id}}">
+          {{enrollment.firstName}} {{enrollment.lastName}} ({{enrollment.appeal}})
+        </a>
+      </td>
+      <td>{{enrollment.services}}</td>
+      <td>{{enrollment.updatedAt | date:'dd/MM/yyyy'}}</td>
+      <td class="text-right">
+        <enrollment-menu [isActive]="isActive" [model]="enrollment" (onEnrollmentEvent)="onMediaPlanChanged($event)"></enrollment-menu>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

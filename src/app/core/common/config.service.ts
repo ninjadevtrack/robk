@@ -48,24 +48,24 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/users/archived`;
             }
         },
-        Project: {
+        Enrollment: {
             default: () => {
-                return `${Consts.API_URL}/v1/projects`;
+                return `${Consts.API_URL}/v1/enrollments`;
             },
             dafaultWithId: (id) => {
-                return `${Consts.API_URL}/v1/projects/${id}`
+                return `${Consts.API_URL}/v1/enrollments/${id}`
             },
             getAllActive: () => {
-                return `${Consts.API_URL}/v1/projects/active`;
+                return `${Consts.API_URL}/v1/enrollments/active`;
             },
             getAllArchived: () => {
-                return `${Consts.API_URL}/v1/projects/archived`;
+                return `${Consts.API_URL}/v1/enrollments/archived`;
             },
             activate:  (id) => {
-                return `${Consts.API_URL}/v1/projects/${id}/activate`;
+                return `${Consts.API_URL}/v1/enrollments/${id}/activate`;
             },
             archive:  (id) => {
-                return `${Consts.API_URL}/v1/projects/${id}/archive`;
+                return `${Consts.API_URL}/v1/enrollments/${id}/archive`;
             }
         }
     };

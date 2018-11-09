@@ -89,13 +89,13 @@ import { SettingsComponent } from './internal/admin/settings/settings.component'
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
 import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
 import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
-import { ProjectAddComponent } from './internal/project/project-add/project-add.component';
-import { ProjectEditComponent } from './internal/project/project-edit/project-edit.component';
-import { ProjectMenuComponent } from './internal/project/project-menu/project-menu.component';
-import { ProjectTableComponent } from './internal/project/project-table/project-table.component';
-import { ProjectListComponent } from './internal/project/project-list/project-list.component';
-import { ProjectService } from './core/project/project.service';
-import { ProjectViewComponent } from './internal/project/project-view/project-view.component';
+import { EnrollmentAddComponent } from './internal/enrollment/enrollment-add/enrollment-add.component';
+import { EnrollmentEditComponent } from './internal/enrollment/enrollment-edit/enrollment-edit.component';
+import { EnrollmentMenuComponent } from './internal/enrollment/enrollment-menu/enrollment-menu.component';
+import { EnrollmentTableComponent } from './internal/enrollment/enrollment-table/enrollment-table.component';
+import { EnrollmentListComponent } from './internal/enrollment/enrollment-list/enrollment-list.component';
+import { EnrollmentService } from './core/enrollment/enrollment.service';
+import { EnrollmentViewComponent } from './internal/enrollment/enrollment-view/enrollment-view.component';
 import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
@@ -105,7 +105,7 @@ const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     ConfigService,
     UserService,
-    ProjectService,
+    EnrollmentService,
     AuthService,
     AuthStorageService,
     FakeStorage,
@@ -148,19 +148,19 @@ type StoreType = {
         NumberWithSeparatorPipe,
         UserMenuComponent,
         UserViewComponent,
-        ProjectListComponent,
-        ProjectAddComponent,
-        ProjectEditComponent,
-        ProjectMenuComponent,
-        ProjectTableComponent,
-        ProjectViewComponent,
+        EnrollmentListComponent,
+        EnrollmentAddComponent,
+        EnrollmentEditComponent,
+        EnrollmentMenuComponent,
+        EnrollmentTableComponent,
+        EnrollmentViewComponent,
         EntityDeleteComponent,
         CalendarComponent
     ],
     entryComponents: [
         UserViewComponent,
-        ProjectEditComponent,
-        ProjectAddComponent,
+        EnrollmentEditComponent,
+        EnrollmentAddComponent,
         EntityDeleteComponent
     ],
     imports: [

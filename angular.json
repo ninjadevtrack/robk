@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "techton-planner-web": {
+    "school-erp-web": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/techton-planner-web",
+            "outputPath": "dist/school-erp-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "techton-planner-web:build"
+            "browserTarget": "school-erp-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "techton-planner-web:build:production"
+              "browserTarget": "school-erp-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "techton-planner-web:build"
+            "browserTarget": "school-erp-web:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "techton-planner-web-e2e": {
+    "school-erp-web-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "techton-planner-web:serve"
+            "devServerTarget": "school-erp-web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "techton-planner-web:serve:production"
+              "devServerTarget": "school-erp-web:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "techton-planner-web"
+  "defaultProject": "school-erp-web"
 }

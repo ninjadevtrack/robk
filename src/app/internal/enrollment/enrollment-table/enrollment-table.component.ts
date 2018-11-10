@@ -26,4 +26,11 @@ export class EnrollmentTableComponent implements OnInit {
         this.onEnrollmentsEvent.emit();
     }
 
+    public getServicesString(enrollment: IEnrollment) {
+        const shortener = 20;
+        const delimeter = '..., ';
+        const shortenedString = enrollment.services.reduce((acc, service) =>  acc + service.name.substr(0, shortener) + delimeter, '');
+        return shortenedString.substr(0, shortenedString.length - delimeter.length);
+    }
+
 }

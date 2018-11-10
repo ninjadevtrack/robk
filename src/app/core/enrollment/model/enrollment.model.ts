@@ -1,3 +1,5 @@
+import {IService} from '../../service/model/service.model';
+
 export interface IEnrollment {
     _id: string;
     firstName: string;
@@ -5,7 +7,7 @@ export interface IEnrollment {
     appeal: string;
     phone: string;
     email: string;
-    services: string;
+    services: IService[];
     updatedAt: string;
     createdAt: string;
     isActive: boolean;
@@ -18,7 +20,7 @@ export class EnrollmentModel implements IEnrollment {
     appeal: string;
     phone: string;
     email: string;
-    services: string;
+    services: IService[];
     updatedAt: string;
     createdAt: string;
     isActive: boolean;

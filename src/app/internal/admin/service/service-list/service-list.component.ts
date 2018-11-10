@@ -29,7 +29,7 @@ export class ServiceListComponent implements OnInit {
         this.getAllServices();
     }
 
-    private getAllServices() {
+    public getAllServices() {
         // Get active users
         this.getActiveServices();
         // Get archived users

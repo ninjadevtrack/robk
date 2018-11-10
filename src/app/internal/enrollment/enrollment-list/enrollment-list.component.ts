@@ -29,7 +29,7 @@ export class EnrollmentListComponent implements OnInit {
         this.getAllEnrollments();
     }
 
-    private getAllEnrollments() {
+    public getAllEnrollments() {
         // Get active users
         this.getActiveEnrollments();
         // Get archived users

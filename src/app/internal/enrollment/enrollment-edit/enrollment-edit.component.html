@@ -53,12 +53,11 @@
     </div>
     <div>
       <mat-form-field class="pop-up-field">
-        <textarea
-            formControlName="services"
-            name="services"
-            matInput
-            placeholder="Services">
-        </textarea>
+        <mat-select placeholder="Services" formControlName="services" multiple>
+          <mat-option *ngFor="let service of services" [value]="service._id">
+            {{ service.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="m-t-l p-b-l justifying-containter">

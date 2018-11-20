@@ -9,6 +9,8 @@ import { ServerErrorModel } from "../../../core/common";
 import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
+import { IService } from '../../../core/service/model/service.model';
+import { ServiceService } from '../../../core/service/service.service';
 
 @Component({
     selector: 'enrollment-add',
@@ -18,9 +20,11 @@ export class EnrollmentAddComponent implements OnInit {
 
     form: FormGroup;
     serverErrorMessage: string;
+    services: IService[];
 
     constructor(
         private _enrollmentService: EnrollmentService,
+        private _serviceService: ServiceService,
         public dialogRef: MatDialogRef<EnrollmentAddComponent>,
         private _formBuilder: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -33,6 +37,10 @@ export class EnrollmentAddComponent implements OnInit {
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             services: ['', [Validators.required, Validators.maxLength(300)]]
+        });
+
+        this._serviceService.getAllActive().subscribe((services: IService[]) => {
+            this.services = services;
         });
     }
 

@@ -33,22 +33,21 @@ export class EnrollmentAddComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() {
-        this.form = this._formBuilder.group({
-            firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            appeal: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            services: ['', [Validators.required, Validators.maxLength(300)]]
-        });
-
         this._serviceService.getAllActive().subscribe((services: IService[]) => {
             this.services = services;
         });
 
         this._appealService.getAll().subscribe((appeals: string[]) => {
             this.appeals = appeals;
-            console.log(this.appeals);
+
+            this.form = this._formBuilder.group({
+                firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                services: ['', [Validators.required, Validators.maxLength(300)]]
+            });
         });
     }
 

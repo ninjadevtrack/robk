@@ -9,7 +9,7 @@ export class AppealService {
 
   constructor() { }
 
-  public getAll() {
+  public getAll(): Observable<string[]> {
     return Observable.of(this.appeals);
   }
 }

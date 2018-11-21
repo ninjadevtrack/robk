@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
 import { IService } from '../../../core/service/model/service.model';
 import { ServiceService } from '../../../core/service/service.service';
+import { AppealService } from '../../../core/appeal/appeal.service';
 
 @Component({
     selector: 'enrollment-add',
@@ -21,10 +22,12 @@ export class EnrollmentAddComponent implements OnInit {
     form: FormGroup;
     serverErrorMessage: string;
     services: IService[];
+    appeals: string[];
 
     constructor(
         private _enrollmentService: EnrollmentService,
         private _serviceService: ServiceService,
+        private _appealService: AppealService,
         public dialogRef: MatDialogRef<EnrollmentAddComponent>,
         private _formBuilder: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -41,6 +44,11 @@ export class EnrollmentAddComponent implements OnInit {
 
         this._serviceService.getAllActive().subscribe((services: IService[]) => {
             this.services = services;
+        });
+
+        this._appealService.getAll().subscribe((appeals: string[]) => {
+            this.appeals = appeals;
+            console.log(this.appeals);
         });
     }
 

@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ServiceService } from '../../../core/service/service.service';
-import {IService} from '../../../core/service/model/service.model';
+import { IService  } from '../../../core/service/model/service.model';
+import { AppealService } from '../../../core/appeal/appeal.service';
 
 @Component({
     selector: 'enrollment-edit',
@@ -17,6 +18,7 @@ export class EnrollmentEditComponent implements OnInit {
     form: FormGroup;
     serverErrorMessage: string;
     services: IService[];
+    appeals: string[];
 
     @Output() canceled: EventEmitter<any> = new EventEmitter<any>();
     @Output() updated: EventEmitter<IEnrollment> = new EventEmitter<IEnrollment>();
@@ -24,6 +26,7 @@ export class EnrollmentEditComponent implements OnInit {
     constructor(
         private _enrollmentService: EnrollmentService,
         private _serviceService: ServiceService,
+        private _appealService: AppealService,
         private _formBuilder: FormBuilder,
         private dialogRef: MatDialogRef<EnrollmentEditComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any
@@ -38,6 +41,10 @@ export class EnrollmentEditComponent implements OnInit {
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             services: ['', [Validators.required, Validators.maxLength(300)]]
+        });
+
+        this._appealService.getAll().subscribe((appeals: string[]) => {
+            this.appeals = appeals;
         });
 
         this._serviceService.getAllActive().subscribe((services: IService[]) => {
@@ -58,7 +65,7 @@ export class EnrollmentEditComponent implements OnInit {
         this.form.controls['services'].setValue(entity.services);
     }
 
-    buildModelFromForm(){
+    buildModelFromForm() {
         const model = new EnrollmentModel();
         model.firstName = this.form.controls['firstName'].value;
         model.lastName = this.form.controls['lastName'].value;

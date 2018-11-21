@@ -55,7 +55,7 @@ export class EnrollmentAddComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    buildModelFromForm(){
+    buildModelFromForm() {
         const model = new EnrollmentModel();
         model.firstName = this.form.controls['firstName'].value;
         model.lastName = this.form.controls['lastName'].value;

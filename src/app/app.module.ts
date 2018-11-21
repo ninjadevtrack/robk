@@ -100,6 +100,7 @@ import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.co
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
 import { ServiceService } from './core/service/service.service';
+import { AppealService } from './core/appeal/appeal.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
@@ -114,6 +115,7 @@ const APP_PROVIDERS = [
     UserService,
     EnrollmentService,
     ServiceService,
+    AppealService,
     AuthService,
     AuthStorageService,
     FakeStorage,

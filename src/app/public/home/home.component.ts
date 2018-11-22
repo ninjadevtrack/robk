@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   /**
    * Set our default values
    */
-  public logo = 'assets/img/logo-purple.svg';
+  public logo = 'assets/img/logo-dark.svg';
   /**
    * TypeScript public modifiers
    */

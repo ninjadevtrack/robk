@@ -21,12 +21,12 @@ import { Router } from '@angular/router';
      */
     template: `
         <div class="m-b-2xl text-center m-t-6xl">
-            <a routerLink="/"><img [src]="logo" height="52px"></a>
+            <a routerLink="/"><img [src]="logo" height="82px"></a>
         </div>
         <router-outlet></router-outlet>`
 })
 export class PublicEntryComponent implements OnInit {
-    public logo = 'assets/img/logo-purple.svg';
+    public logo = 'assets/img/logo-dark.svg';
     public name = 'Teachable';
 
     /**

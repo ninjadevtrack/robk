@@ -62,7 +62,7 @@ export class EnrollmentEditComponent implements OnInit {
         this.form.controls['appeal'].setValue(entity.appeal);
         this.form.controls['phone'].setValue(entity.phone);
         this.form.controls['email'].setValue(entity.email);
-        this.form.controls['services'].setValue(entity.services);
+        this.form.controls['services'].setValue(entity.services.map(s => s._id));
     }
 
     buildModelFromForm() {

@@ -1,15 +1,17 @@
 <div class="m-t-6xl">
-  <div class="m-t-3xl m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl">
-      <h1>{{enrollment?.firstName}} {{enrollment?.lastName}} ({{enrollment?.appeal}})</h1>
-      <data-field header="Email" [data]="enrollment?.email"></data-field>
-      <data-field header="Phone" [data]="enrollment?.phone"></data-field>
-      <div class="data-field">
-        <div class="data-field-header">Services</div>
-        <ul *ngFor="let service of enrollment?.services" class="data-field-data">
-          <li>{{service.name}}</li>
-        </ul>
+  <div class="m-t-3xl m-r m-l">
+    <mat-card>
+      <div class="p-l-xl p-r-xl">
+        <h1>{{enrollment?.firstName}} {{enrollment?.lastName}} ({{enrollment?.appeal}})</h1>
+        <data-field header="Email" [data]="enrollment?.email"></data-field>
+        <data-field header="Phone" [data]="enrollment?.phone"></data-field>
+        <div class="data-field">
+          <div class="data-field-header">Services</div>
+          <ul *ngFor="let service of enrollment?.services" class="data-field-data">
+            <li>{{service.name}}</li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </mat-card>
   </div>
 </div>

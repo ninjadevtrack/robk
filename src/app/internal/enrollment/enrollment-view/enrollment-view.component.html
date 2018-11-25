@@ -1,11 +1,23 @@
 <card-template>
   <h1>{{enrollment?.firstName}} {{enrollment?.lastName}} ({{enrollment?.appeal}})</h1>
-  <data-field header="Email" [data]="enrollment?.email"></data-field>
-  <data-field header="Phone" [data]="enrollment?.phone"></data-field>
+  <div class="flex-container">
+    <div>
+      <data-field header="Email" [data]="enrollment?.email"></data-field>
+      <data-field header="Phone" [data]="enrollment?.phone"></data-field>
+    </div>
+    <div class="data-field">
+      <div class="data-field-header">Services</div>
+      <ul *ngFor="let service of enrollment?.services" class="data-field-data">
+        <li>{{service.name}}</li>
+      </ul>
+    </div>
+  </div>
   <div class="data-field">
-    <div class="data-field-header">Services</div>
-    <ul *ngFor="let service of enrollment?.services" class="data-field-data">
-      <li>{{service.name}}</li>
-    </ul>
+    <div class="data-field-header">
+      Notes (experience, goals, expectations)
+    </div>
+    <div class="data-field-data">
+      The client wants a real break-through.
+    </div>
   </div>
 </card-template>

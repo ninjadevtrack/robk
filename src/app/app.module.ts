@@ -107,6 +107,7 @@ import { ServiceEditComponent } from './internal/admin/service/service-edit/serv
 import { ServiceMenuComponent } from './internal/admin/service/service-menu/service-menu.component';
 import { ServiceTableComponent } from './internal/admin/service/service-table/service-table.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
+import { CardTemplateComponent } from './internal/common/templates/card-template/card-template.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -171,7 +172,8 @@ type StoreType = {
         ServiceMenuComponent,
         ServiceTableComponent,
         ServiceViewComponent,
-        CalendarComponent
+        CalendarComponent,
+        CardTemplateComponent
     ],
     entryComponents: [
         UserViewComponent,

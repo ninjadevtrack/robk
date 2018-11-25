@@ -1,14 +1,8 @@
-<div class="m-t-6xl">
-	<div class="m-t-3xl m-r m-l">
-		<mat-card>
-			<div class="p-l-xl p-r-xl">
-				<div class="m-b-3xl">
-					<h1>{{model.firstName}} {{model.lastName}}</h1>
-				</div>
-				<data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
-				<data-field header="Roles" data="{{ model.roles }}" [isSmall]="false"></data-field>
-				<data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
-			</div>
-		</mat-card>
+<app-card-template>
+	<div class="m-b-3xl">
+		<h1>{{model.firstName}} {{model.lastName}}</h1>
 	</div>
-</div>
+	<data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
+	<data-field header="Roles" data="{{ model.roles }}" [isSmall]="false"></data-field>
+	<data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
+</app-card-template>

@@ -5,7 +5,6 @@
     <th>Phone</th>
     <th>Email</th>
     <th>Services</th>
-    <th>Last updated</th>
     <th width="100px"></th>
     </thead>
     <tbody class="m-b-s font-size-l">
@@ -18,7 +17,6 @@
       <td>{{enrollment.phone}}</td>
       <td>{{enrollment.email}}</td>
       <td>{{getServicesString(enrollment)}}</td>
-      <td>{{enrollment.updatedAt | date:'dd/MM/yyyy'}}</td>
       <td class="text-right">
         <enrollment-menu [isActive]="isActive" [model]="enrollment" (onEnrollmentEvent)="onMediaPlanChanged($event)"></enrollment-menu>
       </td>

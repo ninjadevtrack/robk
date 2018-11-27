@@ -13,6 +13,7 @@ import { EnrollmentViewComponent } from "./internal/enrollment/enrollment-view/e
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
+import {EnrollmentEditComponent} from './internal/enrollment/enrollment-edit/enrollment-edit.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -34,6 +35,7 @@ export const ROUTES: Routes = [
             },
             { path: 'enrollments', component: EnrollmentListComponent },
             { path: 'enrollments/:id', component: EnrollmentViewComponent },
+            { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
             { path: 'calendar', component: CalendarComponent }
         ]
     },

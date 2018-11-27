@@ -3,10 +3,10 @@ import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
 import { IEnrollment, EnrollmentModel} from "../../../core/enrollment/model/enrollment.model";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ServiceService } from '../../../core/service/service.service';
 import { IService  } from '../../../core/service/model/service.model';
 import { AppealService } from '../../../core/appeal/appeal.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'enrollment-edit',
@@ -15,6 +15,7 @@ import { AppealService } from '../../../core/appeal/appeal.service';
 })
 export class EnrollmentEditComponent implements OnInit {
 
+    id: string;
     form: FormGroup;
     serverErrorMessage: string;
     services: IService[];
@@ -24,12 +25,12 @@ export class EnrollmentEditComponent implements OnInit {
     @Output() updated: EventEmitter<IEnrollment> = new EventEmitter<IEnrollment>();
 
     constructor(
+        private _router: Router,
+        private _route: ActivatedRoute,
         private _enrollmentService: EnrollmentService,
         private _serviceService: ServiceService,
         private _appealService: AppealService,
-        private _formBuilder: FormBuilder,
-        private dialogRef: MatDialogRef<EnrollmentEditComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any
+        private _formBuilder: FormBuilder
     ) { }
 
     ngOnInit() {
@@ -51,8 +52,12 @@ export class EnrollmentEditComponent implements OnInit {
             this.services = services;
         });
 
-        this._enrollmentService.get(this.data.id).subscribe((enrollment: IEnrollment) => {
-            this.setFormValues(enrollment);
+        this._route.params.subscribe((params) => {
+            this.id = params.id;
+
+            this._enrollmentService.get(this.id).subscribe((enrollment: EnrollmentModel) => {
+                this.setFormValues(enrollment);
+            });
         });
     }
 
@@ -77,15 +82,14 @@ export class EnrollmentEditComponent implements OnInit {
     }
 
     save() {
-        this._enrollmentService.update(this.data.id, this.buildModelFromForm()).subscribe((enrollment: IEnrollment) => {
+        this._enrollmentService.update(this.id, this.buildModelFromForm()).subscribe((enrollment: IEnrollment) => {
             this.updated.emit(enrollment);
-            this.dialogRef.close(true);
+            this._router.navigateByUrl(`/i/enrollments/${this.id}`);
         });
     }
 
     cancel() {
         this.canceled.emit();
-        this.dialogRef.close();
     }
 
 }

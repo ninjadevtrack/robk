@@ -1,76 +1,94 @@
-<div>
-  <h2 class="text-center p-b-l font-color-pale">Edit Enrollment</h2>
-
-  <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
-    {{serverErrorMessage}}
-  </div>
-
-  <form novalidate [formGroup]="form" (ngSubmit)="save()" class="m-t-3xl">
-    <div>
-      <mat-form-field class="pop-up-field">
-        <input
-            formControlName="firstName"
-            name="firstName"
-            matInput
-            placeholder="First Name">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="pop-up-field">
-        <input
-            formControlName="lastName"
-            name="lastName"
-            matInput
-            placeholder="Last Name">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="pop-up-field">
-        <mat-select placeholder="Appeal" formControlName="appeal">
-          <mat-option *ngFor="let appeal of appeals" [value]="appeal">
-            {{ appeal }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="pop-up-field">
-        <input
-            formControlName="phone"
-            name="phone"
-            matInput
-            placeholder="Phone">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="pop-up-field">
-        <input
-            formControlName="email"
-            name="email"
-            matInput
-            placeholder="Email">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="pop-up-field">
-        <mat-select placeholder="Services" formControlName="services" multiple>
-          <mat-option *ngFor="let service of services" [value]="service._id">
-            {{ service.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="m-t-l p-b-l justifying-containter">
-      <div class="m-t-xl">
-        <button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
-          SAVE
-        </button>
+<card-template>
+  <form novalidate [formGroup]="form" class="m-t-3xl">
+    <div class="flex-container">
+      <div>
+        <mat-form-field class="pop-up-field">
+          <input
+              formControlName="firstName"
+              name="firstName"
+              matInput
+              placeholder="First Name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="pop-up-field">
+          <input
+              formControlName="lastName"
+              name="lastName"
+              matInput
+              placeholder="Last Name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="pop-up-field">
+          <mat-select placeholder="Appeal" formControlName="appeal">
+            <mat-option *ngFor="let appeal of appeals" [value]="appeal">
+              {{ appeal }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="text-right">
+        <icon-link-button [iconName]="'save'" (click)="save()"></icon-link-button>
       </div>
     </div>
-    <div class="justifying-containter">
-      <button mat-button class="mat-primary font-size-l button-l" (click)="cancel()">
-        CANCEL
-      </button>
+    <div class="flex-container">
+      <div>
+        <div>
+          <mat-form-field class="pop-up-field">
+            <input
+                formControlName="email"
+                name="email"
+                matInput
+                placeholder="Email">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="pop-up-field">
+            <input
+                formControlName="phone"
+                name="phone"
+                matInput
+                placeholder="Phone">
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <mat-form-field class="pop-up-field">
+          <mat-select placeholder="Services" formControlName="services" multiple>
+            <mat-option *ngFor="let service of services" [value]="service._id">
+              {{ service.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </form>
-</div>
+</card-template>
+
+
+<!--<div>-->
+  <!--<h2 class="text-center p-b-l font-color-pale">Edit Enrollment</h2>-->
+
+  <!--<div *ngIf="serverErrorMessage !== undefined" class="form-error-block">-->
+    <!--{{serverErrorMessage}}-->
+  <!--</div>-->
+
+  <!--<form novalidate [formGroup]="form" (ngSubmit)="save()" class="m-t-3xl">-->
+    <!---->
+    <!---->
+    <!---->
+    <!--<div class="m-t-l p-b-l justifying-containter">-->
+      <!--<div class="m-t-xl">-->
+        <!--<button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">-->
+          <!--SAVE-->
+        <!--</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="justifying-containter">-->
+      <!--<button mat-button class="mat-primary font-size-l button-l" (click)="cancel()">-->
+        <!--CANCEL-->
+      <!--</button>-->
+    <!--</div>-->
+  <!--</form>-->
+<!--</div>-->

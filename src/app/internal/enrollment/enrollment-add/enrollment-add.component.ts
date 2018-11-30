@@ -46,7 +46,8 @@ export class EnrollmentAddComponent implements OnInit {
                 appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
                 phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
                 email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                services: ['', [Validators.required, Validators.maxLength(300)]]
+                services: ['', [Validators.required, Validators.maxLength(300)]],
+                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
             });
         });
     }
@@ -63,6 +64,7 @@ export class EnrollmentAddComponent implements OnInit {
         model.phone = this.form.controls['phone'].value;
         model.email = this.form.controls['email'].value;
         model.services = this.form.controls['services'].value;
+        model.notes = this.form.controls['notes'].value;
         return model;
     }
 

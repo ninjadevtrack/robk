@@ -42,7 +42,8 @@ export class EnrollmentEditComponent implements OnInit {
             appeal: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            services: ['', [Validators.required, Validators.maxLength(300)]]
+            services: ['', [Validators.required, Validators.maxLength(300)]],
+            notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
         });
 
         this._appealService.getAll().subscribe((appeals: string[]) => {
@@ -70,6 +71,7 @@ export class EnrollmentEditComponent implements OnInit {
         this.form.controls['phone'].setValue(entity.phone);
         this.form.controls['email'].setValue(entity.email);
         this.form.controls['services'].setValue(entity.services.map(s => s._id));
+        this.form.controls['notes'].setValue(entity.notes);
     }
 
     buildModelFromForm() {
@@ -80,6 +82,7 @@ export class EnrollmentEditComponent implements OnInit {
         model.phone = this.form.controls['phone'].value;
         model.email = this.form.controls['email'].value;
         model.services = this.form.controls['services'].value;
+        model.notes = this.form.controls['notes'].value;
         return model;
     }
 

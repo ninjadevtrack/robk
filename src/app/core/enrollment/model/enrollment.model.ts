@@ -8,6 +8,7 @@ export interface IEnrollment {
     phone: string;
     email: string;
     services: IService[];
+    notes: string;
     updatedAt: string;
     createdAt: string;
     isActive: boolean;
@@ -21,6 +22,7 @@ export class EnrollmentModel implements IEnrollment {
     phone: string;
     email: string;
     services: IService[];
+    notes: string;
     updatedAt: string;
     createdAt: string;
     isActive: boolean;

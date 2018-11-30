@@ -626,6 +626,10 @@ table td {
     min-width: $control-width-xs;
   }
 
+  .regular-field {
+    min-width: $control-width-xs;
+  }
+
   .button-l {
     max-width: $control-width-xs;
   }
@@ -634,6 +638,10 @@ table td {
 @media only screen and (min-width:960px){
   .pop-up-field {
     min-width: $control-width-s;
+  }
+
+  .regular-field {
+    min-width: $control-width-xs;
   }
 
   .button-l {

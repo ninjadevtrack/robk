@@ -1,27 +1,30 @@
 <card-template>
-  <form novalidate [formGroup]="form" class="m-t-3xl">
-    <div class="flex-container">
+  <form novalidate [formGroup]="form">
+    <div><h1>{{enrollment?.firstName}} {{enrollment?.lastName}} ({{enrollment?.appeal}})</h1></div>
+    <div class="flex-container m-b-l">
       <div class="m-r-xl">
-        <mat-form-field class="pop-up-field">
+        <mat-form-field class="regular-field">
           <input
               formControlName="firstName"
               name="firstName"
               matInput
-              placeholder="First Name">
+              placeholder="First Name"
+              (keyup)="updateModel()">
         </mat-form-field>
       </div>
       <div class="m-r-xl">
-        <mat-form-field class="pop-up-field">
+        <mat-form-field class="regular-field">
           <input
               formControlName="lastName"
               name="lastName"
               matInput
-              placeholder="Last Name">
+              placeholder="Last Name"
+              (keyup)="updateModel()">
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field class="pop-up-field">
-          <mat-select placeholder="Appeal" formControlName="appeal">
+        <mat-form-field class="regular-field">
+          <mat-select placeholder="Appeal" formControlName="appeal" (selectionChange)="updateModel()">
             <mat-option *ngFor="let appeal of appeals" [value]="appeal">
               {{ appeal }}
             </mat-option>
@@ -29,10 +32,10 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="flex-container">
-      <div>
-        <div>
-          <mat-form-field class="pop-up-field">
+    <div class="flex-container m-b-l">
+      <div class="m-r-xl">
+        <div class="m-b-l">
+          <mat-form-field class="regular-field">
             <input
                 formControlName="email"
                 name="email"
@@ -41,7 +44,7 @@
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="pop-up-field">
+          <mat-form-field class="regular-field">
             <input
                 formControlName="phone"
                 name="phone"
@@ -51,7 +54,7 @@
         </div>
       </div>
       <div>
-        <mat-form-field class="pop-up-field">
+        <mat-form-field class="regular-field">
           <mat-select placeholder="Services" formControlName="services" multiple>
             <mat-option *ngFor="let service of services" [value]="service._id">
               {{ service.name }}
@@ -59,12 +62,13 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div></div>
     </div>
     <div>
       <div class="m-t-l p-b-l justifying-containter">
         <div class="m-t-xl">
           <span class="m-r-l">
-            <button mat-raised-button class="mat-primary font-size-l button p-r-l" [disabled]="!form.valid" type="submit">
+            <button mat-raised-button class="mat-primary font-size-l button p-r-l" [disabled]="!form.valid" (click)="save()">
               SAVE
             </button>
           </span>

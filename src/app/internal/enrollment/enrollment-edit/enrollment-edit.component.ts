@@ -20,6 +20,7 @@ export class EnrollmentEditComponent implements OnInit {
     serverErrorMessage: string;
     services: IService[];
     appeals: string[];
+    enrollment: EnrollmentModel;
 
     @Output() canceled: EventEmitter<any> = new EventEmitter<any>();
     @Output() updated: EventEmitter<IEnrollment> = new EventEmitter<IEnrollment>();
@@ -56,6 +57,7 @@ export class EnrollmentEditComponent implements OnInit {
             this.id = params.id;
 
             this._enrollmentService.get(this.id).subscribe((enrollment: EnrollmentModel) => {
+                this.enrollment = enrollment;
                 this.setFormValues(enrollment);
             });
         });
@@ -90,6 +92,23 @@ export class EnrollmentEditComponent implements OnInit {
 
     cancel() {
         this.canceled.emit();
+        this._router.navigateByUrl(`/i/enrollments/${this.id}`);
+    }
+
+    updateModel() {
+        this.enrollment = this.buildModelFromForm();
+    }
+
+    firstNameChanged(event) {
+        console.log(event);
+    }
+
+    lastNameChanged(event) {
+        console.log(event);
+    }
+
+    appealChanged(event) {
+        console.log(event);
     }
 
 }

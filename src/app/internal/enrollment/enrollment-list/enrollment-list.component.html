@@ -1,14 +1,25 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl m-b-3xl">
     <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEnrollments && archiveEnrollments">
-      <mat-tab-group>
-        <mat-tab label="Active ({{getFilteredActiveEnrollments().length}})">
-          <enrollment-table [enrollments]="getFilteredActiveEnrollments()" [isActive]="true" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
-        </mat-tab>
-        <mat-tab label="Archived ({{getFilteredArchivedEnrollments().length}})">
-          <enrollment-table [enrollments]="getFilteredArchivedEnrollments()" [isActive]="false" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
-        </mat-tab>
-      </mat-tab-group>
+      <div>
+        <form [formGroup]="form">
+          <mat-form-field class="">
+            <input
+                formControlName="search"
+                name="search"
+                matInput
+                placeholder="Search">
+          </mat-form-field>
+        </form>
+        <mat-tab-group>
+          <mat-tab label="Active ({{getFilteredActiveEnrollments().length}})">
+            <enrollment-table [enrollments]="getFilteredActiveEnrollments()" [isActive]="true" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+          </mat-tab>
+          <mat-tab label="Archived ({{getFilteredArchivedEnrollments().length}})">
+            <enrollment-table [enrollments]="getFilteredArchivedEnrollments()" [isActive]="false" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </div>
   </div>
   <div class="floating-button">

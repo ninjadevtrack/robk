@@ -8,6 +8,7 @@ import {IEnrollment, EnrollmentModel} from "../../../core/enrollment/model/enrol
 import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
 import { EnrollmentAddComponent } from "../enrollment-add/enrollment-add.component";
 import { SearchPipe } from '../../common/search.pipe';
+import {Form, FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'enrollment-list',
@@ -15,15 +16,17 @@ import { SearchPipe } from '../../common/search.pipe';
     templateUrl: './enrollment-list.component.html'
 })
 export class EnrollmentListComponent implements OnInit {
+
+    form: FormGroup;
     public activeEnrollments: IEnrollment[] = [];
     public archiveEnrollments: IEnrollment[] = [];
     addEnrollmentDialogOpened: boolean;
-    query: string = '';
     searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'firstName, lastName';
+    searchFields: string = 'firstName,lastName,email';
 
     constructor(
         private _enrollmentService: EnrollmentService,
+        private _formBuilder: FormBuilder,
         private _dialog: MatDialog
     ) {
         this.addEnrollmentDialogOpened = false;
@@ -31,6 +34,10 @@ export class EnrollmentListComponent implements OnInit {
 
     public ngOnInit() {
         this.getAllEnrollments();
+
+        this.form = this._formBuilder.group({
+            search: ['', []]
+        });
     }
 
     public getAllEnrollments() {
@@ -53,11 +60,11 @@ export class EnrollmentListComponent implements OnInit {
     }
 
     public getFilteredActiveEnrollments() {
-        return this.searchPipe.transform(this.activeEnrollments, this.searchFields, this.query);
+        return this.searchPipe.transform(this.activeEnrollments, this.searchFields, this.form.controls['search'].value);
     }
 
     public getFilteredArchivedEnrollments() {
-        return this.searchPipe.transform(this.archiveEnrollments, this.searchFields, this.query);
+        return this.searchPipe.transform(this.archiveEnrollments, this.searchFields, this.form.controls['search'].value);
     }
 
     addMediaPlan() {

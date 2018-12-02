@@ -1,12 +1,12 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl">
+    <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEnrollments && archiveEnrollments">
       <mat-tab-group>
-        <mat-tab label="Active ({{activeEnrollments?.length}})">
-          <enrollment-table [enrollments]="activeEnrollments" [isActive]="true" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+        <mat-tab label="Active ({{getFilteredActiveEnrollments().length}})">
+          <enrollment-table [enrollments]="getFilteredActiveEnrollments()" [isActive]="true" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
         </mat-tab>
-        <mat-tab label="Archived ({{archiveEnrollments?.length}})">
-          <enrollment-table [enrollments]="archiveEnrollments" [isActive]="false" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+        <mat-tab label="Archived ({{getFilteredArchivedEnrollments().length}})">
+          <enrollment-table [enrollments]="getFilteredArchivedEnrollments()" [isActive]="false" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
         </mat-tab>
       </mat-tab-group>
     </div>

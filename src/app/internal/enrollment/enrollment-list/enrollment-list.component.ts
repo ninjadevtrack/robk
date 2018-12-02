@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import {IEnrollment, EnrollmentModel} from "../../../core/enrollment/model/enrollment.model";
 import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
 import { EnrollmentAddComponent } from "../enrollment-add/enrollment-add.component";
+import { SearchPipe } from '../../common/search.pipe';
 
 @Component({
     selector: 'enrollment-list',
@@ -17,6 +18,9 @@ export class EnrollmentListComponent implements OnInit {
     public activeEnrollments: IEnrollment[] = [];
     public archiveEnrollments: IEnrollment[] = [];
     addEnrollmentDialogOpened: boolean;
+    query: string = '';
+    searchPipe: SearchPipe = new SearchPipe();
+    searchFields: string = 'firstName, lastName';
 
     constructor(
         private _enrollmentService: EnrollmentService,
@@ -48,13 +52,21 @@ export class EnrollmentListComponent implements OnInit {
         });
     }
 
+    public getFilteredActiveEnrollments() {
+        return this.searchPipe.transform(this.activeEnrollments, this.searchFields, this.query);
+    }
+
+    public getFilteredArchivedEnrollments() {
+        return this.searchPipe.transform(this.archiveEnrollments, this.searchFields, this.query);
+    }
+
     addMediaPlan() {
         if (!this.addEnrollmentDialogOpened) {
             const dialogRef = this._dialog.open(EnrollmentAddComponent, {});
             this.addEnrollmentDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
-                if(result) {
+                if (result) {
                     this.getActiveEnrollments();
                 }
                 this.addEnrollmentDialogOpened = false;

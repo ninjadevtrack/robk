@@ -87,6 +87,7 @@ import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
+import { SearchPipe } from './internal/common/search.pipe';
 import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
 import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
 import { EnrollmentAddComponent } from './internal/enrollment/enrollment-add/enrollment-add.component';
@@ -158,6 +159,7 @@ type StoreType = {
         XLargeDirective,
         SettingsComponent,
         NumberWithSeparatorPipe,
+        SearchPipe,
         UserMenuComponent,
         UserViewComponent,
         EnrollmentListComponent,

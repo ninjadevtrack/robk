@@ -8,7 +8,7 @@
     <th width="100px"></th>
     </thead>
     <tbody class="m-b-s font-size-l">
-    <tr *ngFor="let enrollment of enrollments | search:'lastName,firstName':query">
+    <tr *ngFor="let enrollment of enrollments">
       <td>
         <a routerLink="/i/enrollments/{{enrollment._id}}">
           {{enrollment.firstName}} {{enrollment.lastName}} ({{enrollment.appeal}})

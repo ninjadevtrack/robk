@@ -17,7 +17,6 @@ export class EnrollmentTableComponent implements OnInit {
     @Input() enrollments: IEnrollment[];
     @Input() isActive: boolean;
     @Output() onEnrollmentsEvent = new EventEmitter();
-    query: string = '';
 
     constructor () { }
 

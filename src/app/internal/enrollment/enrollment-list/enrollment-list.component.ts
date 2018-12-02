@@ -49,8 +49,8 @@ export class EnrollmentListComponent implements OnInit {
     }
 
     addMediaPlan() {
-        if(!this.addEnrollmentDialogOpened) {
-            let dialogRef = this._dialog.open(EnrollmentAddComponent, {});
+        if (!this.addEnrollmentDialogOpened) {
+            const dialogRef = this._dialog.open(EnrollmentAddComponent, {});
             this.addEnrollmentDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {

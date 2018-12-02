@@ -3,13 +3,17 @@
     <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEnrollments && archiveEnrollments">
       <div>
         <form [formGroup]="form">
-          <mat-form-field class="">
-            <input
-                formControlName="search"
-                name="search"
-                matInput
-                placeholder="Search">
-          </mat-form-field>
+          <div class="search-container">
+            <div class="search-box">
+              <mat-form-field class="search-field">
+                <input
+                    formControlName="search"
+                    name="search"
+                    matInput
+                    placeholder="Search">
+              </mat-form-field>
+            </div>
+          </div>
         </form>
         <mat-tab-group>
           <mat-tab label="Active ({{getFilteredActiveEnrollments().length}})">

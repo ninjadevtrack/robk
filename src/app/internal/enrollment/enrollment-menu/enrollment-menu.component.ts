@@ -34,37 +34,15 @@ export class EnrollmentMenuComponent implements OnInit {
     }
 
     archive() {
-        this._enrollmentService.archive(this.model._id).subscribe((result: any) => {
+        this._enrollmentService.archive(this.model._id).subscribe(() => {
             this.onEnrollmentEvent.emit(this.model._id);
         });
     }
 
     activate() {
-        this._enrollmentService.activate(this.model._id).subscribe((result: any) => {
+        this._enrollmentService.activate(this.model._id).subscribe(() => {
             this.onEnrollmentEvent.emit(this.model._id);
         });
-    }
-
-    update() {
-
-        if (!this.editEnrollmentDialogOpened) {
-
-            const dialogRef = this._dialog.open(EnrollmentEditComponent, {
-                data: {
-                    id: this.model._id
-                }
-            });
-
-            this.editEnrollmentDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe((result) => {
-                if (result) {
-                    this.onEnrollmentEvent.emit(this.model._id);
-                }
-
-                this.editEnrollmentDialogOpened = false;
-            });
-        }
     }
 
     delete() {
@@ -79,7 +57,7 @@ export class EnrollmentMenuComponent implements OnInit {
         dialogRef.afterClosed().subscribe( (result) => {
 
             if (result.deleted){
-                this._enrollmentService.delete(this.model._id).subscribe((result) => {
+                this._enrollmentService.delete(this.model._id).subscribe(() => {
                     this.onEnrollmentEvent.emit(this.model._id);
                 });
             }

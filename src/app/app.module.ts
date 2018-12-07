@@ -117,6 +117,7 @@ import { InstrumentEditComponent } from './internal/admin/instrument/instrument-
 import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-menu/instrument-menu.component';
 import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
+import { ClientService } from './core/client/client.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -124,6 +125,7 @@ const APP_PROVIDERS = [
     ConfigService,
     UserService,
     EnrollmentService,
+    ClientService,
     ServiceService,
     InstrumentService,
     AppealService,

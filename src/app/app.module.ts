@@ -101,6 +101,7 @@ import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.co
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
 import { ServiceService } from './core/service/service.service';
+import { InstrumentService } from './core/instrument/instrument.service';
 import { AppealService } from './core/appeal/appeal.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
@@ -118,6 +119,7 @@ const APP_PROVIDERS = [
     UserService,
     EnrollmentService,
     ServiceService,
+    InstrumentService,
     AppealService,
     AuthService,
     AuthStorageService,
@@ -262,7 +264,7 @@ export class AppModule {
          * Set input values
          */
         if ('restoreInputValues' in store) {
-            let restoreInputValues = store.restoreInputValues;
+            const restoreInputValues = store.restoreInputValues;
             setTimeout(restoreInputValues);
         }
 

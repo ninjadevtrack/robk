@@ -87,6 +87,26 @@ export class ConfigService {
             archive:  (id) => {
                 return `${Consts.API_URL}/v1/services/${id}/archive`;
             }
+        },
+        Instrument: {
+            default: () => {
+                return `${Consts.API_URL}/v1/instruments`;
+            },
+            dafaultWithId: (id) => {
+                return `${Consts.API_URL}/v1/instruments/${id}`;
+            },
+            getAllActive: () => {
+                return `${Consts.API_URL}/v1/instruments/active`;
+            },
+            getAllArchived: () => {
+                return `${Consts.API_URL}/v1/instruments/archived`;
+            },
+            activate:  (id) => {
+                return `${Consts.API_URL}/v1/instruments/${id}/activate`;
+            },
+            archive:  (id) => {
+                return `${Consts.API_URL}/v1/instruments/${id}/archive`;
+            }
         }
     };
 

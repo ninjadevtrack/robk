@@ -6,11 +6,11 @@ import {
     EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { EnrollmentModel } from "../../../core/enrollment/model/enrollment.model";
-import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
+import { EnrollmentModel } from "../../../../core/enrollment/model/enrollment.model";
+import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
 import { saveAs } from 'file-saver/FileSaver';
 import { EnrollmentEditComponent } from "../enrollment-edit/enrollment-edit.component";
-import { EntityDeleteComponent } from '../../entity-delete/entity-delete.component';
+import { EntityDeleteComponent } from '../../../entity-delete/entity-delete.component';
 
 @Component({
     selector: 'enrollment-menu',

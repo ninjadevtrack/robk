@@ -5,7 +5,7 @@ import {
     Output,
     EventEmitter
 } from '@angular/core';
-import { IEnrollment } from "../../../core/enrollment/model/enrollment.model";
+import { IEnrollment } from "../../../../core/enrollment/model/enrollment.model";
 
 @Component({
     selector: 'enrollment-table',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
-import { IEnrollment, EnrollmentModel } from "../../../core/enrollment/model/enrollment.model";
+import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
+import { IEnrollment, EnrollmentModel } from "../../../../core/enrollment/model/enrollment.model";
 
 @Component({
   selector: 'app-enrollment-view',

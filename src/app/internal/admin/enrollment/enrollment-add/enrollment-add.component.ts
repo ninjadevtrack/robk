@@ -4,14 +4,14 @@ import {
     OnInit
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { EnrollmentModel } from "../../../core/enrollment/model/enrollment.model";
-import { ServerErrorModel } from "../../../core/common";
-import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
+import { EnrollmentModel } from "../../../../core/enrollment/model/enrollment.model";
+import { ServerErrorModel } from "../../../../core/common";
+import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
-import { IService } from '../../../core/service/model/service.model';
-import { ServiceService } from '../../../core/service/service.service';
-import { AppealService } from '../../../core/appeal/appeal.service';
+import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
+import { IService } from '../../../../core/service/model/service.model';
+import { ServiceService } from '../../../../core/service/service.service';
+import { AppealService } from '../../../../core/appeal/appeal.service';
 
 @Component({
     selector: 'enrollment-add',

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, Inject, EventEmitter } from '@angular/core';
-import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
-import { IEnrollment, EnrollmentModel} from "../../../core/enrollment/model/enrollment.model";
+import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
+import { IEnrollment, EnrollmentModel} from "../../../../core/enrollment/model/enrollment.model";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NotSpacesStringValidator } from "../../../core/validators/not-spaces-string-validator";
-import { ServiceService } from '../../../core/service/service.service';
-import { IService  } from '../../../core/service/model/service.model';
-import { AppealService } from '../../../core/appeal/appeal.service';
+import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
+import { ServiceService } from '../../../../core/service/service.service';
+import { IService  } from '../../../../core/service/model/service.model';
+import { AppealService } from '../../../../core/appeal/appeal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

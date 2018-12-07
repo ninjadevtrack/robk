@@ -8,12 +8,12 @@ import { SetPasswordComponent } from './public/set-password/set-password.compone
 import { ProfileComponent } from './internal/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
-import { EnrollmentListComponent } from "./internal/enrollment/enrollment-list/enrollment-list.component";
-import { EnrollmentViewComponent } from "./internal/enrollment/enrollment-view/enrollment-view.component";
+import { EnrollmentListComponent } from "./internal/admin/enrollment/enrollment-list/enrollment-list.component";
+import { EnrollmentViewComponent } from "./internal/admin/enrollment/enrollment-view/enrollment-view.component";
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
-import { EnrollmentEditComponent } from './internal/enrollment/enrollment-edit/enrollment-edit.component';
+import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { InstrumentListComponent } from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 

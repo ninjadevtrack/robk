@@ -4,10 +4,10 @@ import {
     HostListener
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import {IEnrollment, EnrollmentModel} from "../../../core/enrollment/model/enrollment.model";
-import { EnrollmentService } from "../../../core/enrollment/enrollment.service";
+import {IEnrollment, EnrollmentModel} from "../../../../core/enrollment/model/enrollment.model";
+import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
 import { EnrollmentAddComponent } from "../enrollment-add/enrollment-add.component";
-import { SearchPipe } from '../../common/search.pipe';
+import { SearchPipe } from '../../../common/search.pipe';
 import {Form, FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({

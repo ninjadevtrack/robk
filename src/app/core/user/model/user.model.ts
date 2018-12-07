@@ -29,7 +29,7 @@ export interface IUsersResult {
     currentPage: number;
     nextPage: number;
     lastPage: number;
-    docs: IUser[]
+    docs: IUser[];
 }
 
 export class UsersResultModel implements IUsersResult {

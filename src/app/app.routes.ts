@@ -31,15 +31,15 @@ export const ROUTES: Routes = [
             { path: 'admin', component: AdminComponent,
                 children: [
                     { path: '', component: UserListComponent },
+                    { path: 'enrollments', component: EnrollmentListComponent },
+                    { path: 'enrollments/:id', component: EnrollmentViewComponent },
+                    { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
                     { path: 'services', component: ServiceListComponent },
                     { path: 'services/:id', component: ServiceViewComponent },
                     { path: 'instruments', component: InstrumentListComponent },
                     { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
-            { path: 'enrollments', component: EnrollmentListComponent },
-            { path: 'enrollments/:id', component: EnrollmentViewComponent },
-            { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
             { path: 'calendar', component: CalendarComponent }
         ]
     },

@@ -1,8 +1,10 @@
-<card-template>
-	<div class="m-b-3xl">
-		<h1>{{model.firstName}} {{model.lastName}}</h1>
-	</div>
-	<data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
-	<data-field header="Roles" data="{{ model.roles }}" [isSmall]="false"></data-field>
-	<data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
-</card-template>
+<div class="m-t-6xl">
+	<card-template>
+		<div class="m-b-3xl">
+			<h1>{{model.firstName}} {{model.lastName}}</h1>
+		</div>
+		<data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
+		<data-field header="Roles" data="{{ model.roles }}" [isSmall]="false"></data-field>
+		<data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
+	</card-template>
+</div>

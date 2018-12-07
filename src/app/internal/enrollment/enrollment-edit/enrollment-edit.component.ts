@@ -89,13 +89,13 @@ export class EnrollmentEditComponent implements OnInit {
     save() {
         this._enrollmentService.update(this.id, this.buildModelFromForm()).subscribe((enrollment: IEnrollment) => {
             this.updated.emit(enrollment);
-            this._router.navigateByUrl(`/i/enrollments/${this.id}`);
+            this._router.navigateByUrl(`/i/admin/enrollments/${this.id}`);
         });
     }
 
     cancel() {
         this.canceled.emit();
-        this._router.navigateByUrl(`/i/enrollments/${this.id}`);
+        this._router.navigateByUrl(`/i/admin/enrollments/${this.id}`);
     }
 
     updateModel() {

@@ -13,7 +13,9 @@ import { EnrollmentViewComponent } from "./internal/enrollment/enrollment-view/e
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
-import {EnrollmentEditComponent} from './internal/enrollment/enrollment-edit/enrollment-edit.component';
+import { EnrollmentEditComponent } from './internal/enrollment/enrollment-edit/enrollment-edit.component';
+import { InstrumentListComponent } from './internal/admin/instrument/instrument-list/instrument-list.component';
+import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -30,7 +32,9 @@ export const ROUTES: Routes = [
                 children: [
                     { path: '', component: UserListComponent },
                     { path: 'services', component: ServiceListComponent },
-                    { path: 'services/:id', component: ServiceViewComponent }
+                    { path: 'services/:id', component: ServiceViewComponent },
+                    { path: 'instruments', component: InstrumentListComponent },
+                    { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
             { path: 'enrollments', component: EnrollmentListComponent },

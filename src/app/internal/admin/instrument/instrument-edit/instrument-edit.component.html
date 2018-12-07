@@ -1,0 +1,40 @@
+<div>
+  <h2 class="text-center p-b-l font-color-pale">Edit Instrument</h2>
+
+  <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
+    {{serverErrorMessage}}
+  </div>
+
+  <form novalidate [formGroup]="form" (ngSubmit)="save()" class="m-t-3xl">
+    <div>
+      <mat-form-field class="pop-up-field">
+        <input
+            formControlName="name"
+            name="name"
+            matInput
+            placeholder="Name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="pop-up-field">
+        <input
+            formControlName="description"
+            name="description"
+            matInput
+            placeholder="Description">
+      </mat-form-field>
+    </div>
+    <div class="m-t-l p-b-l justifying-containter">
+      <div class="m-t-xl">
+        <button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
+          SAVE
+        </button>
+      </div>
+    </div>
+    <div class="justifying-containter">
+      <button mat-button class="mat-primary font-size-l button-l" (click)="cancel()">
+        CANCEL
+      </button>
+    </div>
+  </form>
+</div>

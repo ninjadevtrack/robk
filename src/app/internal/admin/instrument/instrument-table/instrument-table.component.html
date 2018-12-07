@@ -1,0 +1,24 @@
+<div class="flex-table">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Last updated</th>
+    <th width="100px"></th>
+    </thead>
+    <tbody class="m-b-s font-size-l">
+    <tr *ngFor="let instrument of instruments">
+      <td>
+        <a routerLink="/i/admin/instruments/{{instrument._id}}">
+          {{instrument.name}}
+        </a>
+      </td>
+      <td>{{instrument.description}}</td>
+      <td>{{instrument.updatedAt | date:'dd/MM/yyyy'}}</td>
+      <td class="text-right">
+        <instrument-menu [isActive]="isActive" [model]="instrument" (onInstrumentEvent)="onInstrumentChanged($event)"></instrument-menu>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

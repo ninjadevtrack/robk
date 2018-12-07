@@ -1,4 +1,4 @@
-export interface IService {
+export interface IInstrument {
     _id: string;
     name: string;
     description: string;
@@ -7,7 +7,7 @@ export interface IService {
     isActive: boolean;
 }
 
-export class InstrumentModel implements IService {
+export class InstrumentModel implements IInstrument {
     _id: string;
     name: string;
     description: string;

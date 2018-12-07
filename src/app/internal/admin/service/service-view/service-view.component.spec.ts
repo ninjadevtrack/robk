@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ServiceViewComponent } from './service-view.component';
 
-describe('ServiceViewComponent', () => {
+describe('InstrumentViewComponent', () => {
   let component: ServiceViewComponent;
   let fixture: ComponentFixture<ServiceViewComponent>;
 

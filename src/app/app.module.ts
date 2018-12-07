@@ -111,6 +111,12 @@ import { ServiceTableComponent } from './internal/admin/service/service-table/se
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { CardTemplateComponent } from './internal/common/templates/card-template/card-template.component';
 import { IconLinkButtonComponent } from './internal/common/icon-link-button/icon-link-button.component';
+import { InstrumentListComponent} from './internal/admin/instrument/instrument-list/instrument-list.component';
+import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
+import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
+import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-menu/instrument-menu.component';
+import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
+import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -177,6 +183,12 @@ type StoreType = {
         ServiceMenuComponent,
         ServiceTableComponent,
         ServiceViewComponent,
+        InstrumentListComponent,
+        InstrumentAddComponent,
+        InstrumentEditComponent,
+        InstrumentMenuComponent,
+        InstrumentTableComponent,
+        InstrumentViewComponent,
         CalendarComponent,
         CardTemplateComponent,
         IconLinkButtonComponent
@@ -187,6 +199,8 @@ type StoreType = {
         EnrollmentAddComponent,
         ServiceEditComponent,
         ServiceAddComponent,
+        InstrumentAddComponent,
+        InstrumentEditComponent,
         EntityDeleteComponent
     ],
     imports: [

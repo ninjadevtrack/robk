@@ -2,7 +2,8 @@ export interface IUser {
     _id: string;
     firstName: string;
     lastName: string;
-    name: string;
+    appeal: string;
+    phone: string;
     email: string;
     isActive: boolean;
     roles: string[];
@@ -10,16 +11,17 @@ export interface IUser {
 }
 
 export class UserModel implements IUser {
-    constructor(
-        public _id: string,
-        public firstName: string,
-        public lastName: string,
-        public name: string,
-        public email: string,
-        public isActive: boolean,
-        public roles: string[],
-        public permissions: string[]
-    ) {}
+    _id: string;
+    firstName: string;
+    lastName: string;
+    appeal: string;
+    phone: string;
+    email: string;
+    isActive: boolean;
+    roles: string[];
+    permissions: string[];
+
+    constructor () {}
 }
 
 export interface IUsersResult {

@@ -1,0 +1,24 @@
+<div class="flex-table">
+  <table>
+    <thead>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th width="100px"></th>
+    </thead>
+    <tbody class="m-b-s font-size-l">
+    <tr *ngFor="let enrollment of enrollments">
+      <td>
+        <a routerLink="/i/admin/enrollments/{{enrollment._id}}">
+          {{enrollment.firstName}} {{enrollment.lastName}} ({{enrollment.appeal}})
+        </a>
+      </td>
+      <td>{{enrollment.phone}}</td>
+      <td>{{enrollment.email}}</td>
+      <td class="text-right">
+        <client-menu [isActive]="isActive" [model]="enrollment" (onClientEvent)="onClientChanged($event)"></client-menu>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

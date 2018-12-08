@@ -1,0 +1,17 @@
+<card-template>
+  <div class="flex-container">
+    <div><h1>{{client?.user?.firstName}} {{client?.user?.lastName}} ({{client?.user?.appeal}})</h1></div>
+    <div class="text-right">
+      <icon-link-button [iconName]="'edit'" routerLink="/i/admin/clients/{{client?._id}}/edit"></icon-link-button>
+    </div>
+  </div>
+  <div class="flex-container">
+    <div>
+      <data-field header="Email" [data]="client?.user?.email"></data-field>
+      <data-field header="Phone" [data]="client?.user?.phone"></data-field>
+    </div>
+  </div>
+  <div>
+    <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
+  </div>
+</card-template>

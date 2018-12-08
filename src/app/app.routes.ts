@@ -16,6 +16,9 @@ import { ServiceViewComponent } from './internal/admin/service/service-view/serv
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { InstrumentListComponent } from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
+import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
+import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
+import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -31,6 +34,9 @@ export const ROUTES: Routes = [
             { path: 'admin', component: AdminComponent,
                 children: [
                     { path: '', component: UserListComponent },
+                    { path: 'clients', component: ClientListComponent },
+                    { path: 'clients/:id', component: ClientViewComponent },
+                    { path: 'clients/:id/edit', component: ClientEditComponent },
                     { path: 'enrollments', component: EnrollmentListComponent },
                     { path: 'enrollments/:id', component: EnrollmentViewComponent },
                     { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },

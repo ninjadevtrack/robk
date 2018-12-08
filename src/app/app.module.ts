@@ -95,6 +95,11 @@ import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-
 import { EnrollmentMenuComponent } from './internal/admin/enrollment/enrollment-menu/enrollment-menu.component';
 import { EnrollmentTableComponent } from './internal/admin/enrollment/enrollment-table/enrollment-table.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
+import { ClientAddComponent } from './internal/admin/client/client-add/client-add.component';
+import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
+import { ClientMenuComponent } from './internal/admin/client/client-menu/client-menu.component';
+import { ClientTableComponent } from './internal/admin/client/client-table/client-table.component';
+import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
@@ -118,6 +123,7 @@ import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-
 import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ClientService } from './core/client/client.service';
+import {ClientViewComponent} from './internal/admin/client/client-view/client-view.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -178,6 +184,12 @@ type StoreType = {
         EnrollmentMenuComponent,
         EnrollmentTableComponent,
         EnrollmentViewComponent,
+        ClientListComponent,
+        ClientAddComponent,
+        ClientMenuComponent,
+        ClientEditComponent,
+        ClientTableComponent,
+        ClientViewComponent,
         EntityDeleteComponent,
         ServiceListComponent,
         ServiceAddComponent,
@@ -203,6 +215,8 @@ type StoreType = {
         ServiceAddComponent,
         InstrumentAddComponent,
         InstrumentEditComponent,
+        ClientAddComponent,
+        ClientEditComponent,
         EntityDeleteComponent
     ],
     imports: [

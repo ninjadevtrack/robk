@@ -12,7 +12,7 @@ import { UserService } from '../../core/user/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-    public model: IUser = new UserModel('', '', '', '', '', false, [], []);
+    public model: IUser = new UserModel();
 
     constructor (
         private _userService: UserService

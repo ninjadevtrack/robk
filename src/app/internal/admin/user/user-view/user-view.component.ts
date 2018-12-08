@@ -10,7 +10,7 @@ import { UserModel } from '../../../../core/user/model/user.model';
 })
 export class UserViewComponent implements OnInit {
 
-    model: UserModel = new UserModel( '', '', '', '', '', false, [], []);
+    model: UserModel;
     serverErrorMessage: string;
 
     constructor(
@@ -20,6 +20,7 @@ export class UserViewComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.model = new UserModel();
         this._userService.get(this.data.userId).subscribe((result) => {
             this.model = result;
         });

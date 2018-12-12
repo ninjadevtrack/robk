@@ -742,6 +742,15 @@ media-plan-view {
   width: 100%;
 }
 
-.one-column-popup {
-  max-width: 380px;
+.search-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-box {
+  margin-left: auto;
+}
+
+.search-field {
+  min-width: 300px;
 }

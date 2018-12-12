@@ -68,16 +68,18 @@
       </mat-form-field>
     </div>
     <div class="m-t-l p-b-l justifying-containter">
-      <span class="m-r-l">
-        <button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
-          ADD
-        </button>
-      </span>
-		<span class="m-l-l">
-			<button mat-button class="mat-primary font-size-l button-l" (click)="onNoClick()">
-				CANCEL
-			</button>
-		</span>
+		<div class="m-t-xl">
+			<span class="m-r-l">
+				<button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
+				  ADD
+				</button>
+			</span>
+			<span class="m-l-l">
+				<button mat-button class="mat-primary font-size-l button-l" (click)="onNoClick()">
+					CANCEL
+				</button>
+			</span>
+		</div>
     </div>
   </form>
 </div>

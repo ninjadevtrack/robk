@@ -22,7 +22,7 @@ export class ClientListComponent implements OnInit {
     public archivedClients: IClient[] = [];
     addClientDialogOpened: boolean;
     searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'firstName,lastName,email';
+    searchFields: string = 'user.firstName,user.lastName,user.email';
 
     constructor(
         private _clientService: ClientService,

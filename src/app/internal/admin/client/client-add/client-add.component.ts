@@ -72,8 +72,8 @@ export class ClientAddComponent implements OnInit {
 
         this._clientService.add(this.buildModelFromForm()).subscribe((res) => {
             this.dialogRef.close(true);
-        }, (serverError: ServerErrorModel) => {
-            this.serverErrorMessage = serverError.message;
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
         });
     }
 }

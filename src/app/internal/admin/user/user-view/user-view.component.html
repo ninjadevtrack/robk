@@ -1,7 +1,8 @@
 <div>
   <h2 class="text-center p-b-l font-color-pale">User</h2>
 
-  <data-field header="Name" data="{{ model.name }}" [isSmall]="false"></data-field>
+  <data-field header="Name" data="{{ model.lastName }}" [isSmall]="false"></data-field>
+  <data-field header="Name" data="{{ model.firstName }}" [isSmall]="false"></data-field>
   <data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
   <data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
 

@@ -22,7 +22,7 @@ export class ClientListComponent implements OnInit {
     public archivedClients: IClient[] = [];
     addClientDialogOpened: boolean;
     searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'user.firstName,user.lastName,user.email';
+    searchFields: string = 'firstName,lastName,email';
 
     constructor(
         private _clientService: ClientService,
@@ -59,12 +59,18 @@ export class ClientListComponent implements OnInit {
         });
     }
 
+    private filterClients(clients: IClient[]): IClient[] {
+        const users = clients.map(c =>  c.user);
+        const filteredUsersIds = this.searchPipe.transform(users, this.searchFields, this.form.controls['search'].value).map(u => u._id);
+        return clients.filter(c => filteredUsersIds.includes(c.user._id));
+    }
+
     public getFilteredActiveEntities() {
-        return this.searchPipe.transform(this.activeClients, this.searchFields, this.form.controls['search'].value);
+        return this.filterClients(this.activeClients);
     }
 
     public getFilteredArchivedEntities() {
-        return this.searchPipe.transform(this.archivedClients, this.searchFields, this.form.controls['search'].value);
+        return this.filterClients(this.archivedClients);
     }
 
     addEntity() {

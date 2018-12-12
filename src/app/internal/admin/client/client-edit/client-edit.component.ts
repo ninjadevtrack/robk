@@ -15,6 +15,7 @@ import {UserModel} from '../../../../core/user/model/user.model';
 export class ClientEditComponent implements OnInit {
 
     id: string;
+    userId: string;
     form: FormGroup;
     serverErrorMessage: string;
     appeals: string[];
@@ -57,6 +58,7 @@ export class ClientEditComponent implements OnInit {
     }
 
     setFormValues(entity: IClient) {
+        this.userId = entity.user._id;
         this.form.controls['firstName'].setValue(entity.user.firstName);
         this.form.controls['lastName'].setValue(entity.user.lastName);
         this.form.controls['appeal'].setValue(entity.user.appeal);
@@ -67,6 +69,7 @@ export class ClientEditComponent implements OnInit {
 
     buildModelFromForm() {
         const userModel = new UserModel();
+        userModel._id = this.userId;
         userModel.firstName = this.form.controls['firstName'].value;
         userModel.lastName = this.form.controls['lastName'].value;
         userModel.appeal = this.form.controls['appeal'].value;

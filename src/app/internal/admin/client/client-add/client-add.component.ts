@@ -10,6 +10,7 @@ import { ServerErrorModel } from "../../../../core/common";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';
+import {UserModel} from '../../../../core/user/model/user.model';
 
 @Component({
     selector: 'client-add',
@@ -50,9 +51,19 @@ export class ClientAddComponent implements OnInit {
     }
 
     buildModelFromForm() {
-        const model = new ClientModel();
-        model.notes = this.form.controls['notes'].value;
-        return model;
+
+        const userModel = new UserModel();
+        userModel.firstName = this.form.controls['firstName'].value;
+        userModel.lastName = this.form.controls['lastName'].value;
+        userModel.appeal = this.form.controls['appeal'].value;
+        userModel.phone = this.form.controls['phone'].value;
+        userModel.email = this.form.controls['email'].value;
+
+        const clientModel = new ClientModel();
+        clientModel.notes = this.form.controls['notes'].value;
+        clientModel.user = userModel;
+
+        return clientModel;
     }
 
     public onSubmit() {

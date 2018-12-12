@@ -1,26 +1,26 @@
 <card-template>
   <form novalidate [formGroup]="form">
-    <div><h1>{{client?.user?.firstName}} {{client?.user?.lastName}} ({{client?.user.appeal}})</h1></div>
+    <div><h1>{{client?.user?.lastName}} {{client?.user?.firstName}} ({{client?.user.appeal}})</h1></div>
     <div class="flex-container m-b-l">
       <div class="m-r-xl">
-        <mat-form-field class="regular-field">
-          <input
-              formControlName="firstName"
-              name="firstName"
-              matInput
-              placeholder="First Name"
-              (keyup)="updateModel()">
-        </mat-form-field>
+		  <mat-form-field class="regular-field">
+			  <input
+					  formControlName="lastName"
+					  name="lastName"
+					  matInput
+					  placeholder="Last Name"
+					  (keyup)="updateModel()">
+		  </mat-form-field>
       </div>
       <div class="m-r-xl">
-        <mat-form-field class="regular-field">
-          <input
-              formControlName="lastName"
-              name="lastName"
-              matInput
-              placeholder="Last Name"
-              (keyup)="updateModel()">
-        </mat-form-field>
+		  <mat-form-field class="regular-field">
+			  <input
+					  formControlName="firstName"
+					  name="firstName"
+					  matInput
+					  placeholder="First Name"
+					  (keyup)="updateModel()">
+		  </mat-form-field>
       </div>
       <div>
         <mat-form-field class="regular-field">

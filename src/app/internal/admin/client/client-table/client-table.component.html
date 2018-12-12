@@ -7,16 +7,16 @@
     <th width="100px"></th>
     </thead>
     <tbody class="m-b-s font-size-l">
-    <tr *ngFor="let enrollment of enrollments">
+    <tr *ngFor="let client of clients">
       <td>
-        <a routerLink="/i/admin/enrollments/{{enrollment._id}}">
-          {{enrollment.firstName}} {{enrollment.lastName}} ({{enrollment.appeal}})
+        <a routerLink="/i/admin/clients/{{client._id}}">
+          {{client.user.lastName}} {{client.user.firstName}} ({{client.user.appeal}})
         </a>
       </td>
-      <td>{{enrollment.phone}}</td>
-      <td>{{enrollment.email}}</td>
+      <td>{{client.user.phone}}</td>
+      <td>{{client.user.email}}</td>
       <td class="text-right">
-        <client-menu [isActive]="isActive" [model]="enrollment" (onClientEvent)="onClientChanged($event)"></client-menu>
+        <client-menu [isActive]="isActive" [model]="client" (onClientEvent)="onClientChanged($event)"></client-menu>
       </td>
     </tr>
     </tbody>

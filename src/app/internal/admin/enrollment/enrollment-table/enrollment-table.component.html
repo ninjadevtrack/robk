@@ -11,7 +11,7 @@
     <tr *ngFor="let enrollment of enrollments">
       <td>
         <a routerLink="/i/admin/enrollments/{{enrollment._id}}">
-          {{enrollment.firstName}} {{enrollment.lastName}} ({{enrollment.appeal}})
+          {{enrollment.lastName}} {{enrollment.firstName}} ({{enrollment.appeal}})
         </a>
       </td>
       <td>{{enrollment.phone}}</td>

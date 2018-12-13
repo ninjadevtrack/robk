@@ -40,7 +40,8 @@ export class TeacherAddComponent implements OnInit {
                 appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
                 phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
                 email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
+                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
+                experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
             });
         });
     }
@@ -59,6 +60,7 @@ export class TeacherAddComponent implements OnInit {
         userModel.email = this.form.controls['email'].value;
 
         const teacherModel = new TeacherModel();
+        teacherModel.experience = this.form.controls['experience'].value;
         teacherModel.notes = this.form.controls['notes'].value;
         teacherModel.user = userModel;
 

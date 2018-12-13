@@ -100,6 +100,13 @@ import { ClientEditComponent } from './internal/admin/client/client-edit/client-
 import { ClientMenuComponent } from './internal/admin/client/client-menu/client-menu.component';
 import { ClientTableComponent } from './internal/admin/client/client-table/client-table.component';
 import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
+import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
+import { TeacherAddComponent } from './internal/admin/teacher/teacher-add/teacher-add.component';
+import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
+import { TeacherMenuComponent } from './internal/admin/teacher/teacher-menu/teacher-menu.component';
+import { TeacherTableComponent } from './internal/admin/teacher/teacher-table/teacher-table.component';
+import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
+import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
@@ -123,7 +130,6 @@ import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-
 import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ClientService } from './core/client/client.service';
-import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
 import { TeacherService } from './core/teacher/teacher.service';
 
 // Application wide providers
@@ -192,6 +198,12 @@ type StoreType = {
         ClientEditComponent,
         ClientTableComponent,
         ClientViewComponent,
+        TeacherListComponent,
+        TeacherAddComponent,
+        TeacherMenuComponent,
+        TeacherEditComponent,
+        TeacherTableComponent,
+        TeacherViewComponent,
         EntityDeleteComponent,
         ServiceListComponent,
         ServiceAddComponent,
@@ -219,6 +231,8 @@ type StoreType = {
         InstrumentEditComponent,
         ClientAddComponent,
         ClientEditComponent,
+        TeacherAddComponent,
+        TeacherEditComponent,
         EntityDeleteComponent
     ],
     imports: [

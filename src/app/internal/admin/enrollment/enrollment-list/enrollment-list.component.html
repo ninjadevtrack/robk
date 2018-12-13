@@ -1,6 +1,6 @@
 <div>
   <div class="m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEnrollments && archiveEnrollments">
+    <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEntities && archivedEntities">
       <div>
         <form [formGroup]="form">
           <div class="search-container">
@@ -16,18 +16,18 @@
           </div>
         </form>
         <mat-tab-group>
-          <mat-tab label="Active ({{getFilteredActiveEnrollments().length}})">
-            <enrollment-table [enrollments]="getFilteredActiveEnrollments()" [isActive]="true" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+          <mat-tab label="Active ({{getFilteredActiveEntities().length}})">
+            <enrollment-table [enrollments]="getFilteredActiveEntities()" [isActive]="true" (onEnrollmentsEvent)="getAllEntities()"></enrollment-table>
           </mat-tab>
-          <mat-tab label="Archived ({{getFilteredArchivedEnrollments().length}})">
-            <enrollment-table [enrollments]="getFilteredArchivedEnrollments()" [isActive]="false" (onEnrollmentsEvent)="getAllEnrollments()"></enrollment-table>
+          <mat-tab label="Archived ({{getFilteredArchivedEntities().length}})">
+            <enrollment-table [enrollments]="getFilteredArchivedEntities()" [isActive]="false" (onEnrollmentsEvent)="getAllEntities()"></enrollment-table>
           </mat-tab>
         </mat-tab-group>
       </div>
     </div>
   </div>
   <div class="floating-button">
-    <button mat-fab class="font-size-2xl font-weight-300" (click)="addMediaPlan()">+</button>
+    <button mat-fab class="font-size-2xl font-weight-300" (click)="addEntity()">+</button>
   </div>
 </div>
 

@@ -8,7 +8,7 @@ import {IEnrollment, EnrollmentModel} from "../../../../core/enrollment/model/en
 import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
 import { EnrollmentAddComponent } from "../enrollment-add/enrollment-add.component";
 import { SearchPipe } from '../../../common/search.pipe';
-import {Form, FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'enrollment-list',
@@ -18,65 +18,63 @@ import {Form, FormBuilder, FormGroup} from '@angular/forms';
 export class EnrollmentListComponent implements OnInit {
 
     form: FormGroup;
-    public activeEnrollments: IEnrollment[] = [];
-    public archiveEnrollments: IEnrollment[] = [];
-    addEnrollmentDialogOpened: boolean;
+    public activeEntities: IEnrollment[] = [];
+    public archivedEntities: IEnrollment[] = [];
+    addEntityDialogOpened: boolean;
     searchPipe: SearchPipe = new SearchPipe();
     searchFields: string = 'firstName,lastName,email';
 
     constructor(
-        private _enrollmentService: EnrollmentService,
+        private _entityService: EnrollmentService,
         private _formBuilder: FormBuilder,
         private _dialog: MatDialog
     ) {
-        this.addEnrollmentDialogOpened = false;
+        this.addEntityDialogOpened = false;
     }
 
     public ngOnInit() {
-        this.getAllEnrollments();
+        this.getAllEntities();
 
         this.form = this._formBuilder.group({
             search: ['', []]
         });
     }
 
-    public getAllEnrollments() {
-        // Get active users
-        this.getActiveEnrollments();
-        // Get archived users
-        this.getArchivedEnrollments();
+    public getAllEntities() {
+        this.getActiveEntities();
+        this.getArchivedEntities();
     }
 
-    private getArchivedEnrollments() {
-        this._enrollmentService.getAllArchived().subscribe((enrollments: EnrollmentModel[]) => {
-            this.archiveEnrollments = enrollments;
+    private getArchivedEntities() {
+        this._entityService.getAllArchived().subscribe((enrollments: EnrollmentModel[]) => {
+            this.archivedEntities = enrollments;
         });
     }
 
-    private getActiveEnrollments() {
-        this._enrollmentService.getAllActive().subscribe((enrollments: EnrollmentModel[]) => {
-            this.activeEnrollments = enrollments;
+    private getActiveEntities() {
+        this._entityService.getAllActive().subscribe((enrollments: EnrollmentModel[]) => {
+            this.activeEntities = enrollments;
         });
     }
 
-    public getFilteredActiveEnrollments() {
-        return this.searchPipe.transform(this.activeEnrollments, this.searchFields, this.form.controls['search'].value);
+    public getFilteredActiveEntities() {
+        return this.searchPipe.transform(this.activeEntities, this.searchFields, this.form.controls['search'].value);
     }
 
-    public getFilteredArchivedEnrollments() {
-        return this.searchPipe.transform(this.archiveEnrollments, this.searchFields, this.form.controls['search'].value);
+    public getFilteredArchivedEntities() {
+        return this.searchPipe.transform(this.archivedEntities, this.searchFields, this.form.controls['search'].value);
     }
 
-    addMediaPlan() {
-        if (!this.addEnrollmentDialogOpened) {
+    addEntity() {
+        if (!this.addEntityDialogOpened) {
             const dialogRef = this._dialog.open(EnrollmentAddComponent, {});
-            this.addEnrollmentDialogOpened = true;
+            this.addEntityDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
-                    this.getActiveEnrollments();
+                    this.getActiveEntities();
                 }
-                this.addEnrollmentDialogOpened = false;
+                this.addEntityDialogOpened = false;
             });
         }
     }
@@ -85,7 +83,7 @@ export class EnrollmentListComponent implements OnInit {
     keyEvent(event: KeyboardEvent) {
 
         if (event.code === "KeyN" && event.altKey) {
-            this.addMediaPlan();
+            this.addEntity();
         }
     }
 }

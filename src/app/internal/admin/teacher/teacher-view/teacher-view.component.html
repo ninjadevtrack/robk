@@ -12,7 +12,12 @@
     <div>
       <data-field header="Phone" [data]="teacher?.user?.phone"></data-field>
     </div>
-    <div></div>
+    <div class="data-field">
+      <div class="data-field-header">Instruments</div>
+      <ul *ngFor="let instrument of teacher?.instruments" class="data-field-data">
+        <li>{{instrument.name}}</li>
+      </ul>
+    </div>
   </div>
   <div>
     <data-field header="Experience" [data]="teacher?.experience"></data-field>

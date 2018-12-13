@@ -5,7 +5,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {UserModel} from '../../../../core/user/model/user.model';
+import { UserModel } from '../../../../core/user/model/user.model';
+import { IInstrument } from '../../../../core/instrument/model/instrument.model';
+import { InstrumentService } from '../../../../core/instrument/instrument.service';
 
 @Component({
     selector: 'teacher-edit',
@@ -20,6 +22,7 @@ export class TeacherEditComponent implements OnInit {
     serverErrorMessage: string;
     appeals: string[];
     teacher: TeacherModel;
+    instruments: IInstrument[];
 
     @Output() canceled: EventEmitter<any> = new EventEmitter<any>();
     @Output() updated: EventEmitter<ITeacher> = new EventEmitter<ITeacher>();
@@ -27,12 +30,17 @@ export class TeacherEditComponent implements OnInit {
     constructor(
         private _router: Router,
         private _route: ActivatedRoute,
+        private _instrumentsService: InstrumentService,
         private _teacherService: TeacherService,
         private _appealService: AppealService,
         private _formBuilder: FormBuilder
     ) { }
 
     ngOnInit() {
+
+        this._instrumentsService.getAllActive().subscribe((instruments: IInstrument[]) => {
+            this.instruments = instruments;
+        });
 
         this.form = this._formBuilder.group({
             firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
@@ -41,7 +49,8 @@ export class TeacherEditComponent implements OnInit {
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
-            experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
+            experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
+            instruments: ['', [Validators.required, Validators.maxLength(300)]]
         });
 
         this._appealService.getAll().subscribe((appeals: string[]) => {
@@ -63,6 +72,7 @@ export class TeacherEditComponent implements OnInit {
         this.form.controls['firstName'].setValue(entity.user.firstName);
         this.form.controls['lastName'].setValue(entity.user.lastName);
         this.form.controls['appeal'].setValue(entity.user.appeal);
+        this.form.controls['instruments'].setValue(entity.instruments);
         this.form.controls['phone'].setValue(entity.user.phone);
         this.form.controls['email'].setValue(entity.user.email);
         this.form.controls['notes'].setValue(entity.notes);
@@ -82,6 +92,7 @@ export class TeacherEditComponent implements OnInit {
         teacherModel.user = userModel;
         teacherModel.notes = this.form.controls['notes'].value;
         teacherModel.experience = this.form.controls['experience'].value;
+        teacherModel.instruments = this.form.controls['instruments'].value;
         return teacherModel;
     }
 

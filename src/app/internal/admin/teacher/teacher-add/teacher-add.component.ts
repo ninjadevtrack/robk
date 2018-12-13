@@ -36,20 +36,21 @@ export class TeacherAddComponent implements OnInit {
 
         this._instrumentsService.getAllActive().subscribe((instruments: IInstrument[]) => {
            this.instruments = instruments;
-        });
 
-        this._appealService.getAll().subscribe((appeals: string[]) => {
-            this.appeals = appeals;
 
-            this.form = this._formBuilder.group({
-                firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
-                experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
-                instruments: ['', [Validators.required, Validators.maxLength(300)]]
+            this._appealService.getAll().subscribe((appeals: string[]) => {
+                this.appeals = appeals;
+
+                this.form = this._formBuilder.group({
+                    firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                    lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                    appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                    phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                    email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+                    notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
+                    experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
+                    instruments: [this.instruments[0], [Validators.required, Validators.maxLength(300)]]
+                });
             });
         });
     }

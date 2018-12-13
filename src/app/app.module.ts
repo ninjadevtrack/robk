@@ -123,7 +123,8 @@ import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-
 import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ClientService } from './core/client/client.service';
-import {ClientViewComponent} from './internal/admin/client/client-view/client-view.component';
+import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
+import { TeacherService } from './core/teacher/teacher.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -132,6 +133,7 @@ const APP_PROVIDERS = [
     UserService,
     EnrollmentService,
     ClientService,
+    TeacherService,
     ServiceService,
     InstrumentService,
     AppealService,

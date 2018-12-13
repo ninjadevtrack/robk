@@ -40,7 +40,8 @@ export class TeacherEditComponent implements OnInit {
             appeal: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-            notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
+            notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
+            experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
         });
 
         this._appealService.getAll().subscribe((appeals: string[]) => {
@@ -65,6 +66,7 @@ export class TeacherEditComponent implements OnInit {
         this.form.controls['phone'].setValue(entity.user.phone);
         this.form.controls['email'].setValue(entity.user.email);
         this.form.controls['notes'].setValue(entity.notes);
+        this.form.controls['experience'].setValue(entity.experience);
     }
 
     buildModelFromForm() {
@@ -79,6 +81,7 @@ export class TeacherEditComponent implements OnInit {
         const teacherModel = new TeacherModel();
         teacherModel.user = userModel;
         teacherModel.notes = this.form.controls['notes'].value;
+        teacherModel.experience = this.form.controls['experience'].value;
         return teacherModel;
     }
 

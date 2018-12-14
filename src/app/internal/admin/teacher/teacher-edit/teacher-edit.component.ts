@@ -72,7 +72,7 @@ export class TeacherEditComponent implements OnInit {
         this.form.controls['firstName'].setValue(entity.user.firstName);
         this.form.controls['lastName'].setValue(entity.user.lastName);
         this.form.controls['appeal'].setValue(entity.user.appeal);
-        this.form.controls['instruments'].setValue(entity.instruments);
+        this.form.controls['instruments'].setValue(entity.instruments.map( i => i._id));
         this.form.controls['phone'].setValue(entity.user.phone);
         this.form.controls['email'].setValue(entity.user.email);
         this.form.controls['notes'].setValue(entity.notes);

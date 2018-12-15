@@ -40,6 +40,4 @@ export class InstrumentListComponent extends EntityListComponentResolver impleme
     protected getEditComponent(): ComponentType<any> {
         return InstrumentEditComponent;
     }
-
-
 }

@@ -93,8 +93,6 @@ import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.com
 import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
-import { EnrollmentMenuComponent } from './internal/admin/enrollment/enrollment-menu/enrollment-menu.component';
-import { EnrollmentTableComponent } from './internal/admin/enrollment/enrollment-table/enrollment-table.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
 import { ClientAddComponent } from './internal/admin/client/client-add/client-add.component';
 import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
@@ -189,8 +187,6 @@ type StoreType = {
         EnrollmentListComponent,
         EnrollmentAddComponent,
         EnrollmentEditComponent,
-        EnrollmentMenuComponent,
-        EnrollmentTableComponent,
         EnrollmentViewComponent,
         ClientListComponent,
         ClientAddComponent,

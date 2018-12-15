@@ -1,33 +1,10 @@
-<div>
-  <div class="m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl" *ngIf="activeEntities && archivedEntities">
-      <div>
-        <form [formGroup]="form">
-          <div class="search-container">
-            <div class="search-box">
-              <mat-form-field class="search-field">
-                <input
-                    formControlName="search"
-                    name="search"
-                    matInput
-                    placeholder="Search">
-              </mat-form-field>
-            </div>
-          </div>
-        </form>
-        <mat-tab-group>
-          <mat-tab label="Active ({{getFilteredActiveEntities().length}})">
-            <enrollment-table [enrollments]="getFilteredActiveEntities()" [isActive]="true" (onEnrollmentsEvent)="getAllEntities()"></enrollment-table>
-          </mat-tab>
-          <mat-tab label="Archived ({{getFilteredArchivedEntities().length}})">
-            <enrollment-table [enrollments]="getFilteredArchivedEntities()" [isActive]="false" (onEnrollmentsEvent)="getAllEntities()"></enrollment-table>
-          </mat-tab>
-        </mat-tab-group>
-      </div>
-    </div>
-  </div>
-  <div class="floating-button">
-    <button mat-fab class="font-size-2xl font-weight-300" (click)="addEntity()">+</button>
-  </div>
-</div>
-
+<app-entity-list
+        [searchFields]="'name,description'"
+        [pathToViewComponent] = "'/i/admin/enrollments'"
+        [fieldLabels] = "['Name', 'Phone', 'Email', 'Services']"
+        [fields] = "['name', 'phone', 'email', 'servicesShortened']"
+        [eventTypesForActiveEntities] = "eventTypesForActiveEntities"
+        [eventTypesForArchivedEntities] = "eventTypesForArchivedEntities"
+        [entities] = "getEntities()"
+        (event) = "eventHandler($event)">
+</app-entity-list>

@@ -32,7 +32,7 @@ export class ServiceListComponent extends EntityListComponentResolver implements
 
     protected getEntities(): any[] {
         return super.getEntities().map((e) => {
-            e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');;
+            e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');
             return e;
         });
     }

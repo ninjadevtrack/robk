@@ -4,9 +4,10 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from './model/instrument.model';
 import { HttpHelperService } from "../http-helper.service";
+import {IEntityService} from '../entity-service.model';
 
 @Injectable()
-export class InstrumentService {
+export class InstrumentService implements IEntityService {
     constructor(private _configService: ConfigService,
                 private _httpHelper: HttpHelperService) {
 

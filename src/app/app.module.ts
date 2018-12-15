@@ -126,8 +126,6 @@ import { IconLinkButtonComponent } from './internal/common/icon-link-button/icon
 import { InstrumentListComponent} from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
-import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-menu/instrument-menu.component';
-import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ClientService } from './core/client/client.service';
 import { TeacherService } from './core/teacher/teacher.service';
@@ -217,8 +215,6 @@ type StoreType = {
         InstrumentListComponent,
         InstrumentAddComponent,
         InstrumentEditComponent,
-        InstrumentMenuComponent,
-        InstrumentTableComponent,
         InstrumentViewComponent,
         CalendarComponent,
         CardTemplateComponent,

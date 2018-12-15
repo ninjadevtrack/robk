@@ -6,9 +6,9 @@ import {EntityDeleteComponent} from '../../../../internal/entity-delete/entity-d
 import {MatDialog} from '@angular/material';
 import {ComponentType} from '@angular/cdk/typings/portal';
 
-export class EntityListResolver implements OnInit {
+export class EntityListComponentResolver implements OnInit {
 
-    protected entities: any[];
+    entities: any[];
     editEntityDialogOpened: boolean = false;
     addEntityDialogOpened: boolean;
     
@@ -16,6 +16,10 @@ export class EntityListResolver implements OnInit {
         protected _dialog: MatDialog
     ) {
         this.addEntityDialogOpened = false;
+    }
+
+    protected getEntities() {
+        return this.entities;
     }
 
     protected getEntityService(): IEntityService {

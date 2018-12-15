@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { EEntityMenuCommand } from '../entity-menu-command.enum';
-import { EntityMenuCommandLabelsService } from '../entity-menu-command-labels.service';
-import { IEntityMenuEvent } from '../entity-menu-event.model';
+import { EEntityEventType } from '../entity-event-type.enum';
+import { EntityEventTypeLabelsService } from '../entity-event-type-labels.service';
+import { IEntityEvent } from '../entity-event.model';
 
 @Component({
   selector: 'app-entity-menu',
@@ -11,24 +11,24 @@ import { IEntityMenuEvent } from '../entity-menu-event.model';
 export class EntityMenuComponent implements OnInit {
 
   @Input() id: string;
-  @Input() commands: EEntityMenuCommand[];
-  @Output() itemSelected = new EventEmitter<IEntityMenuEvent>();
+  @Input() eventTypes: EEntityEventType[];
+  @Output() event = new EventEmitter<IEntityEvent>();
 
   constructor(
-      private _entityMenuCommandLabelsService: EntityMenuCommandLabelsService
+      private _entityMenuCommandLabelsService: EntityEventTypeLabelsService
   ) { }
 
   ngOnInit() {
   }
 
-  getLabel(command: EEntityMenuCommand) {
-    return this._entityMenuCommandLabelsService.getLabel(command);
+  getLabel(eventType: EEntityEventType) {
+    return this._entityMenuCommandLabelsService.getLabel(eventType);
   }
 
-  onClick(command: EEntityMenuCommand) {
-    this.itemSelected.emit({
+  onClick(eventType: EEntityEventType) {
+    this.event.emit({
        id:  this.id,
-       command: command
+       type: eventType
     });
   }
 

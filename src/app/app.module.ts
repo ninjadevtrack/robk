@@ -132,6 +132,7 @@ import { InstrumentViewComponent } from './internal/admin/instrument/instrument-
 import { ClientService } from './core/client/client.service';
 import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
+import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -221,7 +222,8 @@ type StoreType = {
         CalendarComponent,
         CardTemplateComponent,
         IconLinkButtonComponent,
-        EntityMenuComponent
+        EntityMenuComponent,
+        EntityTableComponent
     ],
     entryComponents: [
         UserViewComponent,

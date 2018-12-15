@@ -1,0 +1,23 @@
+<div class="flex-table">
+  <table>
+    <thead>
+      <th *ngFor="let fieldLabel of fieldLabels">{{fieldLabel}}</th>
+      <th width="100px"></th>
+    </thead>
+    <tbody class="m-b-s font-size-l">
+      <tr *ngFor="let entity of entities">
+        <td *ngFor="let field of fields">
+          {{entity[field]}}
+        </td>
+        <!--<td>-->
+          <!--<a routerLink="/i/admin/entitys/{{entity._id}}">-->
+            <!--{{entity.name}}-->
+          <!--</a>-->
+        <!--</td>-->
+        <td class="text-right">
+          <app-entity-menu [id]="entity._id" [eventTypes]="eventTypes" (event)="propagateEvent($event)"></app-entity-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

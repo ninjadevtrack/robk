@@ -16,7 +16,7 @@
       <td>{{instrument.description}}</td>
       <td>{{instrument.updatedAt | date:'dd/MM/yyyy'}}</td>
       <td class="text-right">
-        <app-entity-menu [id]="instrument._id" [commands]="commands"></app-entity-menu>
+        <app-entity-menu [id]="instrument._id" [eventTypes]="commands"></app-entity-menu>
         <instrument-menu [isActive]="isActive" [model]="instrument" (onInstrumentEvent)="onInstrumentChanged($event)"></instrument-menu>
       </td>
     </tr>

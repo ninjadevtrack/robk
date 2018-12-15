@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material';
 import { IInstrument, InstrumentModel } from '../../../../core/instrument/model/instrument.model';
 import { InstrumentService } from '../../../../core/instrument/instrument.service';
 import { InstrumentAddComponent } from "../instrument-add/instrument-add.component";
+import { IEntityEvent } from '../../../../core/common/entity/entity-event.model';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
 
 @Component({
     selector: 'instrument-list',
@@ -17,6 +19,10 @@ export class InstrumentListComponent implements OnInit {
     public activeEntities: IInstrument[] = [];
     public archivedEntities: IInstrument[] = [];
     addInstrumentDialogOpened: boolean;
+    fields = ['name', 'description'];
+    fieldLabels = ['Name', 'Description'];
+    eventTypesForActiveTab: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
+    eventTypesForArchivedTab: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
         private _instrumentService: InstrumentService,
@@ -28,6 +34,11 @@ export class InstrumentListComponent implements OnInit {
     public ngOnInit() {
         this.getAllEntities();
     }
+
+    eventHandler(event: IEntityEvent) {
+        console.log(event);
+    }
+
 
     public getAllEntities() {
         // Get active users
@@ -48,7 +59,7 @@ export class InstrumentListComponent implements OnInit {
         });
     }
 
-    addMediaPlan() {
+    addEntity() {
         if (!this.addInstrumentDialogOpened) {
             const dialogRef = this._dialog.open(InstrumentAddComponent, {});
             this.addInstrumentDialogOpened = true;
@@ -66,7 +77,7 @@ export class InstrumentListComponent implements OnInit {
     keyEvent(event: KeyboardEvent) {
 
         if (event.code === "KeyN" && event.altKey) {
-            this.addMediaPlan();
+            this.addEntity();
         }
     }
 }

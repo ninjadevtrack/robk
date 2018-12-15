@@ -2,5 +2,5 @@
   <img src="/assets/img/menu.svg">
 </button>
 <mat-menu #menu="matMenu" yPosition="below" xPosition="after" [overlapTrigger]="false">
-  <button *ngFor="let command of commands" mat-menu-item class="main-menu-nested-item" (click)="onClick(command)">{{getLabel(command)}}</button>
+  <button *ngFor="let command of eventTypes" mat-menu-item class="main-menu-nested-item" (click)="onClick(command)">{{getLabel(command)}}</button>
 </mat-menu>

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IInstrument} from '../../../../core/instrument/model/instrument.model';
-import {EEntityMenuCommand} from '../../../../core/common/entity/entity-menu-command.enum';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
 
 @Component({
     selector: 'instrument-table',
@@ -12,11 +12,11 @@ export class InstrumentTableComponent implements OnInit {
     @Input() instruments: IInstrument[];
     @Input() isActive: boolean;
     @Output() onInstrumentsEvent = new EventEmitter();
-    commands: EEntityMenuCommand[] = [
-        EEntityMenuCommand.ACTIVATE,
-        EEntityMenuCommand.ARCHIVE,
-        EEntityMenuCommand.UPDATE,
-        EEntityMenuCommand.DELETE
+    commands: EEntityEventType[] = [
+        EEntityEventType.ACTIVATE,
+        EEntityEventType.ARCHIVE,
+        EEntityEventType.UPDATE,
+        EEntityEventType.DELETE
     ];
 
     constructor () { }

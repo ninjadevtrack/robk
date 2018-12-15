@@ -16,19 +16,17 @@ import {EEntityEventType} from '../../../../core/common/entity/entity-event-type
     templateUrl: './instrument-list.component.html'
 })
 export class InstrumentListComponent implements OnInit {
-    public activeEntities: IInstrument[] = [];
-    public archivedEntities: IInstrument[] = [];
-    addInstrumentDialogOpened: boolean;
-    fields = ['name', 'description'];
-    fieldLabels = ['Name', 'Description'];
-    eventTypesForActiveTab: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
-    eventTypesForArchivedTab: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
+
+    public entities: IInstrument[] = [];
+    addEntitytDialogOpened: boolean;
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
         private _instrumentService: InstrumentService,
         private _dialog: MatDialog
     ) {
-        this.addInstrumentDialogOpened = false;
+        this.addEntitytDialogOpened = false;
     }
 
     public ngOnInit() {
@@ -41,34 +39,21 @@ export class InstrumentListComponent implements OnInit {
 
 
     public getAllEntities() {
-        // Get active users
-        this.getActiveEntities();
-        // Get archived users
-        this.getArchivedEntities();
-    }
-
-    private getArchivedEntities() {
-        this._instrumentService.getAllArchived().subscribe((instruments: InstrumentModel[]) => {
-            this.archivedEntities = instruments;
-        });
-    }
-
-    private getActiveEntities() {
-        this._instrumentService.getAllActive().subscribe((instruments: InstrumentModel[]) => {
-            this.activeEntities = instruments;
+        this._instrumentService.getAll().subscribe((instruments: InstrumentModel[]) => {
+            this.entities = instruments;
         });
     }
 
     addEntity() {
-        if (!this.addInstrumentDialogOpened) {
+        if (!this.addEntitytDialogOpened) {
             const dialogRef = this._dialog.open(InstrumentAddComponent, {});
-            this.addInstrumentDialogOpened = true;
+            this.addEntitytDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
-                    this.getActiveEntities();
+                    this.getAllEntities();
                 }
-                this.addInstrumentDialogOpened = false;
+                this.addEntitytDialogOpened = false;
             });
         }
     }

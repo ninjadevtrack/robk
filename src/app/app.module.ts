@@ -133,6 +133,7 @@ import { ClientService } from './core/client/client.service';
 import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
 import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
+import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -223,7 +224,8 @@ type StoreType = {
         CardTemplateComponent,
         IconLinkButtonComponent,
         EntityMenuComponent,
-        EntityTableComponent
+        EntityTableComponent,
+        EntityListComponent
     ],
     entryComponents: [
         UserViewComponent,

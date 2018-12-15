@@ -10,6 +10,8 @@ export class EntityEventTypeLabelsService {
 
   public getLabel(command: EEntityEventType): string {
     switch (command) {
+        case EEntityEventType.ADD:
+            return 'Add';
         case EEntityEventType.ACTIVATE:
           return 'Activate';
         case EEntityEventType.ARCHIVE:

@@ -1,8 +1,9 @@
 <app-entity-list
-        [fieldLabels]="['Name', 'Description']"
-        [fields]="['name', 'description']"
-        [eventTypesForActiveEntities]="eventTypesForActiveEntities"
-        [eventTypesForArchivedEntities]="eventTypesForArchivedEntities"
-        [entities]="entities"
-        (event)="eventHandler($event)">
+		[pathToViewComponent] = "'/i/admin/instruments'"
+        [fieldLabels] = "['Name', 'Description']"
+        [fields] = "['name', 'description']"
+        [eventTypesForActiveEntities] = "eventTypesForActiveEntities"
+        [eventTypesForArchivedEntities] = "eventTypesForArchivedEntities"
+        [entities] = "entities"
+        (event) = "eventHandler($event)">
 </app-entity-list>

@@ -6,8 +6,11 @@
     </thead>
     <tbody class="m-b-s font-size-l">
       <tr *ngFor="let entity of entities">
-        <td *ngFor="let field of fields">
-          {{entity[field]}}
+        <td *ngFor="let field of fields; let i = index;">
+          <a *ngIf="i === 0" routerLink="{{pathToViewComponent}}/{{entity._id}}">
+            {{entity[field]}}
+          </a>
+          <span *ngIf="i !== 0">{{entity[field]}}</span>
         </td>
         <!--<td>-->
           <!--<a routerLink="/i/admin/entitys/{{entity._id}}">-->

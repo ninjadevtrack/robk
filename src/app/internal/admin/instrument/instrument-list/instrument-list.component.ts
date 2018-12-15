@@ -22,7 +22,7 @@ export class InstrumentListComponent implements OnInit {
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _instrumentService: InstrumentService,
+        private _entityService: InstrumentService,
         private _dialog: MatDialog
     ) {
         this.addEntitytDialogOpened = false;
@@ -56,7 +56,7 @@ export class InstrumentListComponent implements OnInit {
 
 
     public getAllEntities() {
-        this._instrumentService.getAll().subscribe((instruments: InstrumentModel[]) => {
+        this._entityService.getAll().subscribe((instruments: InstrumentModel[]) => {
             this.entities = instruments;
         });
     }
@@ -76,13 +76,13 @@ export class InstrumentListComponent implements OnInit {
     }
 
     archive(id) {
-        this._instrumentService.archive(id).subscribe(() => {
+        this._entityService.archive(id).subscribe(() => {
             this.getAllEntities();
         });
     }
 
     activate(id) {
-        this._instrumentService.activate(id).subscribe(() => {
+        this._entityService.activate(id).subscribe(() => {
             this.getAllEntities();
         });
     }
@@ -108,7 +108,7 @@ export class InstrumentListComponent implements OnInit {
 
     delete(id) {
 
-        this._instrumentService.get(id).subscribe((model: InstrumentModel) => {
+        this._entityService.get(id).subscribe((model: InstrumentModel) => {
             const dialogRef = this._dialog.open(EntityDeleteComponent, {
                 data: {
                     id: id,
@@ -119,7 +119,7 @@ export class InstrumentListComponent implements OnInit {
             dialogRef.afterClosed().subscribe( (result) => {
 
                 if (result.deleted) {
-                    this._instrumentService.delete(model._id).subscribe(() => {
+                    this._entityService.delete(model._id).subscribe(() => {
                         this.getAllEntities();
                     });
                 }

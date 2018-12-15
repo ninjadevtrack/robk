@@ -9,6 +9,7 @@ import {IEntityEvent} from '../entity-event.model';
 })
 export class EntityListComponent implements OnInit {
 
+  @Input() pathToViewComponent: string;
   @Input() entities: any[];
   @Input() fields: string[];
   @Input() fieldLabels: string[];

@@ -9,6 +9,7 @@ import {EEntityEventType} from '../entity-event-type.enum';
 })
 export class EntityTableComponent implements OnInit {
 
+  @Input() pathToViewComponent: string;
   @Input() eventTypes: EEntityEventType[];
   @Input() entities: any[];
   @Input() fields: string[];

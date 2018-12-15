@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -288,6 +289,7 @@ type StoreType = {
      * Expose our Services and Providers into Angular's dependency injection.
      */
     providers: [
+        DatePipe,
         APP_PROVIDERS,
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }
     ]

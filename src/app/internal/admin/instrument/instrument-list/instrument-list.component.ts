@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { DatePipe } from '@angular/common';
 import {MatDialog} from '@angular/material';
 import {InstrumentService} from '../../../../core/instrument/instrument.service';
 import {InstrumentAddComponent} from '../instrument-add/instrument-add.component';
@@ -20,9 +21,17 @@ export class InstrumentListComponent extends EntityListComponentResolver impleme
 
     constructor(
         protected _dialog: MatDialog,
-        protected _entityService: InstrumentService
+        private _entityService: InstrumentService,
+        private _datePipe: DatePipe
     ) {
         super(_dialog);
+    }
+
+   protected getEntities(): any[] {
+        return super.getEntities().map((e) => {
+            e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');;
+            return e;
+        });
     }
 
     public ngOnInit() {

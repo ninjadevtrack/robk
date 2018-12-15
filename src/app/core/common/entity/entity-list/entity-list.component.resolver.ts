@@ -8,7 +8,7 @@ import {ComponentType} from '@angular/cdk/typings/portal';
 
 export class EntityListComponentResolver implements OnInit {
 
-    entities: any[];
+    entities: any[] = [];
     editEntityDialogOpened: boolean = false;
     addEntityDialogOpened: boolean;
     

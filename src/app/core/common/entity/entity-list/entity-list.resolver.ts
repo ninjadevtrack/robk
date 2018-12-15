@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, HostListener} from '@angular/core';
+import {OnInit, HostListener} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
 import {IEntityService} from '../../../entity-service.model';
 import {IEntityEvent} from '../entity-event.model';
@@ -6,20 +6,9 @@ import {EntityDeleteComponent} from '../../../../internal/entity-delete/entity-d
 import {MatDialog} from '@angular/material';
 import {ComponentType} from '@angular/cdk/typings/portal';
 
-@Component({
-  selector: 'app-entity-list-container',
-  templateUrl: './entity-list-container.component.html',
-  styleUrls: ['./entity-list-container.component.scss']
-})
-export class EntityListContainerComponent implements OnInit {
+export class EntityListResolver implements OnInit {
 
-    @Input() eventTypesForActiveEntities: EEntityEventType[];
-    @Input() eventTypesForArchivedEntities: EEntityEventType[];
-    @Input() searchFields;
-    @Input() pathToViewComponent;
-    @Input() fieldLabels;
-    @Input() fields;
-    entities: any[];
+    protected entities: any[];
     editEntityDialogOpened: boolean = false;
     addEntityDialogOpened: boolean;
     

@@ -132,7 +132,6 @@ import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
 import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
 import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
-import { EntityListContainerComponent } from './core/common/entity/entity-list-container/entity-list-container.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -222,8 +221,7 @@ type StoreType = {
         IconLinkButtonComponent,
         EntityMenuComponent,
         EntityTableComponent,
-        EntityListComponent,
-        EntityListContainerComponent
+        EntityListComponent
     ],
     entryComponents: [
         UserViewComponent,

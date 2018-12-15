@@ -1,22 +1,20 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {IInstrument, InstrumentModel} from '../../../../core/instrument/model/instrument.model';
 import {InstrumentService} from '../../../../core/instrument/instrument.service';
 import {InstrumentAddComponent} from '../instrument-add/instrument-add.component';
 import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
 import {InstrumentEditComponent} from '../instrument-edit/instrument-edit.component';
-import {EntityListContainerComponent} from '../../../../core/common/entity/entity-list-container/entity-list-container.component';
+import {EntityListResolver} from '../../../../core/common/entity/entity-list/entity-list.resolver';
 import {ComponentType} from '@angular/cdk/typings/portal';
 import {IEntityService} from '../../../../core/entity-service.model';
 
 @Component({
-    selector: '',
+    selector: 'instrument-list',
     styleUrls: [ './instrument-list.component.css' ],
     templateUrl: './instrument-list.component.html'
 })
-export class InstrumentListComponent extends EntityListContainerComponent implements OnInit {
+export class InstrumentListComponent extends EntityListResolver implements OnInit {
 
-    public entities: IInstrument[] = [];
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
 import {IEntityEvent} from '../entity-event.model';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {SearchPipe} from '../../../../internal/common/search.pipe';
 
 @Component({
   selector: 'app-entity-list',
@@ -9,6 +11,7 @@ import {IEntityEvent} from '../entity-event.model';
 })
 export class EntityListComponent implements OnInit {
 
+  @Input() searchFields: string;
   @Input() pathToViewComponent: string;
   @Input() entities: any[];
   @Input() fields: string[];
@@ -16,18 +19,29 @@ export class EntityListComponent implements OnInit {
   @Input() eventTypesForActiveEntities: EEntityEventType[];
   @Input() eventTypesForArchivedEntities: EEntityEventType[];
   @Output() event = new EventEmitter<IEntityEvent>();
+  searchPipe: SearchPipe = new SearchPipe();
+  form: FormGroup;
 
-  constructor() { }
+  constructor(
+      private _formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit() {
+      this.form = this._formBuilder.group({
+          search: ['', []]
+      });
   }
 
-  getActiveEntities() {
-    return this.entities.filter(e => e.isActive);
+  getEntities(isActive: boolean) {
+    return this.entities.filter(e => e.isActive === isActive);
   }
 
-  getArchivedEntities() {
-      return this.entities.filter(e => !e.isActive);
+  public getFilteredActiveEntities() {
+      return this.searchPipe.transform(this.getEntities(true), this.searchFields, this.form.controls['search'].value);
+  }
+
+  public getFilteredArchivedEntities() {
+      return this.searchPipe.transform(this.getEntities(false), this.searchFields, this.form.controls['search'].value);
   }
 
   propagateEvent(event: IEntityEvent) {

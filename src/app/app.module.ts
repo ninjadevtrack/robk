@@ -119,8 +119,6 @@ import { AppealService } from './core/appeal/appeal.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
-import { ServiceMenuComponent } from './internal/admin/service/service-menu/service-menu.component';
-import { ServiceTableComponent } from './internal/admin/service/service-table/service-table.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { CardTemplateComponent } from './internal/common/templates/card-template/card-template.component';
 import { IconLinkButtonComponent } from './internal/common/icon-link-button/icon-link-button.component';
@@ -210,8 +208,6 @@ type StoreType = {
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
-        ServiceMenuComponent,
-        ServiceTableComponent,
         ServiceViewComponent,
         InstrumentListComponent,
         InstrumentAddComponent,

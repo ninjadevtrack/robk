@@ -1,18 +1,10 @@
-<div class="">
-  <div class="m-t-3xl m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl">
-      <mat-tab-group>
-        <mat-tab label="Active ({{activeServices?.length}})">
-          <service-table [services]="activeServices" [isActive]="true" (onServicesEvent)="getAllServices()"></service-table>
-        </mat-tab>
-        <mat-tab label="Archived ({{archiveServices?.length}})">
-          <service-table [services]="archiveServices" [isActive]="false" (onServicesEvent)="getAllServices()"></service-table>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </div>
-  <div class="floating-button">
-    <button mat-fab class="font-size-2xl font-weight-300" (click)="addMediaPlan()">+</button>
-  </div>
-</div>
-
+<app-entity-list
+        [searchFields]="'name,description'"
+        [pathToViewComponent] = "'/i/admin/services'"
+        [fieldLabels] = "['Name', 'Description', 'Date']"
+        [fields] = "['name', 'description', 'updatedAtFormatted']"
+        [eventTypesForActiveEntities] = "eventTypesForActiveEntities"
+        [eventTypesForArchivedEntities] = "eventTypesForArchivedEntities"
+        [entities] = "getEntities()"
+        (event) = "eventHandler($event)">
+</app-entity-list>

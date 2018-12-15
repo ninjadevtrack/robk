@@ -4,69 +4,52 @@ import {
     HostListener
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import {IService, ServiceModel} from "../../../../core/service/model/service.model";
 import { ServiceService } from "../../../../core/service/service.service";
 import { ServiceAddComponent } from "../service-add/service-add.component";
+import { EntityListComponentResolver } from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {DatePipe} from '@angular/common';
+import {IEntityService} from '../../../../core/entity-service.model';
+import {ComponentType} from '@angular/cdk/typings/portal';
+import {ServiceEditComponent} from '../service-edit/service-edit.component';
 
 @Component({
     selector: 'service-list',
     styleUrls: [ './service-list.component.css' ],
     templateUrl: './service-list.component.html'
 })
-export class ServiceListComponent implements OnInit {
-    public activeServices: IService[] = [];
-    public archiveServices: IService[] = [];
-    addServiceDialogOpened: boolean;
+export class ServiceListComponent extends EntityListComponentResolver implements OnInit {
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _serviceService: ServiceService,
-        private _dialog: MatDialog
+        protected _dialog: MatDialog,
+        private _entityService: ServiceService,
+        private _datePipe: DatePipe
     ) {
-        this.addServiceDialogOpened = false;
+        super(_dialog);
+    }
+
+    protected getEntities(): any[] {
+        return super.getEntities().map((e) => {
+            e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');;
+            return e;
+        });
     }
 
     public ngOnInit() {
-        this.getAllServices();
+        super.ngOnInit();
     }
 
-    public getAllServices() {
-        // Get active users
-        this.getActiveServices();
-        // Get archived users
-        this.getArchivedServices();
+    protected getEntityService(): IEntityService {
+        return this._entityService;
     }
 
-    private getArchivedServices() {
-        this._serviceService.getAllArchived().subscribe((services: ServiceModel[]) => {
-            this.archiveServices = services;
-        });
+    protected getAddComponent(): ComponentType<any> {
+        return ServiceAddComponent;
     }
 
-    private getActiveServices() {
-        this._serviceService.getAllActive().subscribe((services: ServiceModel[]) => {
-            this.activeServices = services;
-        });
-    }
-
-    addMediaPlan() {
-        if (!this.addServiceDialogOpened) {
-            const dialogRef = this._dialog.open(ServiceAddComponent, {});
-            this.addServiceDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe(result => {
-                if(result) {
-                    this.getActiveServices();
-                }
-                this.addServiceDialogOpened = false;
-            });
-        }
-    }
-
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-
-        if (event.code === "KeyN" && event.altKey) {
-            this.addMediaPlan();
-        }
+    protected getEditComponent(): ComponentType<any> {
+        return ServiceEditComponent;
     }
 }

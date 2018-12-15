@@ -17,7 +17,7 @@ export class InstrumentListComponent implements OnInit {
 
     public entities: IInstrument[] = [];
     editEntityDialogOpened: boolean = false;
-    addEntitytDialogOpened: boolean;
+    addEntityDialogOpened: boolean;
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -25,7 +25,7 @@ export class InstrumentListComponent implements OnInit {
         private _entityService: InstrumentService,
         private _dialog: MatDialog
     ) {
-        this.addEntitytDialogOpened = false;
+        this.addEntityDialogOpened = false;
     }
 
     public ngOnInit() {
@@ -62,15 +62,15 @@ export class InstrumentListComponent implements OnInit {
     }
 
     add() {
-        if (!this.addEntitytDialogOpened) {
+        if (!this.addEntityDialogOpened) {
             const dialogRef = this._dialog.open(InstrumentAddComponent, {});
-            this.addEntitytDialogOpened = true;
+            this.addEntityDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
                     this.getAllEntities();
                 }
-                this.addEntitytDialogOpened = false;
+                this.addEntityDialogOpened = false;
             });
         }
     }

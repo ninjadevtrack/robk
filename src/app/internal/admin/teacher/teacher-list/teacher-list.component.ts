@@ -1,97 +1,55 @@
 import {
     Component,
-    OnInit,
-    HostListener
+    OnInit
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ITeacher, TeacherModel } from '../../../../core/teacher/model/teacher.model';
 import { TeacherService } from '../../../../core/teacher/teacher.service';
 import { TeacherAddComponent } from "../teacher-add/teacher-add.component";
-import { SearchPipe } from '../../../common/search.pipe';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {IEntityService} from '../../../../core/entity-service.model';
+import {ComponentType} from '@angular/cdk/typings/portal';
+import {TeacherEditComponent} from '../teacher-edit/teacher-edit.component';
 
 @Component({
     selector: 'teacher-list',
     styleUrls: [ './teacher-list.component.css' ],
     templateUrl: './teacher-list.component.html'
 })
-export class TeacherListComponent implements OnInit {
+export class TeacherListComponent extends EntityListComponentResolver implements OnInit {
 
-    form: FormGroup;
-    public activeEntitites: ITeacher[] = [];
-    public archivedEntities: ITeacher[] = [];
-    addTeacherDialogOpened: boolean;
-    searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'firstName,lastName,email';
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _teacherService: TeacherService,
-        private _formBuilder: FormBuilder,
-        private _dialog: MatDialog
+        protected _dialog: MatDialog,
+        private _entityService: TeacherService
     ) {
-        this.addTeacherDialogOpened = false;
+        super(_dialog);
+    }
+
+    protected getEntities(): any[] {
+        return super.getEntities().map((e) => {
+            e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
+            e.phone = e.user.phone;
+            e.email = e.user.email;
+            return e;
+        });
     }
 
     public ngOnInit() {
-        this.getAllEntities();
-
-        this.form = this._formBuilder.group({
-            search: ['', []]
-        });
+        super.ngOnInit();
     }
 
-    public getAllEntities() {
-        // Get active users
-        this.getActiveEntities();
-        // Get archived users
-        this.getArchivedEntitites();
+    protected getEntityService(): IEntityService {
+        return this._entityService;
     }
 
-    private getArchivedEntitites() {
-        this._teacherService.getAllArchived().subscribe((entities: TeacherModel[]) => {
-            this.archivedEntities = entities;
-        });
+    protected getAddComponent(): ComponentType<any> {
+        return TeacherAddComponent;
     }
 
-    private getActiveEntities() {
-        this._teacherService.getAllActive().subscribe((entities: TeacherModel[]) => {
-            this.activeEntitites = entities;
-        });
-    }
-
-    private filterTeachers(teachers: ITeacher[]): ITeacher[] {
-        const users = teachers.map(c =>  c.user);
-        const filteredUsersIds = this.searchPipe.transform(users, this.searchFields, this.form.controls['search'].value).map(u => u._id);
-        return teachers.filter(c => filteredUsersIds.includes(c.user._id));
-    }
-
-    public getFilteredActiveEntities() {
-        return this.filterTeachers(this.activeEntitites);
-    }
-
-    public getFilteredArchivedEntities() {
-        return this.filterTeachers(this.archivedEntities);
-    }
-
-    addEntity() {
-        if (!this.addTeacherDialogOpened) {
-            const dialogRef = this._dialog.open(TeacherAddComponent, {});
-            this.addTeacherDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result) {
-                    this.getActiveEntities();
-                }
-                this.addTeacherDialogOpened = false;
-            });
-        }
-    }
-
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-
-        if (event.code === "KeyN" && event.altKey) {
-            this.addEntity();
-        }
+    protected getEditComponent(): ComponentType<any> {
+        return TeacherEditComponent;
     }
 }

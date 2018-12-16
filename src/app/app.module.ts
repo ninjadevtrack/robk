@@ -100,8 +100,6 @@ import { ClientListComponent } from './internal/admin/client/client-list/client-
 import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
 import { TeacherAddComponent } from './internal/admin/teacher/teacher-add/teacher-add.component';
 import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
-import { TeacherMenuComponent } from './internal/admin/teacher/teacher-menu/teacher-menu.component';
-import { TeacherTableComponent } from './internal/admin/teacher/teacher-table/teacher-table.component';
 import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
@@ -192,9 +190,7 @@ type StoreType = {
         ClientViewComponent,
         TeacherListComponent,
         TeacherAddComponent,
-        TeacherMenuComponent,
         TeacherEditComponent,
-        TeacherTableComponent,
         TeacherViewComponent,
         EntityDeleteComponent,
         ServiceListComponent,

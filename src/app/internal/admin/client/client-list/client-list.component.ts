@@ -1,13 +1,11 @@
 import {
     Component,
-    OnInit,
-    HostListener
+    OnInit
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ClientAddComponent } from "../client-add/client-add.component";
 import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
 import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
-import {DatePipe} from '@angular/common';
 import {IEntityService} from '../../../../core/entity-service.model';
 import {ComponentType} from '@angular/cdk/typings/portal';
 import {ClientEditComponent} from '../client-edit/client-edit.component';
@@ -25,8 +23,7 @@ export class ClientListComponent extends EntityListComponentResolver implements 
 
     constructor(
         protected _dialog: MatDialog,
-        private _entityService: ClientService,
-        private _datePipe: DatePipe
+        private _entityService: ClientService
     ) {
         super(_dialog);
     }

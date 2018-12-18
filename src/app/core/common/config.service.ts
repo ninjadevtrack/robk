@@ -148,6 +148,26 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/teachers/${id}/archive`;
             }
         },
+        Student: {
+            default: () => {
+                return `${Consts.API_URL}/v1/students`;
+            },
+            dafaultWithId: (id) => {
+                return `${Consts.API_URL}/v1/students/${id}`;
+            },
+            getAllActive: () => {
+                return `${Consts.API_URL}/v1/students/active`;
+            },
+            getAllArchived: () => {
+                return `${Consts.API_URL}/v1/students/archived`;
+            },
+            activate:  (id) => {
+                return `${Consts.API_URL}/v1/students/${id}/activate`;
+            },
+            archive:  (id) => {
+                return `${Consts.API_URL}/v1/students/${id}/archive`;
+            }
+        }
     };
 
     constructor() {}

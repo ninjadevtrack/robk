@@ -125,6 +125,11 @@ import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
 import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
 import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
+import { StudentService } from './core/student/student.service';
+import {StudentListComponent} from './internal/admin/student/student-list/student-list.component';
+import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
+import {StudentEditComponent} from './internal/admin/student/student-edit/student-edit.component';
+import {StudentViewComponent} from './internal/admin/student/student-view/student-view.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -133,6 +138,7 @@ const APP_PROVIDERS = [
     UserService,
     EnrollmentService,
     ClientService,
+    StudentService,
     TeacherService,
     ServiceService,
     InstrumentService,
@@ -189,6 +195,10 @@ type StoreType = {
         ClientEditComponent,
         ClientViewComponent,
         TeacherListComponent,
+        StudentListComponent,
+        StudentAddComponent,
+        StudentEditComponent,
+        StudentViewComponent,
         TeacherAddComponent,
         TeacherEditComponent,
         TeacherViewComponent,
@@ -217,9 +227,8 @@ type StoreType = {
         InstrumentAddComponent,
         InstrumentEditComponent,
         ClientAddComponent,
-        ClientEditComponent,
         TeacherAddComponent,
-        TeacherEditComponent,
+        StudentAddComponent,
         EntityDeleteComponent
     ],
     imports: [

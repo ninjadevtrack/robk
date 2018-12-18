@@ -36,7 +36,7 @@
       </mat-tab-group>
     </div>
   </div>
-  <div class="floating-button">
+  <div *ngIf="addEntityEnabled" class="floating-button">
     <button mat-fab class="font-size-2xl font-weight-300" (click)="addEntity()">+</button>
   </div>
 </div>

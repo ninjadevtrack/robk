@@ -11,6 +11,7 @@ import {SearchPipe} from '../../../../internal/common/search.pipe';
 })
 export class EntityListComponent implements OnInit {
 
+  @Input() addEntityEnabled: boolean = true;
   @Input() searchFields: string;
   @Input() pathToViewComponent: string;
   @Input() entities: any[];
@@ -49,6 +50,8 @@ export class EntityListComponent implements OnInit {
   }
 
   addEntity() {
+    if (!this.addEntityEnabled) { return; }
+    
     this.event.emit({
         id: null,
         type: EEntityEventType.ADD

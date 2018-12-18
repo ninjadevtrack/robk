@@ -125,6 +125,7 @@ import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
 import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
 import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
+import { StudentService } from './core/student/student.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -133,6 +134,7 @@ const APP_PROVIDERS = [
     UserService,
     EnrollmentService,
     ClientService,
+    StudentService,
     TeacherService,
     ServiceService,
     InstrumentService,

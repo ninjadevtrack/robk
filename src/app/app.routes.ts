@@ -22,6 +22,9 @@ import { ClientEditComponent } from './internal/admin/client/client-edit/client-
 import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
+import { StudentListComponent } from './internal/admin/student/student-list/student-list.component';
+import { StudentViewComponent } from './internal/admin/student/student-view/student-view.component';
+import { StudentEditComponent } from './internal/admin/student/student-edit/student-edit.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -40,6 +43,9 @@ export const ROUTES: Routes = [
                     { path: 'clients', component: ClientListComponent },
                     { path: 'clients/:id', component: ClientViewComponent },
                     { path: 'clients/:id/edit', component: ClientEditComponent },
+                    { path: 'students', component: StudentListComponent },
+                    { path: 'students/:id', component: StudentViewComponent },
+                    { path: 'students/:id/edit', component: StudentEditComponent },
                     { path: 'teachers', component: TeacherListComponent },
                     { path: 'teachers/:id', component: TeacherViewComponent },
                     { path: 'teachers/:id/edit', component: TeacherEditComponent },

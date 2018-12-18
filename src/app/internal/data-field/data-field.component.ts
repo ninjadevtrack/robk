@@ -3,6 +3,7 @@ import {
     OnInit,
     Input
 } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'data-field',
@@ -13,10 +14,17 @@ export class DataFieldComponent implements OnInit {
 
     @Input() header: string;
     @Input() data: any;
+    @Input() url: string;
     @Input() isSmall: false;
 
-    constructor () { }
+    constructor (
+        private _router: Router
+    ) { }
 
     public ngOnInit() { }
+
+    navigateByUrl() {
+        this._router.navigateByUrl(this.url);
+    }
 
 }

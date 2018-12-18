@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { ClientModel } from '../../../../core/client/model/client.model';
 import { StudentModel } from '../../../../core/student/model/student.model';
 import { StudentService  } from '../../../../core/student/student.service';
 
@@ -12,7 +11,7 @@ import { StudentService  } from '../../../../core/student/student.service';
 export class StudentViewComponent implements OnInit {
 
     id: string;
-    student: ClientModel;
+    student: StudentModel;
 
     constructor(
         private _router: Router,
@@ -29,6 +28,14 @@ export class StudentViewComponent implements OnInit {
                 this.student = student;
             });
         });
+    }
+
+    getClientName() {
+        return `${this.student.client.user.lastName} ${this.student.client.user.firstName} (${this.student.client.user.appeal})`;
+    }
+
+    getLinkToClient() {
+        return `/i/admin/clients/${this.student.client._id}`;
     }
 
 }

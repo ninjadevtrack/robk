@@ -3,6 +3,7 @@
 		{{ header }}
 	</div>
 	<div class="data-field-data">
-		{{ data }}
+		<span *ngIf="!url">{{ data }}</span>
+		<a *ngIf="url" (click)="navigateByUrl()" class="cursor-pointer">{{ data }}</a>
 	</div>
 </div>

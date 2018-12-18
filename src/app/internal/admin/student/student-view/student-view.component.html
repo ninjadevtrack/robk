@@ -12,9 +12,14 @@
     <div>
       <data-field header="Phone" [data]="student?.user?.phone"></data-field>
     </div>
-    <div></div>
+    <div>
+      <data-field *ngIf="student" header="Client"
+                  [data]="getClientName()"
+                  [url]="getLinkToClient()"></data-field>
+    </div>
   </div>
   <div>
-    <data-field header="Notes (experience, goals, expectations)" [data]="student?.notes"></data-field>
+    <data-field header="Notes (experience, goals, expectations)" [data]="student?.notes">
+    </data-field>
   </div>
 </card-template>

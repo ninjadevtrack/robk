@@ -1,9 +1,0 @@
-<button class="menu-button" mat-button [matMenuTriggerFor]="menu">
-  <img src="/assets/img/menu.svg">
-</button>
-<mat-menu #menu="matMenu" yPosition="below" xPosition="after" [overlapTrigger]="false">
-	<button *ngIf="isActive" mat-menu-item class="main-menu-nested-item" (click)="archive()">Archive</button>
-	<button *ngIf="isActive" mat-menu-item class="main-menu-nested-item" (click)="update()">Update</button>
-	<button *ngIf="!isActive" mat-menu-item class="main-menu-nested-item" (click)="activate()">Activate</button>
-	<button *ngIf="!isActive" mat-menu-item class="main-menu-nested-item" (click)="delete()">Delete</button>
-</mat-menu>

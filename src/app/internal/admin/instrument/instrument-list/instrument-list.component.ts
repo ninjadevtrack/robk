@@ -1,72 +1,52 @@
-import {
-    Component,
-    OnInit,
-    HostListener
-} from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { IInstrument, InstrumentModel } from '../../../../core/instrument/model/instrument.model';
-import { InstrumentService } from '../../../../core/instrument/instrument.service';
-import { InstrumentAddComponent } from "../instrument-add/instrument-add.component";
+import {Component, OnInit} from '@angular/core';
+import { DatePipe } from '@angular/common';
+import {MatDialog} from '@angular/material';
+import {InstrumentService} from '../../../../core/instrument/instrument.service';
+import {InstrumentAddComponent} from '../instrument-add/instrument-add.component';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {InstrumentEditComponent} from '../instrument-edit/instrument-edit.component';
+import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {ComponentType} from '@angular/cdk/typings/portal';
+import {IEntityService} from '../../../../core/entity-service.model';
 
 @Component({
     selector: 'instrument-list',
     styleUrls: [ './instrument-list.component.css' ],
     templateUrl: './instrument-list.component.html'
 })
-export class InstrumentListComponent implements OnInit {
-    public activeEntities: IInstrument[] = [];
-    public archivedEntities: IInstrument[] = [];
-    addInstrumentDialogOpened: boolean;
+export class InstrumentListComponent extends EntityListComponentResolver implements OnInit {
+
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _instrumentService: InstrumentService,
-        private _dialog: MatDialog
+        protected _dialog: MatDialog,
+        private _entityService: InstrumentService,
+        private _datePipe: DatePipe
     ) {
-        this.addInstrumentDialogOpened = false;
+        super(_dialog);
+    }
+
+   protected getEntities(): any[] {
+        return super.getEntities().map((e) => {
+            e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');;
+            return e;
+        });
     }
 
     public ngOnInit() {
-        this.getAllEntities();
+        super.ngOnInit();
     }
 
-    public getAllEntities() {
-        // Get active users
-        this.getActiveEntities();
-        // Get archived users
-        this.getArchivedEntities();
+    protected getEntityService(): IEntityService {
+        return this._entityService;
     }
 
-    private getArchivedEntities() {
-        this._instrumentService.getAllArchived().subscribe((instruments: InstrumentModel[]) => {
-            this.archivedEntities = instruments;
-        });
+    protected getAddComponent(): ComponentType<any> {
+        return InstrumentAddComponent;
     }
 
-    private getActiveEntities() {
-        this._instrumentService.getAllActive().subscribe((instruments: InstrumentModel[]) => {
-            this.activeEntities = instruments;
-        });
-    }
-
-    addMediaPlan() {
-        if (!this.addInstrumentDialogOpened) {
-            const dialogRef = this._dialog.open(InstrumentAddComponent, {});
-            this.addInstrumentDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result) {
-                    this.getActiveEntities();
-                }
-                this.addInstrumentDialogOpened = false;
-            });
-        }
-    }
-
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-
-        if (event.code === "KeyN" && event.altKey) {
-            this.addMediaPlan();
-        }
+    protected getEditComponent(): ComponentType<any> {
+        return InstrumentEditComponent;
     }
 }

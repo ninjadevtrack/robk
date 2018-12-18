@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { ConfigService } from '../common';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
-import { IService, ServiceModel } from './model/service.model';
+import { ServiceModel } from './model/service.model';
 import { HttpHelperService } from "../http-helper.service";
+import {IEntityService} from '../entity-service.model';
 
 @Injectable()
-export class ServiceService {
+export class ServiceService implements IEntityService {
     constructor(private _configService: ConfigService,
                 private _httpHelper: HttpHelperService) {
 

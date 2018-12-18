@@ -7,7 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TeacherModel } from '../../../../core/teacher/model/teacher.model';
 import { TeacherService } from '../../../../core/teacher/teacher.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';
 import { UserModel } from '../../../../core/user/model/user.model';
 import { InstrumentService } from '../../../../core/instrument/instrument.service';
@@ -34,23 +33,24 @@ export class TeacherAddComponent implements OnInit {
 
     ngOnInit() {
 
+        this.form = this._formBuilder.group({
+            firstName: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
+            appeal: ['', [Validators.required]],
+            phone: ['', [Validators.required]],
+            email: ['', [Validators.required]],
+            notes: ['', [Validators.required]],
+            experience: ['', [Validators.required]],
+            instruments: ['', [Validators.required]]
+        });
+
         this._instrumentsService.getAllActive().subscribe((instruments: IInstrument[]) => {
            this.instruments = instruments;
-
+           this.form.controls['instruments'].setValue([this.instruments[0]]);
 
             this._appealService.getAll().subscribe((appeals: string[]) => {
                 this.appeals = appeals;
-
-                this.form = this._formBuilder.group({
-                    firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                    lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                    appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                    phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                    email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                    notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
-                    experience: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]],
-                    instruments: [this.instruments[0], [Validators.required, Validators.maxLength(300)]]
-                });
+                this.form.controls['appeal'].setValue(this.appeals[0]);
             });
         });
     }

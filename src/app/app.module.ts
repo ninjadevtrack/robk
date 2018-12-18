@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,
     MatButtonModule,
@@ -92,19 +93,13 @@ import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.com
 import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
-import { EnrollmentMenuComponent } from './internal/admin/enrollment/enrollment-menu/enrollment-menu.component';
-import { EnrollmentTableComponent } from './internal/admin/enrollment/enrollment-table/enrollment-table.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
 import { ClientAddComponent } from './internal/admin/client/client-add/client-add.component';
 import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
-import { ClientMenuComponent } from './internal/admin/client/client-menu/client-menu.component';
-import { ClientTableComponent } from './internal/admin/client/client-table/client-table.component';
 import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
 import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
 import { TeacherAddComponent } from './internal/admin/teacher/teacher-add/teacher-add.component';
 import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
-import { TeacherMenuComponent } from './internal/admin/teacher/teacher-menu/teacher-menu.component';
-import { TeacherTableComponent } from './internal/admin/teacher/teacher-table/teacher-table.component';
 import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
@@ -118,19 +113,18 @@ import { AppealService } from './core/appeal/appeal.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
-import { ServiceMenuComponent } from './internal/admin/service/service-menu/service-menu.component';
-import { ServiceTableComponent } from './internal/admin/service/service-table/service-table.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { CardTemplateComponent } from './internal/common/templates/card-template/card-template.component';
 import { IconLinkButtonComponent } from './internal/common/icon-link-button/icon-link-button.component';
 import { InstrumentListComponent} from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
-import { InstrumentMenuComponent } from './internal/admin/instrument/instrument-menu/instrument-menu.component';
-import { InstrumentTableComponent } from './internal/admin/instrument/instrument-table/instrument-table.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ClientService } from './core/client/client.service';
 import { TeacherService } from './core/teacher/teacher.service';
+import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
+import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
+import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -189,37 +183,30 @@ type StoreType = {
         EnrollmentListComponent,
         EnrollmentAddComponent,
         EnrollmentEditComponent,
-        EnrollmentMenuComponent,
-        EnrollmentTableComponent,
         EnrollmentViewComponent,
         ClientListComponent,
         ClientAddComponent,
-        ClientMenuComponent,
         ClientEditComponent,
-        ClientTableComponent,
         ClientViewComponent,
         TeacherListComponent,
         TeacherAddComponent,
-        TeacherMenuComponent,
         TeacherEditComponent,
-        TeacherTableComponent,
         TeacherViewComponent,
         EntityDeleteComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
-        ServiceMenuComponent,
-        ServiceTableComponent,
         ServiceViewComponent,
         InstrumentListComponent,
         InstrumentAddComponent,
         InstrumentEditComponent,
-        InstrumentMenuComponent,
-        InstrumentTableComponent,
         InstrumentViewComponent,
         CalendarComponent,
         CardTemplateComponent,
-        IconLinkButtonComponent
+        IconLinkButtonComponent,
+        EntityMenuComponent,
+        EntityTableComponent,
+        EntityListComponent
     ],
     entryComponents: [
         UserViewComponent,
@@ -286,6 +273,7 @@ type StoreType = {
      * Expose our Services and Providers into Angular's dependency injection.
      */
     providers: [
+        DatePipe,
         APP_PROVIDERS,
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }
     ]

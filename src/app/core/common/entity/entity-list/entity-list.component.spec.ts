@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TeacherMenuComponent } from './teacher-menu.component';
+import { EntityListComponent } from './entity-list.component';
 
-describe('TeacherMenuComponent', () => {
-  let component: TeacherMenuComponent;
-  let fixture: ComponentFixture<TeacherMenuComponent>;
+describe('EntityListComponent', () => {
+  let component: EntityListComponent;
+  let fixture: ComponentFixture<EntityListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeacherMenuComponent ]
+      declarations: [ EntityListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TeacherMenuComponent);
+    fixture = TestBed.createComponent(EntityListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

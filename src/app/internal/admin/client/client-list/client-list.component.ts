@@ -1,97 +1,55 @@
 import {
     Component,
-    OnInit,
-    HostListener
+    OnInit
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { IClient, ClientModel } from '../../../../core/client/model/client.model';
-import { ClientService } from '../../../../core/client/client.service';
 import { ClientAddComponent } from "../client-add/client-add.component";
-import { SearchPipe } from '../../../common/search.pipe';
-import { Form, FormBuilder, FormGroup} from '@angular/forms';
+import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {IEntityService} from '../../../../core/entity-service.model';
+import {ComponentType} from '@angular/cdk/typings/portal';
+import {ClientEditComponent} from '../client-edit/client-edit.component';
+import {ClientService} from '../../../../core/client/client.service';
 
 @Component({
     selector: 'client-list',
     styleUrls: [ './client-list.component.css' ],
     templateUrl: './client-list.component.html'
 })
-export class ClientListComponent implements OnInit {
+export class ClientListComponent extends EntityListComponentResolver implements OnInit {
 
-    form: FormGroup;
-    public activeClients: IClient[] = [];
-    public archivedClients: IClient[] = [];
-    addClientDialogOpened: boolean;
-    searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'firstName,lastName,email';
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _clientService: ClientService,
-        private _formBuilder: FormBuilder,
-        private _dialog: MatDialog
+        protected _dialog: MatDialog,
+        private _entityService: ClientService
     ) {
-        this.addClientDialogOpened = false;
+        super(_dialog);
+    }
+
+    protected getEntities(): any[] {
+        return super.getEntities().map((e) => {
+            e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
+            e.phone = e.user.phone;
+            e.email = e.user.email;
+            return e;
+        });
     }
 
     public ngOnInit() {
-        this.getAllEntities();
-
-        this.form = this._formBuilder.group({
-            search: ['', []]
-        });
+        super.ngOnInit();
     }
 
-    public getAllEntities() {
-        // Get active users
-        this.getActiveEntities();
-        // Get archived users
-        this.getArchivedEntitites();
+    protected getEntityService(): IEntityService {
+        return this._entityService;
     }
 
-    private getArchivedEntitites() {
-        this._clientService.getAllArchived().subscribe((entities: ClientModel[]) => {
-            this.archivedClients = entities;
-        });
+    protected getAddComponent(): ComponentType<any> {
+        return ClientAddComponent;
     }
 
-    private getActiveEntities() {
-        this._clientService.getAllActive().subscribe((entities: ClientModel[]) => {
-            this.activeClients = entities;
-        });
-    }
-
-    private filterClients(clients: IClient[]): IClient[] {
-        const users = clients.map(c =>  c.user);
-        const filteredUsersIds = this.searchPipe.transform(users, this.searchFields, this.form.controls['search'].value).map(u => u._id);
-        return clients.filter(c => filteredUsersIds.includes(c.user._id));
-    }
-
-    public getFilteredActiveEntities() {
-        return this.filterClients(this.activeClients);
-    }
-
-    public getFilteredArchivedEntities() {
-        return this.filterClients(this.archivedClients);
-    }
-
-    addEntity() {
-        if (!this.addClientDialogOpened) {
-            const dialogRef = this._dialog.open(ClientAddComponent, {});
-            this.addClientDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result) {
-                    this.getActiveEntities();
-                }
-                this.addClientDialogOpened = false;
-            });
-        }
-    }
-
-    @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-
-        if (event.code === "KeyN" && event.altKey) {
-            this.addEntity();
-        }
+    protected getEditComponent(): ComponentType<any> {
+        return ClientEditComponent;
     }
 }

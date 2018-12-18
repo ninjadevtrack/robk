@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, Inject, EventEmitter } from '@angular/core';
-import { IClient, ClientModel } from '../../../../core/client/model/client.model';
-import { ClientService } from '../../../../core/client/client.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {UserModel} from '../../../../core/user/model/user.model';
+import {StudentService} from '../../../../core/student/student.service';
+import {IStudent, StudentModel} from '../../../../core/student/model/student.model';
 
 @Component({
-    selector: 'client-edit',
+    selector: 'student-edit',
     templateUrl: './student-edit.component.html',
     styleUrls: ['./student-edit.component.scss']
 })
@@ -19,15 +19,15 @@ export class StudentEditComponent implements OnInit {
     form: FormGroup;
     serverErrorMessage: string;
     appeals: string[];
-    client: ClientModel;
+    student: StudentModel;
 
     @Output() canceled: EventEmitter<any> = new EventEmitter<any>();
-    @Output() updated: EventEmitter<IClient> = new EventEmitter<IClient>();
+    @Output() updated: EventEmitter<IStudent> = new EventEmitter<IStudent>();
 
     constructor(
         private _router: Router,
         private _route: ActivatedRoute,
-        private _clientService: ClientService,
+        private _studentService: StudentService,
         private _appealService: AppealService,
         private _formBuilder: FormBuilder
     ) { }
@@ -50,14 +50,14 @@ export class StudentEditComponent implements OnInit {
         this._route.params.subscribe((params) => {
             this.id = params.id;
 
-            this._clientService.get(this.id).subscribe((client: ClientModel) => {
-                this.client = client;
-                this.setFormValues(client);
+            this._studentService.get(this.id).subscribe((student: StudentModel) => {
+                this.student = student;
+                this.setFormValues(student);
             });
         });
     }
 
-    setFormValues(entity: IClient) {
+    setFormValues(entity: IStudent) {
         this.userId = entity.user._id;
         this.form.controls['firstName'].setValue(entity.user.firstName);
         this.form.controls['lastName'].setValue(entity.user.lastName);
@@ -76,26 +76,26 @@ export class StudentEditComponent implements OnInit {
         userModel.phone = this.form.controls['phone'].value;
         userModel.email = this.form.controls['email'].value;
 
-        const clientModel = new ClientModel();
-        clientModel.user = userModel;
-        clientModel.notes = this.form.controls['notes'].value;
-        return clientModel;
+        const studentModel = new StudentModel();
+        studentModel.user = userModel;
+        studentModel.notes = this.form.controls['notes'].value;
+        return studentModel;
     }
 
     save() {
-        this._clientService.update(this.id, this.buildModelFromForm()).subscribe((client: IClient) => {
-            this.updated.emit(client);
-            this._router.navigateByUrl(`/i/admin/clients/${this.id}`);
+        this._studentService.update(this.id, this.buildModelFromForm()).subscribe((student: IStudent) => {
+            this.updated.emit(student);
+            this._router.navigateByUrl(`/i/admin/students/${this.id}`);
         });
     }
 
     cancel() {
         this.canceled.emit();
-        this._router.navigateByUrl(`/i/admin/clients/${this.id}`);
+        this._router.navigateByUrl(`/i/admin/students/${this.id}`);
     }
 
     updateModel() {
-        this.client = this.buildModelFromForm();
+        this.student = this.buildModelFromForm();
     }
 
     firstNameChanged(event) {

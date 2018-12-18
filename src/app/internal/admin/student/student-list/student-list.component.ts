@@ -12,7 +12,7 @@ import {StudentEditComponent} from '../student-edit/student-edit.component';
 import {StudentService} from '../../../../core/student/student.service';
 
 @Component({
-    selector: 'client-list',
+    selector: 'student-list',
     styleUrls: [ './student-list.component.css' ],
     templateUrl: './student-list.component.html'
 })

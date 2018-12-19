@@ -12,20 +12,26 @@
     <div>
       <data-field header="Phone" [data]="client?.user?.phone"></data-field>
     </div>
-    <div></div>
+    <div class="text-right">
+      <button *ngIf="!hasStudentAccount" mat-raised-button class="mat-primary" (click)="createStudentAccount()">
+        Create A Student Account For {{client?.user?.lastName}} {{client?.user?.firstName}}
+      </button>
+    </div>
   </div>
   <div>
     <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
   </div>
-  <h3>Students</h3>
-  <div class="m-b-3xl">
-    <student-list
-            [addDialogData]="{clientId: client?._id}"
-            [floatingAddButton]="false"
-            [addEntityEnabled]="true"
-            [searchFieldEnabled]="false"
-            [entities]="students"
-            (entitiesListShouldBeUpdated)="getStudents()">
-    </student-list>
+  <div class="m-t-xl">
+    <h3>Students</h3>
+    <div class="m-b-3xl">
+      <student-list
+              [addDialogData]="{clientId: client?._id}"
+              [floatingAddButton]="false"
+              [addEntityEnabled]="true"
+              [searchFieldEnabled]="false"
+              [entities]="students"
+              (entitiesListShouldBeUpdated)="getStudents()">
+      </student-list>
+    </div>
   </div>
 </card-template>

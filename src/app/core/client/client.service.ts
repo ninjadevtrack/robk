@@ -37,11 +37,11 @@ export class ClientService {
         return this._httpHelper.get(true, this._configService.API.Client.dafaultWithId(id));
     }
 
-    public hasStudentAccount(id: string): Observable<ClientModel> {
+    public hasStudentAccount(id: string): Observable<boolean> {
         return this._httpHelper.get(true, this._configService.API.Client.hasStudentAccount(id));
     }
 
-    public createStudentAccount(id: string): Observable<ClientModel> {
+    public createStudentAccount(id: string): Observable<StudentModel> {
         return this._httpHelper.get(true, this._configService.API.Client.createStudentAccount(id));
     }
 

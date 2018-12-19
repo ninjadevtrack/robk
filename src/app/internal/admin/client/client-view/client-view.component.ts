@@ -37,9 +37,8 @@ export class ClientViewComponent implements OnInit {
     }
 
     verifyIfClientHasStudentAccount() {
-        this._clientService.hasStudentAccount(this.id).subscribe((res) => {
+        this._clientService.hasStudentAccount(this.id).subscribe((res: boolean) => {
             this.hasStudentAccount = res;
-            console.log(res);
         });
     }
 

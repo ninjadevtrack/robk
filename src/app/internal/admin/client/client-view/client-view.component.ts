@@ -11,6 +11,7 @@ import {StudentModel} from '../../../../core/student/model/student.model';
 })
 export class ClientViewComponent implements OnInit {
 
+    hasStudentAccount: boolean = false;
     id: string;
     client: ClientModel;
     students: StudentModel[];
@@ -30,6 +31,15 @@ export class ClientViewComponent implements OnInit {
 
             this.getStudents();
 
+            this.verifyIfClientHasStudentAccount();
+
+        });
+    }
+
+    verifyIfClientHasStudentAccount() {
+        this._clientService.hasStudentAccount(this.id).subscribe((res) => {
+            this.hasStudentAccount = res;
+            console.log(res);
         });
     }
 

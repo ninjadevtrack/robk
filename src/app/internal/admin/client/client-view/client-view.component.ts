@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
+import {MatDialog} from '@angular/material';
+import {ConfirmDialogComponent} from '../../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'client-view',
@@ -17,6 +19,7 @@ export class ClientViewComponent implements OnInit {
     students: StudentModel[];
 
     constructor(
+        private _dialog: MatDialog,
         private _router: Router,
         private _route: ActivatedRoute,
         private _clientService: ClientService
@@ -55,7 +58,26 @@ export class ClientViewComponent implements OnInit {
     }
 
     createStudentAccount() {
+        const dialogRef = this._dialog.open(ConfirmDialogComponent, {
+            data: {
+                name: `for ${this.entityLabel(this.client)}`,
+                verb: 'create a student account'
+            }
+        });
 
+        dialogRef.afterClosed().subscribe( (result) => {
+
+            if (result.confirmed) {
+                this._clientService.createStudentAccount(this.id).subscribe(() => {
+                    this.getStudents();
+                    this.verifyIfClientHasStudentAccount();
+                });
+            }
+        });
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.user.lastName} ${entity.user.firstName} (${entity.user.appeal})`;
     }
 
 }

@@ -20,6 +20,7 @@ import {StudentService} from '../../../../core/student/student.service';
 })
 export class StudentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() addDialogData: any = {};
     @Input() floatingAddButton: boolean = true;
     @Input() searchFieldEnabled: boolean = true;
     @Input() addEntityEnabled: boolean = true;
@@ -37,6 +38,10 @@ export class StudentListComponent extends EntityListComponentResolver implements
 
     protected getAllEntities() {
         this.entitiesListShouldBeUpdated.emit();
+    }
+
+    protected getAddDialogData() {
+        return this.addDialogData;
     }
 
     protected getEntities(): any[] {

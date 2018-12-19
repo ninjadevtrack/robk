@@ -20,6 +20,7 @@
   <h3>Students</h3>
   <div class="m-b-3xl">
     <student-list
+            [addDialogData]="{clientId: client?._id}"
             [floatingAddButton]="false"
             [addEntityEnabled]="true"
             [searchFieldEnabled]="false"

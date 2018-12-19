@@ -32,6 +32,10 @@ export class EntityListComponentResolver implements OnInit {
     protected getAllEntities() {
         throw Error('Should be implemented in the child component');
     }
+
+    protected getAddDialogData() {
+        return {};
+    }
     
     public ngOnInit() {
         this.getAllEntities();
@@ -61,7 +65,9 @@ export class EntityListComponentResolver implements OnInit {
 
     add() {
         if (!this.addEntityDialogOpened) {
-            const dialogRef = this._dialog.open(this.getAddComponent(), {});
+            const dialogRef = this._dialog.open(this.getAddComponent(), {
+                data: this.getAddDialogData()
+            });
             this.addEntityDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {

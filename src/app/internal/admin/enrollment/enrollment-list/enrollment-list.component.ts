@@ -1,7 +1,7 @@
 import {
     Component,
     OnInit,
-    HostListener
+    HostListener, Input, Output, EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
@@ -21,6 +21,8 @@ import {IEnrollment} from '../../../../core/enrollment/model/enrollment.model';
 })
 export class EnrollmentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -32,9 +34,16 @@ export class EnrollmentListComponent extends EntityListComponentResolver impleme
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
     protected getEntities(): any[] {
-        return super.getEntities().map((e: any) => {
-            e.name = `${e.lastName} ${e.firstName} (${e.appeal})`;
+
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e: any) => {
+            e.name = this.entityLabel(e);
             e.servicesShortened = this.getServicesString(e);
             return e;
         });
@@ -61,5 +70,9 @@ export class EnrollmentListComponent extends EntityListComponentResolver impleme
         const delimeter = '..., ';
         const shortenedString = enrollment.services.reduce((acc, service) =>  acc + service.name.substr(0, shortener) + delimeter, '');
         return shortenedString.substr(0, shortenedString.length - delimeter.length);
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.lastName} ${entity.firstName} (${entity.appeal})`;
     }
 }

@@ -104,7 +104,7 @@ import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teac
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
-import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
+import { ConfirmDialogComponent } from './internal/confirm-dialog/confirm-dialog.component';
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
 import { ServiceService } from './core/service/service.service';
@@ -130,6 +130,12 @@ import {StudentListComponent} from './internal/admin/student/student-list/studen
 import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
 import {StudentEditComponent} from './internal/admin/student/student-edit/student-edit.component';
 import {StudentViewComponent} from './internal/admin/student/student-view/student-view.component';
+import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
+import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
+import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
+import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
+import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
+import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -202,7 +208,7 @@ type StoreType = {
         TeacherAddComponent,
         TeacherEditComponent,
         TeacherViewComponent,
-        EntityDeleteComponent,
+        ConfirmDialogComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
@@ -216,7 +222,13 @@ type StoreType = {
         IconLinkButtonComponent,
         EntityMenuComponent,
         EntityTableComponent,
-        EntityListComponent
+        EntityListComponent,
+        ServiceListRootComponent,
+        StudentListRootComponent,
+        InstrumentListRootComponent,
+        TeacherListRootComponent,
+        ClientListRootComponent,
+        EnrollmentListRootComponent
     ],
     entryComponents: [
         UserViewComponent,
@@ -229,7 +241,7 @@ type StoreType = {
         ClientAddComponent,
         TeacherAddComponent,
         StudentAddComponent,
-        EntityDeleteComponent
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,

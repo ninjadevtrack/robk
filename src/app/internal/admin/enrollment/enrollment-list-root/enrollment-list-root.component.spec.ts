@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntityDeleteComponent } from './entity-delete.component';
+import { EnrollmentListRootComponent } from './enrollment-list-root.component';
 
-describe('EntityDeleteComponent', () => {
-  let component: EntityDeleteComponent;
-  let fixture: ComponentFixture<EntityDeleteComponent>;
+describe('EnrollmentListRootComponent', () => {
+  let component: EnrollmentListRootComponent;
+  let fixture: ComponentFixture<EnrollmentListRootComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EntityDeleteComponent ]
+      declarations: [ EnrollmentListRootComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntityDeleteComponent);
+    fixture = TestBed.createComponent(EnrollmentListRootComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -30,7 +30,6 @@ export class StudentAddComponent implements OnInit {
 
     ngOnInit() {
 
-
         this._appealService.getAll().subscribe((appeals: string[]) => {
             this.appeals = appeals;
 
@@ -61,6 +60,7 @@ export class StudentAddComponent implements OnInit {
         const studentModel = new StudentModel();
         studentModel.notes = this.form.controls['notes'].value;
         studentModel.user = userModel;
+        studentModel.client = this.data.clientId;
 
         return studentModel;
     }

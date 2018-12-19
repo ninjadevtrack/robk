@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {MatDialog} from '@angular/material';
 import {InstrumentService} from '../../../../core/instrument/instrument.service';
@@ -16,6 +16,8 @@ import {IEntityService} from '../../../../core/entity-service.model';
 })
 export class InstrumentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -27,8 +29,13 @@ export class InstrumentListComponent extends EntityListComponentResolver impleme
         super(_dialog);
     }
 
-   protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
+    protected getEntities(): any[] {
+        if (!this.entities) { return []; }
+        return this.entities.map((e) => {
             e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');;
             return e;
         });

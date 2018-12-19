@@ -1,6 +1,8 @@
 import {
     Component,
-    OnInit
+    OnInit,
+    Output,
+    Input, EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { StudentAddComponent } from "../student-add/student-add.component";
@@ -18,6 +20,12 @@ import {StudentService} from '../../../../core/student/student.service';
 })
 export class StudentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() addDialogData: any = {};
+    @Input() floatingAddButton: boolean = true;
+    @Input() searchFieldEnabled: boolean = true;
+    @Input() addEntityEnabled: boolean = true;
+    @Input() entities: any[] = [];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -28,9 +36,20 @@ export class StudentListComponent extends EntityListComponentResolver implements
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
+    protected getAddDialogData() {
+        return this.addDialogData;
+    }
+
     protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
-            e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
+
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e) => {
+            e.name = this.entityLabel(e);
             e.phone = e.user.phone;
             e.email = e.user.email;
             return e;
@@ -51,5 +70,9 @@ export class StudentListComponent extends EntityListComponentResolver implements
 
     protected getEditComponent(): ComponentType<any> {
         return StudentEditComponent;
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.user.lastName} ${entity.user.firstName} (${entity.user.appeal})`;
     }
 }

@@ -1,6 +1,6 @@
 import {
-    Component,
-    OnInit
+    Component, EventEmitter, Input,
+    OnInit, Output
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { TeacherService } from '../../../../core/teacher/teacher.service';
@@ -18,6 +18,8 @@ import {TeacherEditComponent} from '../teacher-edit/teacher-edit.component';
 })
 export class TeacherListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[] = [];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -28,9 +30,16 @@ export class TeacherListComponent extends EntityListComponentResolver implements
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
     protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
-            e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
+
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e) => {
+            e.name = this.entityLabel(e);
             e.phone = e.user.phone;
             e.email = e.user.email;
             return e;
@@ -51,5 +60,9 @@ export class TeacherListComponent extends EntityListComponentResolver implements
 
     protected getEditComponent(): ComponentType<any> {
         return TeacherEditComponent;
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.user.lastName} ${entity.user.firstName} (${entity.user.appeal})`;
     }
 }

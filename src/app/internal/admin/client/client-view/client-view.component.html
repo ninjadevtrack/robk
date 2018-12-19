@@ -18,9 +18,11 @@
     <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
   </div>
   <h2>Students</h2>
-  <student-list
-          [searchFieldEnabled]="false"
-          [entities]="students"
-          (entitiesListShouldBeUpdated)="getStudents()">
-  </student-list>
+  <div class="m-b">
+    <student-list
+            [searchFieldEnabled]="false"
+            [entities]="students"
+            (entitiesListShouldBeUpdated)="getStudents()">
+    </student-list>
+  </div>
 </card-template>

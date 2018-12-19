@@ -1,6 +1,6 @@
 import {
-    Component, Input,
-    OnInit
+    Component, EventEmitter, Input,
+    OnInit, Output
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ClientAddComponent } from "../client-add/client-add.component";
@@ -19,6 +19,7 @@ import {ClientService} from '../../../../core/client/client.service';
 export class ClientListComponent extends EntityListComponentResolver implements OnInit {
 
     @Input() entities: any[];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -29,7 +30,14 @@ export class ClientListComponent extends EntityListComponentResolver implements 
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
     protected getEntities(): any[] {
+
+        if (!this.entities) { return []; }
+
         return this.entities.map((e) => {
             e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
             e.phone = e.user.phone;

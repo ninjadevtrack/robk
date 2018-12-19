@@ -29,6 +29,7 @@ import {StudentListRootComponent} from './internal/admin/student/student-list-ro
 import {ServiceListRootComponent} from './internal/admin/service/service-list-root/service-list-root.component';
 import {InstrumentListRootComponent} from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
 import {TeacherListRootComponent} from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
+import {ClientListRootComponent} from './internal/admin/client/client-list-root/client-list-root.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -44,9 +45,9 @@ export const ROUTES: Routes = [
             { path: 'admin', component: AdminComponent,
                 children: [
                     { path: '', component: UserListComponent },
-                    // { path: 'clients', component: ClientListComponent },
-                    // { path: 'clients/:id', component: ClientViewComponent },
-                    // { path: 'clients/:id/edit', component: ClientEditComponent },
+                    { path: 'clients', component: ClientListRootComponent },
+                    { path: 'clients/:id', component: ClientViewComponent },
+                    { path: 'clients/:id/edit', component: ClientEditComponent },
                     { path: 'students', component: StudentListRootComponent },
                     { path: 'students/:id', component: StudentViewComponent },
                     { path: 'students/:id/edit', component: StudentEditComponent },

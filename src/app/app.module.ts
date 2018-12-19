@@ -134,6 +134,7 @@ import { ServiceListRootComponent } from './internal/admin/service/service-list-
 import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
 import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
+import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -224,7 +225,8 @@ type StoreType = {
         ServiceListRootComponent,
         StudentListRootComponent,
         InstrumentListRootComponent,
-        TeacherListRootComponent
+        TeacherListRootComponent,
+        ClientListRootComponent
     ],
     entryComponents: [
         UserViewComponent,

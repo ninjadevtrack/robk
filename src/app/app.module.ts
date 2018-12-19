@@ -104,7 +104,7 @@ import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teac
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
-import { EntityDeleteComponent } from './internal/entity-delete/entity-delete.component';
+import { ConfirmDialogComponent } from './internal/confirm-dialog/confirm-dialog.component';
 import { CalendarComponent } from './internal/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
 import { ServiceService } from './core/service/service.service';
@@ -208,7 +208,7 @@ type StoreType = {
         TeacherAddComponent,
         TeacherEditComponent,
         TeacherViewComponent,
-        EntityDeleteComponent,
+        ConfirmDialogComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
@@ -241,7 +241,7 @@ type StoreType = {
         ClientAddComponent,
         TeacherAddComponent,
         StudentAddComponent,
-        EntityDeleteComponent
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,

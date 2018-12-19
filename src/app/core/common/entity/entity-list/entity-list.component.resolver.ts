@@ -2,7 +2,7 @@ import {OnInit, HostListener} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
 import {IEntityService} from '../../../entity-service.model';
 import {IEntityEvent} from '../entity-event.model';
-import {EntityDeleteComponent} from '../../../../internal/entity-delete/entity-delete.component';
+import {ConfirmDialogComponent} from '../../../../internal/confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material';
 import {ComponentType} from '@angular/cdk/typings/portal';
 
@@ -31,6 +31,10 @@ export class EntityListComponentResolver implements OnInit {
 
     protected getAllEntities() {
         throw Error('Should be implemented in the child component');
+    }
+
+    protected entityLabel(entity: any) {
+        return entity.name;
     }
 
     protected getAddDialogData() {
@@ -113,16 +117,17 @@ export class EntityListComponentResolver implements OnInit {
     delete(id) {
 
         this.getEntityService().get(id).subscribe((model: any) => {
-            const dialogRef = this._dialog.open(EntityDeleteComponent, {
+            const dialogRef = this._dialog.open(ConfirmDialogComponent, {
                 data: {
                     id: id,
-                    name: model.name
+                    name: this.entityLabel(model),
+                    verb: 'delete'
                 }
             });
 
             dialogRef.afterClosed().subscribe( (result) => {
 
-                if (result.deleted) {
+                if (result.confirmed) {
                     this.getEntityService().delete(model._id).subscribe(() => {
                         this.getAllEntities();
                     });

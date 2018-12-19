@@ -43,7 +43,7 @@ export class EnrollmentListComponent extends EntityListComponentResolver impleme
         if (!this.entities) { return []; }
 
         return this.entities.map((e: any) => {
-            e.name = `${e.lastName} ${e.firstName} (${e.appeal})`;
+            e.name = this.entityLabel(e);
             e.servicesShortened = this.getServicesString(e);
             return e;
         });
@@ -70,5 +70,9 @@ export class EnrollmentListComponent extends EntityListComponentResolver impleme
         const delimeter = '..., ';
         const shortenedString = enrollment.services.reduce((acc, service) =>  acc + service.name.substr(0, shortener) + delimeter, '');
         return shortenedString.substr(0, shortenedString.length - delimeter.length);
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.lastName} ${entity.firstName} (${entity.appeal})`;
     }
 }

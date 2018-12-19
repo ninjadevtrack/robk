@@ -49,7 +49,7 @@ export class StudentListComponent extends EntityListComponentResolver implements
         if (!this.entities) { return []; }
 
         return this.entities.map((e) => {
-            e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
+            e.name = this.entityLabel(e);
             e.phone = e.user.phone;
             e.email = e.user.email;
             return e;
@@ -70,5 +70,9 @@ export class StudentListComponent extends EntityListComponentResolver implements
 
     protected getEditComponent(): ComponentType<any> {
         return StudentEditComponent;
+    }
+
+    protected entityLabel(entity: any) {
+        return `${entity.user.lastName} ${entity.user.firstName} (${entity.user.appeal})`;
     }
 }

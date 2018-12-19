@@ -133,6 +133,7 @@ import {StudentViewComponent} from './internal/admin/student/student-view/studen
 import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
 import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
+import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -222,7 +223,8 @@ type StoreType = {
         EntityListComponent,
         ServiceListRootComponent,
         StudentListRootComponent,
-        InstrumentListRootComponent
+        InstrumentListRootComponent,
+        TeacherListRootComponent
     ],
     entryComponents: [
         UserViewComponent,

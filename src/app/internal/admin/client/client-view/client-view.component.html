@@ -20,6 +20,7 @@
   <h2>Students</h2>
   <div class="m-b">
     <student-list
+            [addEntityEnabled]="true"
             [searchFieldEnabled]="false"
             [entities]="students"
             (entitiesListShouldBeUpdated)="getStudents()">

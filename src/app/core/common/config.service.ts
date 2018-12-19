@@ -126,7 +126,10 @@ export class ConfigService {
             },
             archive:  (id) => {
                 return `${Consts.API_URL}/v1/clients/${id}/archive`;
-            }
+            },
+            getStudents:  (id) => {
+                return `${Consts.API_URL}/v1/clients/${id}/students`;
+            },
         },
         Teacher: {
             default: () => {

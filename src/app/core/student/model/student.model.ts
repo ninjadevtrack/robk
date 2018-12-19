@@ -4,6 +4,7 @@ import { IClient } from '../../client/model/client.model';
 export interface IStudent {
     _id: string;
     user: IUser;
+    client: IClient;
     notes: string;
     updatedAt: string;
     createdAt: string;

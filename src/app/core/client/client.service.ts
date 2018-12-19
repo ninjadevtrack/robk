@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { ClientModel } from './model/client.model';
 import { HttpHelperService } from "../http-helper.service";
+import {StudentModel} from '../student/model/student.model';
 
 @Injectable()
 export class ClientService {
@@ -22,6 +23,10 @@ export class ClientService {
 
     public getAllArchived(): Observable<ClientModel[]> {
         return this._httpHelper.get(true, this._configService.API.Client.getAllArchived());
+    }
+
+    public getStudents(id: string): Observable<StudentModel[]> {
+        return this._httpHelper.get(true, this._configService.API.Client.getStudents(id));
     }
 
     public add(model: ClientModel): Observable<ClientModel> {

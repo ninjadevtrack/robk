@@ -11,6 +11,7 @@ import {SearchPipe} from '../../../../internal/common/search.pipe';
 })
 export class EntityListComponent implements OnInit {
 
+  @Input() floatingAddButton: boolean = true;
   @Input() searchFieldEnabled: boolean = true;
   @Input() addEntityEnabled: boolean = true;
   @Input() searchFields: string;
@@ -23,6 +24,7 @@ export class EntityListComponent implements OnInit {
   @Output() event = new EventEmitter<IEntityEvent>();
   searchPipe: SearchPipe = new SearchPipe();
   form: FormGroup;
+  addEntityButtonClass: string = 'floating-button';
 
   constructor(
       private _formBuilder: FormBuilder,
@@ -32,6 +34,10 @@ export class EntityListComponent implements OnInit {
       this.form = this._formBuilder.group({
           search: ['', []]
       });
+
+      if (!this.floatingAddButton) {
+          this.addEntityButtonClass = 'fixed-button';
+      }
   }
 
   getEntities(isActive: boolean) {

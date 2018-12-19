@@ -17,9 +17,10 @@
   <div>
     <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
   </div>
-  <h2>Students</h2>
-  <div class="m-b">
+  <h3>Students</h3>
+  <div class="m-b-3xl">
     <student-list
+            [floatingAddButton]="false"
             [addEntityEnabled]="true"
             [searchFieldEnabled]="false"
             [entities]="students"

@@ -20,6 +20,7 @@ import {StudentService} from '../../../../core/student/student.service';
 })
 export class StudentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() floatingAddButton: boolean = true;
     @Input() searchFieldEnabled: boolean = true;
     @Input() addEntityEnabled: boolean = true;
     @Input() entities: any[] = [];

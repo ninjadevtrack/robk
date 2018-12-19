@@ -130,6 +130,8 @@ import {StudentListComponent} from './internal/admin/student/student-list/studen
 import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
 import {StudentEditComponent} from './internal/admin/student/student-edit/student-edit.component';
 import {StudentViewComponent} from './internal/admin/student/student-view/student-view.component';
+import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
+import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -216,7 +218,9 @@ type StoreType = {
         IconLinkButtonComponent,
         EntityMenuComponent,
         EntityTableComponent,
-        EntityListComponent
+        EntityListComponent,
+        ServiceListRootComponent,
+        StudentListRootComponent
     ],
     entryComponents: [
         UserViewComponent,

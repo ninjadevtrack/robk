@@ -25,6 +25,8 @@ import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teac
 import { StudentListComponent } from './internal/admin/student/student-list/student-list.component';
 import { StudentViewComponent } from './internal/admin/student/student-view/student-view.component';
 import { StudentEditComponent } from './internal/admin/student/student-edit/student-edit.component';
+import {StudentListRootComponent} from './internal/admin/student/student-list-root/student-list-root.component';
+import {ServiceListRootComponent} from './internal/admin/service/service-list-root/service-list-root.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -40,22 +42,22 @@ export const ROUTES: Routes = [
             { path: 'admin', component: AdminComponent,
                 children: [
                     { path: '', component: UserListComponent },
-                    { path: 'clients', component: ClientListComponent },
-                    { path: 'clients/:id', component: ClientViewComponent },
-                    { path: 'clients/:id/edit', component: ClientEditComponent },
-                    { path: 'students', component: StudentListComponent },
+                    // { path: 'clients', component: ClientListComponent },
+                    // { path: 'clients/:id', component: ClientViewComponent },
+                    // { path: 'clients/:id/edit', component: ClientEditComponent },
+                    { path: 'students', component: StudentListRootComponent },
                     { path: 'students/:id', component: StudentViewComponent },
                     { path: 'students/:id/edit', component: StudentEditComponent },
-                    { path: 'teachers', component: TeacherListComponent },
-                    { path: 'teachers/:id', component: TeacherViewComponent },
-                    { path: 'teachers/:id/edit', component: TeacherEditComponent },
-                    { path: 'enrollments', component: EnrollmentListComponent },
-                    { path: 'enrollments/:id', component: EnrollmentViewComponent },
-                    { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
-                    { path: 'services', component: ServiceListComponent },
+                    // { path: 'teachers', component: TeacherListComponent },
+                    // { path: 'teachers/:id', component: TeacherViewComponent },
+                    // { path: 'teachers/:id/edit', component: TeacherEditComponent },
+                    // { path: 'enrollments', component: EnrollmentListComponent },
+                    // { path: 'enrollments/:id', component: EnrollmentViewComponent },
+                    // { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
+                    { path: 'services', component: ServiceListRootComponent },
                     { path: 'services/:id', component: ServiceViewComponent },
-                    { path: 'instruments', component: InstrumentListComponent },
-                    { path: 'instruments/:id', component: InstrumentViewComponent }
+                    // { path: 'instruments', component: InstrumentListComponent },
+                    // { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
             { path: 'calendar', component: CalendarComponent }

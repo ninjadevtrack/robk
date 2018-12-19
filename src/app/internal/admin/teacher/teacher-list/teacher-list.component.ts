@@ -1,5 +1,5 @@
 import {
-    Component,
+    Component, Input,
     OnInit
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
@@ -18,6 +18,7 @@ import {TeacherEditComponent} from '../teacher-edit/teacher-edit.component';
 })
 export class TeacherListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[] = [];
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -29,7 +30,7 @@ export class TeacherListComponent extends EntityListComponentResolver implements
     }
 
     protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
+        return this.entities.map((e) => {
             e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
             e.phone = e.user.phone;
             e.email = e.user.email;

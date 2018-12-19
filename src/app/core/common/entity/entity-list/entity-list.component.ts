@@ -34,7 +34,9 @@ export class EntityListComponent implements OnInit {
   }
 
   getEntities(isActive: boolean) {
-    return this.entities.filter(e => e.isActive === isActive);
+      if (!this.entities) { return; }
+
+      return this.entities.filter(e => e.isActive === isActive);
   }
 
   public getFilteredActiveEntities() {

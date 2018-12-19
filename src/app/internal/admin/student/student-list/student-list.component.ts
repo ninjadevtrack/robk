@@ -1,6 +1,8 @@
 import {
     Component,
-    OnInit
+    OnInit,
+    Output,
+    Input, EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { StudentAddComponent } from "../student-add/student-add.component";
@@ -18,6 +20,8 @@ import {StudentService} from '../../../../core/student/student.service';
 })
 export class StudentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[] = [];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -28,8 +32,15 @@ export class StudentListComponent extends EntityListComponentResolver implements
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
     protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
+
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e) => {
             e.name = `${e.user.lastName} ${e.user.firstName} (${e.user.appeal})`;
             e.phone = e.user.phone;
             e.email = e.user.email;

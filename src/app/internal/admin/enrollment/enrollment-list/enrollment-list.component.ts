@@ -1,7 +1,7 @@
 import {
     Component,
     OnInit,
-    HostListener
+    HostListener, Input
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
@@ -21,6 +21,7 @@ import {IEnrollment} from '../../../../core/enrollment/model/enrollment.model';
 })
 export class EnrollmentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() entities: any[];
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -33,7 +34,7 @@ export class EnrollmentListComponent extends EntityListComponentResolver impleme
     }
 
     protected getEntities(): any[] {
-        return super.getEntities().map((e: any) => {
+        return this.entities.map((e: any) => {
             e.name = `${e.lastName} ${e.firstName} (${e.appeal})`;
             e.servicesShortened = this.getServicesString(e);
             return e;

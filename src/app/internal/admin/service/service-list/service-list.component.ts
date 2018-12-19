@@ -1,7 +1,7 @@
 import {
     Component,
     OnInit,
-    HostListener
+    HostListener, Input, Output, EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ServiceService } from "../../../../core/service/service.service";
@@ -19,6 +19,9 @@ import {ServiceEditComponent} from '../service-edit/service-edit.component';
     templateUrl: './service-list.component.html'
 })
 export class ServiceListComponent extends EntityListComponentResolver implements OnInit {
+
+    @Input() entities: any[] = [];
+    @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE, EEntityEventType.UPDATE];
     eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
@@ -30,8 +33,14 @@ export class ServiceListComponent extends EntityListComponentResolver implements
         super(_dialog);
     }
 
+    protected getAllEntities() {
+        this.entitiesListShouldBeUpdated.emit();
+    }
+
     protected getEntities(): any[] {
-        return super.getEntities().map((e) => {
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e) => {
             e.updatedAtFormatted = this._datePipe.transform(new Date(e.updatedAt), 'yyyy-MM-dd');
             return e;
         });

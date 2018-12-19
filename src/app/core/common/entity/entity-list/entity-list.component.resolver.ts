@@ -8,7 +8,6 @@ import {ComponentType} from '@angular/cdk/typings/portal';
 
 export class EntityListComponentResolver implements OnInit {
 
-    entities: any[] = [];
     editEntityDialogOpened: boolean = false;
     addEntityDialogOpened: boolean;
     
@@ -16,10 +15,6 @@ export class EntityListComponentResolver implements OnInit {
         protected _dialog: MatDialog
     ) {
         this.addEntityDialogOpened = false;
-    }
-
-    protected getEntities() {
-        return this.entities;
     }
 
     protected getEntityService(): IEntityService {
@@ -31,6 +26,10 @@ export class EntityListComponentResolver implements OnInit {
     }
 
     protected getEditComponent(): ComponentType<any> {
+        throw Error('Should be implemented in the child component');
+    }
+
+    protected getAllEntities() {
         throw Error('Should be implemented in the child component');
     }
     
@@ -58,12 +57,6 @@ export class EntityListComponentResolver implements OnInit {
             default:
                 break;
         }
-    }
-
-    public getAllEntities() {
-        this.getEntityService().getAll().subscribe((entities: any[]) => {
-            this.entities = entities;
-        });
     }
 
     add() {

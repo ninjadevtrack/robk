@@ -27,6 +27,7 @@ import { StudentViewComponent } from './internal/admin/student/student-view/stud
 import { StudentEditComponent } from './internal/admin/student/student-edit/student-edit.component';
 import {StudentListRootComponent} from './internal/admin/student/student-list-root/student-list-root.component';
 import {ServiceListRootComponent} from './internal/admin/service/service-list-root/service-list-root.component';
+import {InstrumentListRootComponent} from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -56,8 +57,8 @@ export const ROUTES: Routes = [
                     // { path: 'enrollments/:id/edit', component: EnrollmentEditComponent },
                     { path: 'services', component: ServiceListRootComponent },
                     { path: 'services/:id', component: ServiceViewComponent },
-                    // { path: 'instruments', component: InstrumentListComponent },
-                    // { path: 'instruments/:id', component: InstrumentViewComponent }
+                    { path: 'instruments', component: InstrumentListRootComponent },
+                    { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
             { path: 'calendar', component: CalendarComponent }

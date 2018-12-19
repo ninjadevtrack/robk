@@ -37,6 +37,14 @@ export class ClientService {
         return this._httpHelper.get(true, this._configService.API.Client.dafaultWithId(id));
     }
 
+    public hasStudentAccount(id: string): Observable<ClientModel> {
+        return this._httpHelper.get(true, this._configService.API.Client.hasStudentAccount(id));
+    }
+
+    public createStudentAccount(id: string): Observable<ClientModel> {
+        return this._httpHelper.get(true, this._configService.API.Client.createStudentAccount(id));
+    }
+
     public delete(id: string): Observable<ClientModel> {
         return this._httpHelper.delete(true, this._configService.API.Client.dafaultWithId(id));
     }

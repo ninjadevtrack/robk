@@ -130,6 +130,12 @@ export class ConfigService {
             getStudents:  (id) => {
                 return `${Consts.API_URL}/v1/clients/${id}/students`;
             },
+            hasStudentAccount:  (id) => {
+                return `${Consts.API_URL}/v1/clients/${id}/hasstudentaccount`;
+            },
+            createStudentAccount:  (id) => {
+                return `${Consts.API_URL}/v1/clients/${id}/createstudentaccount`;
+            },
         },
         Teacher: {
             default: () => {

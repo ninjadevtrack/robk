@@ -17,4 +17,6 @@
   <div>
     <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
   </div>
+  <h2>Students</h2>
+  <student-list [entities]="students" (entitiesListShouldBeUpdated)="getStudents()"></student-list>
 </card-template>

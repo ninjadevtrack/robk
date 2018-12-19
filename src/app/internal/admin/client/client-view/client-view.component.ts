@@ -26,14 +26,22 @@ export class ClientViewComponent implements OnInit {
         this._route.params.subscribe((params) => {
             this.id = params.id;
 
-            this._clientService.get(this.id).subscribe((client: ClientModel) => {
-                this.client = client;
-            });
+            this.getClient();
 
-            this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
-               this.students = students;
-               console.log(students);
-            });
+            this.getStudents();
+
+        });
+    }
+
+    getClient() {
+        this._clientService.get(this.id).subscribe((client: ClientModel) => {
+            this.client = client;
+        });
+    }
+
+    getStudents() {
+        this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
+            this.students = students;
         });
     }
 

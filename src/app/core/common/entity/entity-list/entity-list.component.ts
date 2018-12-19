@@ -11,6 +11,7 @@ import {SearchPipe} from '../../../../internal/common/search.pipe';
 })
 export class EntityListComponent implements OnInit {
 
+  @Input() searchFieldEnabled: boolean = true;
   @Input() addEntityEnabled: boolean = true;
   @Input() searchFields: string;
   @Input() pathToViewComponent: string;

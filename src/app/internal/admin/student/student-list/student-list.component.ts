@@ -20,6 +20,7 @@ import {StudentService} from '../../../../core/student/student.service';
 })
 export class StudentListComponent extends EntityListComponentResolver implements OnInit {
 
+    @Input() searchFieldEnabled: boolean = true;
     @Input() entities: any[] = [];
     @Output() entitiesListShouldBeUpdated: EventEmitter<any> = new EventEmitter<any>();
     eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE];

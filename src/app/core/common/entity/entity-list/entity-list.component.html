@@ -1,6 +1,6 @@
 <div>
   <div>
-    <form [formGroup]="form">
+    <form *ngIf="searchFieldEnabled" [formGroup]="form">
       <div class="search-container">
         <div class="search-box">
           <mat-form-field class="search-field">

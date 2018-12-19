@@ -1,29 +1,23 @@
-<div>
-	<div class="m-b-3xl">
-		<div class="p-l-l p-r-l p-b-3xl" *ngIf="activeUsers && archivedUsers">
-			<div>
-				<form [formGroup]="form">
-					<div class="search-container">
-						<div class="search-box">
-							<mat-form-field class="search-field">
-								<input
-										formControlName="search"
-										name="search"
-										matInput
-										placeholder="Search">
-							</mat-form-field>
-						</div>
-					</div>
-				</form>
-				<mat-tab-group>
-					<mat-tab label="Active ({{getFilteredActiveUsers().length}})">
-						<user-table [users]="getFilteredActiveUsers()"></user-table>
-					</mat-tab>
-					<mat-tab label="Archived ({{getFilteredArchivedUsers().length}})">
-						<user-table [users]="getFilteredArchivedUsers()"></user-table>
-					</mat-tab>
-				</mat-tab-group>
+<div *ngIf="activeUsers && archivedUsers" class="p-l-l p-r-l">
+	<form [formGroup]="form">
+		<div class="search-container">
+			<div class="search-box">
+				<mat-form-field class="search-field">
+					<input
+							formControlName="search"
+							name="search"
+							matInput
+							placeholder="Search">
+				</mat-form-field>
 			</div>
 		</div>
-	</div>
+	</form>
+	<mat-tab-group>
+		<mat-tab label="Active ({{getFilteredActiveUsers().length}})">
+			<user-table [users]="getFilteredActiveUsers()"></user-table>
+		</mat-tab>
+		<mat-tab label="Archived ({{getFilteredArchivedUsers().length}})">
+			<user-table [users]="getFilteredArchivedUsers()"></user-table>
+		</mat-tab>
+	</mat-tab-group>
 </div>

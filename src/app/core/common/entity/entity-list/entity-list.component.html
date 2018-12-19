@@ -1,40 +1,38 @@
-<div class="">
-  <div class="m-t-3xl m-b-3xl">
-    <div class="p-l-l p-r-l p-b-3xl">
-      <form [formGroup]="form">
-        <div class="search-container">
-          <div class="search-box">
-            <mat-form-field class="search-field">
-              <input
-                      formControlName="search"
-                      name="search"
-                      matInput
-                      placeholder="Search">
-            </mat-form-field>
-          </div>
+<div>
+  <div>
+    <form [formGroup]="form">
+      <div class="search-container">
+        <div class="search-box">
+          <mat-form-field class="search-field">
+            <input
+                    formControlName="search"
+                    name="search"
+                    matInput
+                    placeholder="Search">
+          </mat-form-field>
         </div>
-      </form>
-      <mat-tab-group>
-        <mat-tab label="Active ({{getFilteredActiveEntities()?.length}})">
-          <app-entity-table [entities]="getFilteredActiveEntities()"
-                            (event)="propagateEvent($event)"
-                            [fieldLabels]="fieldLabels"
-                            [fields]="fields"
-                            [eventTypes]="eventTypesForActiveEntities"
-                            [pathToViewComponent]="pathToViewComponent">
-          </app-entity-table>
-        </mat-tab>
-        <mat-tab label="Archived ({{getFilteredArchivedEntities()?.length}})">
-          <app-entity-table [entities]="getFilteredArchivedEntities()"
-                            (event)="propagateEvent($event)"
-                            [fieldLabels]="fieldLabels"
-                            [fields]="fields"
-                            [eventTypes]="eventTypesForArchivedEntities"
-                            [pathToViewComponent]="pathToViewComponent">
-          </app-entity-table>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
+      </div>
+    </form>
+    <mat-tab-group>
+      <mat-tab label="Active ({{getFilteredActiveEntities()?.length}})">
+        <app-entity-table [entities]="getFilteredActiveEntities()"
+                          (event)="propagateEvent($event)"
+                          [fieldLabels]="fieldLabels"
+                          [fields]="fields"
+                          [eventTypes]="eventTypesForActiveEntities"
+                          [pathToViewComponent]="pathToViewComponent">
+        </app-entity-table>
+      </mat-tab>
+      <mat-tab label="Archived ({{getFilteredArchivedEntities()?.length}})">
+        <app-entity-table [entities]="getFilteredArchivedEntities()"
+                          (event)="propagateEvent($event)"
+                          [fieldLabels]="fieldLabels"
+                          [fields]="fields"
+                          [eventTypes]="eventTypesForArchivedEntities"
+                          [pathToViewComponent]="pathToViewComponent">
+        </app-entity-table>
+      </mat-tab>
+    </mat-tab-group>
   </div>
   <div *ngIf="addEntityEnabled" class="floating-button">
     <button mat-fab class="font-size-2xl font-weight-300" (click)="addEntity()">+</button>

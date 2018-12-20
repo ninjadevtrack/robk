@@ -43,6 +43,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: $mat-color-500;
+}
+
 nav a {
   color: rgba(255, 255, 255, 0.5);
   padding: 8px 16px;
@@ -52,6 +56,11 @@ nav a {
   text-align: center;
   text-decoration: none;
   font-weight: 100;
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .font-weight-100 {
@@ -781,4 +790,22 @@ media-plan-view {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $mat-color-500;
+  border-color: $mat-color-900;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+  color: #fff;
+  background-color: $mat-color-200;
+  border-color: $mat-color-900;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: $mat-color-200;
+  border-color: $mat-color-900;
 }

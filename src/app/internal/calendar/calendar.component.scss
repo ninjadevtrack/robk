@@ -1,0 +1,11 @@
+.calendar-header-container {
+  display: flex;
+}
+
+.calendar-header-container > .date-switcher {
+  flex: 1;
+}
+
+.calendar-header-container > .filters {
+  flex: 1;
+}

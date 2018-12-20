@@ -1,9 +1,16 @@
-<div class="p-t-3xl">
+<div class="p-t-3xl p-l-l p-r-l">
   <div class="p-t-3xl">
-    <mwl-demo-utils-calendar-header
-            [(view)]="view"
-            [(viewDate)]="viewDate">
-    </mwl-demo-utils-calendar-header>
+    <div class="calendar-header-container">
+      <div class="date-switcher">
+        <mwl-demo-utils-calendar-header
+                [(view)]="view"
+                [(viewDate)]="viewDate">
+        </mwl-demo-utils-calendar-header>
+      </div>
+      <div class="filters">
+        Filters
+      </div>
+    </div>
   </div>
 </div>
 

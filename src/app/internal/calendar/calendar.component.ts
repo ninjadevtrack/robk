@@ -82,7 +82,7 @@ export class CalendarComponent implements OnInit {
         this.events = this.individualLessons.map((il) => {
             return {
                 title: `${il.title} - ${il.teacher.user.lastName} ${il.teacher.user.firstName} ${il.student.user.lastName} ${il.student.user.firstName}`,
-                color: colors.blue,
+                color: this.getColor(il.teacher),
                 start: new Date(il.start),
                 end: new Date(il.end),
                 draggable: true,
@@ -95,19 +95,47 @@ export class CalendarComponent implements OnInit {
         });
     }
 
+    private getColor(teacher: ITeacher) {
+        const index = this.teachers.findIndex((t) => t._id === teacher._id);
+
+        if (index === -1) { return CalendarColors[CalendarColors.length - 1]; }
+
+        return (CalendarColors.length >= this.teachers.length) ? CalendarColors[index] : CalendarColors[this.teachers.length % CalendarColors.length];
+    }
+
 }
 
-export const colors: any = {
-    red: {
+export const CalendarColors: any = [
+    {
         primary: '#ad2121',
         secondary: '#FAE3E3'
     },
-    blue: {
+    {
         primary: '#1e90ff',
         secondary: '#D1E8FF'
     },
-    yellow: {
+    {
         primary: '#e3bc08',
         secondary: '#FDF1BA'
-    }
-};
+    },
+    {
+        primary: '#09a500',
+        secondary: '#95fd8e'
+    },
+    {
+        primary: '#045700',
+        secondary: '#64a95e'
+    },
+    {
+        primary: '#2c3ca5',
+        secondary: '#95b2fd'
+    },
+    {
+        primary: '#ad2121',
+        secondary: '#fa8581'
+    },
+    {
+        primary: '#e3bc08',
+        secondary: '#fde468'
+    },
+];

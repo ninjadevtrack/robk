@@ -53,7 +53,6 @@ export class CalendarComponent implements OnInit {
             students: ['', [Validators.required]]
         });
 
-        this.initEvents();
         this.getTeachers();
         this.getStudents();
         this.getIndividualLessons();
@@ -62,7 +61,7 @@ export class CalendarComponent implements OnInit {
     private getIndividualLessons() {
         this._individualLessonService.getAll().subscribe((individualLessons: IIndividualLesson[]) => {
             this.individualLessons = individualLessons;
-            console.log(this.individualLessons);
+            this.initEvents();
         });
     }
 
@@ -79,23 +78,20 @@ export class CalendarComponent implements OnInit {
     }
 
     initEvents () {
-        let start;
-        for (let i = 0; i < this.daysCount; i++) {
-            for (let j = 0; j < this.eventsPerDayCount; j++) {
-                start = addHours( addDays(new Date(), i), -j);
-                this.events.push({
-                    title: 'Event 2',
-                    color: colors.blue,
-                    start: start,
-                    end: addHours(start, 2),
-                    draggable: true,
-                    resizable: {
-                        beforeStart: true, // this allows you to configure the sides the event is resizable from
-                        afterEnd: true
-                    }
-                });
-            }
-        }
+
+        this.events = this.individualLessons.map((il) => {
+            return {
+                title: il.title,
+                color: colors.blue,
+                start: new Date(il.start),
+                end: new Date(il.end),
+                draggable: true,
+                resizable: {
+                    beforeStart: true, // this allows you to configure the sides the event is resizable from
+                    afterEnd: true
+                }
+            };
+        });
     }
 
 }

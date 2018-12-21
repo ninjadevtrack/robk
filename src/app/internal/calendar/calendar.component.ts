@@ -20,9 +20,7 @@ export class CalendarComponent implements OnInit {
     filtersForm: FormGroup;
     view: string = 'week';
     viewDate: Date = new Date();
-    daysCount: number = 5;
     events: CalendarEvent[] = [];
-    eventsPerDayCount: number = 4;
     refresh: Subject<any> = new Subject();
     teachers: ITeacher[] = [];
     students: IStudent[] = [];

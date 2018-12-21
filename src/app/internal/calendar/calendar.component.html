@@ -12,7 +12,7 @@
           <div class="filters-container">
             <div class="text-right">
               <mat-form-field class="regular-field">
-                <mat-select placeholder="Teachers" formControlName="teachers" multiple>
+                <mat-select placeholder="Teachers" formControlName="teachers" multiple (selectionChange)="getIndividualLessons()">
                   <mat-option *ngFor="let teacher of teachers" [value]="teacher._id">
                     {{teacher.user.lastName}} {{teacher.user.firstName}}
                   </mat-option>

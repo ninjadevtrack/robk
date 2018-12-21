@@ -55,13 +55,6 @@ export class CalendarComponent implements OnInit {
         this.getStudents();
     }
 
-    private getIndividualLessons(teachers: ITeacher[]) {
-        this._individualLessonService.search(teachers.map(t => t._id)).subscribe((individualLessons: IIndividualLesson[]) => {
-            this.individualLessons = individualLessons;
-            this.initEvents();
-        });
-    }
-
     private getStudents() {
         this._studentService.getAllActive().subscribe((students: IStudent[]) => {
             this.students = students;
@@ -73,7 +66,15 @@ export class CalendarComponent implements OnInit {
         this._teacherService.getAllActive().subscribe((teachers: ITeacher[]) => {
             this.teachers = teachers;
             this.filtersForm.controls['teachers'].setValue(teachers.map(t => t._id));
-            this.getIndividualLessons(this.teachers);
+            this.getIndividualLessons();
+        });
+    }
+
+    private getIndividualLessons() {
+        const teachers = this.filtersForm.controls['teachers'].value;
+        this._individualLessonService.search(teachers).subscribe((individualLessons: IIndividualLesson[]) => {
+            this.individualLessons = individualLessons;
+            this.initEvents();
         });
     }
 

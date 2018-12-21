@@ -176,6 +176,14 @@ export class ConfigService {
             archive:  (id) => {
                 return `${Consts.API_URL}/v1/students/${id}/archive`;
             }
+        },
+        IndividualLesson: {
+            default: () => {
+                return `${Consts.API_URL}/v1/individual-lessons`;
+            },
+            dafaultWithId: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}`;
+            }
         }
     };
 

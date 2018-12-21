@@ -81,7 +81,7 @@ export class CalendarComponent implements OnInit {
 
         this.events = this.individualLessons.map((il) => {
             return {
-                title: il.title,
+                title: `${il.title} - ${il.teacher.user.lastName} ${il.teacher.user.firstName} ${il.student.user.lastName} ${il.student.user.firstName}`,
                 color: colors.blue,
                 start: new Date(il.start),
                 end: new Date(il.end),
@@ -89,7 +89,8 @@ export class CalendarComponent implements OnInit {
                 resizable: {
                     beforeStart: true, // this allows you to configure the sides the event is resizable from
                     afterEnd: true
-                }
+                },
+                meta: il
             };
         });
     }

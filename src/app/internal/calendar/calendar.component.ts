@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit {
 
         this.events = this.individualLessons.map((il) => {
             return {
-                title: `${il.title} - ${il.teacher.user.lastName} ${il.teacher.user.firstName} ${il.student.user.lastName} ${il.student.user.firstName}`,
+                title: `${il.teacher.user.firstName} ${il.teacher.user.lastName} teaching ${il.student.user.firstName} ${il.student.user.lastName} - ${il.title}`,
                 color: this.getColor(il.teacher),
                 start: new Date(il.start),
                 end: new Date(il.end),

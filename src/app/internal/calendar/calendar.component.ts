@@ -101,4 +101,10 @@ export class CalendarComponent implements OnInit {
         return (CalendarColors.length >= this.teachers.length) ? CalendarColors[index] : CalendarColors[this.teachers.length % CalendarColors.length];
     }
 
+    monthViewDayClicked(event) {
+        if (this.events.filter((e) => e.start.toDateString() === event.day.date.toDateString()).length > 0) {
+            this.viewDate = event.day.date;
+        }
+    }
+
 }

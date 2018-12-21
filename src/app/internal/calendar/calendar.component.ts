@@ -7,6 +7,8 @@ import {ITeacher} from '../../core/teacher/model/teacher.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StudentService} from '../../core/student/student.service';
 import {IStudent} from '../../core/student/model/student.model';
+import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
+import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
 
 @Component({
   selector: 'app-calendar',
@@ -24,6 +26,7 @@ export class CalendarComponent implements OnInit {
     refresh: Subject<any> = new Subject();
     teachers: ITeacher[] = [];
     students: IStudent[] = [];
+    individualLessons: IIndividualLesson[] = [];
 
     eventTimesChanged({
         event,
@@ -39,6 +42,7 @@ export class CalendarComponent implements OnInit {
     constructor(
         private _teacherService: TeacherService,
         private _studentService: StudentService,
+        private _individualLessonService: IndividualLessonService,
         private _formBuilder: FormBuilder
     ) { }
 
@@ -50,11 +54,27 @@ export class CalendarComponent implements OnInit {
         });
 
         this.initEvents();
-        this._teacherService.getAllActive().subscribe((teachers: ITeacher[]) => {
-            this.teachers = teachers;
+        this.getTeachers();
+        this.getStudents();
+        this.getIndividualLessons();
+    }
+
+    private getIndividualLessons() {
+        this._individualLessonService.getAll().subscribe((individualLessons: IIndividualLesson[]) => {
+            this.individualLessons = individualLessons;
+            console.log(this.individualLessons);
         });
+    }
+
+    private getStudents() {
         this._studentService.getAllActive().subscribe((students: IStudent[]) => {
             this.students = students;
+        });
+    }
+
+    private getTeachers() {
+        this._teacherService.getAllActive().subscribe((teachers: ITeacher[]) => {
+            this.teachers = teachers;
         });
     }
 

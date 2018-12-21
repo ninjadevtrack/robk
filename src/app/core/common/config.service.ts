@@ -181,6 +181,9 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/individual-lessons`;
             },
+            search: () => {
+                return `${Consts.API_URL}/v1/individual-lessons/search`;
+            },
             dafaultWithId: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}`;
             }

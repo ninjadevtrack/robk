@@ -20,6 +20,12 @@ export class IndividualLessonService  {
         return this._httpHelper.post(true, this._configService.API.IndividualLesson.default(), model);
     }
 
+    public search(teacherIds: string[]): Observable<IndividualLessonModel[]> {
+        return this._httpHelper.post(true, this._configService.API.IndividualLesson.search(), {
+            teachers: teacherIds
+        });
+    }
+
     public get(id: string): Observable<IndividualLessonModel> {
         return this._httpHelper.get(true, this._configService.API.IndividualLesson.dafaultWithId(id));
     }

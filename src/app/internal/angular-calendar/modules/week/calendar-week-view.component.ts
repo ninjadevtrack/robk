@@ -187,163 +187,166 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           </div>
         </div>
       </div>
-      <div
-        class="cal-time-events"
-        mwlDroppable
-        (dragEnter)="eventDragEnter = eventDragEnter + 1"
-        (dragLeave)="eventDragEnter = eventDragEnter - 1"
-      >
-        <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">
-          <div
-            *ngFor="
+      <div class="cal-time-events-wrapper">
+		  <div
+				  class="cal-time-events"
+				  mwlDroppable
+				  (dragEnter)="eventDragEnter = eventDragEnter + 1"
+				  (dragLeave)="eventDragEnter = eventDragEnter - 1"
+		  >
+			  <div class="cal-time-label-column" *ngIf="view.hourColumns.length > 0">
+				  <div
+						  *ngFor="
               let hour of view.hourColumns[0].hours;
               trackBy: trackByHour;
               let odd = odd
             "
-            class="cal-hour"
-            [class.cal-hour-odd]="odd"
-          >
-            <mwl-calendar-week-view-hour-segment
-              *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"
-              [style.height.px]="hourSegmentHeight"
-              [segment]="segment"
-              [segmentHeight]="hourSegmentHeight"
-              [locale]="locale"
-              [customTemplate]="hourSegmentTemplate"
-              [isTimeLabel]="true"
-            >
-            </mwl-calendar-week-view-hour-segment>
-          </div>
-        </div>
-        <div
-          class="cal-day-columns"
-          [class.cal-resize-active]="timeEventResizes.size > 0"
-          #dayColumns
-        >
-          <div
-            class="cal-day-column"
-            *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
-          >
-            <div
-              *ngFor="
+						  class="cal-hour"
+						  [class.cal-hour-odd]="odd"
+				  >
+					  <mwl-calendar-week-view-hour-segment
+							  *ngFor="let segment of hour.segments; trackBy: trackByHourSegment"
+							  [style.height.px]="hourSegmentHeight"
+							  [segment]="segment"
+							  [segmentHeight]="hourSegmentHeight"
+							  [locale]="locale"
+							  [customTemplate]="hourSegmentTemplate"
+							  [isTimeLabel]="true"
+					  >
+					  </mwl-calendar-week-view-hour-segment>
+				  </div>
+			  </div>
+			  <div
+					  class="cal-day-columns"
+					  [class.cal-resize-active]="timeEventResizes.size > 0"
+					  #dayColumns
+			  >
+				  <div
+						  class="cal-day-column"
+						  *ngFor="let column of view.hourColumns; trackBy: trackByHourColumn"
+				  >
+					  <div
+							  *ngFor="
                 let timeEvent of column.events;
                 trackBy: trackByDayOrWeekEvent
               "
-              #event
-              class="cal-event-container"
-              [class.cal-draggable]="
+							  #event
+							  class="cal-event-container"
+							  [class.cal-draggable]="
                 timeEvent.event.draggable && timeEventResizes.size === 0
               "
-              [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"
-              [class.cal-ends-within-day]="!timeEvent.endsAfterDay"
-              [ngClass]="timeEvent.event.cssClass"
-              [hidden]="timeEvent.height === 0 && timeEvent.width === 0"
-              [style.top.px]="timeEvent.top"
-              [style.height.px]="timeEvent.height"
-              [style.left.%]="timeEvent.left"
-              [style.width.%]="timeEvent.width"
-              mwlResizable
-              [resizeSnapGrid]="{
+							  [class.cal-starts-within-day]="!timeEvent.startsBeforeDay"
+							  [class.cal-ends-within-day]="!timeEvent.endsAfterDay"
+							  [ngClass]="timeEvent.event.cssClass"
+							  [hidden]="timeEvent.height === 0 && timeEvent.width === 0"
+							  [style.top.px]="timeEvent.top"
+							  [style.height.px]="timeEvent.height"
+							  [style.left.%]="timeEvent.left"
+							  [style.width.%]="timeEvent.width"
+							  mwlResizable
+							  [resizeSnapGrid]="{
                 left: dayColumnWidth,
                 right: dayColumnWidth,
                 top: eventSnapSize || hourSegmentHeight,
                 bottom: eventSnapSize || hourSegmentHeight
               }"
-              [validateResize]="validateResize"
-              [allowNegativeResizes]="true"
-              (resizeStart)="
+							  [validateResize]="validateResize"
+							  [allowNegativeResizes]="true"
+							  (resizeStart)="
                 timeEventResizeStarted(dayColumns, timeEvent, $event)
               "
-              (resizing)="timeEventResizing(timeEvent, $event)"
-              (resizeEnd)="timeEventResizeEnded(timeEvent)"
-              mwlDraggable
-              dragActiveClass="cal-drag-active"
-              [dropData]="{ event: timeEvent.event, calendarId: calendarId }"
-              [dragAxis]="{
+							  (resizing)="timeEventResizing(timeEvent, $event)"
+							  (resizeEnd)="timeEventResizeEnded(timeEvent)"
+							  mwlDraggable
+							  dragActiveClass="cal-drag-active"
+							  [dropData]="{ event: timeEvent.event, calendarId: calendarId }"
+							  [dragAxis]="{
                 x: timeEvent.event.draggable && timeEventResizes.size === 0,
                 y: timeEvent.event.draggable && timeEventResizes.size === 0
               }"
-              [dragSnapGrid]="
+							  [dragSnapGrid]="
                 snapDraggedEvents
                   ? { x: dayColumnWidth, y: eventSnapSize || hourSegmentHeight }
                   : {}
               "
-              [ghostDragEnabled]="!snapDraggedEvents"
-              [validateDrag]="validateDrag"
-              (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
-              (dragging)="dragMove(timeEvent, $event)"
-              (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
-            >
-              <div
-                class="cal-resize-handle cal-resize-handle-before-start"
-                *ngIf="
+							  [ghostDragEnabled]="!snapDraggedEvents"
+							  [validateDrag]="validateDrag"
+							  (dragPointerDown)="dragStarted(dayColumns, event, timeEvent)"
+							  (dragging)="dragMove(timeEvent, $event)"
+							  (dragEnd)="dragEnded(timeEvent, $event, dayColumnWidth, true)"
+					  >
+						  <div
+								  class="cal-resize-handle cal-resize-handle-before-start"
+								  *ngIf="
                   timeEvent.event?.resizable?.beforeStart &&
                   !timeEvent.startsBeforeDay
                 "
-                mwlResizeHandle
-                [resizeEdges]="{
+								  mwlResizeHandle
+								  [resizeEdges]="{
                   left: true,
                   top: true
                 }"
-              ></div>
-              <mwl-calendar-week-view-event
-                [weekEvent]="timeEvent"
-                [tooltipPlacement]="tooltipPlacement"
-                [tooltipTemplate]="tooltipTemplate"
-                [tooltipAppendToBody]="tooltipAppendToBody"
-                [tooltipDisabled]="dragActive || timeEventResizes.size > 0"
-                [customTemplate]="eventTemplate"
-                [eventTitleTemplate]="eventTitleTemplate"
-                [eventActionsTemplate]="eventActionsTemplate"
-                (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
-              >
-              </mwl-calendar-week-view-event>
-              <div
-                class="cal-resize-handle cal-resize-handle-after-end"
-                *ngIf="
+						  ></div>
+						  <mwl-calendar-week-view-event
+								  [weekEvent]="timeEvent"
+								  [tooltipPlacement]="tooltipPlacement"
+								  [tooltipTemplate]="tooltipTemplate"
+								  [tooltipAppendToBody]="tooltipAppendToBody"
+								  [tooltipDisabled]="dragActive || timeEventResizes.size > 0"
+								  [customTemplate]="eventTemplate"
+								  [eventTitleTemplate]="eventTitleTemplate"
+								  [eventActionsTemplate]="eventActionsTemplate"
+								  (eventClicked)="eventClicked.emit({ event: timeEvent.event })"
+						  >
+						  </mwl-calendar-week-view-event>
+						  <div
+								  class="cal-resize-handle cal-resize-handle-after-end"
+								  *ngIf="
                   timeEvent.event?.resizable?.afterEnd &&
                   !timeEvent.endsAfterDay
                 "
-                mwlResizeHandle
-                [resizeEdges]="{
+								  mwlResizeHandle
+								  [resizeEdges]="{
                   right: true,
                   bottom: true
                 }"
-              ></div>
-            </div>
+						  ></div>
+					  </div>
 
-            <div
-              *ngFor="
+					  <div
+							  *ngFor="
                 let hour of column.hours;
                 trackBy: trackByHour;
                 let odd = odd
               "
-              class="cal-hour"
-              [class.cal-hour-odd]="odd"
-            >
-              <mwl-calendar-week-view-hour-segment
-                *ngFor="
+							  class="cal-hour"
+							  [class.cal-hour-odd]="odd"
+					  >
+						  <mwl-calendar-week-view-hour-segment
+								  *ngFor="
                   let segment of hour.segments;
                   trackBy: trackByHourSegment
                 "
-                [style.height.px]="hourSegmentHeight"
-                [segment]="segment"
-                [segmentHeight]="hourSegmentHeight"
-                [locale]="locale"
-                [customTemplate]="hourSegmentTemplate"
-                (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"
-                mwlDroppable
-                [dragOverClass]="
+								  [style.height.px]="hourSegmentHeight"
+								  [segment]="segment"
+								  [segmentHeight]="hourSegmentHeight"
+								  [locale]="locale"
+								  [customTemplate]="hourSegmentTemplate"
+								  (mwlClick)="hourSegmentClicked.emit({ date: segment.date })"
+								  mwlDroppable
+								  [dragOverClass]="
                   !dragActive || !snapDraggedEvents ? 'cal-drag-over' : null
                 "
-                dragActiveClass="cal-drag-active"
-                (drop)="eventDropped($event, segment.date, false)"
-              >
-              </mwl-calendar-week-view-hour-segment>
-            </div>
-          </div>
-        </div>
+								  dragActiveClass="cal-drag-active"
+								  (drop)="eventDropped($event, segment.date, false)"
+						  >
+						  </mwl-calendar-week-view-hour-segment>
+					  </div>
+				  </div>
+			  </div>
+		  </div>  
       </div>
+      
     </div>
   `
 })

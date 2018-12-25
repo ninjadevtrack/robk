@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarEventTimesChangedEvent } from '../angular-calendar';
 import { TeacherService } from '../../core/teacher/teacher.service';
@@ -9,14 +9,16 @@ import {IStudent} from '../../core/student/model/student.model';
 import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
 import { CalendarColors} from './demo-utils/colors';
+import {SmoothScrollService} from '../../core/smooth-scroll.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, AfterViewInit {
 
+    @ViewChild('weekView', { read: ElementRef }) weekView: ElementRef;
     filtersForm: FormGroup;
     view: string = 'week';
     viewDate: Date = new Date();
@@ -41,8 +43,14 @@ export class CalendarComponent implements OnInit {
         private _teacherService: TeacherService,
         private _studentService: StudentService,
         private _individualLessonService: IndividualLessonService,
-        private _formBuilder: FormBuilder
-    ) { }
+        private _formBuilder: FormBuilder,
+        private _smoothScrollService: SmoothScrollService
+    ) {
+    }
+
+    ngAfterViewInit() {
+        this._smoothScrollService.scrollWithinElement('cal-time-events-wrapper', 400);
+    }
 
     ngOnInit() {
 

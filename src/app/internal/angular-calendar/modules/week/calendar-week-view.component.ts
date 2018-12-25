@@ -187,7 +187,7 @@ export interface CalendarWeekViewBeforeRenderEvent extends WeekView {
           </div>
         </div>
       </div>
-      <div class="cal-time-events-wrapper">
+      <div id="cal-time-events-wrapper" class="cal-time-events-wrapper">
 		  <div
 				  class="cal-time-events"
 				  mwlDroppable

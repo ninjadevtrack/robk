@@ -12,9 +12,17 @@ export class SmoothScrollService {
 
     public scrollTo(yPoint: number, duration: number) {
         setTimeout(() => {
-            this.win.window.scrollTo(0, yPoint)
+            this.win.window.scrollTo(0, yPoint);
         }, duration);
         return;
+    }
+
+    public scrollWithinElement(scrollingElementID, topOffset) {
+
+        const element = document.getElementById(scrollingElementID);
+        if (element) {
+            element.scrollTop = topOffset;
+        }
     }
 
     public smoothScrollToElement(eID) {

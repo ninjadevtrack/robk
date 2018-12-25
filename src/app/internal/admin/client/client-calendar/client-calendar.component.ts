@@ -46,7 +46,7 @@ export class ClientCalendarComponent implements OnInit {
           this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
               this.students = students;
               this.filtersForm.controls['students'].setValue(this.students.map(s => s._id));
-              this.getIndividualLessons([this.id], []);
+              this.getIndividualLessons([], this.filtersForm.controls['students'].value);
           });
       });
   }
@@ -58,7 +58,7 @@ export class ClientCalendarComponent implements OnInit {
   }
 
   filterSelectionChanged() {
-      this.getIndividualLessons([this.id], this.filtersForm.controls['students'].value);
+      this.getIndividualLessons([], this.filtersForm.controls['students'].value);
   }
 
 }

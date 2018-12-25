@@ -4,6 +4,9 @@ import {TeacherService} from '../../../../core/teacher/teacher.service';
 import {TeacherModel} from '../../../../core/teacher/model/teacher.model';
 import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
 import {IIndividualLesson} from '../../../../core/individual-lesson/model/individual-lesson.model';
+import {StudentService} from '../../../../core/student/student.service';
+import {StudentModel} from '../../../../core/student/model/student.model';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-teacher-calendar',
@@ -12,18 +15,27 @@ import {IIndividualLesson} from '../../../../core/individual-lesson/model/indivi
 })
 export class TeacherCalendarComponent implements OnInit {
 
+  filtersForm: FormGroup;
   id: string;
   teacher: TeacherModel;
+  students: StudentModel[];
   individualLessons: IIndividualLesson[];
 
   constructor(
       private _router: Router,
       private _route: ActivatedRoute,
       private _teacherService: TeacherService,
-      private _individualLessonsService: IndividualLessonService
+      private _studentService: StudentService,
+      private _individualLessonsService: IndividualLessonService,
+      private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
+
+      this.filtersForm = this._formBuilder.group({
+          students: ['', []]
+      });
+
       this._route.params.subscribe((params) => {
           this.id = params.id;
 
@@ -31,10 +43,21 @@ export class TeacherCalendarComponent implements OnInit {
               this.teacher = teacher;
           });
 
-          this._individualLessonsService.search([this.id], []).subscribe((individualLessons) => {
-            this.individualLessons = individualLessons;
+          this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
+              this.students = students;
+              this.getIndividualLessons([this.id], []);
           });
       });
+  }
+
+  getIndividualLessons(teacherIds, studentIds) {
+      this._individualLessonsService.search(teacherIds, studentIds).subscribe((individualLessons) => {
+          this.individualLessons = individualLessons;
+      });
+  }
+
+  filterSelectionChanged() {
+      this.getIndividualLessons([this.id], this.filtersForm.controls['students'].value);
   }
 
 }

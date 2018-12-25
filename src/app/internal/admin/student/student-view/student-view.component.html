@@ -1,12 +1,12 @@
 <card-template>
   <div class="flex-container">
-    <div class="flex-container">
+    <div class="flex-container-left">
       <div>
         <h1>
           {{student?.user?.lastName}} {{student?.user?.firstName}} ({{student?.user?.appeal}})
         </h1>
       </div>
-      <div class="m-t-2xl p-b">
+      <div class="m-l-l m-t-2xl p-b">
         <a routerLink="/i/admin/students/{{student?._id}}/calendar" class="p-r-3xl">Schedule</a>
       </div>
     </div>

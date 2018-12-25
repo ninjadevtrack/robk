@@ -21,7 +21,7 @@
             </div>
             <div class="right text-right">
               <mat-form-field class="regular-field">
-                <mat-select placeholder="Students" formControlName="students" multiple>
+                <mat-select placeholder="Students" formControlName="students" multiple (selectionChange)="getIndividualLessons()">
                   <mat-option *ngFor="let student of students" [value]="student._id">
                     {{student.user.lastName}} {{student.user.firstName}}
                   </mat-option>

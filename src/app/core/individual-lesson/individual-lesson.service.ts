@@ -20,9 +20,10 @@ export class IndividualLessonService  {
         return this._httpHelper.post(true, this._configService.API.IndividualLesson.default(), model);
     }
 
-    public search(teacherIds: string[]): Observable<IndividualLessonModel[]> {
+    public search(teacherIds: string[], studentIds: string[]): Observable<IndividualLessonModel[]> {
         return this._httpHelper.post(true, this._configService.API.IndividualLesson.search(), {
-            teachers: teacherIds
+            teachers: teacherIds,
+            students: studentIds
         });
     }
 

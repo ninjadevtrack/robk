@@ -27,6 +27,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     teachers: ITeacher[] = [];
     students: IStudent[] = [];
     individualLessons: IIndividualLesson[] = [];
+    studentsLoaded = false;
+    teachersLoaded = false;
 
     eventTimesChanged({
         event,
@@ -36,6 +38,10 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         event.start = newStart;
         event.end = newEnd;
         this.refresh.next();
+    }
+
+    private auxilaryDataLoaded(): boolean {
+        return this.studentsLoaded && this.teachersLoaded;
     }
 
 
@@ -66,24 +72,30 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     private getStudents() {
         this._studentService.getAllActive().subscribe((students: IStudent[]) => {
             this.students = students;
+            this.studentsLoaded = true;
             this.filtersForm.controls['students'].setValue(students.map(s => s._id));
+            this.getIndividualLessons();
         });
     }
 
     private getTeachers() {
         this._teacherService.getAllActive().subscribe((teachers: ITeacher[]) => {
             this.teachers = teachers;
+            this.teachersLoaded = true;
             this.filtersForm.controls['teachers'].setValue(teachers.map(t => t._id));
             this.getIndividualLessons();
         });
     }
 
     private getIndividualLessons() {
-        const teachers = this.filtersForm.controls['teachers'].value;
-        this._individualLessonService.search(teachers).subscribe((individualLessons: IIndividualLesson[]) => {
-            this.individualLessons = individualLessons;
-            this.initEvents();
-        });
+        if (this.auxilaryDataLoaded()) {
+            const teachers = this.filtersForm.controls['teachers'].value;
+            const students = this.filtersForm.controls['students'].value;
+            this._individualLessonService.search(teachers, students).subscribe((individualLessons: IIndividualLesson[]) => {
+                this.individualLessons = individualLessons;
+                this.initEvents();
+            });
+        }
     }
 
     initEvents () {

@@ -1,0 +1,24 @@
+.calendar-header-container {
+  display: flex;
+}
+
+.calendar-header-container > .date-switcher {
+  flex: 1;
+}
+
+.calendar-header-container > .filters {
+  flex: 1;
+}
+
+.filters-container {
+  display: flex;
+}
+
+.filters-container > .right {
+  margin-left: auto;
+}
+
+.filters-container > div {
+  flex: 1;
+}
+

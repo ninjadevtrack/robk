@@ -1,29 +1,66 @@
-<mwl-demo-utils-calendar-header
-        [(view)]="view"
-        [(viewDate)]="viewDate">
-</mwl-demo-utils-calendar-header>
+<div class="p-t-3xl p-l-l p-r-l">
+  <div class="p-t-3xl">
+    <div class="calendar-header-container">
+      <div class="date-switcher p-t">
+        <mwl-demo-utils-calendar-header
+                [(view)]="view"
+                [(viewDate)]="viewDate">
+        </mwl-demo-utils-calendar-header>
+      </div>
+      <div class="filters p-l-3xl">
+        <form novalidate [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+          <div class="filters-container">
+            <div class="text-right">
+              <mat-form-field class="regular-field">
+                <mat-select placeholder="Teachers" formControlName="teachers" multiple (selectionChange)="getIndividualLessons()">
+                  <mat-option *ngFor="let teacher of teachers" [value]="teacher._id">
+                    {{teacher.user.lastName}} {{teacher.user.firstName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="right text-right">
+              <mat-form-field class="regular-field">
+                <mat-select placeholder="Students" formControlName="students" multiple>
+                  <mat-option *ngFor="let student of students" [value]="student._id">
+                    {{student.user.lastName}} {{student.user.firstName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div [ngSwitch]="view">
-  <mwl-calendar-month-view
-          *ngSwitchCase="'month'"
-          [viewDate]="viewDate"
-          [events]="events"
-          [activeDayIsOpen]="true"
-          [refresh]="refresh"
-          (eventTimesChanged)="eventTimesChanged($event)">
-  </mwl-calendar-month-view>
-  <mwl-calendar-week-view
-          *ngSwitchCase="'week'"
-          [viewDate]="viewDate"
-          [events]="events"
-          [refresh]="refresh"
-          (eventTimesChanged)="eventTimesChanged($event)">
-  </mwl-calendar-week-view>
-  <mwl-calendar-day-view
-          *ngSwitchCase="'day'"
-          [viewDate]="viewDate"
-          [events]="events"
-          [refresh]="refresh"
-          (eventTimesChanged)="eventTimesChanged($event)">
-  </mwl-calendar-day-view>
+<div class="p-l-l p-r-l">
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+            *ngSwitchCase="'month'"
+            (dayClicked)="monthViewDayClicked($event)"
+            [viewDate]="viewDate"
+            [events]="events"
+            [refresh]="refresh"
+            [activeDayIsOpen]="true"
+            (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+            *ngSwitchCase="'week'"
+            [viewDate]="viewDate"
+            [refresh]="refresh"
+            [events]="events"
+            [dayStartHour]="8"
+            (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+            *ngSwitchCase="'day'"
+            [viewDate]="viewDate"
+            [refresh]="refresh"
+            [dayStartHour]="8"
+            [events]="events"
+            (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-day-view>
+  </div>
 </div>

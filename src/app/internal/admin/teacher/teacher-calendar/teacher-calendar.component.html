@@ -2,7 +2,7 @@
   [individualLessons]="individualLessons">
   <form novalidate [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
     <div class="filters-container">
-      <div><h1>{{teacher?.user?.lastName}} {{teacher?.user?.firstName}}</h1></div>
+      <div><h2 class="p-t">{{teacher?.user?.lastName}} {{teacher?.user?.firstName}}</h2></div>
       <div class="right text-right">
         <mat-form-field class="regular-field">
           <mat-select placeholder="Students" formControlName="students" multiple (selectionChange)="filterSelectionChanged()">

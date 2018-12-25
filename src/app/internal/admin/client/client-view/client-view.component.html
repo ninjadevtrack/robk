@@ -22,7 +22,16 @@
     <data-field header="Notes (experience, goals, expectations)" [data]="client?.notes"></data-field>
   </div>
   <div class="m-t-xl">
-    <h3>Students</h3>
+
+    <div class="flex-container-left">
+      <div>
+        <h3>Students</h3>
+      </div>
+      <div class="m-l-l m-t p-b">
+        <a routerLink="/i/admin/clients/{{client?._id}}/calendar" class="p-r-3xl">Schedule</a>
+      </div>
+    </div>
+
     <div class="m-b-3xl">
       <student-list
               [addDialogData]="{clientId: client?._id}"

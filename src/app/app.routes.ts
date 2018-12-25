@@ -27,6 +27,7 @@ import {ClientListRootComponent} from './internal/admin/client/client-list-root/
 import {EnrollmentListRootComponent} from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 import {TeacherCalendarComponent} from './internal/admin/teacher/teacher-calendar/teacher-calendar.component';
 import {StudentCalendarComponent} from './internal/admin/student/student-calendar/student-calendar.component';
+import {ClientCalendarComponent} from './internal/admin/client/client-calendar/client-calendar.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -45,6 +46,7 @@ export const ROUTES: Routes = [
                     { path: 'clients', component: ClientListRootComponent },
                     { path: 'clients/:id', component: ClientViewComponent },
                     { path: 'clients/:id/edit', component: ClientEditComponent },
+                    { path: 'clients/:id/calendar', component: ClientCalendarComponent },
                     { path: 'students', component: StudentListRootComponent },
                     { path: 'students/:id', component: StudentViewComponent },
                     { path: 'students/:id/edit', component: StudentEditComponent },

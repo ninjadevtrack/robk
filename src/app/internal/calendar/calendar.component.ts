@@ -130,4 +130,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         }
     }
 
+    hourSegmentClicked(event) {
+        console.log(event);
+    }
+
 }

@@ -49,6 +49,7 @@
     <mwl-calendar-week-view
             #weekView
             *ngSwitchCase="'week'"
+            (hourSegmentClicked)="hourSegmentClicked($event)"
             [viewDate]="viewDate"
             [refresh]="refresh"
             [events]="events"

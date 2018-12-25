@@ -1,6 +1,6 @@
 <app-calendar
   [individualLessons]="individualLessons">
-  <form novalidate [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+  <form novalidate [formGroup]="filtersForm">
     <div class="filters-container">
       <div><h2 class="p-t">{{teacher?.user?.lastName}} {{teacher?.user?.firstName}}</h2></div>
       <div class="right text-right">

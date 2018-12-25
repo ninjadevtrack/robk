@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarModule, DateAdapter } from './internal/angular-calendar';
+import { adapterFactory } from './internal/angular-calendar/date-adapters/date-fns';
 import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,
@@ -287,6 +287,7 @@ type StoreType = {
         MatTooltipModule,
         MatStepperModule,
         HttpClientModule,
+        CalendarModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

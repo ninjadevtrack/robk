@@ -137,6 +137,7 @@ import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-
 import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 import { IndividualLessonService } from './core/individual-lesson/individual-lesson.service';
+import { TeacherCalendarComponent } from './internal/admin/teacher/teacher-calendar/teacher-calendar.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -230,7 +231,8 @@ type StoreType = {
         InstrumentListRootComponent,
         TeacherListRootComponent,
         ClientListRootComponent,
-        EnrollmentListRootComponent
+        EnrollmentListRootComponent,
+        TeacherCalendarComponent
     ],
     entryComponents: [
         UserViewComponent,

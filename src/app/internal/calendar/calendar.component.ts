@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventTimesChangedEvent} from 'angular-calendar';
+import { CalendarEvent, CalendarEventTimesChangedEvent } from '../angular-calendar';
 import { TeacherService } from '../../core/teacher/teacher.service';
 import {ITeacher} from '../../core/teacher/model/teacher.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';

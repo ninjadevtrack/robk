@@ -7,6 +7,15 @@
   </div>
 
   <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
+    <div>
+		<mat-form-field class="full-width">
+			<input
+				formControlName="title"
+				name="title"
+				matInput
+				placeholder="Title">
+		</mat-form-field>
+	</div>
     <div class="flex-container">
 		<div class="m-r-xl">
 			<mat-form-field class="regular-field">

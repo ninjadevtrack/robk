@@ -30,6 +30,7 @@ export class IndividualLessonAddComponent implements OnInit {
 
     ngOnInit() {
         this.form = this._formBuilder.group({
+            title: ['', [Validators.required]],
             student: [this.data.students[0]._id, [Validators.required]],
             teacher: [this.data.teachers[0]._id, [Validators.required]],
             start: [

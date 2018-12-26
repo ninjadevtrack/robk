@@ -1,6 +1,6 @@
 <div class="">
 
-  <h2 class="text-center p-b-l font-color-pale">New Individual Lesson</h2>
+  <h2 class="text-center p-b-l font-color-pale">New Individual Lesson {{data?.date | date: 'mediumDate'}}</h2>
 
   <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
     {{serverErrorMessage}}

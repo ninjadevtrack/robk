@@ -18,7 +18,7 @@ export class IndividualLessonAddComponent implements OnInit {
 
     form: FormGroup;
     serverErrorMessage: string;
-    appeals: string[];
+    durations: number[] = [45, 60, 90];
 
     constructor(
         private _clientService: ClientService,
@@ -36,8 +36,18 @@ export class IndividualLessonAddComponent implements OnInit {
                 {
                     hour: this.data.date.getHours(),
                     minute: this.data.date.getMinutes()
-                }, [Validators.required]]
+                }, [Validators.required]],
+            duration: [this.durations[0], [Validators.required]]
         });
+    }
+
+    getStartTimeString() {
+        const start = this.form.controls['start'].value;
+        let hour = `${start.hour}`;
+        hour = (hour.length === 1) ? `0${hour}` : hour;
+        let minute = `${start.minute}`;
+        minute = (minute.length === 1) ? `0${minute}` : minute;
+        return `${hour}:${minute}`;
     }
 
     onNoClick(): void {

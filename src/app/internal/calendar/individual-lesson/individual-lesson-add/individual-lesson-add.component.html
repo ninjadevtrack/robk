@@ -1,6 +1,6 @@
 <div class="">
 
-  <h2 class="text-center p-b-l font-color-pale">New Individual Lesson {{data?.date | date: 'MMM d, y, h:mm a'}}</h2>
+  <h2 class="text-center p-b-l font-color-pale">New Individual Lesson {{data?.date | date: 'MMM d, y'}}, {{getStartTimeString()}}</h2>
 
   <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
     {{serverErrorMessage}}
@@ -17,11 +17,20 @@
 				</mat-select>
 			</mat-form-field>
 		</div>
-		<div class="text-right">
+		<div class="m-r-xl">
 			<mat-form-field class="regular-field">
 				<mat-select placeholder="Teacher" formControlName="teacher">
 					<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
 						{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field class="regular-field">
+				<mat-select placeholder="Duration" formControlName="duration">
+					<mat-option *ngFor="let duration of durations" [value]="duration">
+						{{duration}} min
 					</mat-option>
 				</mat-select>
 			</mat-form-field>

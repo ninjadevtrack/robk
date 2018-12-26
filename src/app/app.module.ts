@@ -140,6 +140,7 @@ import { IndividualLessonService } from './core/individual-lesson/individual-les
 import { TeacherCalendarComponent } from './internal/admin/teacher/teacher-calendar/teacher-calendar.component';
 import {StudentCalendarComponent} from './internal/admin/student/student-calendar/student-calendar.component';
 import {ClientCalendarComponent} from './internal/admin/client/client-calendar/client-calendar.component';
+import {IndividualLessonAddComponent} from './internal/calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -236,7 +237,8 @@ type StoreType = {
         EnrollmentListRootComponent,
         TeacherCalendarComponent,
         StudentCalendarComponent,
-        ClientCalendarComponent
+        ClientCalendarComponent,
+        IndividualLessonAddComponent
     ],
     entryComponents: [
         UserViewComponent,
@@ -249,7 +251,8 @@ type StoreType = {
         ClientAddComponent,
         TeacherAddComponent,
         StudentAddComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        IndividualLessonAddComponent
     ],
     imports: [
         BrowserModule,

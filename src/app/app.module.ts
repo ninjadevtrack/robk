@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from './internal/angular-calendar';
-import { adapterFactory } from './internal/angular-calendar/date-adapters/date-fns';
+import { CalendarModule, DateAdapter } from './internal/calendar/angular-calendar';
+import { adapterFactory } from './internal/calendar/angular-calendar/date-adapters/date-fns';
 import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,

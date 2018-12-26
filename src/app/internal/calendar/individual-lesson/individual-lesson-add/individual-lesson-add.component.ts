@@ -7,7 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';
 import {UserModel} from '../../../../core/user/model/user.model';
 
@@ -31,7 +30,8 @@ export class IndividualLessonAddComponent implements OnInit {
 
     ngOnInit() {
         this.form = this._formBuilder.group({
-            student: [this.data.students[0]._id, [Validators.required]]
+            student: [this.data.students[0]._id, [Validators.required]],
+            teacher: [this.data.teachers[0]._id, [Validators.required]]
         });
     }
 

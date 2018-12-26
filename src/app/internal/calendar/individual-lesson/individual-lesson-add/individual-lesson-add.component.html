@@ -7,14 +7,25 @@
   </div>
 
   <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
-	<div>
-	  <mat-form-field class="regular-field">
-		  <mat-select placeholder="Student" formControlName="student">
-			  <mat-option *ngFor="let student of data.students" [value]="student._id">
-				  {{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
-			  </mat-option>
-		  </mat-select>
-	  </mat-form-field>
+    <div class="flex-container">
+		<div class="m-r-xl">
+			<mat-form-field class="regular-field">
+				<mat-select placeholder="Student" formControlName="student">
+					<mat-option *ngFor="let student of data.students" [value]="student._id">
+						{{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div class="text-right">
+			<mat-form-field class="regular-field">
+				<mat-select placeholder="Teacher" formControlName="teacher">
+					<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
+						{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
 	</div>
     <div class="m-t-l p-b-l justifying-containter">
 		<div class="m-t-xl">

@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarEventTimesChangedEvent } from './angular-calendar';
 import { TeacherService } from '../../core/teacher/teacher.service';
 import {ITeacher} from '../../core/teacher/model/teacher.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {StudentService} from '../../core/student/student.service';
 import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
@@ -43,7 +42,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         private _teacherService: TeacherService,
         private _studentService: StudentService,
         private _individualLessonService: IndividualLessonService,
-        private _formBuilder: FormBuilder,
         private _smoothScrollService: SmoothScrollService
     ) {
     }

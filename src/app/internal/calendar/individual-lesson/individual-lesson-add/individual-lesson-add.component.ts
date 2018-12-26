@@ -26,22 +26,12 @@ export class IndividualLessonAddComponent implements OnInit {
         private _appealService: AppealService,
         public dialogRef: MatDialogRef<IndividualLessonAddComponent>,
         private _formBuilder: FormBuilder,
-        @Inject(MAT_DIALOG_DATA) public data: any) { }
+        @Inject(MAT_DIALOG_DATA) public data: any) {
+    }
 
     ngOnInit() {
-
-
-        this._appealService.getAll().subscribe((appeals: string[]) => {
-            this.appeals = appeals;
-
-            this.form = this._formBuilder.group({
-                firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
-            });
+        this.form = this._formBuilder.group({
+            student: [this.data.students[0]._id, [Validators.required]]
         });
     }
 

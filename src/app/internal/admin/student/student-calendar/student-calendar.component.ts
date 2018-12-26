@@ -65,10 +65,10 @@ export class StudentCalendarComponent implements OnInit {
     }
 
     addIndividualLesson(event) {
-        console.log(event);
         if (!this.addEntityDialogOpened) {
             const dialogRef = this._dialog.open(IndividualLessonAddComponent, {
                 data: {
+                    date: event.date,
                     students: [this.student],
                     teachers: this.teachers
                 }

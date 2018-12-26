@@ -7,66 +7,15 @@
   </div>
 
   <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
-	<div class="flex-container">
-	  <div class="m-r-xl">
-		<mat-form-field class="regular-field">
-		  <input
-			  formControlName="firstName"
-			  name="firstName"
-			  matInput
-			  placeholder="First Name">
-		</mat-form-field>
-	  </div>
-	  <div class="m-r-xl">
-		<mat-form-field class="regular-field">
-		  <input
-			  formControlName="lastName"
-			  name="lastName"
-			  matInput
-			  placeholder="Last Name">
-		</mat-form-field>
-	  </div>
-	  <div>
-		<mat-form-field class="regular-field">
-		  <mat-select placeholder="Appeal" formControlName="appeal">
-			<mat-option *ngFor="let appeal of appeals" [value]="appeal">
-			  {{ appeal }}
-			</mat-option>
+	<div>
+	  <mat-form-field class="regular-field">
+		  <mat-select placeholder="Student" formControlName="student">
+			  <mat-option *ngFor="let student of data.students" [value]="student._id">
+				  {{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
+			  </mat-option>
 		  </mat-select>
-		</mat-form-field>
-	  </div>
+	  </mat-form-field>
 	</div>
-	  <div class="flex-container">
-		  <div class="m-r-xl">
-			  <mat-form-field class="regular-field">
-				  <input
-					  formControlName="phone"
-					  name="phone"
-					  matInput
-					  placeholder="Phone">
-			  </mat-form-field>
-		  </div>
-		  <div class="m-r-xl">
-			  <mat-form-field class="regular-field">
-				  <input
-					  formControlName="email"
-					  name="email"
-					  matInput
-					  placeholder="Email">
-			  </mat-form-field>
-		  </div>
-		  <div>
-		  </div>
-	  </div>
-    <div>
-      <mat-form-field class="full-width">
-        <textarea
-            formControlName="notes"
-            name="notes"
-            matInput
-            placeholder="Notes"></textarea>
-      </mat-form-field>
-    </div>
     <div class="m-t-l p-b-l justifying-containter">
 		<div class="m-t-xl">
 			<span class="m-r-l">

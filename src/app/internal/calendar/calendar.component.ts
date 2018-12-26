@@ -8,8 +8,6 @@ import {IIndividualLesson} from '../../core/individual-lesson/model/individual-l
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
 import { CalendarColors} from './demo-utils/colors';
 import {SmoothScrollService} from '../../core/smooth-scroll.service';
-import {MatDialog} from '@angular/material';
-import {IndividualLessonAddComponent} from './individual-lesson/individual-lesson-add/individual-lesson-add.component';
 
 @Component({
   selector: 'app-calendar',
@@ -18,14 +16,13 @@ import {IndividualLessonAddComponent} from './individual-lesson/individual-lesso
 })
 export class CalendarComponent implements OnInit, AfterViewInit {
 
-    @Output() updateRequested: EventEmitter<any> = new EventEmitter();
+    @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
     @Input() _individualLessons: IIndividualLesson[] = [];
     @ViewChild('weekView', { read: ElementRef }) weekView: ElementRef;
     view: string = 'week';
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];
     refresh: Subject<any> = new Subject();
-    addEntityDialogOpened: boolean = false;
 
     @Input() set individualLessons(value: IIndividualLesson[]) {
         this._individualLessons = value;
@@ -46,8 +43,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         private _teacherService: TeacherService,
         private _studentService: StudentService,
         private _individualLessonService: IndividualLessonService,
-        private _smoothScrollService: SmoothScrollService,
-        private _dialog: MatDialog
+        private _smoothScrollService: SmoothScrollService
     ) {}
 
     ngAfterViewInit() {
@@ -78,10 +74,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         }
     }
 
-    private onUpdateRequested() {
-        this.updateRequested.emit();
-    }
-
     private getColor(teacher: ITeacher) {
 
         const teachers = Array.from(new Set(this._individualLessons.map((il) => il.teacher)));
@@ -99,25 +91,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         }
     }
 
-    hourSegmentClicked(event) {
-        console.log(event);
-        this.addIndividualLesson();
-    }
-
-    addIndividualLesson() {
-        if (!this.addEntityDialogOpened) {
-            const dialogRef = this._dialog.open(IndividualLessonAddComponent, {
-                data: 'DATA'
-            });
-            this.addEntityDialogOpened = true;
-
-            dialogRef.afterClosed().subscribe(result => {
-                if (result) {
-                    this.onUpdateRequested();
-                }
-                this.addEntityDialogOpened = false;
-            });
-        }
+    emitHourSegmentClicked(event) {
+        this.hourSegmentClicked.emit(event);
     }
 
 }

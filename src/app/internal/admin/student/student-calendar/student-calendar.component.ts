@@ -7,6 +7,8 @@ import {IIndividualLesson} from '../../../../core/individual-lesson/model/indivi
 import {StudentService} from '../../../../core/student/student.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material';
+import {IndividualLessonAddComponent} from '../../../calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
 
 @Component({
   selector: 'app-student-calendar',
@@ -15,22 +17,24 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class StudentCalendarComponent implements OnInit {
 
-  filtersForm: FormGroup;
-  id: string;
-  student: StudentModel;
-  teachers: TeacherModel[];
-  individualLessons: IIndividualLesson[];
+    filtersForm: FormGroup;
+    id: string;
+    student: StudentModel;
+    teachers: TeacherModel[];
+    individualLessons: IIndividualLesson[];
+    addEntityDialogOpened = false;
 
-  constructor(
+    constructor(
       private _router: Router,
       private _route: ActivatedRoute,
       private _teacherService: TeacherService,
       private _studentService: StudentService,
       private _individualLessonsService: IndividualLessonService,
-      private _formBuilder: FormBuilder
-  ) { }
+      private _formBuilder: FormBuilder,
+      private _dialog: MatDialog
+    ) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
       this.filtersForm = this._formBuilder.group({
           teachers: ['', []]
@@ -48,16 +52,36 @@ export class StudentCalendarComponent implements OnInit {
               this.getIndividualLessons([], [this.id]);
           });
       });
-  }
+    }
 
-  getIndividualLessons(teacherIds, studentIds) {
+    getIndividualLessons(teacherIds, studentIds) {
       this._individualLessonsService.search(teacherIds, studentIds).subscribe((individualLessons) => {
           this.individualLessons = individualLessons;
       });
-  }
+    }
 
-  filterSelectionChanged() {
+    getIndividualLessonsBySelectedFilersValues() {
       this.getIndividualLessons(this.filtersForm.controls['teachers'].value, [this.id]);
-  }
+    }
+
+    addIndividualLesson(event) {
+        console.log(event);
+        if (!this.addEntityDialogOpened) {
+            const dialogRef = this._dialog.open(IndividualLessonAddComponent, {
+                data: {
+                    students: [this.student],
+                    teachers: this.teachers
+                }
+            });
+            this.addEntityDialogOpened = true;
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result) {
+                    this.getIndividualLessonsBySelectedFilersValues();
+                }
+                this.addEntityDialogOpened = false;
+            });
+        }
+    }
 
 }

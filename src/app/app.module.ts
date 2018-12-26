@@ -141,6 +141,7 @@ import { TeacherCalendarComponent } from './internal/admin/teacher/teacher-calen
 import {StudentCalendarComponent} from './internal/admin/student/student-calendar/student-calendar.component';
 import {ClientCalendarComponent} from './internal/admin/client/client-calendar/client-calendar.component';
 import {IndividualLessonAddComponent} from './internal/calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -297,6 +298,7 @@ type StoreType = {
         MatStepperModule,
         HttpClientModule,
         CalendarModule,
+        NgbModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

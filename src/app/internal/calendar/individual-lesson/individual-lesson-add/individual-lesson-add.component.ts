@@ -4,11 +4,11 @@ import {
     OnInit
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ClientModel } from '../../../../core/client/model/client.model';
-import { ClientService } from '../../../../core/client/client.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AppealService } from '../../../../core/appeal/appeal.service';
-import {UserModel} from '../../../../core/user/model/user.model';
+import * as moment from 'moment';
+import {IndividualLessonModel} from '../../../../core/individual-lesson/model/individual-lesson.model';
+import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
 
 @Component({
     selector: 'individual-lesson-add',
@@ -21,7 +21,7 @@ export class IndividualLessonAddComponent implements OnInit {
     durations: number[] = [45, 60, 90];
 
     constructor(
-        private _clientService: ClientService,
+        private _individualLessonService: IndividualLessonService,
         private _appealService: AppealService,
         public dialogRef: MatDialogRef<IndividualLessonAddComponent>,
         private _formBuilder: FormBuilder,
@@ -38,18 +38,30 @@ export class IndividualLessonAddComponent implements OnInit {
                     hour: this.data.date.getHours(),
                     minute: this.data.date.getMinutes()
                 }, [Validators.required]],
-            duration: [this.durations[0], [Validators.required]]
+            duration: [this.durations[0], [Validators.required]],
+            description: ['', []],
         });
     }
 
-    getStartTimeString() {
-        const start = this.form.controls['start'].value;
-        let hour = `${start.hour}`;
-        hour = (hour.length === 1) ? `0${hour}` : hour;
-        let minute = `${start.minute}`;
-        minute = (minute.length === 1) ? `0${minute}` : minute;
-        return `${hour}:${minute}`;
+    getControlValue(controlName) {
+        return this.form.controls[controlName].value;
     }
+
+    getStartMoment() {
+        return moment(this.data.date)
+            .startOf('day')
+            .add(this.getControlValue('start').hour, 'hours')
+            .add(this.getControlValue('start').minute, 'minutes');
+    }
+
+    getEndMoment() {
+        return moment(this.data.date)
+            .startOf('day')
+            .add(this.getControlValue('start').hour, 'hours')
+            .add(this.getControlValue('start').minute, 'minutes')
+            .add(this.getControlValue('duration'), 'minutes');
+    }
+
 
     onNoClick(): void {
         this.dialogRef.close();
@@ -57,25 +69,22 @@ export class IndividualLessonAddComponent implements OnInit {
 
     buildModelFromForm() {
 
-        const userModel = new UserModel();
-        userModel.firstName = this.form.controls['firstName'].value;
-        userModel.lastName = this.form.controls['lastName'].value;
-        userModel.appeal = this.form.controls['appeal'].value;
-        userModel.phone = this.form.controls['phone'].value;
-        userModel.email = this.form.controls['email'].value;
+        const model = new IndividualLessonModel();
+        model.teacher = this.getControlValue('teacher');
+        model.student = this.getControlValue('student');
+        model.title = this.getControlValue('title');
+        model.description = this.getControlValue('description');
+        model.start = this.getStartMoment().toDate().toISOString();
+        model.end = this.getEndMoment().toDate().toISOString();
 
-        const clientModel = new ClientModel();
-        clientModel.notes = this.form.controls['notes'].value;
-        clientModel.user = userModel;
-
-        return clientModel;
+        return model;
     }
 
     public onSubmit() {
 
         this.serverErrorMessage = undefined;
 
-        this._clientService.add(this.buildModelFromForm()).subscribe((res) => {
+        this._individualLessonService.add(this.buildModelFromForm()).subscribe((res) => {
             this.dialogRef.close(true);
         }, (serverError: any) => {
             this.serverErrorMessage = serverError.error.errmsg;

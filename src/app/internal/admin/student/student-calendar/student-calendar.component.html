@@ -1,5 +1,6 @@
 <app-calendar
   [individualLessons]="individualLessons"
+  [coloringMode]="calendarColoringMode"
   (hourSegmentClicked)="addIndividualLesson($event)">
   <form novalidate [formGroup]="filtersForm">
     <div class="filters-container">

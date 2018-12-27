@@ -1,5 +1,6 @@
 <app-calendar
-  [individualLessons]="individualLessons">
+  [individualLessons]="individualLessons"
+  [coloringMode]="calendarColoringMode">
   <form novalidate [formGroup]="filtersForm">
     <div class="filters-container">
       <div><h2 class="p-t">{{teacher?.user?.lastName}} {{teacher?.user?.firstName}}</h2></div>

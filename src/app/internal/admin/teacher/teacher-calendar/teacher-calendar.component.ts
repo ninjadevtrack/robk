@@ -7,6 +7,7 @@ import {IIndividualLesson} from '../../../../core/individual-lesson/model/indivi
 import {StudentService} from '../../../../core/student/student.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
 
 @Component({
   selector: 'app-teacher-calendar',
@@ -20,6 +21,7 @@ export class TeacherCalendarComponent implements OnInit {
   teacher: TeacherModel;
   students: StudentModel[];
   individualLessons: IIndividualLesson[];
+  calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
 
   constructor(
       private _router: Router,

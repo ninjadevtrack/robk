@@ -7,6 +7,7 @@ import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ClientService} from '../../../../core/client/client.service';
 import {ClientModel} from '../../../../core/client/model/client.model';
+import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
 
 @Component({
   selector: 'app-client-calendar',
@@ -20,6 +21,7 @@ export class ClientCalendarComponent implements OnInit {
   client: ClientModel;
   students: StudentModel[];
   individualLessons: IIndividualLesson[];
+  calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
 
   constructor(
       private _router: Router,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TeacherService} from '../../../../core/teacher/teacher.service';
 import {TeacherModel} from '../../../../core/teacher/model/teacher.model';
@@ -9,6 +9,7 @@ import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {IndividualLessonAddComponent} from '../../../calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
+import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
 
 @Component({
   selector: 'app-student-calendar',
@@ -23,6 +24,7 @@ export class StudentCalendarComponent implements OnInit {
     teachers: TeacherModel[];
     individualLessons: IIndividualLesson[];
     addEntityDialogOpened = false;
+    calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
     constructor(
       private _router: Router,

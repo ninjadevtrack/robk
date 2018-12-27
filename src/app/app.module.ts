@@ -106,7 +106,7 @@ import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { ConfirmDialogComponent } from './internal/confirm-dialog/confirm-dialog.component';
 import { CalendarComponent } from './internal/calendar/calendar.component';
-import { DemoUtilsModule } from './internal/calendar/demo-utils/module';
+import { DemoUtilsModule } from './internal/calendar/utils/module';
 import { ServiceService } from './core/service/service.service';
 import { InstrumentService } from './core/instrument/instrument.service';
 import { AppealService } from './core/appeal/appeal.service';

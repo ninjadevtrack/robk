@@ -1,13 +1,15 @@
-import {Component, OnInit, ElementRef, ViewChild, AfterViewInit, Input, Output, EventEmitter} from '@angular/core';
-import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventTimesChangedEvent } from './angular-calendar';
-import { TeacherService } from '../../core/teacher/teacher.service';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Subject} from 'rxjs';
+import {CalendarEvent, CalendarEventTimesChangedEvent} from './angular-calendar';
+import {TeacherService} from '../../core/teacher/teacher.service';
 import {ITeacher} from '../../core/teacher/model/teacher.model';
 import {StudentService} from '../../core/student/student.service';
 import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
-import { CalendarColors} from './demo-utils/colors';
+import {CalendarColors} from './utils/colors';
 import {SmoothScrollService} from '../../core/smooth-scroll.service';
+import {IStudent} from '../../core/student/model/student.model';
+import {CalendarColoringModes} from './utils/calendar-coloring-modes.enum';
 
 @Component({
   selector: 'app-calendar',
@@ -18,6 +20,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
     @Input() _individualLessons: IIndividualLesson[] = [];
+    @Input() coloringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
     @ViewChild('weekView', { read: ElementRef }) weekView: ElementRef;
     view: string = 'week';
     viewDate: Date = new Date();
@@ -60,7 +63,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
             this.events = this._individualLessons.map((il) => {
                 return {
                     title: `${il.teacher.user.firstName} ${il.teacher.user.lastName} teaching ${il.student.user.firstName} ${il.student.user.lastName} - ${il.title}`,
-                    color: this.getColor(il.teacher),
+                    color: (this.coloringMode === CalendarColoringModes.BY_TEACHER) ? this.getColorByTeacher(il.teacher) : this.getColorByStudent(il.student),
                     start: new Date(il.start),
                     end: new Date(il.end),
                     draggable: true,
@@ -74,16 +77,24 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         }
     }
 
-    private getColor(teacher: ITeacher) {
-
+    getColorByTeacher(teacher: ITeacher) {
         const teacherIds = Array.from(new Set(this._individualLessons.map((il) => il.teacher._id)));
+        return this.getColor(teacherIds, teacher._id);
+    }
 
-        const index = teacherIds.findIndex((id) => id === teacher._id);
+    getColorByStudent(student: IStudent) {
+        const studentIds = Array.from(new Set(this._individualLessons.map((il) => il.student._id)));
+        return this.getColor(studentIds, student._id);
+    }
+
+    getColor(entitysIds: string[], entityId) {
+        const index = entitysIds.findIndex((id) => id === entityId);
 
         if (index === -1) { return CalendarColors[CalendarColors.length - 1]; }
 
-        return (CalendarColors.length >= teacherIds.length) ? CalendarColors[index] : CalendarColors[teacherIds.length % CalendarColors.length];
+        return (CalendarColors.length >= entitysIds.length) ? CalendarColors[index] : CalendarColors[entitysIds.length % CalendarColors.length];
     }
+
 
     monthViewDayClicked(event) {
         if (this.events.filter((e) => e.start.toDateString() === event.day.date.toDateString()).length > 0) {

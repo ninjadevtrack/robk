@@ -76,13 +76,13 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     private getColor(teacher: ITeacher) {
 
-        const teachers = Array.from(new Set(this._individualLessons.map((il) => il.teacher)));
+        const teacherIds = Array.from(new Set(this._individualLessons.map((il) => il.teacher._id)));
 
-        const index = teachers.findIndex((t) => t._id === teacher._id);
+        const index = teacherIds.findIndex((id) => id === teacher._id);
 
         if (index === -1) { return CalendarColors[CalendarColors.length - 1]; }
 
-        return (CalendarColors.length >= teachers.length) ? CalendarColors[index] : CalendarColors[teachers.length % CalendarColors.length];
+        return (CalendarColors.length >= teacherIds.length) ? CalendarColors[index] : CalendarColors[teacherIds.length % CalendarColors.length];
     }
 
     monthViewDayClicked(event) {

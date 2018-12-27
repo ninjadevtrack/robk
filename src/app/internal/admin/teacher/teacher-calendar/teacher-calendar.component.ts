@@ -21,7 +21,7 @@ export class TeacherCalendarComponent implements OnInit {
   teacher: TeacherModel;
   students: StudentModel[];
   individualLessons: IIndividualLesson[];
-  calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
+  calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
   constructor(
       private _router: Router,

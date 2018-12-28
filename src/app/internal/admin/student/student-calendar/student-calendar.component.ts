@@ -39,7 +39,7 @@ export class StudentCalendarComponent implements OnInit {
     ngOnInit() {
 
       this.filtersForm = this._formBuilder.group({
-          teachers: ['', []]
+          teachers: [[], []]
       });
 
       this._route.params.subscribe((params) => {

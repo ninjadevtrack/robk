@@ -78,12 +78,18 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
 
     getColorByTeacher(teacher: ITeacher) {
-        const teacherIds = Array.from(new Set(this._individualLessons.map((il) => il.teacher._id)));
+        const teacherIds = Array.from(new Set(
+            this._individualLessons
+                .map((il) => il.teacher._id)
+                .sort((a, b) => (a > b) ? 1 : -1 )));
         return this.getColor(teacherIds, teacher._id);
     }
 
     getColorByStudent(student: IStudent) {
-        const studentIds = Array.from(new Set(this._individualLessons.map((il) => il.student._id)));
+        const studentIds = Array.from(new Set(
+            this._individualLessons
+                .map((il) => il.student._id)
+                .sort((a, b) => (a > b) ? 1 : -1 )));
         return this.getColor(studentIds, student._id);
     }
 

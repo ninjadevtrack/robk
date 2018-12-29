@@ -1,6 +1,7 @@
 <div class="">
 
-  <h2 class="text-center p-b-l font-color-pale">{{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}}</h2>
+  <h2 class="text-center p-b-l font-color-pale">
+	  {{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}} - {{getEndMoment()?.toDate() | date: 'HH:mm'}}</h2>
 
   <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
     {{serverErrorMessage}}

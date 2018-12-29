@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppealService} from '../../../../core/appeal/appeal.service';
 import * as moment from 'moment';
-import {IIndividualLesson, IndividualLessonModel} from '../../../../core/individual-lesson/model/individual-lesson.model';
+import {IndividualLessonModel} from '../../../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../core/common/dialog-mode.enum';
 
@@ -17,6 +17,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     serverErrorMessage: string;
     durations: number[] = [45, 60, 90];
     mode: DialogMode;
+    modes = DialogMode;
 
     constructor(
         private _individualLessonService: IndividualLessonService,

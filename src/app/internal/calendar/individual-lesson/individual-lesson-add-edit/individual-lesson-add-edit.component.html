@@ -1,6 +1,6 @@
 <div class="">
 
-  <h2 class="text-center p-b-l font-color-pale">New Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}}</h2>
+  <h2 class="text-center p-b-l font-color-pale">{{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}}</h2>
 
   <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
     {{serverErrorMessage}}
@@ -66,7 +66,7 @@
 		<div class="m-t-xl">
 			<span class="m-r-l">
 				<button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
-				  ADD
+				  {{(mode === modes.ADD) ? 'ADD' : 'SAVE' }}
 				</button>
 			</span>
 			<span class="m-l-l">

@@ -30,7 +30,8 @@
             [viewDate]="viewDate"
             [refresh]="refresh"
             [events]="events"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            (eventTimesChanged)="eventTimesChanged($event)"
+            (eventClicked)="eventClicked($event)">
     </mwl-calendar-week-view>
     <mwl-calendar-day-view
             *ngSwitchCase="'day'"
@@ -39,7 +40,8 @@
             [refresh]="refresh"
             [dayStartHour]="8"
             [events]="events"
-            (eventTimesChanged)="eventTimesChanged($event)">
+            (eventTimesChanged)="eventTimesChanged($event)"
+            (eventClicked)="eventClicked($event)">
     </mwl-calendar-day-view>
   </div>
 </div>

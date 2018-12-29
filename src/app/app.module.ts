@@ -140,7 +140,7 @@ import { IndividualLessonService } from './core/individual-lesson/individual-les
 import { TeacherCalendarComponent } from './internal/admin/teacher/teacher-calendar/teacher-calendar.component';
 import {StudentCalendarComponent} from './internal/admin/student/student-calendar/student-calendar.component';
 import {ClientCalendarComponent} from './internal/admin/client/client-calendar/client-calendar.component';
-import {IndividualLessonAddComponent} from './internal/calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
+import {IndividualLessonAddEditComponent} from './internal/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // Application wide providers
@@ -239,7 +239,7 @@ type StoreType = {
         TeacherCalendarComponent,
         StudentCalendarComponent,
         ClientCalendarComponent,
-        IndividualLessonAddComponent
+        IndividualLessonAddEditComponent
     ],
     entryComponents: [
         UserViewComponent,
@@ -253,7 +253,7 @@ type StoreType = {
         TeacherAddComponent,
         StudentAddComponent,
         ConfirmDialogComponent,
-        IndividualLessonAddComponent
+        IndividualLessonAddEditComponent
     ],
     imports: [
         BrowserModule,

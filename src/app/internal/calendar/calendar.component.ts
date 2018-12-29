@@ -18,6 +18,7 @@ import {CalendarColoringModes} from './utils/calendar-coloring-modes.enum';
 })
 export class CalendarComponent implements OnInit, AfterViewInit {
 
+    @Output() individualLessonClicked: EventEmitter<IIndividualLesson> = new EventEmitter<IIndividualLesson>();
     @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
     @Input() _individualLessons: IIndividualLesson[] = [];
     @Input() coloringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
@@ -110,6 +111,10 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     emitHourSegmentClicked(event) {
         this.hourSegmentClicked.emit(event);
+    }
+
+    eventClicked(event) {
+        this.individualLessonClicked.emit(event.event.meta);
     }
 
 }

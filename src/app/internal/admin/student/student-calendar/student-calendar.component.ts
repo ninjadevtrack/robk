@@ -8,8 +8,9 @@ import {StudentService} from '../../../../core/student/student.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
-import {IndividualLessonAddComponent} from '../../../calendar/individual-lesson/individual-lesson-add/individual-lesson-add.component';
+import {IndividualLessonAddEditComponent} from '../../../calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
+import {DialogMode} from '../../../../core/common/dialog-mode.enum';
 
 @Component({
   selector: 'app-student-calendar',
@@ -23,7 +24,7 @@ export class StudentCalendarComponent implements OnInit {
     student: StudentModel;
     teachers: TeacherModel[];
     individualLessons: IIndividualLesson[];
-    addEntityDialogOpened = false;
+    addEditEntityDialogOpened = false;
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
     constructor(
@@ -66,24 +67,42 @@ export class StudentCalendarComponent implements OnInit {
       this.getIndividualLessons(this.filtersForm.controls['teachers'].value, [this.id]);
     }
 
-    addIndividualLesson(event) {
-        if (!this.addEntityDialogOpened) {
-            const dialogRef = this._dialog.open(IndividualLessonAddComponent, {
-                data: {
-                    date: event.date,
-                    students: [this.student],
-                    teachers: this.teachers
-                }
+    addEditIndividualLesson(data) {
+        if (!this.addEditEntityDialogOpened) {
+            const dialogRef = this._dialog.open(IndividualLessonAddEditComponent, {
+                data: data
             });
-            this.addEntityDialogOpened = true;
+            this.addEditEntityDialogOpened = true;
 
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
                     this.getIndividualLessonsBySelectedFilersValues();
                 }
-                this.addEntityDialogOpened = false;
+                this.addEditEntityDialogOpened = false;
             });
         }
+    }
+
+    addIndividualLesson(event) {
+        const data = {
+            mode: DialogMode.ADD,
+            date: event.date,
+            students: [this.student],
+            teachers: this.teachers
+        };
+
+        this.addEditIndividualLesson(data);
+    }
+
+    editIndividualLesson(il: IIndividualLesson) {
+        const data = {
+            mode: DialogMode.EDIT,
+            il: il,
+            students: [this.student],
+            teachers: this.teachers
+        };
+
+        this.addEditIndividualLesson(data);
     }
 
 }

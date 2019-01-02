@@ -63,7 +63,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         if (this._individualLessons) {
             this.events = this._individualLessons.map((il) => {
                 return {
-                    title: `${il.teacher.user.firstName} ${il.teacher.user.lastName} teaching ${il.student.user.firstName} ${il.student.user.lastName} - ${il.title}`,
+                    title: `${il.title} - ${il.teacher.user.firstName} ${il.teacher.user.lastName} with ${il.student.user.firstName} ${il.student.user.lastName} `,
                     color: (this.coloringMode === CalendarColoringModes.BY_TEACHER) ? this.getColorByTeacher(il.teacher) : this.getColorByStudent(il.student),
                     start: new Date(il.start),
                     end: new Date(il.end),

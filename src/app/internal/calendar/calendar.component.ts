@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Subject} from 'rxjs';
 import {CalendarEvent, CalendarEventTimesChangedEvent} from './angular-calendar';
 import {TeacherService} from '../../core/teacher/teacher.service';
@@ -22,7 +22,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
     @Input() _individualLessons: IIndividualLesson[] = [];
     @Input() coloringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
-    @ViewChild('weekView', { read: ElementRef }) weekView: ElementRef;
     view: string = 'week';
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];

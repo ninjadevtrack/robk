@@ -24,7 +24,6 @@
             (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-month-view>
     <mwl-calendar-week-view
-            #weekView
             *ngSwitchCase="'week'"
             (hourSegmentClicked)="emitHourSegmentClicked($event)"
             [viewDate]="viewDate"

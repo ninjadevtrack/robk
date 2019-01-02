@@ -128,7 +128,7 @@
   .cal-header {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    //white-space: nowrap;
   }
 
   .cal-drag-active {
@@ -172,11 +172,12 @@
     }
 
     .cal-event {
+      padding: 5px;
       width: calc(100% - 2px);
       height: calc(100% - 2px);
       margin: 1px;
-      padding: 0 5px;
-      line-height: 25px;
+      //padding: 0 5px;
+      //line-height: 25px;
     }
 
     .cal-resize-handle {

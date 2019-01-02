@@ -31,17 +31,18 @@
             [refresh]="refresh"
             [events]="events"
             (eventTimesChanged)="eventTimesChanged($event)"
-            (eventClicked)="eventClicked($event)">
+            (eventClicked)="eventClicked($event)"
+            (beforeViewRender)="scrollToDefaultLocation(100)">
     </mwl-calendar-week-view>
     <mwl-calendar-day-view
             *ngSwitchCase="'day'"
             (hourSegmentClicked)="emitHourSegmentClicked($event)"
             [viewDate]="viewDate"
             [refresh]="refresh"
-            [dayStartHour]="8"
             [events]="events"
             (eventTimesChanged)="eventTimesChanged($event)"
-            (eventClicked)="eventClicked($event)">
+            (eventClicked)="eventClicked($event)"
+            (beforeViewRender)="scrollToDefaultLocation(100)">
     </mwl-calendar-day-view>
   </div>
 </div>

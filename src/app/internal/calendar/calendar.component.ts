@@ -51,7 +51,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     ) {}
 
     ngAfterViewInit() {
-        this._smoothScrollService.scrollWithinElement('cal-time-events-wrapper', 400);
+        this.scrollToDefaultLocation(0);
     }
 
     ngOnInit() {
@@ -115,6 +115,12 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     eventClicked(event) {
         this.individualLessonClicked.emit(event.event.meta);
+    }
+
+    scrollToDefaultLocation(timeout) {
+        setTimeout(() => {
+            this._smoothScrollService.scrollWithinElement('cal-time-events-wrapper', 400);
+        }, timeout);
     }
 
 }

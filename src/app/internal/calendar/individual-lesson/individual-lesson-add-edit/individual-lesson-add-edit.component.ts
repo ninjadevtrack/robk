@@ -168,7 +168,10 @@ export class IndividualLessonAddEditComponent implements OnInit {
     }
 
     delete() {
-        console.log('Deleting');
-
+        this._individualLessonService.delete(this.data.il._id).subscribe((res) => {
+            this.dialogRef.close(true);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
     }
 }

@@ -1,7 +1,7 @@
 <div class="">
 	<div class="flex-container-left">
 		<div>
-			<span class="m-r-l">
+			<span class="m-r-l" *ngIf="mode === modes.EDIT">
 				<button mat-button class="mat-primary font-size-l" type="button" (click)="delete()">
 					<i class="material-icons">delete</i>
 				</button>

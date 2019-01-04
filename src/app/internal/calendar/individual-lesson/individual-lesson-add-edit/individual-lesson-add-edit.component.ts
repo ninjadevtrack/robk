@@ -166,4 +166,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
                 break;
         }
     }
+
+    delete() {
+        console.log('Deleting');
+
+    }
 }

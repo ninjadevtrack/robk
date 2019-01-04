@@ -818,4 +818,8 @@ media-plan-view {
 
 .flex-container-left {
   display: flex;
+
+  .center-the-rest {
+    flex: 2;
+  }
 }

@@ -1,13 +1,24 @@
 <div class="">
+	<div class="flex-container-left">
+		<div>
+			<span class="m-r-l">
+				<button mat-button class="mat-primary font-size-l" type="button" (click)="delete()">
+					<i class="material-icons">delete</i>
+				</button>
+			</span>
+		</div>
+		<div class="center-the-rest">
+			<h2 class="text-center p-b-l font-color-pale">
+				{{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}} - {{getEndMoment()?.toDate() | date: 'HH:mm'}}
+			</h2>
+		</div>
+	</div>
 
-  <h2 class="text-center p-b-l font-color-pale">
-	  {{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}} - {{getEndMoment()?.toDate() | date: 'HH:mm'}}</h2>
+	<div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
+		{{serverErrorMessage}}
+	</div>
 
-  <div *ngIf="serverErrorMessage !== undefined" class="form-error-block">
-    {{serverErrorMessage}}
-  </div>
-
-  <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
+	<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
     <div>
 		<mat-form-field class="full-width">
 			<input

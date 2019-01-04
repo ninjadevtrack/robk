@@ -3,7 +3,8 @@
     <div class="date-switcher p-t">
       <mwl-demo-utils-calendar-header
               [(view)]="view"
-              [(viewDate)]="viewDate">
+              [(viewDate)]="viewDate"
+              (viewChange)="scrollToDefaultLocation(50)">
       </mwl-demo-utils-calendar-header>
     </div>
     <div class="filters p-l-3xl">
@@ -30,8 +31,7 @@
             [refresh]="refresh"
             [events]="events"
             (eventTimesChanged)="eventTimesChanged($event)"
-            (eventClicked)="eventClicked($event)"
-            (beforeViewRender)="scrollToDefaultLocation(50)">
+            (eventClicked)="eventClicked($event)">
     </mwl-calendar-week-view>
     <mwl-calendar-day-view
             *ngSwitchCase="'day'"
@@ -40,8 +40,7 @@
             [refresh]="refresh"
             [events]="events"
             (eventTimesChanged)="eventTimesChanged($event)"
-            (eventClicked)="eventClicked($event)"
-            (beforeViewRender)="scrollToDefaultLocation(50)">
+            (eventClicked)="eventClicked($event)">
     </mwl-calendar-day-view>
   </div>
 </div>

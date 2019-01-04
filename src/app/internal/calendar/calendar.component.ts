@@ -4,7 +4,7 @@ import {CalendarEvent, CalendarEventTimesChangedEvent} from './angular-calendar'
 import {TeacherService} from '../../core/teacher/teacher.service';
 import {ITeacher} from '../../core/teacher/model/teacher.model';
 import {StudentService} from '../../core/student/student.service';
-import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
+import {IIndividualLesson, IndividualLessonModel} from '../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
 import {CalendarColors} from './utils/colors';
 import {SmoothScrollService} from '../../core/smooth-scroll.service';
@@ -39,6 +39,20 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }: CalendarEventTimesChangedEvent): void {
         event.start = newStart;
         event.end = newEnd;
+
+        // update the il dates
+        this._individualLessonService.get(event.meta._id).subscribe((il: IndividualLessonModel) => {
+            il.start = newStart.toISOString();
+            il.end = newEnd.toISOString();
+            // @ts-ignore
+            il.student = il.student._id;
+            // @ts-ignore
+            il.teacher = il.teacher._id;
+            this._individualLessonService.update(event.meta._id, il).subscribe((ilUpdated: IndividualLessonModel) => {
+                console.log(ilUpdated);
+            });
+        });
+
         this.refresh.next();
     }
 
@@ -67,10 +81,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
                     start: new Date(il.start),
                     end: new Date(il.end),
                     draggable: true,
-                    resizable: {
-                        beforeStart: true, // this allows you to configure the sides the event is resizable from
-                        afterEnd: true
-                    },
                     meta: il
                 };
             });

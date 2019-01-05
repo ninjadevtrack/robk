@@ -1,15 +1,15 @@
-import {Component, OnInit, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
-import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventTimesChangedEvent } from '../angular-calendar';
-import { TeacherService } from '../../core/teacher/teacher.service';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Subject} from 'rxjs';
+import {CalendarEvent, CalendarEventTimesChangedEvent} from './angular-calendar';
+import {TeacherService} from '../../core/teacher/teacher.service';
 import {ITeacher} from '../../core/teacher/model/teacher.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StudentService} from '../../core/student/student.service';
-import {IStudent} from '../../core/student/model/student.model';
-import {IIndividualLesson} from '../../core/individual-lesson/model/individual-lesson.model';
+import {IIndividualLesson, IndividualLessonModel} from '../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
-import { CalendarColors} from './demo-utils/colors';
+import {CalendarColors} from './utils/colors';
 import {SmoothScrollService} from '../../core/smooth-scroll.service';
+import {IStudent} from '../../core/student/model/student.model';
+import {CalendarColoringModes} from './utils/calendar-coloring-modes.enum';
 
 @Component({
   selector: 'app-calendar',
@@ -18,17 +18,19 @@ import {SmoothScrollService} from '../../core/smooth-scroll.service';
 })
 export class CalendarComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('weekView', { read: ElementRef }) weekView: ElementRef;
-    filtersForm: FormGroup;
+    @Output() individualLessonClicked: EventEmitter<IIndividualLesson> = new EventEmitter<IIndividualLesson>();
+    @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
+    @Input() _individualLessons: IIndividualLesson[] = [];
+    @Input() coloringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
     view: string = 'week';
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];
     refresh: Subject<any> = new Subject();
-    teachers: ITeacher[] = [];
-    students: IStudent[] = [];
-    individualLessons: IIndividualLesson[] = [];
-    studentsLoaded = false;
-    teachersLoaded = false;
+
+    @Input() set individualLessons(value: IIndividualLesson[]) {
+        this._individualLessons = value;
+        this.initEvents();
+    }
 
     eventTimesChanged({
         event,
@@ -37,92 +39,78 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }: CalendarEventTimesChangedEvent): void {
         event.start = newStart;
         event.end = newEnd;
+
+        // update the il dates
+        this._individualLessonService.get(event.meta._id).subscribe((il: IndividualLessonModel) => {
+            il.start = newStart.toISOString();
+            il.end = newEnd.toISOString();
+            // @ts-ignore
+            il.student = il.student._id;
+            // @ts-ignore
+            il.teacher = il.teacher._id;
+            this._individualLessonService.update(event.meta._id, il).subscribe((ilUpdated: IndividualLessonModel) => {
+                console.log(ilUpdated);
+            });
+        });
+
         this.refresh.next();
     }
-
-    private auxilaryDataLoaded(): boolean {
-        return this.studentsLoaded && this.teachersLoaded;
-    }
-
 
     constructor(
         private _teacherService: TeacherService,
         private _studentService: StudentService,
         private _individualLessonService: IndividualLessonService,
-        private _formBuilder: FormBuilder,
         private _smoothScrollService: SmoothScrollService
-    ) {
-    }
+    ) {}
 
     ngAfterViewInit() {
-        this._smoothScrollService.scrollWithinElement('cal-time-events-wrapper', 400);
+        this.scrollToDefaultLocation(0);
     }
 
     ngOnInit() {
 
-        this.filtersForm = this._formBuilder.group({
-            teachers: ['', [Validators.required]],
-            students: ['', [Validators.required]]
-        });
-
-        this.getTeachers();
-        this.getStudents();
-    }
-
-    private getStudents() {
-        this._studentService.getAllActive().subscribe((students: IStudent[]) => {
-            this.students = students;
-            this.studentsLoaded = true;
-            this.filtersForm.controls['students'].setValue(students.map(s => s._id));
-            this.getIndividualLessons();
-        });
-    }
-
-    private getTeachers() {
-        this._teacherService.getAllActive().subscribe((teachers: ITeacher[]) => {
-            this.teachers = teachers;
-            this.teachersLoaded = true;
-            this.filtersForm.controls['teachers'].setValue(teachers.map(t => t._id));
-            this.getIndividualLessons();
-        });
-    }
-
-    private getIndividualLessons() {
-        if (this.auxilaryDataLoaded()) {
-            const teachers = this.filtersForm.controls['teachers'].value;
-            const students = this.filtersForm.controls['students'].value;
-            this._individualLessonService.search(teachers, students).subscribe((individualLessons: IIndividualLesson[]) => {
-                this.individualLessons = individualLessons;
-                this.initEvents();
-            });
-        }
     }
 
     initEvents () {
 
-        this.events = this.individualLessons.map((il) => {
-            return {
-                title: `${il.teacher.user.firstName} ${il.teacher.user.lastName} teaching ${il.student.user.firstName} ${il.student.user.lastName} - ${il.title}`,
-                color: this.getColor(il.teacher),
-                start: new Date(il.start),
-                end: new Date(il.end),
-                draggable: true,
-                resizable: {
-                    beforeStart: true, // this allows you to configure the sides the event is resizable from
-                    afterEnd: true
-                },
-                meta: il
-            };
-        });
+        if (this._individualLessons) {
+            this.events = this._individualLessons.map((il) => {
+                return {
+                    title: `${il.title} - ${il.teacher.user.firstName} ${il.teacher.user.lastName} with ${il.student.user.firstName} ${il.student.user.lastName} `,
+                    color: (this.coloringMode === CalendarColoringModes.BY_TEACHER) ? this.getColorByTeacher(il.teacher) : this.getColorByStudent(il.student),
+                    start: new Date(il.start),
+                    end: new Date(il.end),
+                    draggable: true,
+                    meta: il
+                };
+            });
+        }
     }
 
-    private getColor(teacher: ITeacher) {
-        const index = this.teachers.findIndex((t) => t._id === teacher._id);
+    getColorByTeacher(teacher: ITeacher) {
+        const teacherIds = Array.from(new Set(
+            this._individualLessons
+                .map((il) => il.teacher._id)
+                .sort((a, b) => (a > b) ? 1 : -1 )));
+        return this.getColor(teacherIds, teacher._id);
+    }
+
+    getColorByStudent(student: IStudent) {
+        const studentIds = Array.from(new Set(
+            this._individualLessons
+                .map((il) => il.student._id)
+                .sort((a, b) => (a > b) ? 1 : -1 )));
+        return this.getColor(studentIds, student._id);
+    }
+
+    getColor(entitysIds: string[], entityId) {
+        const index = entitysIds.findIndex((id) => id === entityId);
 
         if (index === -1) { return CalendarColors[CalendarColors.length - 1]; }
 
-        return (CalendarColors.length >= this.teachers.length) ? CalendarColors[index] : CalendarColors[this.teachers.length % CalendarColors.length];
+        return (CalendarColors.length >= entitysIds.length) ? CalendarColors[index] : CalendarColors[entitysIds.length % CalendarColors.length];
     }
+
 
     monthViewDayClicked(event) {
         if (this.events.filter((e) => e.start.toDateString() === event.day.date.toDateString()).length > 0) {
@@ -130,8 +118,18 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         }
     }
 
-    hourSegmentClicked(event) {
-        console.log(event);
+    emitHourSegmentClicked(event) {
+        this.hourSegmentClicked.emit(event);
+    }
+
+    eventClicked(event) {
+        this.individualLessonClicked.emit(event.event.meta);
+    }
+
+    scrollToDefaultLocation(timeout) {
+        setTimeout(() => {
+            this._smoothScrollService.scrollWithinElement('cal-time-events-wrapper', 400);
+        }, timeout);
     }
 
 }

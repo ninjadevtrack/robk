@@ -3,10 +3,10 @@ import {
     OnInit
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Consts } from '../../core/common/config.service';
-import { AuthStorageService } from '../../core/common/auth-storage.service';
-import { UserService } from '../../core/user/user.service';
-import { PermissionsEnum} from '../../core/common/permissions.enum';
+import { Consts } from '../../../core/common/config.service';
+import { AuthStorageService } from '../../../core/common/auth-storage.service';
+import { UserService } from '../../../core/user/user.service';
+import { PermissionsEnum} from '../../../core/common/permissions.enum';
 
 @Component({
     /**

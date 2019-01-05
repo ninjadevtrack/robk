@@ -75,7 +75,7 @@ export interface DayViewEventResize {
 @Component({
   selector: 'mwl-calendar-day-view',
   template: `
-    <div class="cal-day-view">
+    <div id="cal-time-events-wrapper" class="cal-day-view cal-time-events-wrapper">
       <div
         class="cal-all-day-events"
         mwlDroppable

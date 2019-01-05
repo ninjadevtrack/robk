@@ -1,0 +1,11 @@
+.filters-container {
+  display: flex;
+}
+
+.filters-container > .right {
+  margin-left: auto;
+}
+
+.filters-container > div {
+  flex: 1;
+}

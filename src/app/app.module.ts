@@ -76,7 +76,7 @@ import { SetPasswordComponent } from './public/set-password/set-password.compone
 import { ProfileComponent } from './internal/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
-import { DataFieldComponent } from './internal/data-field/data-field.component';
+import { DataFieldComponent } from './internal/common/data-field/data-field.component';
 import { UserTableComponent } from './internal/admin/user/user-table/user-table.component';
 import { PublicEntryComponent } from './public/public-entry.component';
 import { PublicFooterComponent } from './public/footer/footer.component';

@@ -105,7 +105,7 @@ import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teac
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { ConfirmDialogComponent } from './internal/common/confirm-dialog/confirm-dialog.component';
-import { CalendarComponent } from './internal/common/calendar/calendar.component';
+import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import { ServiceService } from './core/service/service.service';
 import { InstrumentService } from './core/instrument/instrument.service';

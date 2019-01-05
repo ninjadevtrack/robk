@@ -9,7 +9,7 @@ import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { EnrollmentViewComponent } from "./internal/admin/enrollment/enrollment-view/enrollment-view.component";
-import { CalendarComponent } from './internal/common/calendar/calendar.component';
+import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';

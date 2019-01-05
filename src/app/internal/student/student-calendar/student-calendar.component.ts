@@ -11,6 +11,8 @@ import {MatDialog} from '@angular/material';
 import {IndividualLessonAddEditComponent} from '../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
 import {DialogMode} from '../../../core/common/dialog-mode.enum';
+import {AuthStorageService} from '../../../core/common/auth-storage.service';
+import {Consts} from '../../../core/common';
 
 @Component({
   selector: 'app-student-calendar',
@@ -28,13 +30,12 @@ export class StudentCalendarComponent implements OnInit {
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
     constructor(
-      private _router: Router,
-      private _route: ActivatedRoute,
       private _teacherService: TeacherService,
       private _studentService: StudentService,
       private _individualLessonsService: IndividualLessonService,
       private _formBuilder: FormBuilder,
-      private _dialog: MatDialog
+      private _dialog: MatDialog,
+      private _session: AuthStorageService,
     ) { }
 
     ngOnInit() {
@@ -43,17 +44,14 @@ export class StudentCalendarComponent implements OnInit {
           teachers: [[], []]
       });
 
-      this._route.params.subscribe((params) => {
-          this.id = params.id;
+      const userProfile = JSON.parse(this._session.getItem(Consts.USER_PROFILE));
 
-          this._studentService.get(this.id).subscribe((student: StudentModel) => {
-              this.student = student;
-          });
+      this.id = userProfile.student._id;
+      this.student = userProfile.student;
 
-          this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
-              this.teachers = teachers;
-              this.getIndividualLessons([], [this.id]);
-          });
+      this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
+          this.teachers = teachers;
+          this.getIndividualLessons([], [this.id]);
       });
     }
 

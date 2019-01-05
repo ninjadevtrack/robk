@@ -53,6 +53,8 @@ export class InternalHeaderComponent implements OnInit {
 
             this._session.setItem(Consts.USER_PERMISSIONS, JSON.stringify(user.permissions));
             this._session.setItem(Consts.USER_ROLES, JSON.stringify(user.roles));
+            // @ts-ignore
+            this._session.setItem(Consts.USER_PROFILE, JSON.stringify(user));
         });
     }
 

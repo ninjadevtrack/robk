@@ -7,6 +7,7 @@ export namespace Consts {
     export const AUTH_TOKEN_KEY: string = 'ju_auth_token';
     export const USER_PERMISSIONS: string = 'ju_user_permissions';
     export const USER_ROLES: string = 'ju_user_roles';
+    export const USER_PROFILE: string = 'ju_user_profile';
 }
 
 @Injectable()

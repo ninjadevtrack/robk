@@ -13,7 +13,7 @@ import {DialogMode} from '../../../../core/common/dialog-mode.enum';
 import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-teacher-calendar',
+  selector: 'app-admin-teacher-calendar',
   templateUrl: './admin-teacher-calendar.component.html',
   styleUrls: ['./admin-teacher-calendar.component.scss']
 })

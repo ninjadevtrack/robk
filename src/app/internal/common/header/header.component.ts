@@ -52,6 +52,7 @@ export class InternalHeaderComponent implements OnInit {
             this.showAdminMenu = this.permissions.indexOf(PermissionsEnum.USERS_ADD) !== -1;
 
             this._session.setItem(Consts.USER_PERMISSIONS, JSON.stringify(user.permissions));
+            this._session.setItem(Consts.USER_ROLES, JSON.stringify(user.roles));
         });
     }
 

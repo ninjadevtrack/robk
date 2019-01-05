@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
-import {IIndividualLesson} from '../../../../core/individual-lesson/model/individual-lesson.model';
-import {StudentService} from '../../../../core/student/student.service';
-import {StudentModel} from '../../../../core/student/model/student.model';
+import {IndividualLessonService} from '../../../core/individual-lesson/individual-lesson.service';
+import {IIndividualLesson} from '../../../core/individual-lesson/model/individual-lesson.model';
+import {StudentService} from '../../../core/student/student.service';
+import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {ClientService} from '../../../../core/client/client.service';
-import {ClientModel} from '../../../../core/client/model/client.model';
-import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
+import {ClientService} from '../../../core/client/client.service';
+import {ClientModel} from '../../../core/client/model/client.model';
+import {CalendarColoringModes} from '../../calendar/utils/calendar-coloring-modes.enum';
 
 @Component({
-  selector: 'app-admin-client-calendar',
-  templateUrl: './admin-client-calendar.component.html',
-  styleUrls: ['./admin-client-calendar.component.scss']
+  selector: 'app-client-calendar',
+  templateUrl: './client-calendar.component.html',
+  styleUrls: ['./client-calendar.component.scss']
 })
-export class AdminClientCalendarComponent implements OnInit {
+export class ClientCalendarComponent implements OnInit {
 
   filtersForm: FormGroup;
   id: string;

@@ -142,6 +142,9 @@ import {AdminStudentCalendarComponent} from './internal/admin/student/admin-stud
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
 import {IndividualLessonAddEditComponent} from './internal/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {StudentCalendarComponent} from './internal/calendar/student-calendar/student-calendar.component';
+import {TeacherCalendarComponent} from './internal/calendar/teacher-calendar/teacher-calendar.component';
+import {ClientCalendarComponent} from './internal/calendar/client-calendar/client-calendar.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -239,6 +242,9 @@ type StoreType = {
         AdminTeacherCalendarComponent,
         AdminStudentCalendarComponent,
         AdminClientCalendarComponent,
+        StudentCalendarComponent,
+        TeacherCalendarComponent,
+        ClientCalendarComponent,
         IndividualLessonAddEditComponent
     ],
     entryComponents: [

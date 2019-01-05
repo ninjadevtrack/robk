@@ -1,3 +1,5 @@
+import {Role} from './role.enum';
+
 export interface IUser {
     _id: string;
     firstName: string;
@@ -6,7 +8,7 @@ export interface IUser {
     phone: string;
     email: string;
     isActive: boolean;
-    roles: string[];
+    roles: Role[];
     permissions: string[];
 }
 
@@ -18,7 +20,7 @@ export class UserModel implements IUser {
     phone: string;
     email: string;
     isActive: boolean;
-    roles: string[];
+    roles: Role[];
     permissions: string[];
 
     constructor () {}
@@ -43,5 +45,5 @@ export class UsersResultModel implements IUsersResult {
         public nextPage: number,
         public lastPage: number,
         public docs: UserModel[]
-    ){}
+    ) {}
 }

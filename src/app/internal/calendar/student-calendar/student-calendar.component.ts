@@ -1,23 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TeacherService} from '../../../../core/teacher/teacher.service';
-import {TeacherModel} from '../../../../core/teacher/model/teacher.model';
-import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
-import {IIndividualLesson} from '../../../../core/individual-lesson/model/individual-lesson.model';
-import {StudentService} from '../../../../core/student/student.service';
-import {StudentModel} from '../../../../core/student/model/student.model';
+import {TeacherService} from '../../../core/teacher/teacher.service';
+import {TeacherModel} from '../../../core/teacher/model/teacher.model';
+import {IndividualLessonService} from '../../../core/individual-lesson/individual-lesson.service';
+import {IIndividualLesson} from '../../../core/individual-lesson/model/individual-lesson.model';
+import {StudentService} from '../../../core/student/student.service';
+import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
-import {IndividualLessonAddEditComponent} from '../../../calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
-import {DialogMode} from '../../../../core/common/dialog-mode.enum';
+import {IndividualLessonAddEditComponent} from '../individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import {CalendarColoringModes} from '../utils/calendar-coloring-modes.enum';
+import {DialogMode} from '../../../core/common/dialog-mode.enum';
 
 @Component({
-  selector: 'app-admin-student-calendar',
-  templateUrl: './admin-student-calendar.component.html',
-  styleUrls: ['./admin-student-calendar.component.scss']
+  selector: 'app-student-calendar',
+  templateUrl: './student-calendar.component.html',
+  styleUrls: ['./student-calendar.component.scss']
 })
-export class AdminStudentCalendarComponent implements OnInit {
+export class StudentCalendarComponent implements OnInit {
 
     filtersForm: FormGroup;
     id: string;

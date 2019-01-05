@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminTeacherCalendarComponent } from './admin-teacher-calendar.component';
 
-describe('AdminStudentCalendarComponent', () => {
+describe('StudentCalendarComponent', () => {
   let component: AdminTeacherCalendarComponent;
   let fixture: ComponentFixture<AdminTeacherCalendarComponent>;
 

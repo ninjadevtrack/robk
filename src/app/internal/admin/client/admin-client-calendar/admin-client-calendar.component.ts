@@ -11,10 +11,10 @@ import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-m
 
 @Component({
   selector: 'app-client-calendar',
-  templateUrl: './client-calendar.component.html',
-  styleUrls: ['./client-calendar.component.scss']
+  templateUrl: './admin-client-calendar.component.html',
+  styleUrls: ['./admin-client-calendar.component.scss']
 })
-export class ClientCalendarComponent implements OnInit {
+export class AdminClientCalendarComponent implements OnInit {
 
   filtersForm: FormGroup;
   id: string;

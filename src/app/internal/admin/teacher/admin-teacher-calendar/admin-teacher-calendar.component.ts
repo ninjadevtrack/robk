@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TeacherService} from '../../../../core/teacher/teacher.service';
 import {TeacherModel} from '../../../../core/teacher/model/teacher.model';
@@ -7,22 +7,22 @@ import {IIndividualLesson} from '../../../../core/individual-lesson/model/indivi
 import {StudentService} from '../../../../core/student/student.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {MatDialog} from '@angular/material';
-import {IndividualLessonAddEditComponent} from '../../../calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {CalendarColoringModes} from '../../../calendar/utils/calendar-coloring-modes.enum';
+import {IndividualLessonAddEditComponent} from '../../../calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {DialogMode} from '../../../../core/common/dialog-mode.enum';
+import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-student-calendar',
-  templateUrl: './student-calendar.component.html',
-  styleUrls: ['./student-calendar.component.scss']
+  selector: 'app-teacher-calendar',
+  templateUrl: './admin-teacher-calendar.component.html',
+  styleUrls: ['./admin-teacher-calendar.component.scss']
 })
-export class StudentCalendarComponent implements OnInit {
+export class AdminTeacherCalendarComponent implements OnInit {
 
     filtersForm: FormGroup;
     id: string;
-    student: StudentModel;
-    teachers: TeacherModel[];
+    teacher: TeacherModel;
+    students: StudentModel[];
     individualLessons: IIndividualLesson[];
     addEditEntityDialogOpened = false;
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
@@ -40,19 +40,19 @@ export class StudentCalendarComponent implements OnInit {
     ngOnInit() {
 
       this.filtersForm = this._formBuilder.group({
-          teachers: [[], []]
+          students: [[], []]
       });
 
       this._route.params.subscribe((params) => {
           this.id = params.id;
 
-          this._studentService.get(this.id).subscribe((student: StudentModel) => {
-              this.student = student;
+          this._teacherService.get(this.id).subscribe((teacher: TeacherModel) => {
+              this.teacher = teacher;
           });
 
-          this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
-              this.teachers = teachers;
-              this.getIndividualLessons([], [this.id]);
+          this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
+              this.students = students;
+              this.getIndividualLessons([this.id], []);
           });
       });
     }
@@ -64,7 +64,7 @@ export class StudentCalendarComponent implements OnInit {
     }
 
     getIndividualLessonsBySelectedFilersValues() {
-      this.getIndividualLessons(this.filtersForm.controls['teachers'].value, [this.id]);
+      this.getIndividualLessons([this.id], this.filtersForm.controls['students'].value);
     }
 
     addEditIndividualLesson(data) {
@@ -87,8 +87,8 @@ export class StudentCalendarComponent implements OnInit {
         const data = {
             mode: DialogMode.ADD,
             date: event.date,
-            students: [this.student],
-            teachers: this.teachers
+            students: this.students,
+            teachers: [this.teacher]
         };
 
         this.addEditIndividualLesson(data);
@@ -98,8 +98,8 @@ export class StudentCalendarComponent implements OnInit {
         const data = {
             mode: DialogMode.EDIT,
             il: il,
-            students: [this.student],
-            teachers: this.teachers
+            students: this.students,
+            teachers: [this.teacher]
         };
 
         this.addEditIndividualLesson(data);

@@ -137,9 +137,9 @@ import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-
 import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 import { IndividualLessonService } from './core/individual-lesson/individual-lesson.service';
-import { TeacherCalendarComponent } from './internal/admin/teacher/teacher-calendar/teacher-calendar.component';
-import {StudentCalendarComponent} from './internal/admin/student/student-calendar/student-calendar.component';
-import {ClientCalendarComponent} from './internal/admin/client/client-calendar/client-calendar.component';
+import { AdminTeacherCalendarComponent } from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
+import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
+import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
 import {IndividualLessonAddEditComponent} from './internal/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -236,9 +236,9 @@ type StoreType = {
         TeacherListRootComponent,
         ClientListRootComponent,
         EnrollmentListRootComponent,
-        TeacherCalendarComponent,
-        StudentCalendarComponent,
-        ClientCalendarComponent,
+        AdminTeacherCalendarComponent,
+        AdminStudentCalendarComponent,
+        AdminClientCalendarComponent,
         IndividualLessonAddEditComponent
     ],
     entryComponents: [

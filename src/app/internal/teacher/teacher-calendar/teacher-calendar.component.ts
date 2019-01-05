@@ -11,6 +11,8 @@ import {CalendarColoringModes} from '../../common/calendar/utils/calendar-colori
 import {IndividualLessonAddEditComponent} from '../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {DialogMode} from '../../../core/common/dialog-mode.enum';
 import {MatDialog} from '@angular/material';
+import {AuthStorageService} from '../../../core/common/auth-storage.service';
+import {Consts} from '../../../core/common';
 
 
 @Component({
@@ -29,13 +31,12 @@ export class TeacherCalendarComponent implements OnInit {
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
     constructor(
-      private _router: Router,
-      private _route: ActivatedRoute,
       private _teacherService: TeacherService,
       private _studentService: StudentService,
       private _individualLessonsService: IndividualLessonService,
       private _formBuilder: FormBuilder,
-      private _dialog: MatDialog
+      private _dialog: MatDialog,
+      private _session: AuthStorageService,
     ) { }
 
     ngOnInit() {
@@ -44,18 +45,16 @@ export class TeacherCalendarComponent implements OnInit {
           students: [[], []]
       });
 
-      this._route.params.subscribe((params) => {
-          this.id = params.id;
+      const userProfile = JSON.parse(this._session.getItem(Consts.USER_PROFILE));
 
-          this._teacherService.get(this.id).subscribe((teacher: TeacherModel) => {
-              this.teacher = teacher;
-          });
-
-          this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
-              this.students = students;
-              this.getIndividualLessons([this.id], []);
-          });
+      this.id = userProfile.teacher._id;
+      this.teacher = userProfile.teacher;
+      
+      this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
+          this.students = students;
+          this.getIndividualLessons([this.id], []);
       });
+
     }
 
     getIndividualLessons(teacherIds, studentIds) {

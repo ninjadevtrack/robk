@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TeacherService} from '../../../core/teacher/teacher.service';
 import {TeacherModel} from '../../../core/teacher/model/teacher.model';
@@ -7,23 +7,22 @@ import {IIndividualLesson} from '../../../core/individual-lesson/model/individua
 import {StudentService} from '../../../core/student/student.service';
 import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {CalendarColoringModes} from '../../calendar/utils/calendar-coloring-modes.enum';
-import {IndividualLessonAddEditComponent} from '../../calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import {DialogMode} from '../../../core/common/dialog-mode.enum';
 import {MatDialog} from '@angular/material';
-
+import {IndividualLessonAddEditComponent} from '../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
+import {DialogMode} from '../../../core/common/dialog-mode.enum';
 
 @Component({
-  selector: 'app-teacher-calendar',
-  templateUrl: './teacher-calendar.component.html',
-  styleUrls: ['./teacher-calendar.component.scss']
+  selector: 'app-student-calendar',
+  templateUrl: './student-calendar.component.html',
+  styleUrls: ['./student-calendar.component.scss']
 })
-export class TeacherCalendarComponent implements OnInit {
+export class StudentCalendarComponent implements OnInit {
 
     filtersForm: FormGroup;
     id: string;
-    teacher: TeacherModel;
-    students: StudentModel[];
+    student: StudentModel;
+    teachers: TeacherModel[];
     individualLessons: IIndividualLesson[];
     addEditEntityDialogOpened = false;
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
@@ -41,19 +40,19 @@ export class TeacherCalendarComponent implements OnInit {
     ngOnInit() {
 
       this.filtersForm = this._formBuilder.group({
-          students: [[], []]
+          teachers: [[], []]
       });
 
       this._route.params.subscribe((params) => {
           this.id = params.id;
 
-          this._teacherService.get(this.id).subscribe((teacher: TeacherModel) => {
-              this.teacher = teacher;
+          this._studentService.get(this.id).subscribe((student: StudentModel) => {
+              this.student = student;
           });
 
-          this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
-              this.students = students;
-              this.getIndividualLessons([this.id], []);
+          this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
+              this.teachers = teachers;
+              this.getIndividualLessons([], [this.id]);
           });
       });
     }
@@ -65,7 +64,7 @@ export class TeacherCalendarComponent implements OnInit {
     }
 
     getIndividualLessonsBySelectedFilersValues() {
-      this.getIndividualLessons([this.id], this.filtersForm.controls['students'].value);
+      this.getIndividualLessons(this.filtersForm.controls['teachers'].value, [this.id]);
     }
 
     addEditIndividualLesson(data) {
@@ -88,8 +87,8 @@ export class TeacherCalendarComponent implements OnInit {
         const data = {
             mode: DialogMode.ADD,
             date: event.date,
-            students: this.students,
-            teachers: [this.teacher]
+            students: [this.student],
+            teachers: this.teachers
         };
 
         this.addEditIndividualLesson(data);
@@ -99,8 +98,8 @@ export class TeacherCalendarComponent implements OnInit {
         const data = {
             mode: DialogMode.EDIT,
             il: il,
-            students: this.students,
-            teachers: [this.teacher]
+            students: [this.student],
+            teachers: this.teachers
         };
 
         this.addEditIndividualLesson(data);

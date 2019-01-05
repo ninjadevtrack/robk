@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AppealService} from '../../../../core/appeal/appeal.service';
+import {AppealService} from '../../../../../core/appeal/appeal.service';
 import * as moment from 'moment';
-import {IndividualLessonModel} from '../../../../core/individual-lesson/model/individual-lesson.model';
-import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
-import {DialogMode} from '../../../../core/common/dialog-mode.enum';
+import {IndividualLessonModel} from '../../../../../core/individual-lesson/model/individual-lesson.model';
+import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
+import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 
 @Component({
     selector: 'individual-lesson-add',

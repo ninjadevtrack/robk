@@ -1,14 +1,14 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Subject} from 'rxjs';
 import {CalendarEvent, CalendarEventTimesChangedEvent} from './angular-calendar';
-import {TeacherService} from '../../core/teacher/teacher.service';
-import {ITeacher} from '../../core/teacher/model/teacher.model';
-import {StudentService} from '../../core/student/student.service';
-import {IIndividualLesson, IndividualLessonModel} from '../../core/individual-lesson/model/individual-lesson.model';
-import {IndividualLessonService} from '../../core/individual-lesson/individual-lesson.service';
+import {TeacherService} from '../../../core/teacher/teacher.service';
+import {ITeacher} from '../../../core/teacher/model/teacher.model';
+import {StudentService} from '../../../core/student/student.service';
+import {IIndividualLesson, IndividualLessonModel} from '../../../core/individual-lesson/model/individual-lesson.model';
+import {IndividualLessonService} from '../../../core/individual-lesson/individual-lesson.service';
 import {CalendarColors} from './utils/colors';
-import {SmoothScrollService} from '../../core/smooth-scroll.service';
-import {IStudent} from '../../core/student/model/student.model';
+import {SmoothScrollService} from '../../../core/smooth-scroll.service';
+import {IStudent} from '../../../core/student/model/student.model';
 import {CalendarColoringModes} from './utils/calendar-coloring-modes.enum';
 
 @Component({

@@ -5,11 +5,11 @@ import { InternalEntryComponent } from './internal/internal-entry.component';
 import { NoContentComponent } from './public/no-content';
 import { ForgotPasswordComponent } from './public/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './public/set-password/set-password.component';
-import { ProfileComponent } from './internal/profile/profile.component';
+import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { EnrollmentViewComponent } from "./internal/admin/enrollment/enrollment-view/enrollment-view.component";
-import { CalendarComponent } from './internal/calendar/calendar.component';
+import { CalendarComponent } from './internal/common/calendar/calendar.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
@@ -64,7 +64,7 @@ export const ROUTES: Routes = [
                     { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
-            { path: 'calendar', component: CalendarComponent }
+            { path: 'student', component: CalendarComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

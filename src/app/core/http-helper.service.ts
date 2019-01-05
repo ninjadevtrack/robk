@@ -20,7 +20,7 @@ export class HttpHelperService {
 
     private getHttpOptions(secured) {
 
-        if(!secured) {
+        if (!secured) {
             return {
                 headers: new HttpHeaders({
                     'Content-Type':  'application/json'

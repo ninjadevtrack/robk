@@ -1,9 +1,17 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b-xl">
-      <p>
-        root-calendar works!
-      </p>
+      <div [ngSwitch]="mainRole">
+        <app-student-calendar
+          *ngSwitchCase="roles.STUDENT">
+        </app-student-calendar>
+        <app-client-calendar
+          *ngSwitchCase="roles.CLIENT">
+        </app-client-calendar>
+        <app-teacher-calendar
+          *ngSwitchCase="roles.TEACHER">
+        </app-teacher-calendar>
+      </div>
     </div>
   </div>
 </div>

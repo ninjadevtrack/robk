@@ -82,7 +82,7 @@ import { PublicEntryComponent } from './public/public-entry.component';
 import { PublicFooterComponent } from './public/footer/footer.component';
 import { PublicHeaderComponent } from './public/header/header.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
-import { InternalHeaderComponent } from './internal/header/header.component';
+import { InternalHeaderComponent } from './internal/common/header/header.component';
 import { NoContentComponent } from './public/no-content';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';

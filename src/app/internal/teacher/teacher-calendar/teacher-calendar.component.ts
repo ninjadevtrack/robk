@@ -49,7 +49,7 @@ export class TeacherCalendarComponent implements OnInit {
 
       this.id = userProfile.teacher._id;
       this.teacher = userProfile.teacher;
-      
+
       this._studentService.getAllActive().subscribe((students: StudentModel[]) => {
           this.students = students;
           this.getIndividualLessons([this.id], []);

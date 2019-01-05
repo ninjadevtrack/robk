@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ClientService} from '../../../core/client/client.service';
 import {ClientModel} from '../../../core/client/model/client.model';
 import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
+import {AuthStorageService} from '../../../core/common/auth-storage.service';
+import {Consts} from '../../../core/common';
 
 @Component({
   selector: 'app-client-calendar',
@@ -29,7 +31,8 @@ export class ClientCalendarComponent implements OnInit {
       private _clientService: ClientService,
       private _studentService: StudentService,
       private _individualLessonsService: IndividualLessonService,
-      private _formBuilder: FormBuilder
+      private _formBuilder: FormBuilder,
+      private _session: AuthStorageService,
   ) { }
 
   ngOnInit() {
@@ -38,18 +41,15 @@ export class ClientCalendarComponent implements OnInit {
           students: ['', []]
       });
 
-      this._route.params.subscribe((params) => {
-          this.id = params.id;
+      const userProfile = JSON.parse(this._session.getItem(Consts.USER_PROFILE));
 
-          this._clientService.get(this.id).subscribe((client: ClientModel) => {
-              this.client = client;
-          });
+      this.id = userProfile.client._id;
+      this.client = userProfile.client;
 
-          this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
-              this.students = students;
-              this.filtersForm.controls['students'].setValue(this.students.map(s => s._id));
-              this.getIndividualLessons([], this.filtersForm.controls['students'].value);
-          });
+      this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
+          this.students = students;
+          this.filtersForm.controls['students'].setValue(this.students.map(s => s._id));
+          this.getIndividualLessons([], this.filtersForm.controls['students'].value);
       });
   }
 

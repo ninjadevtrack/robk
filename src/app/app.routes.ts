@@ -9,7 +9,6 @@ import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { EnrollmentViewComponent } from "./internal/admin/enrollment/enrollment-view/enrollment-view.component";
-import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
@@ -28,6 +27,7 @@ import {EnrollmentListRootComponent} from './internal/admin/enrollment/enrollmen
 import {AdminTeacherCalendarComponent} from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
 import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
+import {RootCalendarComponent} from './internal/common/calendar/root-calendar/root-calendar.component';
 
 export const ROUTES: Routes = [
     { path: '', component: PublicEntryComponent,
@@ -64,7 +64,7 @@ export const ROUTES: Routes = [
                     { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
-            { path: 'student', component: CalendarComponent }
+            { path: 'calendar', component: RootCalendarComponent }
         ]
     },
     { path: '**', component: NoContentComponent }

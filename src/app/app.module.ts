@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {
@@ -53,7 +52,6 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        HttpClientModule,
         CoreModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,

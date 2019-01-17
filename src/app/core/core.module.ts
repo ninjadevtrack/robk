@@ -16,11 +16,13 @@ import { FakeStorage } from './fake-storage';
 import { HttpHelperService } from './http-helper.service';
 import { SmoothScrollService } from './smooth-scroll.service';
 import { WindowRefService } from './window.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule,
-    CoreCommonModule
+      CommonModule,
+      CoreCommonModule,
+      HttpClientModule
   ],
   declarations: [],
   providers: [

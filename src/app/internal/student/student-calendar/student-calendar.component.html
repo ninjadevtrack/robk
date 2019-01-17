@@ -1,0 +1,11 @@
+<app-calendar
+  [individualLessons]="individualLessons"
+  [coloringMode]="calendarColoringMode"
+  (hourSegmentClicked)="addIndividualLesson($event)"
+  (individualLessonClicked)="editIndividualLesson($event)">
+  <form novalidate [formGroup]="filtersForm">
+    <div class="filters-container">
+      <div><h2 class="p-t">{{student?.user?.lastName}} {{student?.user?.firstName}}</h2></div>
+    </div>
+  </form>
+</app-calendar>

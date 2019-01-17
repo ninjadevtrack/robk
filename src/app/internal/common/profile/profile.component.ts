@@ -2,8 +2,8 @@ import {
     Component,
     OnInit, ViewChild
 } from '@angular/core';
-import { UserModel, IUser } from '../../core/user/model/user.model';
-import { UserService } from '../../core/user/user.service';
+import { UserModel, IUser } from '../../../core/user/model/user.model';
+import { UserService } from '../../../core/user/user.service';
 
 @Component({
     selector: 'profile',

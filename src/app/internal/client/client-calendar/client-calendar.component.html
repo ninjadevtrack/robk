@@ -1,0 +1,18 @@
+<app-calendar
+  [individualLessons]="individualLessons"
+  [coloringMode]="calendarColoringMode">
+  <form novalidate [formGroup]="filtersForm">
+    <div class="filters-container">
+      <div><h2 class="p-t">{{client?.user?.lastName}} {{client?.user?.firstName}}</h2></div>
+      <div class="right text-right">
+        <mat-form-field class="regular-field">
+          <mat-select placeholder="Students" formControlName="students" multiple (selectionChange)="filterSelectionChanged()">
+            <mat-option *ngFor="let student of students" [value]="student._id">
+              {{student.user.lastName}} {{student.user.firstName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</app-calendar>

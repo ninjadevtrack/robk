@@ -1,23 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TeacherService} from '../../../../core/teacher/teacher.service';
-import {TeacherModel} from '../../../../core/teacher/model/teacher.model';
-import {IndividualLessonService} from '../../../../core/individual-lesson/individual-lesson.service';
-import {IIndividualLesson} from '../../../../core/individual-lesson/model/individual-lesson.model';
-import {StudentService} from '../../../../core/student/student.service';
-import {StudentModel} from '../../../../core/student/model/student.model';
+import {TeacherService} from '../../../core/teacher/teacher.service';
+import {TeacherModel} from '../../../core/teacher/model/teacher.model';
+import {IndividualLessonService} from '../../../core/individual-lesson/individual-lesson.service';
+import {IIndividualLesson} from '../../../core/individual-lesson/model/individual-lesson.model';
+import {StudentService} from '../../../core/student/student.service';
+import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
-import {IndividualLessonAddEditComponent} from '../../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import {CalendarColoringModes} from '../../../common/calendar/utils/calendar-coloring-modes.enum';
-import {DialogMode} from '../../../../core/common/dialog-mode.enum';
+import {IndividualLessonAddEditComponent} from '../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
+import {DialogMode} from '../../../core/common/dialog-mode.enum';
+import {AuthStorageService} from '../../../core/common/auth-storage.service';
+import {Consts} from '../../../core/common';
 
 @Component({
-  selector: 'app-admin-student-calendar',
-  templateUrl: './admin-student-calendar.component.html',
-  styleUrls: ['./admin-student-calendar.component.scss']
+  selector: 'app-student-calendar',
+  templateUrl: './student-calendar.component.html',
+  styleUrls: ['./student-calendar.component.scss']
 })
-export class AdminStudentCalendarComponent implements OnInit {
+export class StudentCalendarComponent implements OnInit {
 
     filtersForm: FormGroup;
     id: string;
@@ -28,13 +30,12 @@ export class AdminStudentCalendarComponent implements OnInit {
     calendarColoringMode: CalendarColoringModes = CalendarColoringModes.BY_TEACHER;
 
     constructor(
-      private _router: Router,
-      private _route: ActivatedRoute,
       private _teacherService: TeacherService,
       private _studentService: StudentService,
       private _individualLessonsService: IndividualLessonService,
       private _formBuilder: FormBuilder,
-      private _dialog: MatDialog
+      private _dialog: MatDialog,
+      private _session: AuthStorageService,
     ) { }
 
     ngOnInit() {
@@ -43,17 +44,14 @@ export class AdminStudentCalendarComponent implements OnInit {
           teachers: [[], []]
       });
 
-      this._route.params.subscribe((params) => {
-          this.id = params.id;
+      const userProfile = JSON.parse(this._session.getItem(Consts.USER_PROFILE));
 
-          this._studentService.get(this.id).subscribe((student: StudentModel) => {
-              this.student = student;
-          });
+      this.id = userProfile.student._id;
+      this.student = userProfile.student;
 
-          this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
-              this.teachers = teachers;
-              this.getIndividualLessons([], [this.id]);
-          });
+      this._teacherService.getAllActive().subscribe((teachers: TeacherModel[]) => {
+          this.teachers = teachers;
+          this.getIndividualLessons([], [this.id]);
       });
     }
 

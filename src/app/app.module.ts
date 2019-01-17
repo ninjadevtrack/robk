@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from './internal/calendar/angular-calendar';
-import { adapterFactory } from './internal/calendar/angular-calendar/date-adapters/date-fns';
+import { CalendarModule, DateAdapter } from './internal/common/calendar/angular-calendar';
+import { adapterFactory } from './internal/common/calendar/angular-calendar/date-adapters/date-fns';
 import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,
@@ -73,7 +73,7 @@ import { HomeComponent } from './public/home';
 import { SignInComponent } from './public/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './public/forgot-password/forgot-password.component';
 import { SetPasswordComponent } from './public/set-password/set-password.component';
-import { ProfileComponent } from './internal/profile/profile.component';
+import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { DataFieldComponent } from './internal/common/data-field/data-field.component';
@@ -105,8 +105,8 @@ import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teac
 import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { ConfirmDialogComponent } from './internal/common/confirm-dialog/confirm-dialog.component';
-import { CalendarComponent } from './internal/calendar/calendar.component';
-import { DemoUtilsModule } from './internal/calendar/utils/module';
+import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
+import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import { ServiceService } from './core/service/service.service';
 import { InstrumentService } from './core/instrument/instrument.service';
 import { AppealService } from './core/appeal/appeal.service';
@@ -140,8 +140,12 @@ import { IndividualLessonService } from './core/individual-lesson/individual-les
 import { AdminTeacherCalendarComponent } from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
 import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
-import {IndividualLessonAddEditComponent} from './internal/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import {IndividualLessonAddEditComponent} from './internal/common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {StudentCalendarComponent} from './internal/student/student-calendar/student-calendar.component';
+import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teacher-calendar.component';
+import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
+import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -239,7 +243,11 @@ type StoreType = {
         AdminTeacherCalendarComponent,
         AdminStudentCalendarComponent,
         AdminClientCalendarComponent,
-        IndividualLessonAddEditComponent
+        StudentCalendarComponent,
+        TeacherCalendarComponent,
+        ClientCalendarComponent,
+        IndividualLessonAddEditComponent,
+        RootCalendarComponent
     ],
     entryComponents: [
         UserViewComponent,

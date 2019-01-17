@@ -16,15 +16,18 @@ import { SetPasswordComponent } from './set-password/set-password.component';
 import { PublicFooterComponent } from './footer';
 import { PublicHeaderComponent } from './header';
 import { SignInComponent } from './sign-in';
+import { CoreCommonModule } from '../core/common/core-common.module';
+import {NoContentComponent} from '../core/common/no-content/no-content.component';
 
 const routes: Routes = [
-  { path: '', component: PublicEntryComponent,
-    children: [
-      { path: '',  component: HomeComponent },
-      { path: 'forgotpwd', component: ForgotPasswordComponent },
-      { path: 'setpwd/:token', component: SetPasswordComponent, pathMatch: 'full'}
-    ]
-  }
+    { path: '', component: PublicEntryComponent,
+        children: [
+            { path: '',  component: HomeComponent },
+            { path: 'forgotpwd', component: ForgotPasswordComponent },
+            { path: 'setpwd/:token', component: SetPasswordComponent, pathMatch: 'full'}
+        ]
+    },
+    { path: '**', component: NoContentComponent }
 ];
 
 @NgModule({
@@ -37,6 +40,7 @@ const routes: Routes = [
       MatButtonModule,
       MatToolbarModule,
       MatCardModule,
+      CoreCommonModule,
       RouterModule.forChild(routes),
   ],
   declarations: [

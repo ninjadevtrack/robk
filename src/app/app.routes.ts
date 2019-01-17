@@ -26,7 +26,6 @@ import { AdminClientCalendarComponent } from './internal/admin/client/admin-clie
 import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 
 export const ROUTES: Routes = [
-    { path: '', loadChildren: './public/public.module#PublicModule' },
     { path: 'i', component: InternalEntryComponent,
         children: [
             { path: 'profile', component: ProfileComponent },
@@ -57,5 +56,5 @@ export const ROUTES: Routes = [
             { path: 'calendar', component: RootCalendarComponent }
         ]
     },
-    { path: '**', component: NoContentComponent }
+    { path: '', loadChildren: './public/public.module#PublicModule' },
 ];

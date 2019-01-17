@@ -109,7 +109,6 @@ import { CalendarComponent } from './internal/common/calendar/calendar/calendar.
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import { ServiceService } from './core/service/service.service';
 import { InstrumentService } from './core/instrument/instrument.service';
-import { AppealService } from './core/appeal/appeal.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
@@ -146,6 +145,7 @@ import {StudentCalendarComponent} from './internal/student/student-calendar/stud
 import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teacher-calendar.component';
 import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
 import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
+import { CoreModule } from './core/core.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -159,7 +159,6 @@ const APP_PROVIDERS = [
     ServiceService,
     InstrumentService,
     IndividualLessonService,
-    AppealService,
     AuthService,
     AuthStorageService,
     FakeStorage,
@@ -307,6 +306,7 @@ type StoreType = {
         HttpClientModule,
         CalendarModule,
         NgbModule,
+        CoreModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

@@ -118,7 +118,6 @@ import { InstrumentListComponent} from './internal/admin/instrument/instrument-l
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
-import { ClientService } from './core/client/client.service';
 import { TeacherService } from './core/teacher/teacher.service';
 import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
 import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
@@ -152,7 +151,6 @@ const APP_PROVIDERS = [
     ConfigService,
     UserService,
     EnrollmentService,
-    ClientService,
     StudentService,
     TeacherService,
     ServiceService,

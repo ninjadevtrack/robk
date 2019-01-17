@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TeacherModule } from './teacher/teacher.module';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
-import {ClientModule} from './client/client.module';
+import { ClientModule } from './client/client.module';
+import { ServiceModule } from './service/service.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import {ClientModule} from './client/client.module';
       TeacherModule,
       StudentModule,
       ClientModule,
+      ServiceModule,
       UserModule
   ],
   declarations: [],
@@ -19,6 +21,7 @@ import {ClientModule} from './client/client.module';
       UserModule,
       StudentModule,
       ClientModule,
+      ServiceModule,
       UserModule
   ]
 })

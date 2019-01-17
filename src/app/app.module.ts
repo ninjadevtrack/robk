@@ -68,15 +68,10 @@ import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
-import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
-import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
-import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
-import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
 import { InstrumentListComponent} from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
-import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 import {CoreModule} from './core/core.module';
@@ -108,23 +103,16 @@ type StoreType = {
         EnrollmentAddComponent,
         EnrollmentEditComponent,
         EnrollmentViewComponent,
-        ServiceListComponent,
-        ServiceAddComponent,
-        ServiceEditComponent,
-        ServiceViewComponent,
         InstrumentListComponent,
         InstrumentAddComponent,
         InstrumentEditComponent,
         InstrumentViewComponent,
-        ServiceListRootComponent,
         InstrumentListRootComponent,
         EnrollmentListRootComponent
     ],
     entryComponents: [
         EnrollmentEditComponent,
         EnrollmentAddComponent,
-        ServiceEditComponent,
-        ServiceAddComponent,
         InstrumentAddComponent,
         InstrumentEditComponent
     ],

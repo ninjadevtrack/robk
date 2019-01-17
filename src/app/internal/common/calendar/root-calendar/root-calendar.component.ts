@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthStorageService} from '../../../../core/common/auth-storage.service';
-import {Consts} from '../../../../core/common';
+import { Consts } from '../../../../core/common/config.service';
 import {Role} from '../../../../core/user/model/role.enum';
 
 @Component({

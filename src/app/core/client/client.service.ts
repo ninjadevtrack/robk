@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../common';
+import { ConfigService } from '../common/config.service';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { ClientModel } from './model/client.model';
 import { HttpHelperService } from "../http-helper.service";
-import {StudentModel} from '../student/model/student.model';
+import { StudentModel } from '../student/model/student.model';
 
 @Injectable()
 export class ClientService {

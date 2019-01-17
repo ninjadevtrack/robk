@@ -6,7 +6,6 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
-import { ServerErrorModel } from "../../../../core/common";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
 import { AppealService } from '../../../../core/appeal/appeal.service';

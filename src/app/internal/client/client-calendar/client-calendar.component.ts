@@ -9,7 +9,7 @@ import {ClientService} from '../../../core/client/client.service';
 import {ClientModel} from '../../../core/client/model/client.model';
 import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
 import {AuthStorageService} from '../../../core/common/auth-storage.service';
-import {Consts} from '../../../core/common';
+import { Consts } from '../../../core/common/config.service';
 
 @Component({
   selector: 'app-client-calendar',

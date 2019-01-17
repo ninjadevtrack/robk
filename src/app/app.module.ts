@@ -61,9 +61,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { ConfigService } from './core/common/config.service';
 import { FakeStorage } from './core/fake-storage';
-import { AuthStorageService } from './core/common/auth-storage.service';
 import { UserService } from './core/user/user.service';
 import { WindowRefService } from './core/window.service';
 import { SmoothScrollService } from './core/smooth-scroll.service';
@@ -145,7 +143,6 @@ import { CoreModule } from './core/core.module';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
-    ConfigService,
     UserService,
     EnrollmentService,
     StudentService,
@@ -153,7 +150,6 @@ const APP_PROVIDERS = [
     ServiceService,
     InstrumentService,
     IndividualLessonService,
-    AuthStorageService,
     FakeStorage,
     WindowRefService,
     SmoothScrollService,

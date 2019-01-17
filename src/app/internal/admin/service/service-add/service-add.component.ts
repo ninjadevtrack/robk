@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ServiceModel } from "../../../../core/service/model/service.model";
-import { ServerErrorModel } from "../../../../core/common";
+import { ServerErrorModel } from '../../../../core/common/models/server-error.model';
 import { ServiceService } from "../../../../core/service/service.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";

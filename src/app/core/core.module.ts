@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AppealService } from './appeal/appeal.service';
 import { AuthService } from './auth/auth.service';
 import { ClientService } from './client/client.service';
-import { EntityModule } from './common/entity/entity.module';
+import {CoreCommonModule} from './common/core-common.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    EntityModule
+    CoreCommonModule
   ],
   declarations: [],
   providers: [
@@ -17,7 +17,7 @@ import { EntityModule } from './common/entity/entity.module';
       ClientService
   ],
   exports: [
-      EntityModule
+      CoreCommonModule
   ]
 })
 export class CoreModule { }

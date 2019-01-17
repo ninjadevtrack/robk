@@ -12,7 +12,7 @@ import {IndividualLessonAddEditComponent} from '../../common/calendar/individual
 import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
 import {DialogMode} from '../../../core/common/dialog-mode.enum';
 import {AuthStorageService} from '../../../core/common/auth-storage.service';
-import {Consts} from '../../../core/common';
+import { Consts } from '../../../core/common/config.service';
 
 @Component({
   selector: 'app-student-calendar',

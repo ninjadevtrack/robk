@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
 import { ClientModule } from './client/client.module';
 import { ServiceModule } from './service/service.module';
+import { InstrumentModule } from './instrument/instrument.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ServiceModule } from './service/service.module';
       StudentModule,
       ClientModule,
       ServiceModule,
+      InstrumentModule,
       UserModule
   ],
   declarations: [],
@@ -22,6 +24,7 @@ import { ServiceModule } from './service/service.module';
       StudentModule,
       ClientModule,
       ServiceModule,
+      InstrumentModule,
       UserModule
   ]
 })

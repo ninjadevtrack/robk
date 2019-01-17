@@ -15,7 +15,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { PublicFooterComponent } from './footer';
 import { PublicHeaderComponent } from './header';
-import { NoContentComponent } from './no-content';
 import { SignInComponent } from './sign-in';
 
 const routes: Routes = [
@@ -46,7 +45,6 @@ const routes: Routes = [
       ForgotPasswordComponent,
       PublicHeaderComponent,
       HomeComponent,
-      NoContentComponent,
       SetPasswordComponent,
       SignInComponent
   ],
@@ -56,7 +54,6 @@ const routes: Routes = [
       ForgotPasswordComponent,
       PublicHeaderComponent,
       HomeComponent,
-      NoContentComponent,
       SetPasswordComponent,
       SignInComponent
   ]

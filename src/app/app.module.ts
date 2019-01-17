@@ -120,7 +120,6 @@ import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teac
 import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
 import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 import { CoreModule } from './core/core.module';
-import {PublicModule} from './public/public.module';
 
 // Application wide providers
 const APP_PROVIDERS = [

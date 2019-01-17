@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { InternalEntryComponent } from './internal/internal-entry.component';
-import { NoContentComponent } from './core/common/no-content/no-content.component';
 import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';

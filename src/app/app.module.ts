@@ -51,6 +51,7 @@ import {
     PreloadAllModules
 } from '@angular/router';
 
+import '../assets/styles/headings.css';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -59,9 +60,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { AdminComponent } from './internal/admin/admin.component';
-import { InternalEntryComponent } from './internal/internal-entry.component';
-import '../assets/styles/headings.css';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
@@ -84,9 +82,7 @@ type StoreType = {
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
-        AppComponent,
-        InternalEntryComponent,
-        AdminComponent,
+        AppComponent
     ],
     entryComponents: [
     ],

@@ -6,6 +6,7 @@ import { AdminModule } from './admin/admin.module';
 import { ClientModule } from './client/client.module';
 import { StudentModule } from './student/student.module';
 import { TeacherModule } from './teacher/teacher.module';
+import { InternalEntryComponent } from './internal-entry.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,11 @@ import { TeacherModule } from './teacher/teacher.module';
       StudentModule,
       TeacherModule
   ],
-  declarations: [],
+  declarations: [
+      InternalEntryComponent
+  ],
   exports: [
+      InternalEntryComponent,
       InternalCommonModule,
       AdminModule,
       ClientModule,

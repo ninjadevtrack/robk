@@ -7,10 +7,13 @@ import { ClientModule } from './client/client.module';
 import { ServiceModule } from './service/service.module';
 import { InstrumentModule } from './instrument/instrument.module';
 import { EnrollmentModule } from './enrollment/enrollment.module';
+import { AdminComponent } from './admin.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
       CommonModule,
+      RouterModule,
       TeacherModule,
       StudentModule,
       ClientModule,
@@ -19,8 +22,11 @@ import { EnrollmentModule } from './enrollment/enrollment.module';
       EnrollmentModule,
       UserModule
   ],
-  declarations: [],
+  declarations: [
+      AdminComponent
+  ],
   exports: [
+      AdminComponent,
       TeacherModule,
       UserModule,
       StudentModule,

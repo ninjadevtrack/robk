@@ -5,6 +5,7 @@ import { AuthService } from './auth/auth.service';
 import { ClientService } from './client/client.service';
 import { CoreCommonModule } from './common/core-common.module';
 import { EnrollmentService } from './enrollment/enrollment.service';
+import { IndividualLessonService } from './individual-lesson/individual-lesson.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { EnrollmentService } from './enrollment/enrollment.service';
       AuthService,
       AppealService,
       ClientService,
-      EnrollmentService
+      EnrollmentService,
+      IndividualLessonService
   ],
   exports: [
       CoreCommonModule

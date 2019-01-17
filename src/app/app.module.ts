@@ -127,7 +127,6 @@ import { InstrumentListRootComponent } from './internal/admin/instrument/instrum
 import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
 import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
-import { IndividualLessonService } from './core/individual-lesson/individual-lesson.service';
 import { AdminTeacherCalendarComponent } from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
 import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
@@ -147,7 +146,6 @@ const APP_PROVIDERS = [
     TeacherService,
     ServiceService,
     InstrumentService,
-    IndividualLessonService,
     FakeStorage,
     WindowRefService,
     SmoothScrollService,

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DatePipe } from '@angular/common';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {
     NgModule,
@@ -26,7 +25,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
 
@@ -55,7 +53,6 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        DemoUtilsModule,
         HttpClientModule,
         CoreModule,
         RouterModule.forRoot(ROUTES, {
@@ -68,7 +65,6 @@ type StoreType = {
      * Expose our Services and Providers into Angular's dependency injection.
      */
     providers: [
-        DatePipe,
         APP_PROVIDERS,
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }
     ]

@@ -81,16 +81,10 @@ import { InstrumentListComponent} from './internal/admin/instrument/instrument-l
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
-import {StudentListComponent} from './internal/admin/student/student-list/student-list.component';
-import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
-import {StudentEditComponent} from './internal/admin/student/student-edit/student-edit.component';
-import {StudentViewComponent} from './internal/admin/student/student-view/student-view.component';
 import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
-import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
 import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
-import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
@@ -126,10 +120,6 @@ type StoreType = {
         ClientAddComponent,
         ClientEditComponent,
         ClientViewComponent,
-        StudentListComponent,
-        StudentAddComponent,
-        StudentEditComponent,
-        StudentViewComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
@@ -139,11 +129,9 @@ type StoreType = {
         InstrumentEditComponent,
         InstrumentViewComponent,
         ServiceListRootComponent,
-        StudentListRootComponent,
         InstrumentListRootComponent,
         ClientListRootComponent,
         EnrollmentListRootComponent,
-        AdminStudentCalendarComponent,
         AdminClientCalendarComponent
     ],
     entryComponents: [
@@ -154,7 +142,6 @@ type StoreType = {
         InstrumentAddComponent,
         InstrumentEditComponent,
         ClientAddComponent,
-        StudentAddComponent,
     ],
     imports: [
         BrowserModule,

@@ -6,26 +6,79 @@ import { SearchPipe } from './search.pipe';
 import { CalendarModule, DateAdapter } from './calendar/angular-calendar';
 import { adapterFactory } from './calendar/angular-calendar/date-adapters/date-fns';
 import { DemoUtilsModule } from './calendar/utils/module';
+import { CalendarComponent } from './calendar/calendar/calendar.component';
+import { IndividualLessonAddEditComponent } from './calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import { RootCalendarComponent } from './calendar/root-calendar/root-calendar.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { InternalHeaderComponent } from './header';
+import { IconLinkButtonComponent } from './icon-link-button/icon-link-button.component';
+import { ProfileComponent } from './profile/profile.component';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    MatCardModule
+} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { CardTemplateComponent } from './templates/card-template/card-template.component';
 
 @NgModule({
   imports: [
       CommonModule,
+      ReactiveFormsModule,
+      RouterModule,
       CalendarModule.forRoot({
           provide: DateAdapter,
           useFactory: adapterFactory
       }),
       DemoUtilsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatMenuModule,
+      MatButtonModule,
+      MatSelectModule,
+      MatOptionModule,
+      MatToolbarModule,
+      MatIconModule,
+      MatCardModule,
+      NgbModule
   ],
   declarations: [
       DataFieldComponent,
       NumberWithSeparatorPipe,
-      SearchPipe
+      SearchPipe,
+      CalendarComponent,
+      IndividualLessonAddEditComponent,
+      RootCalendarComponent,
+      ConfirmDialogComponent,
+      InternalHeaderComponent,
+      IconLinkButtonComponent,
+      CardTemplateComponent,
+      ProfileComponent,
   ],
   exports: [
       DataFieldComponent,
       NumberWithSeparatorPipe,
       SearchPipe,
-      CalendarModule
+      CalendarModule,
+      CalendarComponent,
+      IndividualLessonAddEditComponent,
+      RootCalendarComponent,
+      ConfirmDialogComponent,
+      InternalHeaderComponent,
+      IconLinkButtonComponent,
+      ProfileComponent,
+      CardTemplateComponent
+  ],
+  entryComponents: [
+      IndividualLessonAddEditComponent
   ]
 })
 export class InternalCommonModule { }

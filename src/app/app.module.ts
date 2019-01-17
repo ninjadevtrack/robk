@@ -59,10 +59,8 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
-import { InternalHeaderComponent } from './internal/common/header/header.component';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
@@ -73,20 +71,12 @@ import { ClientAddComponent } from './internal/admin/client/client-add/client-ad
 import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
 import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
 import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
-import { TeacherAddComponent } from './internal/admin/teacher/teacher-add/teacher-add.component';
-import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
-import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
-import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
-import { ConfirmDialogComponent } from './internal/common/confirm-dialog/confirm-dialog.component';
-import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
 import { ServiceViewComponent } from './internal/admin/service/service-view/service-view.component';
-import { CardTemplateComponent } from './internal/common/templates/card-template/card-template.component';
-import { IconLinkButtonComponent } from './internal/common/icon-link-button/icon-link-button.component';
 import { InstrumentListComponent} from './internal/admin/instrument/instrument-list/instrument-list.component';
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
@@ -98,18 +88,10 @@ import {StudentViewComponent} from './internal/admin/student/student-view/studen
 import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
 import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
-import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
 import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
-import { AdminTeacherCalendarComponent } from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
 import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
 import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
-import {IndividualLessonAddEditComponent} from './internal/common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {StudentCalendarComponent} from './internal/student/student-calendar/student-calendar.component';
-import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teacher-calendar.component';
-import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
-import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
 
@@ -133,8 +115,6 @@ type StoreType = {
     declarations: [
         AppComponent,
         InternalEntryComponent,
-        InternalHeaderComponent,
-        ProfileComponent,
         AdminComponent,
         XLargeDirective,
         SettingsComponent,
@@ -146,15 +126,10 @@ type StoreType = {
         ClientAddComponent,
         ClientEditComponent,
         ClientViewComponent,
-        TeacherListComponent,
         StudentListComponent,
         StudentAddComponent,
         StudentEditComponent,
         StudentViewComponent,
-        TeacherAddComponent,
-        TeacherEditComponent,
-        TeacherViewComponent,
-        ConfirmDialogComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
@@ -163,23 +138,13 @@ type StoreType = {
         InstrumentAddComponent,
         InstrumentEditComponent,
         InstrumentViewComponent,
-        CalendarComponent,
-        CardTemplateComponent,
-        IconLinkButtonComponent,
         ServiceListRootComponent,
         StudentListRootComponent,
         InstrumentListRootComponent,
-        TeacherListRootComponent,
         ClientListRootComponent,
         EnrollmentListRootComponent,
-        AdminTeacherCalendarComponent,
         AdminStudentCalendarComponent,
-        AdminClientCalendarComponent,
-        StudentCalendarComponent,
-        TeacherCalendarComponent,
-        ClientCalendarComponent,
-        IndividualLessonAddEditComponent,
-        RootCalendarComponent
+        AdminClientCalendarComponent
     ],
     entryComponents: [
         EnrollmentEditComponent,
@@ -189,10 +154,7 @@ type StoreType = {
         InstrumentAddComponent,
         InstrumentEditComponent,
         ClientAddComponent,
-        TeacherAddComponent,
         StudentAddComponent,
-        ConfirmDialogComponent,
-        IndividualLessonAddEditComponent
     ],
     imports: [
         BrowserModule,
@@ -232,7 +194,6 @@ type StoreType = {
         MatTooltipModule,
         MatStepperModule,
         HttpClientModule,
-        NgbModule,
         CoreModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,

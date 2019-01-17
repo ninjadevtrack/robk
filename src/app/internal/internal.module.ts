@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserModule } from './admin/user/user.module';
 import { InternalCommonModule } from './common/internal-common.module';
+import { AdminModule } from './admin/admin.module';
+import { ClientModule } from './client/client.module';
+import { StudentModule } from './student/student.module';
+import { TeacherModule } from './teacher/teacher.module';
 
 @NgModule({
   imports: [
       CommonModule,
+      RouterModule,
       InternalCommonModule,
-      UserModule,
+      AdminModule,
+      ClientModule,
+      StudentModule,
+      TeacherModule
   ],
   declarations: [],
   exports: [
       InternalCommonModule,
-      UserModule,
+      AdminModule,
+      ClientModule,
+      StudentModule,
+      TeacherModule
   ]
 })
 export class InternalModule { }

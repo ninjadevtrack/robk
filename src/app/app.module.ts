@@ -63,7 +63,6 @@ import { AdminComponent } from './internal/admin/admin.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
-import { SettingsComponent } from './internal/admin/settings/settings.component';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
@@ -111,7 +110,6 @@ type StoreType = {
         InternalEntryComponent,
         AdminComponent,
         XLargeDirective,
-        SettingsComponent,
         EnrollmentListComponent,
         EnrollmentAddComponent,
         EnrollmentEditComponent,

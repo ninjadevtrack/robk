@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AppealService } from './appeal/appeal.service';
 import { AuthService } from './auth/auth.service';
 import { ClientService } from './client/client.service';
-import {CoreCommonModule} from './common/core-common.module';
+import { CoreCommonModule } from './common/core-common.module';
+import { EnrollmentService } from './enrollment/enrollment.service';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {CoreCommonModule} from './common/core-common.module';
   providers: [
       AuthService,
       AppealService,
-      ClientService
+      ClientService,
+      EnrollmentService
   ],
   exports: [
       CoreCommonModule

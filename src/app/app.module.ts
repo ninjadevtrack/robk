@@ -66,10 +66,6 @@ import '../assets/styles/headings.css';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
-import { ClientAddComponent } from './internal/admin/client/client-add/client-add.component';
-import { ClientEditComponent } from './internal/admin/client/client-edit/client-edit.component';
-import { ClientListComponent } from './internal/admin/client/client-list/client-list.component';
-import { ClientViewComponent } from './internal/admin/client/client-view/client-view.component';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
@@ -82,9 +78,7 @@ import { InstrumentEditComponent } from './internal/admin/instrument/instrument-
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
 import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
-import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
 import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
-import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
 
@@ -114,10 +108,6 @@ type StoreType = {
         EnrollmentAddComponent,
         EnrollmentEditComponent,
         EnrollmentViewComponent,
-        ClientListComponent,
-        ClientAddComponent,
-        ClientEditComponent,
-        ClientViewComponent,
         ServiceListComponent,
         ServiceAddComponent,
         ServiceEditComponent,
@@ -128,9 +118,7 @@ type StoreType = {
         InstrumentViewComponent,
         ServiceListRootComponent,
         InstrumentListRootComponent,
-        ClientListRootComponent,
-        EnrollmentListRootComponent,
-        AdminClientCalendarComponent
+        EnrollmentListRootComponent
     ],
     entryComponents: [
         EnrollmentEditComponent,
@@ -138,8 +126,7 @@ type StoreType = {
         ServiceEditComponent,
         ServiceAddComponent,
         InstrumentAddComponent,
-        InstrumentEditComponent,
-        ClientAddComponent,
+        InstrumentEditComponent
     ],
     imports: [
         BrowserModule,

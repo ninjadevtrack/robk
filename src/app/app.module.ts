@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from './internal/common/calendar/angular-calendar';
-import { adapterFactory } from './internal/common/calendar/angular-calendar/date-adapters/date-fns';
 import { DatePipe } from '@angular/common';
 import {
     MatAutocompleteModule,
@@ -68,8 +66,6 @@ import { InternalHeaderComponent } from './internal/common/header/header.compone
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
-import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
-import { SearchPipe } from './internal/common/search.pipe';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
@@ -142,8 +138,6 @@ type StoreType = {
         AdminComponent,
         XLargeDirective,
         SettingsComponent,
-        NumberWithSeparatorPipe,
-        SearchPipe,
         EnrollmentListComponent,
         EnrollmentAddComponent,
         EnrollmentEditComponent,
@@ -203,10 +197,6 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        CalendarModule.forRoot({
-            provide: DateAdapter,
-            useFactory: adapterFactory
-        }),
         DemoUtilsModule,
         FormsModule,
         ReactiveFormsModule,
@@ -242,7 +232,6 @@ type StoreType = {
         MatTooltipModule,
         MatStepperModule,
         HttpClientModule,
-        CalendarModule,
         NgbModule,
         CoreModule,
         RouterModule.forRoot(ROUTES, {

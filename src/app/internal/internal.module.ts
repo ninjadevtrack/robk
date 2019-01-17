@@ -13,7 +13,6 @@ import { InternalCommonModule } from './common/internal-common.module';
   exports: [
       InternalCommonModule,
       UserModule,
-
   ]
 })
 export class InternalModule { }

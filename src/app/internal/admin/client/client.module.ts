@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { RouterModule } from '@angular/router';
 import { InternalCommonModule } from '../../common/internal-common.module';
@@ -20,32 +20,35 @@ import {ClientViewComponent} from './client-view/client-view.component';
 import {StudentModule} from '../student/student.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CoreModule,
-    StudentModule,
-    RouterModule,
-    InternalCommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatOptionModule
-  ],
-  declarations: [
-      AdminClientCalendarComponent,
-      ClientAddComponent,
-      ClientEditComponent,
-      ClientListComponent,
-      ClientListRootComponent,
-      ClientViewComponent
-  ],
-  entryComponents: [
-      ClientViewComponent,
-      ClientAddComponent,
-      ClientEditComponent,
-      ClientAddComponent
-  ]
+    imports: [
+        CommonModule,
+        CoreModule,
+        StudentModule,
+        RouterModule,
+        InternalCommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatOptionModule
+    ],
+    providers: [
+        DatePipe
+    ],
+    declarations: [
+        AdminClientCalendarComponent,
+        ClientAddComponent,
+        ClientEditComponent,
+        ClientListComponent,
+        ClientListRootComponent,
+        ClientViewComponent
+    ],
+    entryComponents: [
+        ClientViewComponent,
+        ClientAddComponent,
+        ClientEditComponent,
+        ClientAddComponent
+    ]
 })
 export class ClientModule { }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { RouterModule } from '@angular/router';
 import { InternalCommonModule } from '../../common/internal-common.module';
@@ -18,36 +18,39 @@ import {ServiceListRootComponent} from './service-list-root/service-list-root.co
 import {ServiceViewComponent} from './service-view/service-view.component';
 
 @NgModule({
-  imports: [
-      CommonModule,
-      CoreModule,
-      RouterModule,
-      InternalCommonModule,
-      ReactiveFormsModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatButtonModule,
-      MatSelectModule,
-      MatOptionModule
-  ],
-  declarations: [
-      ServiceAddComponent,
-      ServiceEditComponent,
-      ServiceListComponent,
-      ServiceListRootComponent,
-      ServiceViewComponent
-  ],
-  exports: [
-      ServiceAddComponent,
-      ServiceEditComponent,
-      ServiceListComponent,
-      ServiceListRootComponent,
-      ServiceViewComponent
-  ],
-  entryComponents: [
-      ServiceViewComponent,
-      ServiceEditComponent,
-      ServiceAddComponent
-  ]
+    imports: [
+        CommonModule,
+        CoreModule,
+        RouterModule,
+        InternalCommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatOptionModule
+    ],
+    declarations: [
+        ServiceAddComponent,
+        ServiceEditComponent,
+        ServiceListComponent,
+        ServiceListRootComponent,
+        ServiceViewComponent
+    ],
+    providers: [
+        DatePipe
+    ],
+    exports: [
+        ServiceAddComponent,
+        ServiceEditComponent,
+        ServiceListComponent,
+        ServiceListRootComponent,
+        ServiceViewComponent
+    ],
+    entryComponents: [
+        ServiceViewComponent,
+        ServiceEditComponent,
+        ServiceAddComponent
+    ]
 })
 export class ServiceModule { }

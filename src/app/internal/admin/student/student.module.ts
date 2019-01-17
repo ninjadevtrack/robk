@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CoreModule} from '../../../core/core.module';
 import { RouterModule} from '@angular/router';
 import { InternalCommonModule} from '../../common/internal-common.module';
@@ -40,6 +40,9 @@ import { StudentViewComponent } from './student-view/student-view.component';
       StudentListComponent,
       StudentListRootComponent,
       StudentViewComponent
+  ],
+  providers: [
+      DatePipe
   ],
   exports: [
       AdminStudentCalendarComponent,

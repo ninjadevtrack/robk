@@ -24,8 +24,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import {CoreModule} from './core/core.module';
-import {InternalModule} from './internal/internal.module';
+import { InternalModule } from './internal/internal.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -52,7 +51,6 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        CoreModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

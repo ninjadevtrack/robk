@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { RouterModule } from '@angular/router';
 import { InternalCommonModule } from '../../common/internal-common.module';
@@ -36,6 +36,9 @@ import {InstrumentViewComponent} from './instrument-view/instrument-view.compone
         InstrumentListComponent,
         InstrumentListRootComponent,
         InstrumentViewComponent
+    ],
+    providers: [
+        DatePipe
     ],
     exports: [
         InstrumentAddComponent,

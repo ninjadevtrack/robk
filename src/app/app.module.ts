@@ -119,9 +119,6 @@ import { InstrumentAddComponent } from './internal/admin/instrument/instrument-a
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
 import { TeacherService } from './core/teacher/teacher.service';
-import { EntityMenuComponent } from './core/common/entity/entity-menu/entity-menu.component';
-import { EntityTableComponent } from './core/common/entity/entity-table/entity-table.component';
-import { EntityListComponent } from './core/common/entity/entity-list/entity-list.component';
 import { StudentService } from './core/student/student.service';
 import {StudentListComponent} from './internal/admin/student/student-list/student-list.component';
 import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
@@ -226,9 +223,6 @@ type StoreType = {
         CalendarComponent,
         CardTemplateComponent,
         IconLinkButtonComponent,
-        EntityMenuComponent,
-        EntityTableComponent,
-        EntityListComponent,
         ServiceListRootComponent,
         StudentListRootComponent,
         InstrumentListRootComponent,

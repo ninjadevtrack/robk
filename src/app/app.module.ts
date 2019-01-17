@@ -61,7 +61,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { AdminComponent } from './internal/admin/admin.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
-import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
 import {CoreModule} from './core/core.module';
@@ -88,7 +87,6 @@ type StoreType = {
         AppComponent,
         InternalEntryComponent,
         AdminComponent,
-        XLargeDirective
     ],
     entryComponents: [
     ],

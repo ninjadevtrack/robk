@@ -37,6 +37,13 @@ import {InstrumentViewComponent} from './instrument-view/instrument-view.compone
         InstrumentListRootComponent,
         InstrumentViewComponent
     ],
+    exports: [
+        InstrumentAddComponent,
+        InstrumentEditComponent,
+        InstrumentListComponent,
+        InstrumentListRootComponent,
+        InstrumentViewComponent
+    ],
     entryComponents: [
         InstrumentViewComponent,
         InstrumentEditComponent,

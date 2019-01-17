@@ -63,12 +63,7 @@ import { AdminComponent } from './internal/admin/admin.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
-import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
-import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
-import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
-import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
-import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
 import {CoreModule} from './core/core.module';
 import {InternalModule} from './internal/internal.module';
 
@@ -93,16 +88,9 @@ type StoreType = {
         AppComponent,
         InternalEntryComponent,
         AdminComponent,
-        XLargeDirective,
-        EnrollmentListComponent,
-        EnrollmentAddComponent,
-        EnrollmentEditComponent,
-        EnrollmentViewComponent,
-        EnrollmentListRootComponent
+        XLargeDirective
     ],
     entryComponents: [
-        EnrollmentEditComponent,
-        EnrollmentAddComponent,
     ],
     imports: [
         BrowserModule,

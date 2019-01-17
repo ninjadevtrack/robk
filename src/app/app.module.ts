@@ -61,10 +61,6 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { FakeStorage } from './core/fake-storage';
-import { WindowRefService } from './core/window.service';
-import { SmoothScrollService } from './core/smooth-scroll.service';
-import { CustomBrowserXhr } from './core/custom-browser-xhr.service';
 import { HomeComponent } from './public/home';
 import { SignInComponent } from './public/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './public/forgot-password/forgot-password.component';
@@ -136,10 +132,6 @@ import { CoreModule } from './core/core.module';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
-    FakeStorage,
-    WindowRefService,
-    SmoothScrollService,
-    CustomBrowserXhr,
     AppState
 ];
 

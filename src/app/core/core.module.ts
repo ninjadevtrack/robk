@@ -11,6 +11,11 @@ import { ServiceService } from './service/service.service';
 import { StudentService } from './student/student.service';
 import { TeacherService } from './teacher/teacher.service';
 import { UserService } from './user/user.service';
+import { CustomBrowserXhr } from './custom-browser-xhr.service';
+import { FakeStorage } from './fake-storage';
+import { HttpHelperService } from './http-helper.service';
+import { SmoothScrollService } from './smooth-scroll.service';
+import { WindowRefService } from './window.service';
 
 @NgModule({
   imports: [
@@ -19,6 +24,11 @@ import { UserService } from './user/user.service';
   ],
   declarations: [],
   providers: [
+      CustomBrowserXhr,
+      FakeStorage,
+      HttpHelperService,
+      SmoothScrollService,
+      WindowRefService,
       AuthService,
       AppealService,
       ClientService,

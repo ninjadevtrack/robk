@@ -62,7 +62,6 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { FakeStorage } from './core/fake-storage';
-import { UserService } from './core/user/user.service';
 import { WindowRefService } from './core/window.service';
 import { SmoothScrollService } from './core/smooth-scroll.service';
 import { CustomBrowserXhr } from './core/custom-browser-xhr.service';
@@ -103,8 +102,6 @@ import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-
 import { ConfirmDialogComponent } from './internal/common/confirm-dialog/confirm-dialog.component';
 import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
 import { DemoUtilsModule } from './internal/common/calendar/utils/module';
-import { ServiceService } from './core/service/service.service';
-import { InstrumentService } from './core/instrument/instrument.service';
 import { ServiceListComponent } from './internal/admin/service/service-list/service-list.component';
 import { ServiceAddComponent } from './internal/admin/service/service-add/service-add.component';
 import { ServiceEditComponent } from './internal/admin/service/service-edit/service-edit.component';
@@ -115,8 +112,6 @@ import { InstrumentListComponent} from './internal/admin/instrument/instrument-l
 import { InstrumentAddComponent } from './internal/admin/instrument/instrument-add/instrument-add.component';
 import { InstrumentEditComponent } from './internal/admin/instrument/instrument-edit/instrument-edit.component';
 import { InstrumentViewComponent } from './internal/admin/instrument/instrument-view/instrument-view.component';
-import { TeacherService } from './core/teacher/teacher.service';
-import { StudentService } from './core/student/student.service';
 import {StudentListComponent} from './internal/admin/student/student-list/student-list.component';
 import {StudentAddComponent} from './internal/admin/student/student-add/student-add.component';
 import {StudentEditComponent} from './internal/admin/student/student-edit/student-edit.component';
@@ -141,11 +136,6 @@ import { CoreModule } from './core/core.module';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
-    UserService,
-    StudentService,
-    TeacherService,
-    ServiceService,
-    InstrumentService,
     FakeStorage,
     WindowRefService,
     SmoothScrollService,

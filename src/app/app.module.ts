@@ -64,7 +64,6 @@ import { AppState, InternalStateType } from './app.service';
 import { ConfigService } from './core/common/config.service';
 import { FakeStorage } from './core/fake-storage';
 import { AuthStorageService } from './core/common/auth-storage.service';
-import { AuthService } from './core/auth/auth.service';
 import { UserService } from './core/user/user.service';
 import { WindowRefService } from './core/window.service';
 import { SmoothScrollService } from './core/smooth-scroll.service';
@@ -159,7 +158,6 @@ const APP_PROVIDERS = [
     ServiceService,
     InstrumentService,
     IndividualLessonService,
-    AuthService,
     AuthStorageService,
     FakeStorage,
     WindowRefService,

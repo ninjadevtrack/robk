@@ -31,9 +31,9 @@ import {RouterModule} from '@angular/router';
       EntityTableComponent
   ],
   exports: [
-    EntityListComponent,
-    EntityMenuComponent,
-    EntityTableComponent
+      EntityListComponent,
+      EntityMenuComponent,
+      EntityTableComponent
   ],
   providers: [
       EntityEventTypeLabelsService

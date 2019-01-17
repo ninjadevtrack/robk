@@ -61,21 +61,13 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './public/home';
-import { SignInComponent } from './public/sign-in/sign-in.component';
-import { ForgotPasswordComponent } from './public/forgot-password/forgot-password.component';
-import { SetPasswordComponent } from './public/set-password/set-password.component';
 import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
 import { DataFieldComponent } from './internal/common/data-field/data-field.component';
 import { UserTableComponent } from './internal/admin/user/user-table/user-table.component';
-import { PublicEntryComponent } from './public/public-entry.component';
-import { PublicFooterComponent } from './public/footer/footer.component';
-import { PublicHeaderComponent } from './public/header/header.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { InternalHeaderComponent } from './internal/common/header/header.component';
-import { NoContentComponent } from './public/no-content';
 import { XLargeDirective } from './public/home/x-large';
 import '../assets/styles/headings.css';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
@@ -128,6 +120,7 @@ import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teac
 import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
 import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 import { CoreModule } from './core/core.module';
+import {PublicModule} from './public/public.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -148,21 +141,13 @@ type StoreType = {
     bootstrap: [ AppComponent ],
     declarations: [
         AppComponent,
-        SignInComponent,
-        PublicEntryComponent,
-        PublicFooterComponent,
-        PublicHeaderComponent,
         InternalEntryComponent,
         InternalHeaderComponent,
-        ForgotPasswordComponent,
-        SetPasswordComponent,
         ProfileComponent,
         AdminComponent,
         UserListComponent,
         DataFieldComponent,
         UserTableComponent,
-        HomeComponent,
-        NoContentComponent,
         XLargeDirective,
         SettingsComponent,
         NumberWithSeparatorPipe,
@@ -274,7 +259,7 @@ type StoreType = {
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules
-        })
+        }),
     ],
     /**
      * Expose our Services and Providers into Angular's dependency injection.

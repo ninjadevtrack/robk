@@ -4,30 +4,19 @@ import {
 } from '@angular/core';
 
 @Component({
-    /**
-     * The selector is what angular internally uses
-     * for `document.querySelectorAll(selector)` in our index.html
-     * where, in this case, selector is the string 'home'.
-     */
     selector: 'laconic-internal-entry',
-    /**
-     * We need to tell Angular's Dependency Injection which providers are in our app.
-     */
     providers: [
     ],
-    /**
-     * Every Angular template is first compiled by the browser before Angular runs it's compiler.
-     */
     template: `
         <laconic-internal-header></laconic-internal-header>
 		<router-outlet></router-outlet>
     `
 })
 export class InternalEntryComponent implements OnInit {
-    /**
-     * TypeScript public modifiers
-     */
+
     constructor() {}
 
-    public ngOnInit() {}
+    public ngOnInit() {
+        console.log('Internal entry component');
+    }
 }

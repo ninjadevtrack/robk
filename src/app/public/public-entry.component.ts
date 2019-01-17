@@ -5,20 +5,9 @@ import {
 import { Router } from '@angular/router';
 
 @Component({
-    /**
-     * The selector is what angular internally uses
-     * for `document.querySelectorAll(selector)` in our index.html
-     * where, in this case, selector is the string 'home'.
-     */
     selector: 'laconic-public-entry',
-    /**
-     * We need to tell Angular's Dependency Injection which providers are in our app.
-     */
     providers: [
     ],
-    /**
-     * Every Angular template is first compiled by the browser before Angular runs it's compiler.
-     */
     template: `
         <div class="m-b-2xl text-center m-t-6xl">
             <a routerLink="/"><img [src]="logo" height="82px"></a>
@@ -36,5 +25,7 @@ export class PublicEntryComponent implements OnInit {
         private _router: Router
     ) {}
 
-    public ngOnInit() { }
+    public ngOnInit() {
+        console.log('PublicEntryComponent!');
+    }
 }

@@ -1,10 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './public/home';
-import { PublicEntryComponent } from './public/public-entry.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { NoContentComponent } from './public/no-content';
-import { ForgotPasswordComponent } from './public/forgot-password/forgot-password.component';
-import { SetPasswordComponent } from './public/set-password/set-password.component';
 import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
 import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
@@ -18,25 +14,19 @@ import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teac
 import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
 import { StudentViewComponent } from './internal/admin/student/student-view/student-view.component';
 import { StudentEditComponent } from './internal/admin/student/student-edit/student-edit.component';
-import {StudentListRootComponent} from './internal/admin/student/student-list-root/student-list-root.component';
-import {ServiceListRootComponent} from './internal/admin/service/service-list-root/service-list-root.component';
-import {InstrumentListRootComponent} from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
-import {TeacherListRootComponent} from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
-import {ClientListRootComponent} from './internal/admin/client/client-list-root/client-list-root.component';
-import {EnrollmentListRootComponent} from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
-import {AdminTeacherCalendarComponent} from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
-import {AdminStudentCalendarComponent} from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
-import {AdminClientCalendarComponent} from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
-import {RootCalendarComponent} from './internal/common/calendar/root-calendar/root-calendar.component';
+import { StudentListRootComponent } from './internal/admin/student/student-list-root/student-list-root.component';
+import { ServiceListRootComponent } from './internal/admin/service/service-list-root/service-list-root.component';
+import { InstrumentListRootComponent } from './internal/admin/instrument/instrument-list-root/instrument-list-root.component';
+import { TeacherListRootComponent } from './internal/admin/teacher/teacher-list-root/teacher-list-root.component';
+import { ClientListRootComponent } from './internal/admin/client/client-list-root/client-list-root.component';
+import { EnrollmentListRootComponent } from './internal/admin/enrollment/enrollment-list-root/enrollment-list-root.component';
+import { AdminTeacherCalendarComponent } from './internal/admin/teacher/admin-teacher-calendar/admin-teacher-calendar.component';
+import { AdminStudentCalendarComponent } from './internal/admin/student/admin-student-calendar/admin-student-calendar.component';
+import { AdminClientCalendarComponent } from './internal/admin/client/admin-client-calendar/admin-client-calendar.component';
+import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 
 export const ROUTES: Routes = [
-    { path: '', component: PublicEntryComponent,
-        children: [
-            { path: '',  component: HomeComponent },
-            { path: 'forgotpwd', component: ForgotPasswordComponent },
-            { path: 'setpwd/:token', component: SetPasswordComponent, pathMatch: 'full'}
-        ]
-    },
+    { path: '', loadChildren: './public/public.module#PublicModule' },
     { path: 'i', component: InternalEntryComponent,
         children: [
             { path: 'profile', component: ProfileComponent },
@@ -67,5 +57,5 @@ export const ROUTES: Routes = [
             { path: 'calendar', component: RootCalendarComponent }
         ]
     },
-    { path: '**', component: NoContentComponent }
+    //{ path: '**', component: NoContentComponent }
 ];

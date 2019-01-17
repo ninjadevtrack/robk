@@ -63,9 +63,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { ProfileComponent } from './internal/common/profile/profile.component';
 import { AdminComponent } from './internal/admin/admin.component';
-import { UserListComponent } from './internal/admin/user/user-list/user-list.component';
-import { DataFieldComponent } from './internal/common/data-field/data-field.component';
-import { UserTableComponent } from './internal/admin/user/user-table/user-table.component';
 import { InternalEntryComponent } from './internal/internal-entry.component';
 import { InternalHeaderComponent } from './internal/common/header/header.component';
 import { XLargeDirective } from './public/home/x-large';
@@ -73,8 +70,6 @@ import '../assets/styles/headings.css';
 import { SettingsComponent } from './internal/admin/settings/settings.component';
 import { NumberWithSeparatorPipe } from './internal/common/number-with-separator.pipe';
 import { SearchPipe } from './internal/common/search.pipe';
-import { UserMenuComponent } from './internal/admin/user/user-menu/user-menu.component';
-import { UserViewComponent } from './internal/admin/user/user-view/user-view.component';
 import { EnrollmentAddComponent } from './internal/admin/enrollment/enrollment-add/enrollment-add.component';
 import { EnrollmentEditComponent } from './internal/admin/enrollment/enrollment-edit/enrollment-edit.component';
 import { EnrollmentListComponent } from './internal/admin/enrollment/enrollment-list/enrollment-list.component';
@@ -120,6 +115,7 @@ import {TeacherCalendarComponent} from './internal/teacher/teacher-calendar/teac
 import {ClientCalendarComponent} from './internal/client/client-calendar/client-calendar.component';
 import { RootCalendarComponent } from './internal/common/calendar/root-calendar/root-calendar.component';
 import {CoreModule} from './core/core.module';
+import {InternalModule} from './internal/internal.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -144,15 +140,10 @@ type StoreType = {
         InternalHeaderComponent,
         ProfileComponent,
         AdminComponent,
-        UserListComponent,
-        DataFieldComponent,
-        UserTableComponent,
         XLargeDirective,
         SettingsComponent,
         NumberWithSeparatorPipe,
         SearchPipe,
-        UserMenuComponent,
-        UserViewComponent,
         EnrollmentListComponent,
         EnrollmentAddComponent,
         EnrollmentEditComponent,
@@ -197,7 +188,6 @@ type StoreType = {
         RootCalendarComponent
     ],
     entryComponents: [
-        UserViewComponent,
         EnrollmentEditComponent,
         EnrollmentAddComponent,
         ServiceEditComponent,
@@ -259,6 +249,7 @@ type StoreType = {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules
         }),
+        InternalModule
     ],
     /**
      * Expose our Services and Providers into Angular's dependency injection.

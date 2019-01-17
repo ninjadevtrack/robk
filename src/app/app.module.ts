@@ -99,7 +99,6 @@ import { TeacherAddComponent } from './internal/admin/teacher/teacher-add/teache
 import { TeacherEditComponent } from './internal/admin/teacher/teacher-edit/teacher-edit.component';
 import { TeacherListComponent } from './internal/admin/teacher/teacher-list/teacher-list.component';
 import { TeacherViewComponent } from './internal/admin/teacher/teacher-view/teacher-view.component';
-import { EnrollmentService } from './core/enrollment/enrollment.service';
 import { EnrollmentViewComponent } from './internal/admin/enrollment/enrollment-view/enrollment-view.component';
 import { ConfirmDialogComponent } from './internal/common/confirm-dialog/confirm-dialog.component';
 import { CalendarComponent } from './internal/common/calendar/calendar/calendar.component';
@@ -144,7 +143,6 @@ import { CoreModule } from './core/core.module';
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     UserService,
-    EnrollmentService,
     StudentService,
     TeacherService,
     ServiceService,

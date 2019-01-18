@@ -1,8 +1,8 @@
 import {OnInit, HostListener} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
-import {IEntityService} from '../../../entity-service.model';
+import {IEntityService} from '../../../../core/entity-service.model';
 import {IEntityEvent} from '../entity-event.model';
-import {ConfirmDialogComponent} from '../../../../internal/core/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material';
 import {ComponentType} from '@angular/cdk/typings/portal';
 

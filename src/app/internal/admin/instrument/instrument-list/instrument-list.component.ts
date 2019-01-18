@@ -3,9 +3,9 @@ import { DatePipe } from '@angular/common';
 import {MatDialog} from '@angular/material';
 import {InstrumentService} from '../../../../core/instrument/instrument.service';
 import {InstrumentAddComponent} from '../instrument-add/instrument-add.component';
-import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {EEntityEventType} from '../../../core/entity/entity-event-type.enum';
 import {InstrumentEditComponent} from '../instrument-edit/instrument-edit.component';
-import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {EntityListComponentResolver} from '../../../core/entity/entity-list/entity-list.component.resolver';
 import {ComponentType} from '@angular/cdk/typings/portal';
 import {IEntityService} from '../../../../core/entity-service.model';
 

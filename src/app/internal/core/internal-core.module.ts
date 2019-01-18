@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
+import { EntityModule } from './entity/entity.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { CardTemplateComponent } from './templates/card-template/card-template.c
           useFactory: adapterFactory
       }),
       DemoUtilsModule,
+      EntityModule,
       MatFormFieldModule,
       MatInputModule,
       MatMenuModule,
@@ -64,6 +66,7 @@ import { CardTemplateComponent } from './templates/card-template/card-template.c
       ProfileComponent,
   ],
   exports: [
+      EntityModule,
       DataFieldComponent,
       NumberWithSeparatorPipe,
       SearchPipe,
@@ -78,7 +81,8 @@ import { CardTemplateComponent } from './templates/card-template/card-template.c
       CardTemplateComponent
   ],
   entryComponents: [
-      IndividualLessonAddEditComponent
+      IndividualLessonAddEditComponent,
+      ConfirmDialogComponent
   ]
 })
 export class InternalCoreModule { }

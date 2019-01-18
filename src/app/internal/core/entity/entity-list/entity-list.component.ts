@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
 import {IEntityEvent} from '../entity-event.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {SearchPipe} from '../../../../internal/core/search.pipe';
+import {SearchPipe} from '../../search.pipe';
 
 @Component({
   selector: 'app-entity-list',

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { RouterModule } from '@angular/router';
-import { InternalCommonModule } from '../../common/internal-common.module';
+import { InternalCoreModule } from '../../core/internal-core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
@@ -22,7 +22,7 @@ import {InstrumentViewComponent} from './instrument-view/instrument-view.compone
         CommonModule,
         CoreModule,
         RouterModule,
-        InternalCommonModule,
+        InternalCoreModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,

@@ -15,7 +15,7 @@ import {
     MatSelectModule
 } from '@angular/material';
 import {CoreModule} from '../../../core/core.module';
-import {InternalCommonModule} from '../../common/internal-common.module';
+import {InternalCoreModule} from '../../core/internal-core.module';
 import {RouterModule} from '@angular/router';
 
 @NgModule({
@@ -23,7 +23,7 @@ import {RouterModule} from '@angular/router';
       CommonModule,
       CoreModule,
       RouterModule,
-      InternalCommonModule,
+      InternalCoreModule,
       ReactiveFormsModule,
       MatFormFieldModule,
       MatInputModule,

@@ -81,4 +81,4 @@ import { CardTemplateComponent } from './templates/card-template/card-template.c
       IndividualLessonAddEditComponent
   ]
 })
-export class InternalCommonModule { }
+export class InternalCoreModule { }

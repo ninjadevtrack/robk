@@ -13,7 +13,7 @@ import {
   MatMenuModule,
   MatTabsModule
 } from '@angular/material';
-import { InternalCommonModule } from '../../common/internal-common.module';
+import { InternalCoreModule } from '../../core/internal-core.module';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { InternalCommonModule } from '../../common/internal-common.module';
       MatMenuModule,
       MatButtonModule,
       CoreModule,
-      InternalCommonModule
+      InternalCoreModule
   ],
   declarations: [
       UserListComponent,

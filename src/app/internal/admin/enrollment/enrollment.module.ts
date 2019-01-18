@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../../core/core.module';
 import { RouterModule } from '@angular/router';
-import { InternalCommonModule } from '../../common/internal-common.module';
+import { InternalCoreModule } from '../../core/internal-core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
@@ -22,7 +22,7 @@ import { EnrollmentListRootComponent } from './enrollment-list-root/enrollment-l
       CommonModule,
       CoreModule,
       RouterModule,
-      InternalCommonModule,
+      InternalCoreModule,
       ReactiveFormsModule,
       MatFormFieldModule,
       MatInputModule,

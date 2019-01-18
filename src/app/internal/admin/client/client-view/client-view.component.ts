@@ -4,7 +4,7 @@ import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
 import {StudentModel} from '../../../../core/student/model/student.model';
 import {MatDialog} from '@angular/material';
-import {ConfirmDialogComponent} from '../../../common/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from '../../../core/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'client-view',

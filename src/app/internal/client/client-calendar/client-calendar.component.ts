@@ -7,7 +7,7 @@ import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ClientService} from '../../../core/client/client.service';
 import {ClientModel} from '../../../core/client/model/client.model';
-import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
+import {CalendarColoringModes} from '../../core/calendar/utils/calendar-coloring-modes.enum';
 import {AuthStorageService} from '../../../core/common/auth-storage.service';
 import { Consts } from '../../../core/common/config.service';
 

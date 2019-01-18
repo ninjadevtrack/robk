@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
  *
  * ```typescript
  * import { CalendarDateFormatter, DateFormatterParams } from 'angular-calendar';
- * import { formatDate } from '@angular/common';
+ * import { formatDate } from '@angular/core';
  *
  * class CustomDateFormatter extends CalendarDateFormatter {
  *

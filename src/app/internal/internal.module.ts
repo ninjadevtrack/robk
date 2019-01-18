@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { InternalCommonModule } from './common/internal-common.module';
+import { InternalCoreModule } from './core/internal-core.module';
 import { AdminModule } from './admin/admin.module';
 import { ClientModule } from './client/client.module';
 import { StudentModule } from './student/student.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { InternalEntryComponent } from './internal-entry.component';
-import { ProfileComponent } from './common/profile/profile.component';
+import { ProfileComponent } from './core/profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { ClientListRootComponent } from './admin/client/client-list-root/client-list-root.component';
@@ -29,7 +29,7 @@ import { ServiceListRootComponent } from './admin/service/service-list-root/serv
 import { ServiceViewComponent } from './admin/service/service-view/service-view.component';
 import { InstrumentListRootComponent } from './admin/instrument/instrument-list-root/instrument-list-root.component';
 import { InstrumentViewComponent } from './admin/instrument/instrument-view/instrument-view.component';
-import { RootCalendarComponent } from './common/calendar/root-calendar/root-calendar.component';
+import { RootCalendarComponent } from './core/calendar/root-calendar/root-calendar.component';
 
 const routes: Routes = [
     { path: 'i', component: InternalEntryComponent,
@@ -68,7 +68,7 @@ const routes: Routes = [
   imports: [
       CommonModule,
       RouterModule.forChild(routes),
-      InternalCommonModule,
+      InternalCoreModule,
       AdminModule,
       ClientModule,
       StudentModule,
@@ -79,7 +79,7 @@ const routes: Routes = [
   ],
   exports: [
       InternalEntryComponent,
-      InternalCommonModule,
+      InternalCoreModule,
       AdminModule,
       ClientModule,
       StudentModule,

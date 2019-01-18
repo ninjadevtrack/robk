@@ -10,9 +10,7 @@ import { CalendarComponent } from './calendar/calendar/calendar.component';
 import { IndividualLessonAddEditComponent } from './calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import { RootCalendarComponent } from './calendar/root-calendar/root-calendar.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { InternalHeaderComponent } from './header';
 import { IconLinkButtonComponent } from './icon-link-button/icon-link-button.component';
-import { ProfileComponent } from './profile/profile.component';
 import {
     MatButtonModule,
     MatFormFieldModule,
@@ -60,10 +58,8 @@ import { EntityModule } from './entity/entity.module';
       IndividualLessonAddEditComponent,
       RootCalendarComponent,
       ConfirmDialogComponent,
-      InternalHeaderComponent,
       IconLinkButtonComponent,
       CardTemplateComponent,
-      ProfileComponent,
   ],
   exports: [
       EntityModule,
@@ -75,9 +71,7 @@ import { EntityModule } from './entity/entity.module';
       IndividualLessonAddEditComponent,
       RootCalendarComponent,
       ConfirmDialogComponent,
-      InternalHeaderComponent,
       IconLinkButtonComponent,
-      ProfileComponent,
       CardTemplateComponent
   ],
   entryComponents: [

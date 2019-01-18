@@ -8,7 +8,6 @@ import { adapterFactory } from './calendar/angular-calendar/date-adapters/date-f
 import { DemoUtilsModule } from './calendar/utils/module';
 import { CalendarComponent } from './calendar/calendar/calendar.component';
 import { IndividualLessonAddEditComponent } from './calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import { RootCalendarComponent } from './calendar/root-calendar/root-calendar.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { IconLinkButtonComponent } from './icon-link-button/icon-link-button.component';
 import {
@@ -56,7 +55,6 @@ import { EntityModule } from './entity/entity.module';
       SearchPipe,
       CalendarComponent,
       IndividualLessonAddEditComponent,
-      RootCalendarComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
       CardTemplateComponent,
@@ -69,7 +67,6 @@ import { EntityModule } from './entity/entity.module';
       CalendarModule,
       CalendarComponent,
       IndividualLessonAddEditComponent,
-      RootCalendarComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
       CardTemplateComponent

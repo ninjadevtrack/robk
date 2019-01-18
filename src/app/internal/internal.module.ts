@@ -29,7 +29,7 @@ import { ServiceListRootComponent } from './admin/service/service-list-root/serv
 import { ServiceViewComponent } from './admin/service/service-view/service-view.component';
 import { InstrumentListRootComponent } from './admin/instrument/instrument-list-root/instrument-list-root.component';
 import { InstrumentViewComponent } from './admin/instrument/instrument-view/instrument-view.component';
-import { RootCalendarComponent } from './core/calendar/root-calendar/root-calendar.component';
+import { CommonCalendarComponent } from './common/common-calendar/common-calendar.component';
 import {InternalCommonModule} from './common/internal-common.module';
 
 const routes: Routes = [
@@ -60,7 +60,7 @@ const routes: Routes = [
                     { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
-            { path: 'calendar', component: RootCalendarComponent }
+            { path: 'calendar', component: CommonCalendarComponent }
         ]
     }
 ];

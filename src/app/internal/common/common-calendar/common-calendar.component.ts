@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthStorageService} from '../../../../core/common/auth-storage.service';
-import { Consts } from '../../../../core/common/config.service';
-import {Role} from '../../../../core/user/model/role.enum';
+import {AuthStorageService} from '../../../core/common/auth-storage.service';
+import { Consts } from '../../../core/common/config.service';
+import {Role} from '../../../core/user/model/role.enum';
 
 @Component({
   selector: 'app-root-calendar',
-  templateUrl: './root-calendar.component.html',
-  styleUrls: ['./root-calendar.component.scss']
+  templateUrl: './common-calendar.component.html',
+  styleUrls: ['./common-calendar.component.scss']
 })
-export class RootCalendarComponent implements OnInit {
+export class CommonCalendarComponent implements OnInit {
 
   mainRole: Role;
   roles: typeof Role = Role;

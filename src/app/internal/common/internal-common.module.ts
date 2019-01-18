@@ -5,6 +5,10 @@ import { InternalHeaderComponent } from './header/header.component';
 import { InternalCoreModule } from '../core/internal-core.module';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule, MatToolbarModule } from '@angular/material';
+import { CommonCalendarComponent } from './common-calendar/common-calendar.component';
+import { StudentModule } from '../student/student.module';
+import { ClientModule } from '../client/client.module';
+import { TeacherModule } from '../teacher/teacher.module';
 
 @NgModule({
   imports: [
@@ -12,15 +16,20 @@ import { MatMenuModule, MatToolbarModule } from '@angular/material';
       RouterModule,
       MatMenuModule,
       MatToolbarModule,
-      InternalCoreModule
+      InternalCoreModule,
+      StudentModule,
+      ClientModule,
+      TeacherModule
   ],
   declarations: [
       ProfileComponent,
-      InternalHeaderComponent
+      InternalHeaderComponent,
+      CommonCalendarComponent
   ],
   exports: [
       ProfileComponent,
-      InternalHeaderComponent
+      InternalHeaderComponent,
+      CommonCalendarComponent
   ]
 })
 export class InternalCommonModule { }

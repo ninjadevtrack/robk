@@ -30,7 +30,7 @@ import { ServiceViewComponent } from './admin/service/service-view/service-view.
 import { InstrumentListRootComponent } from './admin/instrument/instrument-list-root/instrument-list-root.component';
 import { InstrumentViewComponent } from './admin/instrument/instrument-view/instrument-view.component';
 import { CommonCalendarComponent } from './common/common-calendar/common-calendar.component';
-import {InternalCommonModule} from './common/internal-common.module';
+import { InternalCommonModule } from './common/internal-common.module';
 
 const routes: Routes = [
     { path: 'i', component: InternalEntryComponent,

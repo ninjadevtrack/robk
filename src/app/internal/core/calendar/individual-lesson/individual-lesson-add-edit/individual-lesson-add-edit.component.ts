@@ -86,6 +86,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
         const end = moment(this.data.il.end);
         const duration = moment.duration(end.diff(start));
         this.setControlValue('duration', duration.asMinutes());
+
+        // Just a temp code
+        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: string[]) => {console.log(actions);});
     }
 
     getBasicMoment() {

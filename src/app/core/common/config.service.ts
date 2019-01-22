@@ -190,7 +190,7 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}`;
             },
             availableActions: (id) => {
-                return `${Consts.API_URL}/v1/individual-lessons/${id}/availableActions`;
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/availableactions`;
             }
         }
     };

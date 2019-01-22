@@ -32,8 +32,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     ngOnInit() {
 
         this.mode = this.data.mode;
-
-
+        
         this.form = this._formBuilder.group({
             title: ['', [Validators.required]],
             student: ['', [Validators.required]],

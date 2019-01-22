@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../common';
+import { ConfigService } from '../common/config.service';
 import { Observable } from 'rxjs';
 import { UserModel, UsersResultModel } from './model/user.model';
 import { HttpHelperService } from "../http-helper.service";

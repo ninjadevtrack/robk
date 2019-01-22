@@ -3,7 +3,7 @@ import { catchError } from "rxjs/operators";
 import { Observable, throwError } from "rxjs/index";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { AuthStorageService } from "./common/auth-storage.service";
-import { Consts } from "./common";
+import { Consts } from './common/config.service';
 import { Router } from "@angular/router";
 
 @Injectable({

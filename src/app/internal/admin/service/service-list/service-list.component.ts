@@ -6,8 +6,8 @@ import {
 import { MatDialog } from '@angular/material';
 import { ServiceService } from "../../../../core/service/service.service";
 import { ServiceAddComponent } from "../service-add/service-add.component";
-import { EntityListComponentResolver } from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
-import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import { EntityListComponentResolver } from '../../../core/entity/entity-list/entity-list.component.resolver';
+import {EEntityEventType} from '../../../core/entity/entity-event-type.enum';
 import {DatePipe} from '@angular/common';
 import {IEntityService} from '../../../../core/entity-service.model';
 import {ComponentType} from '@angular/cdk/typings/portal';

@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { UserService } from '../../../../core/user/user.service';
 import { IUser } from "../../../../core/user/model/user.model";
-import { SearchPipe } from '../../../common/search.pipe';
+import { SearchPipe } from '../../../core/search.pipe';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({

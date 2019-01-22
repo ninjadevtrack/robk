@@ -6,11 +6,11 @@ import {
 import { MatDialog } from '@angular/material';
 import { EnrollmentService } from "../../../../core/enrollment/enrollment.service";
 import { EnrollmentAddComponent } from "../enrollment-add/enrollment-add.component";
-import {EEntityEventType} from '../../../../core/common/entity/entity-event-type.enum';
+import {EEntityEventType} from '../../../core/entity/entity-event-type.enum';
 import {DatePipe} from '@angular/common';
 import {IEntityService} from '../../../../core/entity-service.model';
 import {ComponentType} from '@angular/cdk/typings/portal';
-import {EntityListComponentResolver} from '../../../../core/common/entity/entity-list/entity-list.component.resolver';
+import {EntityListComponentResolver} from '../../../core/entity/entity-list/entity-list.component.resolver';
 import {EnrollmentEditComponent} from '../enrollment-edit/enrollment-edit.component';
 import {IEnrollment} from '../../../../core/enrollment/model/enrollment.model';
 

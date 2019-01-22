@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfigService } from '../common';
+import { ConfigService } from '../common/config.service';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from './model/instrument.model';

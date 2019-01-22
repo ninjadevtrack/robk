@@ -8,11 +8,11 @@ import {StudentService} from '../../../core/student/student.service';
 import {StudentModel} from '../../../core/student/model/student.model';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
-import {IndividualLessonAddEditComponent} from '../../common/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
-import {CalendarColoringModes} from '../../common/calendar/utils/calendar-coloring-modes.enum';
+import {IndividualLessonAddEditComponent} from '../../core/calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
+import {CalendarColoringModes} from '../../core/calendar/utils/calendar-coloring-modes.enum';
 import {DialogMode} from '../../../core/common/dialog-mode.enum';
 import {AuthStorageService} from '../../../core/common/auth-storage.service';
-import {Consts} from '../../../core/common';
+import { Consts } from '../../../core/common/config.service';
 
 @Component({
   selector: 'app-student-calendar',

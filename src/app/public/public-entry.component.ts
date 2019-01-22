@@ -26,6 +26,5 @@ export class PublicEntryComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-        console.log('PublicEntryComponent!');
     }
 }

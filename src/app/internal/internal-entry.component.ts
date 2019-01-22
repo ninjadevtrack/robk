@@ -17,6 +17,5 @@ export class InternalEntryComponent implements OnInit {
     constructor() {}
 
     public ngOnInit() {
-        console.log('Internal entry component');
     }
 }

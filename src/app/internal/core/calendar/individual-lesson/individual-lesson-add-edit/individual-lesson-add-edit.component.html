@@ -79,13 +79,18 @@
 	</div>
     <div class="m-t-l p-b-l justifying-containter">
 		<div class="m-t-xl">
+			<span class="m-r-l" *ngFor="let action of actions">
+				<button mat-raised-button class="mat-primary font-size-l" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
+				  {{action.name}}
+				</button>
+			</span>
 			<span class="m-r-l">
-				<button mat-raised-button class="mat-primary font-size-l button-l" [disabled]="!form.valid" type="submit">
+				<button mat-raised-button class="mat-primary font-size-l" [disabled]="!form.valid" type="submit">
 				  {{(mode === modes.ADD) ? 'ADD' : 'SAVE' }}
 				</button>
 			</span>
 			<span class="m-l-l">
-				<button mat-button class="mat-primary font-size-l button-l" (click)="onNoClick()">
+				<button mat-button class="mat-primary font-size-l" (click)="onNoClick()">
 					CANCEL
 				</button>
 			</span>

@@ -7,6 +7,7 @@ import {IIndividualLesson, IndividualLessonModel} from '../../../../../core/indi
 import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
+import {EIndividualLessonActions} from '../../../../../core/individual-lesson/model/individual-lesson-actions.enum';
 
 @Component({
     selector: 'individual-lesson-add',
@@ -20,6 +21,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     mode: DialogMode;
     modes = DialogMode;
     state: string;
+    actions: IIndividualLessonAction[] = [];
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -32,7 +34,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     ngOnInit() {
 
         this.mode = this.data.mode;
-        
+
         this.form = this._formBuilder.group({
             title: ['', [Validators.required]],
             student: ['', [Validators.required]],
@@ -89,7 +91,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('duration', duration.asMinutes());
 
         // Just a temp code
-        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => { console.log(actions); });
+        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => {
+            this.actions = actions;
+        });
         this.state = this.data.il.state;
     }
 
@@ -178,5 +182,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }, (serverError: any) => {
             this.serverErrorMessage = serverError.error.errmsg;
         });
+    }
+
+    actionButtonClicked(action: EIndividualLessonActions) {
+        console.log(action);
     }
 }

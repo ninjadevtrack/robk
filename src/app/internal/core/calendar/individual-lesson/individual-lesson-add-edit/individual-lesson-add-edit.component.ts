@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import {IIndividualLesson, IndividualLessonModel} from '../../../../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
+import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
 
 @Component({
     selector: 'individual-lesson-add',
@@ -89,8 +90,8 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('duration', duration.asMinutes());
 
         // Just a temp code
-        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: string[]) => { console.log(actions); });
-        this._individualLessonService.get(this.data.il._id).subscribe((il: IIndividualLesson) => { this.state = il.state; });
+        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => { console.log(actions); });
+        this.state = this.data.il.state;
     }
 
     getBasicMoment() {

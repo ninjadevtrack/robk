@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { IndividualLessonModel } from './model/individual-lesson.model';
 import { HttpHelperService } from "../http-helper.service";
+import { IIndividualLessonAction } from './model/individual-lesson-action.interface';
 
 @Injectable()
 export class IndividualLessonService  {
@@ -39,7 +40,7 @@ export class IndividualLessonService  {
         return this._httpHelper.put(true, this._configService.API.IndividualLesson.dafaultWithId(id), model);
     }
 
-    public getAvailableActions(id: string): Observable<string[]> {
+    public getAvailableActions(id: string): Observable<IIndividualLessonAction[]> {
         return this._httpHelper.get(true, this._configService.API.IndividualLesson.availableActions(id));
     }
 

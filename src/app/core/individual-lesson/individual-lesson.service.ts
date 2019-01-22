@@ -39,4 +39,8 @@ export class IndividualLessonService  {
         return this._httpHelper.put(true, this._configService.API.IndividualLesson.dafaultWithId(id), model);
     }
 
+    public getAvailableActions(id: string): Observable<string[]> {
+        return this._httpHelper.get(true, this._configService.API.IndividualLesson.availableActions(id));
+    }
+
 }

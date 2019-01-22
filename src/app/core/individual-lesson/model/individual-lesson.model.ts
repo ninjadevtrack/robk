@@ -7,6 +7,7 @@ export interface IIndividualLesson {
     student: IStudent;
     title: string;
     description: string;
+    state: string;
     start: string;
     end: string;
     updatedAt: string;
@@ -19,6 +20,7 @@ export class IndividualLessonModel implements IIndividualLesson {
     student: IStudent;
     title: string;
     description: string;
+    state: string;
     start: string;
     end: string;
     updatedAt: string;

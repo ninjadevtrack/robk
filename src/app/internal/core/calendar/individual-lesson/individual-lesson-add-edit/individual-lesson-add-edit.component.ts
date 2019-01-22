@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppealService} from '../../../../../core/appeal/appeal.service';
 import * as moment from 'moment';
-import {IndividualLessonModel} from '../../../../../core/individual-lesson/model/individual-lesson.model';
+import {IIndividualLesson, IndividualLessonModel} from '../../../../../core/individual-lesson/model/individual-lesson.model';
 import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 
@@ -18,6 +18,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     durations: number[] = [45, 60, 90];
     mode: DialogMode;
     modes = DialogMode;
+    state: string;
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -88,7 +89,8 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('duration', duration.asMinutes());
 
         // Just a temp code
-        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: string[]) => {console.log(actions);});
+        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: string[]) => { console.log(actions); });
+        this._individualLessonService.get(this.data.il._id).subscribe((il: IIndividualLesson) => { this.state = il.state; });
     }
 
     getBasicMoment() {

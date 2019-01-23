@@ -44,4 +44,8 @@ export class IndividualLessonService  {
         return this._httpHelper.get(true, this._configService.API.IndividualLesson.availableActions(id));
     }
 
+    public acceptAppointment(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.acceptAppointment(id), null);
+    }
+
 }

@@ -191,6 +191,9 @@ export class ConfigService {
             },
             availableActions: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/availableactions`;
+            },
+            acceptAppointment: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/acceptappointment`;
             }
         }
     };

@@ -184,7 +184,23 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
     }
 
+    acceptAppointment() {
+        this._individualLessonService.acceptAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
     actionButtonClicked(action: EIndividualLessonActions) {
         console.log(action);
+        switch (action) {
+            case EIndividualLessonActions.ACCEPT_APPOINTMENT:
+                this.acceptAppointment();
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -79,7 +79,7 @@
 	</div>
     <div class="m-t-l p-b-l justifying-containter">
 		<div class="m-t-xl">
-			<span class="m-r-l" *ngFor="let action of actions">
+			<span class="m-r-l m-b" *ngFor="let action of actions">
 				<button mat-raised-button class="mat-primary font-size-l" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
 				  {{action.name}}
 				</button>

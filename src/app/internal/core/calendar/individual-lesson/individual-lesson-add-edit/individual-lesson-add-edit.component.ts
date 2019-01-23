@@ -268,6 +268,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
             case EIndividualLessonActions.SET_PASSED_WITHOUT_MONEY_WITHDRAWAL:
                 this.setPassedWithoutMoneyWithdrawal();
                 break;
+            case EIndividualLessonActions.DELETE:
+                this.delete();
+                break;
             default:
                 break;
         }

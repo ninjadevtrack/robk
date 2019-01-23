@@ -11,6 +11,7 @@ import {EIndividualLessonActions} from '../../../../../core/individual-lesson/mo
 
 @Component({
     selector: 'individual-lesson-add',
+    styleUrls: ['./individual-lesson-add-edit.component.css'],
     templateUrl: './individual-lesson-add-edit.component.html'
 })
 export class IndividualLessonAddEditComponent implements OnInit {

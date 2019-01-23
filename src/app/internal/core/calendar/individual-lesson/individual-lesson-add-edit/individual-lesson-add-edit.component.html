@@ -77,20 +77,24 @@
 	<div>
 		{{state}}
 	</div>
-    <div class="m-t-l p-b-l justifying-containter">
-		<div class="m-t-xl">
-			<span class="m-r-l m-b" *ngFor="let action of actions">
-				<button mat-raised-button class="mat-primary font-size-l" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
+    <div class="m-t-l p-b-l justifying-containter il-buttons">
+		<div class="m-t-xl" *ngFor="let action of actions">
+			<span class="m-r-l">
+				<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
 				  {{action.name}}
 				</button>
 			</span>
+		</div>
+		<div class="m-t-xl">
 			<span class="m-r-l">
-				<button mat-raised-button class="mat-primary font-size-l" [disabled]="!form.valid" type="submit">
+				<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
 				  {{(mode === modes.ADD) ? 'ADD' : 'SAVE' }}
 				</button>
 			</span>
-			<span class="m-l-l">
-				<button mat-button class="mat-primary font-size-l" (click)="onNoClick()">
+		</div>
+		<div class="m-t-xl">
+			<span class="">
+				<button mat-button class="mat-primary" (click)="onNoClick()">
 					CANCEL
 				</button>
 			</span>

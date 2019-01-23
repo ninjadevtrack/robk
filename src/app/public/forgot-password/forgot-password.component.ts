@@ -2,11 +2,8 @@ import {
     Component,
     OnInit, ViewChild
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { RecoverPasswordModel } from '../../core/auth/models/recover-password.model';
-import { ServerErrorModel } from '../../core/common/models/server-error.model';
-import { AuthStorageService } from '../../core/common/auth-storage.service';
 
 @Component({
     selector: 'forgot-password',

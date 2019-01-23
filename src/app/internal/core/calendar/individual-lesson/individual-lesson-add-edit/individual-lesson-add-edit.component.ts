@@ -194,11 +194,71 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
     }
 
+    declineAppointment() {
+        this._individualLessonService.declineAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    cancelAppointment() {
+        this._individualLessonService.cancelAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    approveAppointmentPassed() {
+        this._individualLessonService.approveAppointmentPassed(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    setPassedWithoutMoneyWithdrawal() {
+        this._individualLessonService.setPassedWithoutMoneyWithdrawal(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    setPassedWithForcedMoneyWithdrawal() {
+        this._individualLessonService.setPassedWithForcedMoneyWithdrawal(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
     actionButtonClicked(action: EIndividualLessonActions) {
         console.log(action);
         switch (action) {
             case EIndividualLessonActions.ACCEPT_APPOINTMENT:
                 this.acceptAppointment();
+                break;
+            case EIndividualLessonActions.DECLINE_APPOINTMENT:
+                this.declineAppointment();
+                break;
+            case EIndividualLessonActions.CANCEL_APPOINTMENT:
+                this.cancelAppointment();
+                break;
+            case EIndividualLessonActions.APPROVE_APPOINTMENT_PASSED:
+                this.approveAppointmentPassed();
+                break;
+            case EIndividualLessonActions.SET_PASSED_WITH_FORCED_MONEY_WITHDRAWAL:
+                this.setPassedWithForcedMoneyWithdrawal();
+                break;
+            case EIndividualLessonActions.SET_PASSED_WITHOUT_MONEY_WITHDRAWAL:
+                this.setPassedWithoutMoneyWithdrawal();
                 break;
             default:
                 break;

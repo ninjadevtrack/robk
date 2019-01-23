@@ -48,4 +48,24 @@ export class IndividualLessonService  {
         return this._httpHelper.put(true, this._configService.API.IndividualLesson.acceptAppointment(id), null);
     }
 
+    public declineAppointment(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.declineAppointment(id), null);
+    }
+
+    public cancelAppointment(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.cancelAppointment(id), null);
+    }
+
+    public approveAppointmentPassed(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.approveAppointmentPassed(id), null);
+    }
+
+    public setPassedWithoutMoneyWithdrawal(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.setPassedWithoutMoneyWithdrawal(id), null);
+    }
+
+    public setPassedWithForcedMoneyWithdrawal(id: string): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.setPassedWithForcedMoneyWithdrawal(id), null);
+    }
+
 }

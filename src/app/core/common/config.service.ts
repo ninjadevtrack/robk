@@ -194,6 +194,21 @@ export class ConfigService {
             },
             acceptAppointment: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/acceptappointment`;
+            },
+            declineAppointment: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/declineappointment`;
+            },
+            cancelAppointment: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/cancelappointment`;
+            },
+            approveAppointmentPassed: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/approveappointmentpassed`;
+            },
+            setPassedWithoutMoneyWithdrawal: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/setpassedwithoutmoneywithdrawal`;
+            },
+            setPassedWithForcedMoneyWithdrawal: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/setpassedwithforcedmoneywithdrawal`;
             }
         }
     };

@@ -1,12 +1,5 @@
 <div class="">
 	<div class="flex-container-left">
-		<div>
-			<span class="m-r-l" *ngIf="mode === modes.EDIT">
-				<button mat-button class="mat-primary font-size-l" type="button" (click)="delete()">
-					<i class="material-icons">delete</i>
-				</button>
-			</span>
-		</div>
 		<div class="center-the-rest">
 			<h2 class="text-center p-b-l font-color-pale">
 				{{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}} - {{getEndMoment()?.toDate() | date: 'HH:mm'}}

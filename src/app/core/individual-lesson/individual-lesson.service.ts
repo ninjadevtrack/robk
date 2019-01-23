@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IndividualLessonModel } from './model/individual-lesson.model';
 import { HttpHelperService } from "../http-helper.service";
 import { IIndividualLessonAction } from './model/individual-lesson-action.interface';
+import {IDateRange} from '../common/models/date-range.model';
 
 @Injectable()
 export class IndividualLessonService  {
@@ -46,6 +47,10 @@ export class IndividualLessonService  {
 
     public acceptAppointment(id: string): Observable<IndividualLessonModel> {
         return this._httpHelper.put(true, this._configService.API.IndividualLesson.acceptAppointment(id), null);
+    }
+
+    public proposeNewTime(id: string, dateRange: IDateRange): Observable<IndividualLessonModel> {
+        return this._httpHelper.put(true, this._configService.API.IndividualLesson.proposeNewTime(id), dateRange);
     }
 
     public declineAppointment(id: string): Observable<IndividualLessonModel> {

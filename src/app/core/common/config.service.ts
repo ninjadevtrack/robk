@@ -195,6 +195,9 @@ export class ConfigService {
             acceptAppointment: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/acceptappointment`;
             },
+            proposeNewTime: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/proposenewtime`;
+            },
             declineAppointment: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/declineappointment`;
             },

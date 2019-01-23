@@ -230,11 +230,28 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
     }
 
+    proposeNewTime() {
+        this._individualLessonService.proposeNewTime(
+            this.data.il._id,
+            {
+                start: this.getStartMoment().toDate().toISOString(),
+                end: this.getEndMoment().toDate().toISOString()
+            }).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
     actionButtonClicked(action: EIndividualLessonActions) {
         console.log(action);
         switch (action) {
             case EIndividualLessonActions.ACCEPT_APPOINTMENT:
                 this.acceptAppointment();
+                break;
+            case EIndividualLessonActions.PROPOSE_NEW_TIME:
+                this.proposeNewTime();
                 break;
             case EIndividualLessonActions.DECLINE_APPOINTMENT:
                 this.declineAppointment();

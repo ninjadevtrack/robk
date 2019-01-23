@@ -5,7 +5,6 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { RecoverPasswordModel } from '../../core/auth/models/recover-password.model';
-import { Consts } from '../../core/common/config.service';
 import { ServerErrorModel } from '../../core/common/models/server-error.model';
 import { AuthStorageService } from '../../core/common/auth-storage.service';
 
@@ -22,9 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
     public showSpinner = false;
 
     constructor (
-        private _authService: AuthService,
-        private _router: Router,
-        private _session: AuthStorageService
+        private _authService: AuthService
     ) {}
 
     public ngOnInit() {}
@@ -40,18 +37,10 @@ export class ForgotPasswordComponent implements OnInit {
         this._authService.recoverPassword(this.model).subscribe((res) => {
             this.passwordRecoveryLinkSent = true;
             this.showSpinner = false;
-        }, (serverError: ServerErrorModel) => {
+        }, (serverError: any) => {
 
             this.showSpinner = false;
-
-            switch (serverError.code) {
-                case 'OBJECT_NOT_FOUND':
-                    this.serverErrorMessage = `There is no user with email ${this.model.email} in ${Consts.PROJECT_NAME}`;
-                    break;
-                default:
-                    this.serverErrorMessage = 'Some error occured on the server';
-                    break;
-            }
+            this.serverErrorMessage = serverError.error.message;
         });
     }
 }

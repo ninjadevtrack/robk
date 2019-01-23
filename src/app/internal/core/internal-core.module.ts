@@ -19,7 +19,9 @@ import {
     MatOptionModule,
     MatSelectModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -40,6 +42,8 @@ import { EntityModule } from './entity/entity.module';
       EntityModule,
       MatFormFieldModule,
       MatInputModule,
+      MatNativeDateModule,
+      MatDatepickerModule,
       MatMenuModule,
       MatButtonModule,
       MatSelectModule,

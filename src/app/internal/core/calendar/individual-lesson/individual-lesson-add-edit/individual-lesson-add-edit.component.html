@@ -58,10 +58,17 @@
 		</div>
 	</div>
 	<div class="flex-container m-t-l">
-		<div>
-			<div class="data-field-header">Start</div>
+		<div class="m-r-xl">
+			<mat-form-field class="date-picker">
+				<input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date" required>
+				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+				<mat-datepicker #startDatePicker></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<div class="m-r-xl">
+			<div class="data-field-header">Start Time</div>
 			<div class="m-r-xl">
-				<ngb-timepicker formControlName="start"></ngb-timepicker>
+				<ngb-timepicker formControlName="startTime"></ngb-timepicker>
 			</div>
 		</div>
 		<div>

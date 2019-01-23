@@ -40,7 +40,8 @@ export class IndividualLessonAddEditComponent implements OnInit {
             title: ['', [Validators.required]],
             student: ['', [Validators.required]],
             teacher: ['', [Validators.required]],
-            start: [ '', [Validators.required]],
+            startTime: [ '', [Validators.required]],
+            startDate: ['', [Validators.required]],
             duration: [this.durations[0], [Validators.required]],
             description: ['', []],
         });
@@ -68,10 +69,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
     setFormValuesForAddMode() {
         this.setControlValue('student', this.data.students[0]._id);
         this.setControlValue('teacher', this.data.teachers[0]._id);
-        this.setControlValue('start', {
+        this.setControlValue('startTime', {
             hour: this.data.date.getHours(),
             minute: this.data.date.getMinutes()
         });
+        this.setControlValue('startDate', this.data.date);
         this.setControlValue('duration', this.durations[0]);
     }
 
@@ -80,10 +82,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('description', this.data.il.description);
         this.setControlValue('student', this.data.il.student._id);
         this.setControlValue('teacher', this.data.il.teacher._id);
-        this.setControlValue('start', {
+        this.setControlValue('startTime', {
             hour: (new Date(this.data.il.start)).getHours(),
             minute: (new Date(this.data.il.start)).getMinutes()
         });
+        this.setControlValue('startDate', this.data.il.start);
 
         // Figure out the duration
         const start = moment(this.data.il.start);
@@ -99,31 +102,19 @@ export class IndividualLessonAddEditComponent implements OnInit {
     }
 
     getBasicMoment() {
-        let m;
-        switch (this.mode) {
-            case DialogMode.ADD:
-                m = moment(this.data.date);
-                break;
-            case DialogMode.EDIT:
-                m = moment(this.data.il.start);
-                break;
-            default:
-                break;
-        }
-
-        return m;
+        return moment(this.getControlValue('startDate'));
     }
 
     getStartMoment() {
         return this.getBasicMoment().startOf('day')
-            .add(this.getControlValue('start').hour, 'hours')
-            .add(this.getControlValue('start').minute, 'minutes');
+            .add(this.getControlValue('startTime').hour, 'hours')
+            .add(this.getControlValue('startTime').minute, 'minutes');
     }
 
     getEndMoment() {
         return this.getBasicMoment().startOf('day')
-            .add(this.getControlValue('start').hour, 'hours')
-            .add(this.getControlValue('start').minute, 'minutes')
+            .add(this.getControlValue('startTime').hour, 'hours')
+            .add(this.getControlValue('startTime').minute, 'minutes')
             .add(this.getControlValue('duration'), 'minutes');
     }
 

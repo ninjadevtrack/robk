@@ -12,6 +12,7 @@ export interface IIndividualLesson {
     end: string;
     updatedAt: string;
     createdAt: string;
+    movable?: boolean;
 }
 
 export class IndividualLessonModel implements IIndividualLesson {
@@ -25,6 +26,7 @@ export class IndividualLessonModel implements IIndividualLesson {
     end: string;
     updatedAt: string;
     createdAt: string;
+    movable?: boolean;
 
     constructor() {}
 }

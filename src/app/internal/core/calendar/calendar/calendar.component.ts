@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
                     color: (this.coloringMode === CalendarColoringModes.BY_TEACHER) ? this.getColorByTeacher(il.teacher) : this.getColorByStudent(il.student),
                     start: new Date(il.start),
                     end: new Date(il.end),
-                    draggable: true,
+                    draggable: il.movable,
                     meta: il
                 };
             });

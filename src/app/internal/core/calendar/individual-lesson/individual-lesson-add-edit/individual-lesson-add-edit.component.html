@@ -13,14 +13,14 @@
 
 	<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
     <div>
-		<mat-form-field *ngIf="isUpdateBasicFieldsActionAvailable()" class="full-width">
+		<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
 			<input
 				formControlName="title"
 				name="title"
 				matInput
 				placeholder="Title">
 		</mat-form-field>
-		<data-field *ngIf="!isUpdateBasicFieldsActionAvailable()"
+		<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 					header="Title"
 					data="{{form?.controls['title']?.value}}"
 					[isSmall]="false">
@@ -28,42 +28,42 @@
 	</div>
     <div class="flex-container">
 		<div class="m-r-xl">
-			<mat-form-field *ngIf="isUpdateBasicFieldsActionAvailable()" class="regular-field">
+			<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
 				<mat-select placeholder="Student" formControlName="student">
 					<mat-option *ngFor="let student of data.students" [value]="student._id">
 						{{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<data-field *ngIf="!isUpdateBasicFieldsActionAvailable()"
+			<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 						header="Student"
 						data="{{lookupStudentString(form?.controls['student'].value)}}"
 						[isSmall]="false">
 			</data-field>
 		</div>
 		<div class="m-r-xl">
-			<mat-form-field *ngIf="isUpdateBasicFieldsActionAvailable()" class="regular-field">
+			<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
 				<mat-select placeholder="Teacher" formControlName="teacher">
 					<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
 						{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<data-field *ngIf="!isUpdateBasicFieldsActionAvailable()"
+			<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 						header="Teacher"
 						data="{{lookupTeacherString(form?.controls['teacher'].value)}}"
 						[isSmall]="false">
 			</data-field>
 		</div>
 		<div>
-			<mat-form-field *ngIf="isUpdateBasicFieldsActionAvailable()" class="regular-field">
+			<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
 				<mat-select placeholder="Duration" formControlName="duration">
 					<mat-option *ngFor="let duration of durations" [value]="duration">
 						{{duration}} min
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
-			<data-field *ngIf="!isUpdateBasicFieldsActionAvailable()"
+			<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 						header="Duration"
 						data="{{form?.controls['duration'].value + 'min'}}"
 						[isSmall]="false">
@@ -72,39 +72,39 @@
 	</div>
 	<div class="flex-container m-t-l">
 		<div class="m-r-xl">
-			<mat-form-field *ngIf="isUpdateStartTimeActionAvailable()" class="date-picker">
+			<mat-form-field *ngIf="isEditingStartTimeActionAvailable()" class="date-picker">
 				<input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date" required>
 				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 				<mat-datepicker #startDatePicker></mat-datepicker>
 			</mat-form-field>
-			<data-field *ngIf="!isUpdateStartTimeActionAvailable()"
+			<data-field *ngIf="!isEditingStartTimeActionAvailable()"
 						header="Start Date"
 						data="{{getStartMoment()?.toDate() | date: 'MMM d, y'}}"
 						[isSmall]="false">
 			</data-field>
 		</div>
 		<div class="m-r-xl">
-			<div *ngIf="isUpdateStartTimeActionAvailable()">
+			<div *ngIf="isEditingStartTimeActionAvailable()">
 				<div class="data-field-header">Start Time</div>
 				<div class="m-r-xl">
 					<ngb-timepicker formControlName="startTime"></ngb-timepicker>
 				</div>
 			</div>
-			<data-field *ngIf="!isUpdateStartTimeActionAvailable()"
+			<data-field *ngIf="!isEditingStartTimeActionAvailable()"
 						header="Start Time"
 						data="{{getStartMoment()?.toDate() | date: 'HH:mm'}}"
 						[isSmall]="false">
 			</data-field>
 		</div>
 		<div>
-			<mat-form-field *ngIf="isUpdateBasicFieldsActionAvailable()" class="full-width">
+			<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
 				<textarea
 				formControlName="description"
 				name="description"
 				matInput
 				placeholder="Description"></textarea>
 			</mat-form-field>
-			<data-field *ngIf="!isUpdateBasicFieldsActionAvailable()"
+			<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 						header="Description"
 						data="{{form?.controls['description'].value}}"
 						[isSmall]="false">

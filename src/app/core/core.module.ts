@@ -17,6 +17,7 @@ import { HttpHelperService } from './http-helper.service';
 import { SmoothScrollService } from './smooth-scroll.service';
 import { WindowRefService } from './window.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AllActionsWithExceptionsPipe } from './individual-lesson/all-actions-with-exceptions.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
       CoreCommonModule,
       HttpClientModule
   ],
-  declarations: [],
+  declarations: [
+      AllActionsWithExceptionsPipe
+  ],
   providers: [
       CustomBrowserXhr,
       FakeStorage,
@@ -44,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   exports: [
-      CoreCommonModule
+      CoreCommonModule,
+      AllActionsWithExceptionsPipe
   ]
 })
 export class CoreModule { }

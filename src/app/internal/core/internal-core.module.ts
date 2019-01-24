@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
+import {CoreModule} from '../../core/core.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { EntityModule } from './entity/entity.module';
           useFactory: adapterFactory
       }),
       DemoUtilsModule,
+      CoreModule,
       EntityModule,
       MatFormFieldModule,
       MatInputModule,

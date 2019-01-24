@@ -115,7 +115,7 @@
 		{{state}}
 	</div>
     <div class="m-t-l p-b-l justifying-containter il-buttons">
-		<div class="m-t-xl" *ngFor="let action of actions">
+		<div class="m-t-xl" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
 			<span class="m-r-l">
 				<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
 				  {{action.name}}
@@ -123,9 +123,14 @@
 			</span>
 		</div>
 		<div class="m-t-xl">
-			<span class="m-r-l">
+			<span class="m-r-l" *ngIf="mode === modes.ADD">
 				<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
-				  {{(mode === modes.ADD) ? 'ADD' : 'SAVE' }}
+				  Add
+				</button>
+			</span>
+			<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
+				<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
+				  Update
 				</button>
 			</span>
 		</div>

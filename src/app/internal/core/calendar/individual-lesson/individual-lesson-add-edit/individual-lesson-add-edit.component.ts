@@ -23,6 +23,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     modes = DialogMode;
     state: string;
     actions: IIndividualLessonAction[] = [];
+    EIndividualLessonActions: typeof EIndividualLessonActions = EIndividualLessonActions;
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -58,21 +59,29 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }
     }
 
+    isUpdatingBasicFieldsActionAvailable(): boolean {
+        return this.actions.find(a =>  a.action === EIndividualLessonActions.UPDATE_BASIC_FIELDS) !== undefined;
+    }
+
     isEditingBasicFieldsActionAvailable(): boolean {
-        return (this.mode === this.modes.ADD) || this.actions.find((a) => { return a.action === EIndividualLessonActions.UPDATE_BASIC_FIELDS; }) !== undefined;
+        return (this.mode === this.modes.ADD) || this.isUpdatingBasicFieldsActionAvailable();
+    }
+
+    isUpdatingStartTimeActionAvailable(): boolean {
+        return this.actions.find(a => a.action === EIndividualLessonActions.UPDATE_START_TIME) !== undefined;
     }
 
     isEditingStartTimeActionAvailable(): boolean {
-        return (this.mode === this.modes.ADD) ||  this.actions.find((a) => { return a.action === EIndividualLessonActions.UPDATE_START_TIME; }) !== undefined;
+        return (this.mode === this.modes.ADD) ||  this.isUpdatingStartTimeActionAvailable();
     }
 
     lookupStudentString(studentId) {
-        const student = this.data.students.find((s) => { return s._id === studentId; });
+        const student = this.data.students.find(s => s._id === studentId);
         return (student) ? `${student.user.lastName} ${student.user.firstName} ${student.user.appeal}` : '';
     }
 
     lookupTeacherString(teacherId) {
-        const teacher = this.data.teachers.find((s) => { return s._id === teacherId; });
+        const teacher = this.data.teachers.find(s => s._id === teacherId);
         return (teacher) ? `${teacher.user.lastName} ${teacher.user.firstName} ${teacher.user.appeal}` : '';
     }
 

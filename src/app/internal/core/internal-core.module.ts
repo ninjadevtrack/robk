@@ -21,7 +21,7 @@ import {
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule, MatProgressSpinnerModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -51,6 +51,7 @@ import {CoreModule} from '../../core/core.module';
       MatSelectModule,
       MatOptionModule,
       MatToolbarModule,
+      MatProgressSpinnerModule,
       MatIconModule,
       MatCardModule,
       NgbModule

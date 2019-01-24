@@ -24,6 +24,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     state: string;
     actions: IIndividualLessonAction[] = [];
     EIndividualLessonActions: typeof EIndividualLessonActions = EIndividualLessonActions;
+    showSpinner = false;
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -122,8 +123,12 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('duration', duration.asMinutes());
 
         // Just a temp code
+        this.showSpinner = true;
         this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => {
-            this.actions = actions;
+            setTimeout(() => {
+                this.actions = actions;
+                this.showSpinner = false;
+            }, 2000);
         });
         this.state = this.data.il.state;
     }

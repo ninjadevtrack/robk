@@ -58,8 +58,12 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }
     }
 
-    allowUpdateBasicFields(): boolean {
+    isUpdateBasicFieldsActionAvailable(): boolean {
         return this.actions.find((a) => { return a.action === EIndividualLessonActions.UPDATE_BASIC_FIELDS; }) !== undefined;
+    }
+
+    isUpdateStartTimeActionAvailable(): boolean {
+        return this.actions.find((a) => { return a.action === EIndividualLessonActions.UPDATE_START_TIME; }) !== undefined;
     }
 
     lookupStudentString(studentId) {

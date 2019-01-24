@@ -125,10 +125,8 @@ export class IndividualLessonAddEditComponent implements OnInit {
         // Just a temp code
         this.showSpinner = true;
         this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => {
-            setTimeout(() => {
-                this.actions = actions;
-                this.showSpinner = false;
-            }, 2000);
+            this.actions = actions;
+            this.showSpinner = false;
         });
         this.state = this.data.il.state;
     }

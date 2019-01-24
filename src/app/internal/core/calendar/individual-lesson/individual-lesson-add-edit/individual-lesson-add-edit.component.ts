@@ -25,6 +25,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     actions: IIndividualLessonAction[] = [];
     EIndividualLessonActions: typeof EIndividualLessonActions = EIndividualLessonActions;
     showSpinner = false;
+    proposingNewTime = false;
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -260,16 +261,22 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
     }
 
-    proposeNewTime() {
+    startProposingNewTime() {
+        this.proposingNewTime = true;
+    }
+
+    completeProposingNewTime() {
         this._individualLessonService.proposeNewTime(
             this.data.il._id,
             {
                 start: this.getStartMoment().toDate().toISOString(),
                 end: this.getEndMoment().toDate().toISOString()
             }).subscribe((il: IIndividualLesson) => {
+            this.proposingNewTime = false;
             this.dialogRef.close(true);
             console.log(il);
         }, (serverError: any) => {
+                this.proposingNewTime = false;
             this.serverErrorMessage = serverError.error.errmsg;
         });
     }
@@ -281,7 +288,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
                 this.acceptAppointment();
                 break;
             case EIndividualLessonActions.PROPOSE_NEW_TIME:
-                this.proposeNewTime();
+                if (!this.proposingNewTime) {
+                    this.startProposingNewTime();
+                } else {
+                    this.completeProposingNewTime();
+                }
                 break;
             case EIndividualLessonActions.DECLINE_APPOINTMENT:
                 this.declineAppointment();

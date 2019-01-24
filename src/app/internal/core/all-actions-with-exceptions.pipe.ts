@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IIndividualLessonAction } from './model/individual-lesson-action.interface';
-import { EIndividualLessonActions } from './model/individual-lesson-actions.enum';
+import { IIndividualLessonAction } from '../../core/individual-lesson/model/individual-lesson-action.interface';
+import { EIndividualLessonActions } from '../../core/individual-lesson/model/individual-lesson-actions.enum';
 
 @Pipe({
   name: 'allActionsWithExceptions'

@@ -28,7 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
-import {CoreModule} from '../../core/core.module';
+import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +40,6 @@ import {CoreModule} from '../../core/core.module';
           useFactory: adapterFactory
       }),
       DemoUtilsModule,
-      CoreModule,
       EntityModule,
       MatFormFieldModule,
       MatInputModule,
@@ -65,6 +64,7 @@ import {CoreModule} from '../../core/core.module';
       ConfirmDialogComponent,
       IconLinkButtonComponent,
       CardTemplateComponent,
+      AllActionsWithExceptionsPipe
   ],
   exports: [
       EntityModule,
@@ -76,7 +76,8 @@ import {CoreModule} from '../../core/core.module';
       IndividualLessonAddEditComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
-      CardTemplateComponent
+      CardTemplateComponent,
+      AllActionsWithExceptionsPipe
   ],
   entryComponents: [
       IndividualLessonAddEditComponent,

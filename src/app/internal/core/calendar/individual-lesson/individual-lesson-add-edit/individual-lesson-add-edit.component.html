@@ -13,32 +13,47 @@
 
 	<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
     <div>
-		<mat-form-field class="full-width">
+		<mat-form-field *ngIf="allowUpdateBasicFields()" class="full-width">
 			<input
 				formControlName="title"
 				name="title"
 				matInput
 				placeholder="Title">
 		</mat-form-field>
+		<data-field *ngIf="!allowUpdateBasicFields()"
+					header="Title"
+					data="{{form?.controls['title']?.value}}"
+					[isSmall]="false">
+		</data-field>
 	</div>
     <div class="flex-container">
 		<div class="m-r-xl">
-			<mat-form-field class="regular-field">
+			<mat-form-field *ngIf="allowUpdateBasicFields()" class="regular-field">
 				<mat-select placeholder="Student" formControlName="student">
 					<mat-option *ngFor="let student of data.students" [value]="student._id">
 						{{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
+			<data-field *ngIf="!allowUpdateBasicFields()"
+						header="Student"
+						data="{{lookupStudentString(form?.controls['student'].value)}}"
+						[isSmall]="false">
+			</data-field>
 		</div>
 		<div class="m-r-xl">
-			<mat-form-field class="regular-field">
+			<mat-form-field *ngIf="allowUpdateBasicFields()" class="regular-field">
 				<mat-select placeholder="Teacher" formControlName="teacher">
 					<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
 						{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
 					</mat-option>
 				</mat-select>
 			</mat-form-field>
+			<data-field *ngIf="!allowUpdateBasicFields()"
+						header="Teacher"
+						data="{{lookupTeacherString(form?.controls['teacher'].value)}}"
+						[isSmall]="false">
+			</data-field>
 		</div>
 		<div>
 			<mat-form-field class="regular-field">

@@ -58,6 +58,20 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }
     }
 
+    allowUpdateBasicFields(): boolean {
+        return this.actions.find((a) => { return a.action === EIndividualLessonActions.UPDATE_BASIC_FIELDS; }) !== undefined;
+    }
+
+    lookupStudentString(studentId) {
+        const student = this.data.students.find((s) => { return s._id === studentId; });
+        return (student) ? `${student.user.lastName} ${student.user.firstName} ${student.user.appeal}` : '';
+    }
+
+    lookupTeacherString(teacherId) {
+        const teacher = this.data.teachers.find((s) => { return s._id === teacherId; });
+        return (teacher) ? `${teacher.user.lastName} ${teacher.user.firstName} ${teacher.user.appeal}` : '';
+    }
+
     getControlValue(controlName) {
         return this.form.controls[controlName].value;
     }

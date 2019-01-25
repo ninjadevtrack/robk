@@ -21,7 +21,7 @@ import {
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule, MatProgressSpinnerModule,
+    MatNativeDateModule, MatProgressSpinnerModule, MatDialogModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -45,6 +45,7 @@ import { IndividualLessonHistoryComponent } from './calendar/individual-lesson/i
       MatFormFieldModule,
       MatInputModule,
       MatNativeDateModule,
+      MatDialogModule,
       MatDatepickerModule,
       MatMenuModule,
       MatButtonModule,

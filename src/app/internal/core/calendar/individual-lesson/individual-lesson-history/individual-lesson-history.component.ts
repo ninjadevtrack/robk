@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individual-lesson/model/individual-lesson-state-change-log-entry.interface';
+import {IndividualLessonStateChangeInterpreterService} from '../../../../../core/individual-lesson/individual-lesson-state-change-interpreter.service';
 
 @Component({
   selector: 'app-individual-lesson-history',
@@ -10,10 +11,16 @@ export class IndividualLessonHistoryComponent implements OnInit {
 
   @Input() logEntries: IIndividualLessonStateChangeLogEntry[];
 
-  constructor() { }
+  constructor(
+      private _individualLessonStateChangeInterpreterService: IndividualLessonStateChangeInterpreterService
+  ) { }
 
   ngOnInit() {
 
+  }
+
+  interpret(logEntry: IIndividualLessonStateChangeLogEntry) {
+    return this._individualLessonStateChangeInterpreterService.interpret(logEntry);
   }
 
 }

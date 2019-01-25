@@ -1,10 +1,10 @@
 import { IUser } from '../../user/model/user.model';
-import { EIndividualLessonAction } from './individual-lesson-action.enum';
+import { EIndividualLessonState } from './individual-lesson-state.enum';
 
 export interface IIndividualLessonStateChangeLogEntry {
     individualLesson: string;
     user: IUser;
-    from: EIndividualLessonAction;
-    to: EIndividualLessonAction;
+    from: EIndividualLessonState;
+    to: EIndividualLessonState;
     createdAt: string;
 }

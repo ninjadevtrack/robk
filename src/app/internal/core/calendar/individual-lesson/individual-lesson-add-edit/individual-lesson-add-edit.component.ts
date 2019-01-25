@@ -7,9 +7,12 @@ import {IIndividualLesson, IndividualLessonModel} from '../../../../../core/indi
 import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
+import {EIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.enum';
+import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individual-lesson/model/individual-lesson-state-change-log-entry.interface';
 
 @Component({
     selector: 'individual-lesson-add',
+    styleUrls: ['./individual-lesson-add-edit.component.css'],
     templateUrl: './individual-lesson-add-edit.component.html'
 })
 export class IndividualLessonAddEditComponent implements OnInit {
@@ -20,6 +23,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
     mode: DialogMode;
     modes = DialogMode;
     state: string;
+    actions: IIndividualLessonAction[] = [];
+    EIndividualLessonActions: typeof EIndividualLessonAction = EIndividualLessonAction;
+    showSpinner = false;
+    proposingNewTime = false;
+    logEntries: IIndividualLessonStateChangeLogEntry[] = [];
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -33,12 +41,12 @@ export class IndividualLessonAddEditComponent implements OnInit {
 
         this.mode = this.data.mode;
 
-
         this.form = this._formBuilder.group({
             title: ['', [Validators.required]],
             student: ['', [Validators.required]],
             teacher: ['', [Validators.required]],
-            start: [ '', [Validators.required]],
+            startTime: [ '', [Validators.required]],
+            startDate: ['', [Validators.required]],
             duration: [this.durations[0], [Validators.required]],
             description: ['', []],
         });
@@ -55,6 +63,32 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }
     }
 
+    isUpdatingBasicFieldsActionAvailable(): boolean {
+        return this.actions.find(a =>  a.action === EIndividualLessonAction.UPDATE_BASIC_FIELDS) !== undefined;
+    }
+
+    isEditingBasicFieldsActionAvailable(): boolean {
+        return (this.mode === this.modes.ADD) || this.isUpdatingBasicFieldsActionAvailable();
+    }
+
+    isUpdatingStartTimeActionAvailable(): boolean {
+        return this.actions.find(a => a.action === EIndividualLessonAction.UPDATE_START_TIME) !== undefined;
+    }
+
+    isEditingStartTimeActionAvailable(): boolean {
+        return (this.mode === this.modes.ADD) ||  this.isUpdatingStartTimeActionAvailable();
+    }
+
+    lookupStudentString(studentId) {
+        const student = this.data.students.find(s => s._id === studentId);
+        return (student) ? `${student.user.lastName} ${student.user.firstName} ${student.user.appeal}` : '';
+    }
+
+    lookupTeacherString(teacherId) {
+        const teacher = this.data.teachers.find(s => s._id === teacherId);
+        return (teacher) ? `${teacher.user.lastName} ${teacher.user.firstName} ${teacher.user.appeal}` : '';
+    }
+
     getControlValue(controlName) {
         return this.form.controls[controlName].value;
     }
@@ -66,10 +100,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
     setFormValuesForAddMode() {
         this.setControlValue('student', this.data.students[0]._id);
         this.setControlValue('teacher', this.data.teachers[0]._id);
-        this.setControlValue('start', {
+        this.setControlValue('startTime', {
             hour: this.data.date.getHours(),
             minute: this.data.date.getMinutes()
         });
+        this.setControlValue('startDate', this.data.date);
         this.setControlValue('duration', this.durations[0]);
     }
 
@@ -78,10 +113,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('description', this.data.il.description);
         this.setControlValue('student', this.data.il.student._id);
         this.setControlValue('teacher', this.data.il.teacher._id);
-        this.setControlValue('start', {
+        this.setControlValue('startTime', {
             hour: (new Date(this.data.il.start)).getHours(),
             minute: (new Date(this.data.il.start)).getMinutes()
         });
+        this.setControlValue('startDate', this.data.il.start);
 
         // Figure out the duration
         const start = moment(this.data.il.start);
@@ -90,36 +126,32 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.setControlValue('duration', duration.asMinutes());
 
         // Just a temp code
-        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => { console.log(actions); });
+        this.showSpinner = true;
+        this._individualLessonService.getAvailableActions(this.data.il._id).subscribe((actions: IIndividualLessonAction[]) => {
+            this.actions = actions;
+            this.showSpinner = false;
+        });
         this.state = this.data.il.state;
+        this._individualLessonService.getStateChangeLogEntries(this.data.il._id).subscribe((logEntries: IIndividualLessonStateChangeLogEntry[]) => {
+            this.logEntries = logEntries;
+            console.log(logEntries);
+        });
     }
 
     getBasicMoment() {
-        let m;
-        switch (this.mode) {
-            case DialogMode.ADD:
-                m = moment(this.data.date);
-                break;
-            case DialogMode.EDIT:
-                m = moment(this.data.il.start);
-                break;
-            default:
-                break;
-        }
-
-        return m;
+        return moment(this.getControlValue('startDate'));
     }
 
     getStartMoment() {
         return this.getBasicMoment().startOf('day')
-            .add(this.getControlValue('start').hour, 'hours')
-            .add(this.getControlValue('start').minute, 'minutes');
+            .add(this.getControlValue('startTime').hour, 'hours')
+            .add(this.getControlValue('startTime').minute, 'minutes');
     }
 
     getEndMoment() {
         return this.getBasicMoment().startOf('day')
-            .add(this.getControlValue('start').hour, 'hours')
-            .add(this.getControlValue('start').minute, 'minutes')
+            .add(this.getControlValue('startTime').hour, 'hours')
+            .add(this.getControlValue('startTime').minute, 'minutes')
             .add(this.getControlValue('duration'), 'minutes');
     }
 
@@ -179,5 +211,115 @@ export class IndividualLessonAddEditComponent implements OnInit {
         }, (serverError: any) => {
             this.serverErrorMessage = serverError.error.errmsg;
         });
+    }
+
+    acceptAppointment() {
+        this._individualLessonService.acceptAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    declineAppointment() {
+        this._individualLessonService.declineAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    cancelAppointment() {
+        this._individualLessonService.cancelAppointment(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    approveAppointmentPassed() {
+        this._individualLessonService.approveAppointmentPassed(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    setPassedWithoutMoneyWithdrawal() {
+        this._individualLessonService.setPassedWithoutMoneyWithdrawal(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    setPassedWithForcedMoneyWithdrawal() {
+        this._individualLessonService.setPassedWithForcedMoneyWithdrawal(this.data.il._id).subscribe((il: IIndividualLesson) => {
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    startProposingNewTime() {
+        this.proposingNewTime = true;
+    }
+
+    completeProposingNewTime() {
+        this._individualLessonService.proposeNewTime(
+            this.data.il._id,
+            {
+                start: this.getStartMoment().toDate().toISOString(),
+                end: this.getEndMoment().toDate().toISOString()
+            }).subscribe((il: IIndividualLesson) => {
+            this.proposingNewTime = false;
+            this.dialogRef.close(true);
+            console.log(il);
+        }, (serverError: any) => {
+                this.proposingNewTime = false;
+            this.serverErrorMessage = serverError.error.errmsg;
+        });
+    }
+
+    actionButtonClicked(action: EIndividualLessonAction) {
+        console.log(action);
+        switch (action) {
+            case EIndividualLessonAction.ACCEPT_APPOINTMENT:
+                this.acceptAppointment();
+                break;
+            case EIndividualLessonAction.PROPOSE_NEW_TIME:
+                if (!this.proposingNewTime) {
+                    this.startProposingNewTime();
+                } else {
+                    this.completeProposingNewTime();
+                }
+                break;
+            case EIndividualLessonAction.DECLINE_APPOINTMENT:
+                this.declineAppointment();
+                break;
+            case EIndividualLessonAction.CANCEL_APPOINTMENT:
+                this.cancelAppointment();
+                break;
+            case EIndividualLessonAction.APPROVE_APPOINTMENT_PASSED:
+                this.approveAppointmentPassed();
+                break;
+            case EIndividualLessonAction.SET_PASSED_WITH_FORCED_MONEY_WITHDRAWAL:
+                this.setPassedWithForcedMoneyWithdrawal();
+                break;
+            case EIndividualLessonAction.SET_PASSED_WITHOUT_MONEY_WITHDRAWAL:
+                this.setPassedWithoutMoneyWithdrawal();
+                break;
+            case EIndividualLessonAction.DELETE:
+                this.delete();
+                break;
+            default:
+                break;
+        }
     }
 }

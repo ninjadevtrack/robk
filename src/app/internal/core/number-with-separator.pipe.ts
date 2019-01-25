@@ -9,7 +9,7 @@ export class NumberWithSeparatorPipe implements PipeTransform {
         // Format the output to display any way you want here.
         // For instance:
         if (val !== undefined && val !== null) {
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); //val.toLocaleString(/*arguments you need*/);
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         } else {
             return '';
         }

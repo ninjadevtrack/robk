@@ -1,4 +1,4 @@
-export enum EIndividualLessonActions {
+export enum EIndividualLessonState {
     CLIENT_REQUESTED = 'CLIENT_REQUESTED',
     APPOINTMENT_ACCEPTED = 'APPOINTMENT_ACCEPTED',
     SCHOOL_REQUESTED = 'SCHOOL_REQUESTED',

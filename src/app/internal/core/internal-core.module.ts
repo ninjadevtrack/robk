@@ -19,13 +19,17 @@ import {
     MatOptionModule,
     MatSelectModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule, MatProgressSpinnerModule, MatDialogModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
+import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
+import { IndividualLessonHistoryComponent } from './calendar/individual-lesson/individual-lesson-history/individual-lesson-history.component';
 
 @NgModule({
   imports: [
@@ -40,11 +44,15 @@ import { EntityModule } from './entity/entity.module';
       EntityModule,
       MatFormFieldModule,
       MatInputModule,
+      MatNativeDateModule,
+      MatDialogModule,
+      MatDatepickerModule,
       MatMenuModule,
       MatButtonModule,
       MatSelectModule,
       MatOptionModule,
       MatToolbarModule,
+      MatProgressSpinnerModule,
       MatIconModule,
       MatCardModule,
       NgbModule
@@ -58,6 +66,8 @@ import { EntityModule } from './entity/entity.module';
       ConfirmDialogComponent,
       IconLinkButtonComponent,
       CardTemplateComponent,
+      AllActionsWithExceptionsPipe,
+      IndividualLessonHistoryComponent
   ],
   exports: [
       EntityModule,
@@ -69,7 +79,8 @@ import { EntityModule } from './entity/entity.module';
       IndividualLessonAddEditComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
-      CardTemplateComponent
+      CardTemplateComponent,
+      AllActionsWithExceptionsPipe
   ],
   entryComponents: [
       IndividualLessonAddEditComponent,

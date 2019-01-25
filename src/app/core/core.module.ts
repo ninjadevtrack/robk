@@ -17,6 +17,7 @@ import { HttpHelperService } from './http-helper.service';
 import { SmoothScrollService } from './smooth-scroll.service';
 import { WindowRefService } from './window.service';
 import { HttpClientModule } from '@angular/common/http';
+import { IndividualLessonStateChangeInterpreterService } from './individual-lesson/individual-lesson-state-change-interpreter.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
       CoreCommonModule,
       HttpClientModule
   ],
-  declarations: [],
+  declarations: [
+  ],
   providers: [
       CustomBrowserXhr,
       FakeStorage,
@@ -36,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
       ClientService,
       EnrollmentService,
       IndividualLessonService,
+      IndividualLessonStateChangeInterpreterService,
       InstrumentService,
       ServiceService,
       StudentService,

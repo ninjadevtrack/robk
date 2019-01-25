@@ -2,7 +2,7 @@
   <h5>History</h5>
   <div *ngFor="let logEntry of logEntries" class="log-entry">
     <div>
-      <em>{{logEntry.user.appeal}} {{logEntry.user.firstName}} {{logEntry.user.lastName}}</em> changed the status from <small>{{logEntry.from}}</small> to <small>{{logEntry.to}}</small>
+      <span class="em">{{logEntry.user.appeal}} {{logEntry.user.firstName}} {{logEntry.user.lastName}}</span> changed the state to <small><em>{{logEntry.to}}</em></small>
     </div>
     <div class="date">
       {{logEntry.createdAt | date: 'medium'}}

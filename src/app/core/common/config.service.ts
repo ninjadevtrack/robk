@@ -212,7 +212,10 @@ export class ConfigService {
             },
             setPassedWithForcedMoneyWithdrawal: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/setpassedwithforcedmoneywithdrawal`;
-            }
+            },
+            getStateChangeLogEntries: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/statechangelogentries`;
+            },
         }
     };
 

@@ -1,4 +1,4 @@
-export enum EIndividualLessonActions {
+export enum EIndividualLessonAction {
     ACCEPT_APPOINTMENT = 'ACCEPT_APPOINTMENT',
     PROPOSE_NEW_TIME = 'PROPOSE_NEW_TIME',
     DECLINE_APPOINTMENT = 'DECLINE_APPOINTMENT',

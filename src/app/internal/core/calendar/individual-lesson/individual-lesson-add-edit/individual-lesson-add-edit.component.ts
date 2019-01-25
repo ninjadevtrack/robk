@@ -7,7 +7,8 @@ import {IIndividualLesson, IndividualLessonModel} from '../../../../../core/indi
 import {IndividualLessonService} from '../../../../../core/individual-lesson/individual-lesson.service';
 import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
-import {EIndividualLessonActions} from '../../../../../core/individual-lesson/model/individual-lesson-actions.enum';
+import {EIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.enum';
+import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individual-lesson/model/individual-lesson-state-change-log-entry.interface';
 
 @Component({
     selector: 'individual-lesson-add',
@@ -23,9 +24,10 @@ export class IndividualLessonAddEditComponent implements OnInit {
     modes = DialogMode;
     state: string;
     actions: IIndividualLessonAction[] = [];
-    EIndividualLessonActions: typeof EIndividualLessonActions = EIndividualLessonActions;
+    EIndividualLessonActions: typeof EIndividualLessonAction = EIndividualLessonAction;
     showSpinner = false;
     proposingNewTime = false;
+    logEntries: IIndividualLessonStateChangeLogEntry[] = [];
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -62,7 +64,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     }
 
     isUpdatingBasicFieldsActionAvailable(): boolean {
-        return this.actions.find(a =>  a.action === EIndividualLessonActions.UPDATE_BASIC_FIELDS) !== undefined;
+        return this.actions.find(a =>  a.action === EIndividualLessonAction.UPDATE_BASIC_FIELDS) !== undefined;
     }
 
     isEditingBasicFieldsActionAvailable(): boolean {
@@ -70,7 +72,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     }
 
     isUpdatingStartTimeActionAvailable(): boolean {
-        return this.actions.find(a => a.action === EIndividualLessonActions.UPDATE_START_TIME) !== undefined;
+        return this.actions.find(a => a.action === EIndividualLessonAction.UPDATE_START_TIME) !== undefined;
     }
 
     isEditingStartTimeActionAvailable(): boolean {
@@ -130,6 +132,10 @@ export class IndividualLessonAddEditComponent implements OnInit {
             this.showSpinner = false;
         });
         this.state = this.data.il.state;
+        this._individualLessonService.getStateChangeLogEntries(this.data.il._id).subscribe((logEntries: IIndividualLessonStateChangeLogEntry[]) => {
+            this.logEntries = logEntries;
+            console.log(logEntries);
+        });
     }
 
     getBasicMoment() {
@@ -281,35 +287,35 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
     }
 
-    actionButtonClicked(action: EIndividualLessonActions) {
+    actionButtonClicked(action: EIndividualLessonAction) {
         console.log(action);
         switch (action) {
-            case EIndividualLessonActions.ACCEPT_APPOINTMENT:
+            case EIndividualLessonAction.ACCEPT_APPOINTMENT:
                 this.acceptAppointment();
                 break;
-            case EIndividualLessonActions.PROPOSE_NEW_TIME:
+            case EIndividualLessonAction.PROPOSE_NEW_TIME:
                 if (!this.proposingNewTime) {
                     this.startProposingNewTime();
                 } else {
                     this.completeProposingNewTime();
                 }
                 break;
-            case EIndividualLessonActions.DECLINE_APPOINTMENT:
+            case EIndividualLessonAction.DECLINE_APPOINTMENT:
                 this.declineAppointment();
                 break;
-            case EIndividualLessonActions.CANCEL_APPOINTMENT:
+            case EIndividualLessonAction.CANCEL_APPOINTMENT:
                 this.cancelAppointment();
                 break;
-            case EIndividualLessonActions.APPROVE_APPOINTMENT_PASSED:
+            case EIndividualLessonAction.APPROVE_APPOINTMENT_PASSED:
                 this.approveAppointmentPassed();
                 break;
-            case EIndividualLessonActions.SET_PASSED_WITH_FORCED_MONEY_WITHDRAWAL:
+            case EIndividualLessonAction.SET_PASSED_WITH_FORCED_MONEY_WITHDRAWAL:
                 this.setPassedWithForcedMoneyWithdrawal();
                 break;
-            case EIndividualLessonActions.SET_PASSED_WITHOUT_MONEY_WITHDRAWAL:
+            case EIndividualLessonAction.SET_PASSED_WITHOUT_MONEY_WITHDRAWAL:
                 this.setPassedWithoutMoneyWithdrawal();
                 break;
-            case EIndividualLessonActions.DELETE:
+            case EIndividualLessonAction.DELETE:
                 this.delete();
                 break;
             default:

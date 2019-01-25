@@ -6,6 +6,7 @@ import { IndividualLessonModel } from './model/individual-lesson.model';
 import { HttpHelperService } from "../http-helper.service";
 import { IIndividualLessonAction } from './model/individual-lesson-action.interface';
 import {IDateRange} from '../common/models/date-range.model';
+import {IIndividualLessonStateChangeLogEntry} from './model/individual-lesson-state-change-log-entry.interface';
 
 @Injectable()
 export class IndividualLessonService  {
@@ -71,6 +72,10 @@ export class IndividualLessonService  {
 
     public setPassedWithForcedMoneyWithdrawal(id: string): Observable<IndividualLessonModel> {
         return this._httpHelper.put(true, this._configService.API.IndividualLesson.setPassedWithForcedMoneyWithdrawal(id), null);
+    }
+
+    public getStateChangeLogEntries(id: string): Observable<IIndividualLessonStateChangeLogEntry[]> {
+        return this._httpHelper.get(true, this._configService.API.IndividualLesson.getStateChangeLogEntries(id));
     }
 
 }

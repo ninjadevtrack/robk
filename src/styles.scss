@@ -823,3 +823,8 @@ media-plan-view {
     flex: 2;
   }
 }
+
+.cdk-overlay-pane {
+  padding-top: 20px;
+  overflow-y: auto;
+}

@@ -11,138 +11,144 @@
 		{{serverErrorMessage}}
 	</div>
 
-	<mat-spinner *ngIf="showSpinner" class="spinner m-t-6xl m-b-6xl"></mat-spinner>
+	<div>
+		<mat-spinner *ngIf="showSpinner" class="spinner m-t-6xl m-b-6xl"></mat-spinner>
 
-	<form *ngIf="!showSpinner" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
-		<div>
-			<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
-				<input
-					formControlName="title"
-					name="title"
-					matInput
-					placeholder="Title">
-			</mat-form-field>
-			<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
-						header="Title"
-						data="{{form?.controls['title']?.value}}"
-						[isSmall]="false">
-			</data-field>
-		</div>
-		<div class="flex-container">
-			<div class="m-r-xl">
-				<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
-					<mat-select placeholder="Student" formControlName="student">
-						<mat-option *ngFor="let student of data.students" [value]="student._id">
-							{{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-				<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
-							header="Student"
-							data="{{lookupStudentString(form?.controls['student'].value)}}"
-							[isSmall]="false">
-				</data-field>
-			</div>
-			<div class="m-r-xl">
-				<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
-					<mat-select placeholder="Teacher" formControlName="teacher">
-						<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
-							{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-				<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
-							header="Teacher"
-							data="{{lookupTeacherString(form?.controls['teacher'].value)}}"
-							[isSmall]="false">
-				</data-field>
-			</div>
-			<div>
-				<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
-					<mat-select placeholder="Duration" formControlName="duration">
-						<mat-option *ngFor="let duration of durations" [value]="duration">
-							{{duration}} min
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-				<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
-							header="Duration"
-							data="{{form?.controls['duration'].value + ' min'}}"
-							[isSmall]="false">
-				</data-field>
-			</div>
-		</div>
-		<div class="flex-container m-t-l">
-			<div class="m-r-xl">
-				<mat-form-field *ngIf="isEditingStartTimeActionAvailable() || proposingNewTime" class="date-picker">
-					<input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date" required>
-					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-					<mat-datepicker #startDatePicker></mat-datepicker>
-				</mat-form-field>
-				<data-field *ngIf="!(isEditingStartTimeActionAvailable() || proposingNewTime)"
-							header="Start Date"
-							data="{{getStartMoment()?.toDate() | date: 'MMM d, y'}}"
-							[isSmall]="false">
-				</data-field>
-			</div>
-			<div class="m-r-xl">
-				<div *ngIf="isEditingStartTimeActionAvailable() || proposingNewTime">
-					<div class="data-field-header">Start Time</div>
-					<div class="m-r-xl">
-						<ngb-timepicker formControlName="startTime"></ngb-timepicker>
-					</div>
-				</div>
-				<data-field *ngIf="!(isEditingStartTimeActionAvailable() || proposingNewTime)"
-							header="Start Time"
-							data="{{getStartMoment()?.toDate() | date: 'HH:mm'}}"
-							[isSmall]="false">
-				</data-field>
-			</div>
+		<form *ngIf="!showSpinner" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
 			<div>
 				<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
-					<textarea
-					formControlName="description"
-					name="description"
-					matInput
-					placeholder="Description"></textarea>
+					<input
+							formControlName="title"
+							name="title"
+							matInput
+							placeholder="Title">
 				</mat-form-field>
 				<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
-							header="Description"
-							data="{{form?.controls['description'].value}}"
+							header="Title"
+							data="{{form?.controls['title']?.value}}"
 							[isSmall]="false">
 				</data-field>
 			</div>
-		</div>
-		<div>
-			{{state}}
-		</div>
-		<div class="m-t-l p-b-l justifying-containter il-buttons">
-			<div class="m-t-xl" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
+			<div class="flex-container">
+				<div class="m-r-xl">
+					<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
+						<mat-select placeholder="Student" formControlName="student">
+							<mat-option *ngFor="let student of data.students" [value]="student._id">
+								{{student?.user?.lastName}} {{student?.user?.firstName}} {{student?.user?.appeal}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
+								header="Student"
+								data="{{lookupStudentString(form?.controls['student'].value)}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+				<div class="m-r-xl">
+					<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
+						<mat-select placeholder="Teacher" formControlName="teacher">
+							<mat-option *ngFor="let teacher of data.teachers" [value]="teacher._id">
+								{{teacher?.user?.lastName}} {{teacher?.user?.firstName}} {{teacher?.user?.appeal}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
+								header="Teacher"
+								data="{{lookupTeacherString(form?.controls['teacher'].value)}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+				<div>
+					<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="regular-field">
+						<mat-select placeholder="Duration" formControlName="duration">
+							<mat-option *ngFor="let duration of durations" [value]="duration">
+								{{duration}} min
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
+								header="Duration"
+								data="{{form?.controls['duration'].value + ' min'}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+			</div>
+			<div class="flex-container m-t-l">
+				<div class="m-r-xl">
+					<mat-form-field *ngIf="isEditingStartTimeActionAvailable() || proposingNewTime" class="date-picker">
+						<input matInput [matDatepicker]="startDatePicker" formControlName="startDate" placeholder="Start Date" required>
+						<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+						<mat-datepicker #startDatePicker></mat-datepicker>
+					</mat-form-field>
+					<data-field *ngIf="!(isEditingStartTimeActionAvailable() || proposingNewTime)"
+								header="Start Date"
+								data="{{getStartMoment()?.toDate() | date: 'MMM d, y'}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+				<div class="m-r-xl">
+					<div *ngIf="isEditingStartTimeActionAvailable() || proposingNewTime">
+						<div class="data-field-header">Start Time</div>
+						<div class="m-r-xl">
+							<ngb-timepicker formControlName="startTime"></ngb-timepicker>
+						</div>
+					</div>
+					<data-field *ngIf="!(isEditingStartTimeActionAvailable() || proposingNewTime)"
+								header="Start Time"
+								data="{{getStartMoment()?.toDate() | date: 'HH:mm'}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+				<div>
+					<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
+					<textarea
+							formControlName="description"
+							name="description"
+							matInput
+							placeholder="Description"></textarea>
+					</mat-form-field>
+					<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
+								header="Description"
+								data="{{form?.controls['description'].value}}"
+								[isSmall]="false">
+					</data-field>
+				</div>
+			</div>
+			<div>
+				{{state}}
+			</div>
+			<div class="m-t-l p-b-l justifying-containter il-buttons">
+				<div class="m-t-xl" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
 				<span class="m-r-l">
 					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
 					  {{(action.action === EIndividualLessonActions.PROPOSE_NEW_TIME && proposingNewTime) ? 'Complete Proposing New Time' :  action.name}}
 					</button>
 				</span>
-			</div>
-			<div class="m-t-xl">
+				</div>
+				<div class="m-t-xl">
 				<span class="m-r-l" *ngIf="mode === modes.ADD">
 					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
 					  Add
 					</button>
 				</span>
-				<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
+					<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
 					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
 					  Update
 					</button>
 				</span>
-			</div>
-			<div class="m-t-xl">
+				</div>
+				<div class="m-t-xl">
 				<span class="">
 					<button mat-button class="mat-primary" (click)="onNoClick()" type="button">
 						CANCEL
 					</button>
 				</span>
+				</div>
 			</div>
-		</div>
-  </form>
+		</form>
+	</div>
+
+	<div class="p-t-3xl" *ngIf="(mode === modes.EDIT) && logEntries.length > 0">
+		<app-individual-lesson-history [logEntries]="logEntries"></app-individual-lesson-history>
+	</div>
 </div>

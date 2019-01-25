@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
 import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
+import { IndividualLessonHistoryComponent } from './calendar/individual-lesson/individual-lesson-history/individual-lesson-history.component';
 
 @NgModule({
   imports: [
@@ -64,7 +65,8 @@ import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe
       ConfirmDialogComponent,
       IconLinkButtonComponent,
       CardTemplateComponent,
-      AllActionsWithExceptionsPipe
+      AllActionsWithExceptionsPipe,
+      IndividualLessonHistoryComponent
   ],
   exports: [
       EntityModule,

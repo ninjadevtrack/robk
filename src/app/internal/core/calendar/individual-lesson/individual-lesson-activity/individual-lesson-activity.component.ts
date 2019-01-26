@@ -3,6 +3,7 @@ import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individu
 import {IndividualLessonStateChangeInterpreterService} from '../../../../../core/individual-lesson/individual-lesson-state-change-interpreter.service';
 import {IComment} from '../../../../../core/common/models/comment.model';
 import {IUser} from '../../../../../core/user/model/user.model';
+import {IActivityRecord} from '../../../activity-record/models/activity-record.model';
 
 @Component({
   selector: 'app-individual-lesson-history',
@@ -47,10 +48,4 @@ export class IndividualLessonActivityComponent implements OnInit {
         }; })).sort((a, b) => (new Date(b.createdAt)).getTime() - (new Date(a.createdAt)).getTime());
     }
 
-}
-
-interface IActivityRecord {
-   user: IUser;
-   message: string;
-   createdAt: string;
 }

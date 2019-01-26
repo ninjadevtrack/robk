@@ -30,6 +30,7 @@ import { CardTemplateComponent } from './templates/card-template/card-template.c
 import { EntityModule } from './entity/entity.module';
 import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
 import { IndividualLessonActivityComponent } from './calendar/individual-lesson/individual-lesson-activity/individual-lesson-activity.component';
+import { ActivityRecordListComponent } from './activity-record/activity-record-list/activity-record-list.component';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { IndividualLessonActivityComponent } from './calendar/individual-lesson/
       IconLinkButtonComponent,
       CardTemplateComponent,
       AllActionsWithExceptionsPipe,
-      IndividualLessonActivityComponent
+      IndividualLessonActivityComponent,
+      ActivityRecordListComponent
   ],
   exports: [
       EntityModule,

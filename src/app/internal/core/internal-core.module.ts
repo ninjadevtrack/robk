@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
 import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
-import { IndividualLessonHistoryComponent } from './calendar/individual-lesson/individual-lesson-history/individual-lesson-history.component';
+import { IndividualLessonActivityComponent } from './calendar/individual-lesson/individual-lesson-activity/individual-lesson-activity.component';
 
 @NgModule({
   imports: [
@@ -67,7 +67,7 @@ import { IndividualLessonHistoryComponent } from './calendar/individual-lesson/i
       IconLinkButtonComponent,
       CardTemplateComponent,
       AllActionsWithExceptionsPipe,
-      IndividualLessonHistoryComponent
+      IndividualLessonActivityComponent
   ],
   exports: [
       EntityModule,

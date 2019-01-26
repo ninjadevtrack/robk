@@ -150,7 +150,7 @@
 		</div>
 
 		<div class="p-t-2xl" *ngIf="(mode === modes.EDIT) && logEntries.length > 0">
-			<app-individual-lesson-history [logEntries]="logEntries"></app-individual-lesson-history>
+			<app-individual-lesson-history [logEntries]="logEntries" [comments]="comments"></app-individual-lesson-history>
 		</div>
 	</mat-dialog-content>
 </div>

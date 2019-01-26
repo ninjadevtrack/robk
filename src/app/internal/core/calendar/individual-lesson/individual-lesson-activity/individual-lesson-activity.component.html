@@ -1,0 +1,11 @@
+<div>
+  <h5>Activity</h5>
+  <div *ngFor="let activityRecord of activityRecords" class="log-entry">
+    <div>
+      <span class="em">{{activityRecord.user.appeal}} {{activityRecord.user.firstName}} {{activityRecord.user.lastName}}</span> {{activityRecord.message}}
+    </div>
+    <div class="date">
+      {{activityRecord.createdAt | date: 'medium'}}
+    </div>
+  </div>
+</div>

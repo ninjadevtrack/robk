@@ -1,7 +1,7 @@
 <div class="">
 	<div class="flex-container-left">
 		<div class="center-the-rest">
-			<h2 class="text-center p-b-l font-color-pale">
+			<h2 class="text-center font-color-pale">
 				{{(mode === modes.ADD) ? 'New' : ''}} Individual Lesson {{getStartMoment()?.toDate() | date: 'MMM d, y, HH:mm'}} - {{getEndMoment()?.toDate() | date: 'HH:mm'}}
 			</h2>
 		</div>
@@ -15,7 +15,7 @@
 		<div>
 			<mat-spinner *ngIf="showSpinner" class="spinner m-t-6xl m-b-6xl"></mat-spinner>
 
-			<form *ngIf="!showSpinner" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-3xl">
+			<form *ngIf="!showSpinner" novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-t-2xl">
 				<div>
 					<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
 						<input
@@ -118,7 +118,7 @@
 				<div>
 					{{state}}
 				</div>
-				<div class="m-t-l p-b-l justifying-containter il-buttons">
+				<div class="m-t-l justifying-containter il-buttons">
 					<div class="m-t-xl" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
 				<span class="m-r-l">
 					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
@@ -149,7 +149,7 @@
 			</form>
 		</div>
 
-		<div class="p-t-3xl" *ngIf="(mode === modes.EDIT) && logEntries.length > 0">
+		<div class="p-t-2xl" *ngIf="(mode === modes.EDIT) && logEntries.length > 0">
 			<app-individual-lesson-history [logEntries]="logEntries"></app-individual-lesson-history>
 		</div>
 	</mat-dialog-content>

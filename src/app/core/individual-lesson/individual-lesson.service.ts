@@ -80,7 +80,11 @@ export class IndividualLessonService  {
     }
 
     public getComments(id: string): Observable<IComment[]> {
-        return this._httpHelper.get(true, this._configService.API.IndividualLesson.getComments(id));
+        return this._httpHelper.get(true, this._configService.API.IndividualLesson.comments(id));
+    }
+
+    public addComment(id: string, model: IComment): Observable<IComment> {
+        return this._httpHelper.post(true, this._configService.API.IndividualLesson.comments(id), model);
     }
 
 }

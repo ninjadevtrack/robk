@@ -7,8 +7,7 @@ import {IActivityRecord} from '../../../activity-record/models/activity-record.m
 
 @Component({
   selector: 'app-individual-lesson-history',
-  templateUrl: './individual-lesson-activity.component.html',
-  styleUrls: ['./individual-lesson-activity.component.scss']
+  template: `<app-activity-record-list [activityRecords]="activityRecords"></app-activity-record-list>`,
 })
 export class IndividualLessonActivityComponent implements OnInit {
 

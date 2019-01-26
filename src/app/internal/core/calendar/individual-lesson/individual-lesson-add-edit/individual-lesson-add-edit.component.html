@@ -102,11 +102,12 @@
 					</div>
 					<div>
 						<mat-form-field *ngIf="isEditingBasicFieldsActionAvailable()" class="full-width">
-					<textarea
-							formControlName="description"
-							name="description"
-							matInput
-							placeholder="Description"></textarea>
+							<textarea
+									formControlName="description"
+									name="description"
+									matInput
+									placeholder="Description">
+							</textarea>
 						</mat-form-field>
 						<data-field *ngIf="!isEditingBasicFieldsActionAvailable()"
 									header="Description"
@@ -132,7 +133,7 @@
 					  Add
 					</button>
 				</span>
-						<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
+				<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
 					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
 					  Update
 					</button>
@@ -147,6 +148,10 @@
 					</div>
 				</div>
 			</form>
+		</div>
+
+		<div class="p-t-2xl">
+			<app-comment-add (commentAdded)="commentAdded($event)"></app-comment-add>
 		</div>
 
 		<div class="p-t-2xl" *ngIf="(mode === modes.EDIT) && logEntries.length > 0">

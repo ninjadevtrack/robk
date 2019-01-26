@@ -31,6 +31,7 @@ import { EntityModule } from './entity/entity.module';
 import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
 import { IndividualLessonActivityComponent } from './calendar/individual-lesson/individual-lesson-activity/individual-lesson-activity.component';
 import { ActivityRecordListComponent } from './activity-record/activity-record-list/activity-record-list.component';
+import { CommentAddComponent } from './comment/comment-add/comment-add.component';
 
 @NgModule({
   imports: [
@@ -69,7 +70,8 @@ import { ActivityRecordListComponent } from './activity-record/activity-record-l
       CardTemplateComponent,
       AllActionsWithExceptionsPipe,
       IndividualLessonActivityComponent,
-      ActivityRecordListComponent
+      ActivityRecordListComponent,
+      CommentAddComponent
   ],
   exports: [
       EntityModule,

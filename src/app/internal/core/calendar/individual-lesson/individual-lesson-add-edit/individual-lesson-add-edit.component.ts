@@ -139,7 +139,6 @@ export class IndividualLessonAddEditComponent implements OnInit {
         });
         this._individualLessonService.getComments(this.data.il._id).subscribe((comments: IComment[]) => {
             this.comments = comments;
-            console.log(comments);
         });
     }
 
@@ -326,5 +325,11 @@ export class IndividualLessonAddEditComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    commentAdded(comment: string) {
+        this._individualLessonService.addComment(this.data.il._id, comment).subscribe((c) => {
+            this.comments = this.comments.concat([c]);
+        });
     }
 }

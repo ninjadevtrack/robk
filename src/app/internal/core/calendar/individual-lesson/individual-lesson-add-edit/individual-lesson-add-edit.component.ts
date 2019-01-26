@@ -297,13 +297,6 @@ export class IndividualLessonAddEditComponent implements OnInit {
             case EIndividualLessonAction.ACCEPT_APPOINTMENT:
                 this.acceptAppointment();
                 break;
-            case EIndividualLessonAction.PROPOSE_NEW_TIME:
-                if (!this.proposingNewTime) {
-                    this.startProposingNewTime();
-                } else {
-                    this.completeProposingNewTime();
-                }
-                break;
             case EIndividualLessonAction.DECLINE_APPOINTMENT:
                 this.declineAppointment();
                 break;
@@ -325,6 +318,10 @@ export class IndividualLessonAddEditComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    isProposeNewTimeActionAvailable() {
+        return this.actions.map(a => a.action).includes(EIndividualLessonAction.PROPOSE_NEW_TIME);
     }
 
     commentAdded(comment: string) {

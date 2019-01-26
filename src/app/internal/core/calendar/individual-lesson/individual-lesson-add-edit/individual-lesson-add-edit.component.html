@@ -121,15 +121,34 @@
 					<div>
 						<small>{{state}}</small>
 					</div>
-					<div class="justifying-containter il-buttons m-t-l">
-						<div *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
-							<span class="m-r-l">
+					<div class="justifying-containter il-buttons">
+						<div class="m-t-l" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME, EIndividualLessonActions.PROPOSE_NEW_TIME]">
+							<span *ngIf="!proposingNewTime" class="m-r-l">
 								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
-								  {{(action.action === EIndividualLessonActions.PROPOSE_NEW_TIME && proposingNewTime) ? 'Complete Proposing New Time' :  action.name}}
+								  {{action.name}}
 								</button>
 							</span>
 						</div>
-						<div>
+
+						<div class="m-t-l" *ngIf="isProposeNewTimeActionAvailable()">
+							<span class="m-r-l" *ngIf="!proposingNewTime">
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="proposingNewTime = true">
+								  Propose New Time
+								</button>
+							</span>
+							<span class="m-r-l" *ngIf="proposingNewTime">
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="completeProposingNewTime()">
+								  Complete Proposing New Time
+								</button>
+							</span>
+							<span class="m-r-l" *ngIf="proposingNewTime">
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="proposingNewTime = false">
+								  Cancel Proposing New Time
+								</button>
+							</span>
+						</div>
+
+						<div class="m-t-l" *ngIf="!proposingNewTime">
 							<span class="m-r-l" *ngIf="mode === modes.ADD">
 								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
 								  Add
@@ -141,7 +160,7 @@
 								</button>
 							</span>
 						</div>
-						<div>
+						<div class="m-t-l" *ngIf="!proposingNewTime">
 							<span class="">
 								<button mat-button class="mat-primary" (click)="onNoClick()" type="button">
 									CANCEL

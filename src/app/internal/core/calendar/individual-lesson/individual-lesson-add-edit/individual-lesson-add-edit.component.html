@@ -123,30 +123,30 @@
 					</div>
 					<div class="m-t-l justifying-containter il-buttons">
 						<div class="m-t-xl" *ngFor="let action of actions | allActionsWithExceptions: [EIndividualLessonActions.UPDATE_BASIC_FIELDS, EIndividualLessonActions.UPDATE_START_TIME]">
-				<span class="m-r-l">
-					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
-					  {{(action.action === EIndividualLessonActions.PROPOSE_NEW_TIME && proposingNewTime) ? 'Complete Proposing New Time' :  action.name}}
-					</button>
-				</span>
+							<span class="m-r-l">
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="button" (click)="actionButtonClicked(action.action)">
+								  {{(action.action === EIndividualLessonActions.PROPOSE_NEW_TIME && proposingNewTime) ? 'Complete Proposing New Time' :  action.name}}
+								</button>
+							</span>
 						</div>
 						<div class="m-t-xl">
-				<span class="m-r-l" *ngIf="mode === modes.ADD">
-					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
-					  Add
-					</button>
-				</span>
+							<span class="m-r-l" *ngIf="mode === modes.ADD">
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
+								  Add
+								</button>
+							</span>
 							<span class="m-r-l" *ngIf="(mode === modes.EDIT) && (isUpdatingStartTimeActionAvailable() || isUpdatingBasicFieldsActionAvailable())">
-					<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
-					  Update
-					</button>
-				</span>
+								<button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
+								  Update
+								</button>
+							</span>
 						</div>
 						<div class="m-t-xl">
-				<span class="">
-					<button mat-button class="mat-primary" (click)="onNoClick()" type="button">
-						CANCEL
-					</button>
-				</span>
+							<span class="">
+								<button mat-button class="mat-primary" (click)="onNoClick()" type="button">
+									CANCEL
+								</button>
+							</span>
 						</div>
 					</div>
 				</form>

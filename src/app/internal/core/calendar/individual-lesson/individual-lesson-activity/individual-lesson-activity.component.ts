@@ -17,12 +17,12 @@ export class IndividualLessonActivityComponent implements OnInit {
 
     @Input() set logEntries(value: IIndividualLessonStateChangeLogEntry[]) {
         this._logEntries = value;
-        this.rebuildHistoryRecords();
+        this.rebuildActivityRecords();
     }
 
     @Input() set comments(value: IComment[]) {
        this._comments = value;
-       this.rebuildHistoryRecords();
+       this.rebuildActivityRecords();
     }
 
     constructor(
@@ -35,7 +35,7 @@ export class IndividualLessonActivityComponent implements OnInit {
         return this._individualLessonStateChangeInterpreterService.interpret(logEntry);
     }
 
-    rebuildHistoryRecords() {
+    rebuildActivityRecords() {
       this.activityRecords = this._logEntries.map((le) => { return {
             user: le.user,
             message: this.interpret(le),

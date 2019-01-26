@@ -9,6 +9,7 @@ import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
 import {EIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.enum';
 import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individual-lesson/model/individual-lesson-state-change-log-entry.interface';
+import {IComment} from '../../../../../core/common/models/comment.model';
 
 @Component({
     selector: 'individual-lesson-add',
@@ -28,6 +29,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     showSpinner = false;
     proposingNewTime = false;
     logEntries: IIndividualLessonStateChangeLogEntry[] = [];
+    comments: IComment[] = [];
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -134,7 +136,10 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.state = this.data.il.state;
         this._individualLessonService.getStateChangeLogEntries(this.data.il._id).subscribe((logEntries: IIndividualLessonStateChangeLogEntry[]) => {
             this.logEntries = logEntries;
-            console.log(logEntries);
+        });
+        this._individualLessonService.getComments(this.data.il._id).subscribe((comments: IComment[]) => {
+            this.comments = comments;
+            console.log(comments);
         });
     }
 

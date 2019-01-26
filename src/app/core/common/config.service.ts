@@ -216,6 +216,9 @@ export class ConfigService {
             getStateChangeLogEntries: (id) => {
                 return `${Consts.API_URL}/v1/individual-lessons/${id}/statechangelogentries`;
             },
+            getComments: (id) => {
+                return `${Consts.API_URL}/v1/individual-lessons/${id}/comments`;
+            },
         }
     };
 

@@ -7,6 +7,7 @@ import { HttpHelperService } from "../http-helper.service";
 import { IIndividualLessonAction } from './model/individual-lesson-action.interface';
 import {IDateRange} from '../common/models/date-range.model';
 import {IIndividualLessonStateChangeLogEntry} from './model/individual-lesson-state-change-log-entry.interface';
+import {IComment} from '../common/models/comment.model';
 
 @Injectable()
 export class IndividualLessonService  {
@@ -76,6 +77,10 @@ export class IndividualLessonService  {
 
     public getStateChangeLogEntries(id: string): Observable<IIndividualLessonStateChangeLogEntry[]> {
         return this._httpHelper.get(true, this._configService.API.IndividualLesson.getStateChangeLogEntries(id));
+    }
+
+    public getComments(id: string): Observable<IComment[]> {
+        return this._httpHelper.get(true, this._configService.API.IndividualLesson.getComments(id));
     }
 
 }

@@ -9,10 +9,11 @@ import {DialogMode} from '../../../../../core/common/dialog-mode.enum';
 import {IIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.interface';
 import {EIndividualLessonAction} from '../../../../../core/individual-lesson/model/individual-lesson-action.enum';
 import {IIndividualLessonStateChangeLogEntry} from '../../../../../core/individual-lesson/model/individual-lesson-state-change-log-entry.interface';
+import {IComment} from '../../../../../core/common/models/comment.model';
 
 @Component({
     selector: 'individual-lesson-add',
-    styleUrls: ['./individual-lesson-add-edit.component.css'],
+    styleUrls: ['./individual-lesson-add-edit.component.scss'],
     templateUrl: './individual-lesson-add-edit.component.html'
 })
 export class IndividualLessonAddEditComponent implements OnInit {
@@ -28,6 +29,7 @@ export class IndividualLessonAddEditComponent implements OnInit {
     showSpinner = false;
     proposingNewTime = false;
     logEntries: IIndividualLessonStateChangeLogEntry[] = [];
+    comments: IComment[] = [];
 
     constructor(
         private _individualLessonService: IndividualLessonService,
@@ -134,7 +136,9 @@ export class IndividualLessonAddEditComponent implements OnInit {
         this.state = this.data.il.state;
         this._individualLessonService.getStateChangeLogEntries(this.data.il._id).subscribe((logEntries: IIndividualLessonStateChangeLogEntry[]) => {
             this.logEntries = logEntries;
-            console.log(logEntries);
+        });
+        this._individualLessonService.getComments(this.data.il._id).subscribe((comments: IComment[]) => {
+            this.comments = comments;
         });
     }
 
@@ -293,13 +297,6 @@ export class IndividualLessonAddEditComponent implements OnInit {
             case EIndividualLessonAction.ACCEPT_APPOINTMENT:
                 this.acceptAppointment();
                 break;
-            case EIndividualLessonAction.PROPOSE_NEW_TIME:
-                if (!this.proposingNewTime) {
-                    this.startProposingNewTime();
-                } else {
-                    this.completeProposingNewTime();
-                }
-                break;
             case EIndividualLessonAction.DECLINE_APPOINTMENT:
                 this.declineAppointment();
                 break;
@@ -321,5 +318,15 @@ export class IndividualLessonAddEditComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    isProposeNewTimeActionAvailable() {
+        return this.actions.map(a => a.action).includes(EIndividualLessonAction.PROPOSE_NEW_TIME);
+    }
+
+    commentAdded(comment: string) {
+        this._individualLessonService.addComment(this.data.il._id, comment).subscribe((c) => {
+            this.comments = this.comments.concat([c]);
+        });
     }
 }

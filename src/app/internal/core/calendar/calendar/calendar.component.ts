@@ -20,8 +20,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     @Output() individualLessonClicked: EventEmitter<IIndividualLesson> = new EventEmitter<IIndividualLesson>();
     @Output() hourSegmentClicked: EventEmitter<any> = new EventEmitter();
-    @Input() _individualLessons: IIndividualLesson[] = [];
     @Input() coloringMode: CalendarColoringModes = CalendarColoringModes.BY_STUDENT;
+    _individualLessons: IIndividualLesson[] = [];
     view: string = 'week';
     viewDate: Date = new Date();
     events: CalendarEvent[] = [];

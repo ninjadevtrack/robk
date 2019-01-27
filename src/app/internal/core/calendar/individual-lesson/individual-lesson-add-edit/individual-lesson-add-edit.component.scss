@@ -7,3 +7,9 @@
     border: 1px solid #e2e2e2;
     border-radius: 2px;
 }
+
+ngb-timepicker {
+    .button {
+        padding: 0em !important;
+    }
+}

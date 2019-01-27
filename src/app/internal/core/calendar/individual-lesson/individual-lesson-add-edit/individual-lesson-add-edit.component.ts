@@ -13,7 +13,7 @@ import {IComment} from '../../../../../core/common/models/comment.model';
 
 @Component({
     selector: 'individual-lesson-add',
-    styleUrls: ['./individual-lesson-add-edit.component.css'],
+    styleUrls: ['./individual-lesson-add-edit.component.scss'],
     templateUrl: './individual-lesson-add-edit.component.html'
 })
 export class IndividualLessonAddEditComponent implements OnInit {

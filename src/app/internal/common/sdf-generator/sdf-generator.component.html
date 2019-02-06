@@ -76,7 +76,7 @@
         <mat-spinner class="spinner m-t-6xl m-b-6xl"></mat-spinner>
       </div>
 
-      <div class="m-t-l" *ngIf="!showSpinner">
+      <div class="m-t-l" *ngIf="!showSpinner && lineItems.length > 0">
         <app-line-item-list [lineItems]="lineItems"></app-line-item-list>
       </div>
 

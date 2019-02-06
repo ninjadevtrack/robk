@@ -72,9 +72,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {
             this.lineItems = lineItems;
-            setTimeout(() => {
-                this.showSpinner = false;
-            });
+            this.showSpinner = false;
         });
     }
 

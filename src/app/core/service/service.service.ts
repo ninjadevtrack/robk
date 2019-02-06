@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { ServiceModel } from './model/service.model';
 import { HttpHelperService } from "../http-helper.service";
-import {IEntityService} from '../entity-service.model';
+import { IEntityService } from '../entity-service.model';
 
 @Injectable()
 export class ServiceService implements IEntityService {

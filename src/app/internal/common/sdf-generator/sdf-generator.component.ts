@@ -7,6 +7,8 @@ import {GeoService} from "../../../core/geo/geo.service";
 import {InterestService} from "../../../core/interest/interest.service";
 import {Observable, forkJoin } from "rxjs";
 import {IInterest} from "../../../core/interest/interest";
+import {LineItemService} from "../../../core/line-item/line-item.service";
+import {ILineItem} from "../../../core/line-item/i-line-item";
 
 @Component({
   selector: 'app-sdf-generator',
@@ -26,7 +28,8 @@ export class SdfGeneratorComponent implements OnInit {
         private _formBuilder: FormBuilder,
         private _deviceService: DeviceService,
         private _geoService: GeoService,
-        private _interestsService: InterestService
+        private _interestsService: InterestService,
+        private _lineItemSevice: LineItemService
     ) { }
 
     ngOnInit() {
@@ -54,7 +57,19 @@ export class SdfGeneratorComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log('Submitting...');
+
+        if (!this.form.valid) { return; }
+
+        this._lineItemSevice.generate(
+            this.form.controls['campaignName'].value,
+            this.devices.filter((d) => this.form.controls['devices'].value.includes(d.id)),
+            this.geos.filter((g) => this.form.controls['geos'].value.includes(g.id)),
+            this.interests.filter((i) => this.form.controls['interests'].value.includes(i.id)),
+            this.form.controls['genders'].value,
+            this.form.controls['ageCategories'].value,
+        ).subscribe((lineItems: ILineItem[]) => {
+            console.log(lineItems);
+        });
     }
 
 }

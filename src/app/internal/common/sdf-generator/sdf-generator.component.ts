@@ -20,6 +20,7 @@ export class SdfGeneratorComponent implements OnInit {
     geos: IGeo[] = [];
     interests: IInterest[] = [];
     genders = ['Male', 'Female', 'Other'];
+    ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -45,6 +46,7 @@ export class SdfGeneratorComponent implements OnInit {
                 devices: [this.devices.map(d => d.id), [Validators.required]],
                 geos: [this.geos.map(g => g.id), [Validators.required]],
                 genders: [this.genders, [Validators.required]],
+                ageCategories: [this.ageCategories, [Validators.required]],
                 interests: [this.interests.map(i => i.id), [Validators.required]]
             });
         });

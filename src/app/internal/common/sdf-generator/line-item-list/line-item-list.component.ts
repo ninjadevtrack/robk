@@ -28,7 +28,7 @@ export class LineItemListComponent implements OnInit {
   rebuildDataTable() {
     console.log(`Rendering begins ${(new Date()).toISOString()}`);
     this.dataSource = new MatTableDataSource<ILineItem>(this._lineItems);
-    setTimeout(() => { this.dataSource.paginator = this.paginator; }, 100);
+    setTimeout(() => { this.dataSource.paginator = this.paginator; });
     console.log(`Rendering ends ${(new Date()).toISOString()}`);
   }
 

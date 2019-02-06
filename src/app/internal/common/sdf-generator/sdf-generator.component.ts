@@ -74,7 +74,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.lineItems = lineItems;
             setTimeout(() => {
                 this.showSpinner = false;
-            }, 1000);
+            }, 10);
         });
     }
 

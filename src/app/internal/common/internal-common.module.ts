@@ -15,6 +15,7 @@ import {
     MatTableModule,
     MatToolbarModule
 } from '@angular/material';
+import { MatPaginatorModule } from "@angular/material/paginator";
 import { CommonCalendarComponent } from './common-calendar/common-calendar.component';
 import { StudentModule } from '../student/student.module';
 import { ClientModule } from '../client/client.module';
@@ -35,6 +36,7 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       MatSelectModule,
       MatCardModule,
       MatProgressSpinnerModule,
+      MatPaginatorModule,
       MatTableModule,
       InternalCoreModule,
       ReactiveFormsModule,

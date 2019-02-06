@@ -72,7 +72,10 @@
           </div>
         </form>
       </mat-card>
-      <mat-card class="m-t-l" *ngIf="lineItems && lineItems.length > 0">
+      <div *ngIf="showSpinner">
+        <mat-spinner class="spinner m-t-6xl m-b-6xl"></mat-spinner>
+      </div>
+      <mat-card class="m-t-l" *ngIf="!showSpinner && lineItems.length > 0">
         <app-line-item-list [lineItems]="lineItems"></app-line-item-list>
       </mat-card>
     </div>

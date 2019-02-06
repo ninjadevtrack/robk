@@ -23,7 +23,8 @@ export class SdfGeneratorComponent implements OnInit {
     interests: IInterest[] = [];
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
-    lineItems: ILineItem[];
+    lineItems: ILineItem[] = [];
+    showSpinner = false;
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -60,6 +61,8 @@ export class SdfGeneratorComponent implements OnInit {
 
         if (!this.form.valid) { return; }
 
+        this.showSpinner = true;
+
         this._lineItemSevice.generate(
             this.form.controls['campaignName'].value,
             this.devices.filter((d) => this.form.controls['devices'].value.includes(d.id)),
@@ -69,6 +72,9 @@ export class SdfGeneratorComponent implements OnInit {
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {
             this.lineItems = lineItems;
+            setTimeout(() => {
+                this.showSpinner = false;
+            }, 1000);
         });
     }
 

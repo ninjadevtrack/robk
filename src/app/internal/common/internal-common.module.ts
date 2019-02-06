@@ -9,7 +9,7 @@ import {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule,
+    MatMenuModule, MatProgressSpinnerModule,
     MatSelectModule,
     MatToolbarModule
 } from '@angular/material';
@@ -32,6 +32,7 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       MatInputModule,
       MatSelectModule,
       MatCardModule,
+      MatProgressSpinnerModule,
       InternalCoreModule,
       ReactiveFormsModule,
       StudentModule,

@@ -23,6 +23,7 @@ export class SdfGeneratorComponent implements OnInit {
     interests: IInterest[] = [];
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
+    lineItems: ILineItem[];
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -33,7 +34,6 @@ export class SdfGeneratorComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
 
         forkJoin(
             this._deviceService.getAll(),
@@ -68,6 +68,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.form.controls['genders'].value,
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {
+            this.lineItems = lineItems;
             console.log(lineItems);
         });
     }

@@ -19,6 +19,7 @@ import { ClientModule } from '../client/client.module';
 import { TeacherModule } from '../teacher/teacher.module';
 import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { LineItemComponent } from './sdf-generator/line-item/line-item.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { ReactiveFormsModule } from "@angular/forms";
       ProfileComponent,
       InternalHeaderComponent,
       CommonCalendarComponent,
-      SdfGeneratorComponent
+      SdfGeneratorComponent,
+      LineItemComponent
   ],
   exports: [
       ProfileComponent,

@@ -72,6 +72,13 @@
           </div>
         </form>
       </mat-card>
+      <mat-card class="m-t-l" *ngIf="lineItems && lineItems.length > 0">
+        <div>
+          <div *ngFor="let li of lineItems">
+            <app-line-item [lineItem]="li"></app-line-item>
+          </div>
+        </div>
+      </mat-card>
     </div>
   </div>
 </div>

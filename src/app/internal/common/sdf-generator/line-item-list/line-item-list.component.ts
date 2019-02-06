@@ -9,6 +9,8 @@ import { ILineItem } from "../../../../core/line-item/i-line-item";
 export class LineItemListComponent implements OnInit {
 
   @Input() lineItems: ILineItem[];
+  displayedColumns: string[] = ['campaignName', 'device', 'geo', 'interest', 'gender', 'ageCategory'];
+
   constructor() { }
 
   ngOnInit() {

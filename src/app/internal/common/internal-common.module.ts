@@ -9,8 +9,10 @@ import {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule, MatProgressSpinnerModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
+    MatTableModule,
     MatToolbarModule
 } from '@angular/material';
 import { CommonCalendarComponent } from './common-calendar/common-calendar.component';
@@ -33,6 +35,7 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       MatSelectModule,
       MatCardModule,
       MatProgressSpinnerModule,
+      MatTableModule,
       InternalCoreModule,
       ReactiveFormsModule,
       StudentModule,

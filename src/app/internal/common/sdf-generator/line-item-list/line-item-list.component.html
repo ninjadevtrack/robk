@@ -1,23 +1,71 @@
 <div *ngIf="lineItems && lineItems.length > 0">
     <div class="text-right">Count: {{lineItems.length}}</div>
-    <table>
-        <thead>
-            <th>Campaign</th>
-            <th>Device</th>
-            <th>Geo</th>
-            <th>Interest</th>
-            <th>Gender</th>
-            <th>Age</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let li of lineItems">
-                <td>{{li.campaignName}}</td>
-                <td>{{li.device.name}}</td>
-                <td>{{li.geo.name}}</td>
-                <td>{{li.interest.name}}</td>
-                <td>{{li.gender}}</td>
-                <td>{{li.ageCategory}}</td>
-            </tr>
-        </tbody>
+
+
+    <table mat-table [dataSource]="lineItems" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Campaign Column -->
+        <ng-container matColumnDef="campaignName">
+            <th mat-header-cell *matHeaderCellDef> Campaign </th>
+            <td mat-cell *matCellDef="let element"> {{element.campaignName}} </td>
+        </ng-container>
+
+        <!-- Device Column -->
+        <ng-container matColumnDef="device">
+            <th mat-header-cell *matHeaderCellDef> Device </th>
+            <td mat-cell *matCellDef="let element"> {{element.device.name}} </td>
+        </ng-container>
+
+        <!-- Geo Column -->
+        <ng-container matColumnDef="geo">
+            <th mat-header-cell *matHeaderCellDef> Geo </th>
+            <td mat-cell *matCellDef="let element"> {{element.geo.name}} </td>
+        </ng-container>
+
+        <!-- Interest Column -->
+        <ng-container matColumnDef="interest">
+            <th mat-header-cell *matHeaderCellDef> Interest </th>
+            <td mat-cell *matCellDef="let element"> {{element.interest.name}} </td>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+
+        <!-- Age Column -->
+        <ng-container matColumnDef="ageCategory">
+            <th mat-header-cell *matHeaderCellDef> Age </th>
+            <td mat-cell *matCellDef="let element"> {{element.ageCategory}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
+
+    <!--<table>-->
+        <!--<thead>-->
+            <!--<th>Campaign</th>-->
+            <!--<th>Device</th>-->
+            <!--<th>Geo</th>-->
+            <!--<th>Interest</th>-->
+            <!--<th>Gender</th>-->
+            <!--<th>Age</th>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr *ngFor="let li of lineItems">-->
+                <!--<td>{{li.campaignName}}</td>-->
+                <!--<td>{{li.device.name}}</td>-->
+                <!--<td>{{li.geo.name}}</td>-->
+                <!--<td>{{li.interest.name}}</td>-->
+                <!--<td>{{li.gender}}</td>-->
+                <!--<td>{{li.ageCategory}}</td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
 </div>

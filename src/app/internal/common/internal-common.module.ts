@@ -5,6 +5,7 @@ import { InternalHeaderComponent } from './header/header.component';
 import { InternalCoreModule } from '../core/internal-core.module';
 import { RouterModule } from '@angular/router';
 import {
+    MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from "@angular/forms";
       MatMenuModule,
       MatToolbarModule,
       MatFormFieldModule,
+      MatButtonModule,
       MatInputModule,
       MatSelectModule,
       MatCardModule,

@@ -53,4 +53,8 @@ export class SdfGeneratorComponent implements OnInit {
 
     }
 
+    onSubmit() {
+        console.log('Submitting...');
+    }
+
 }

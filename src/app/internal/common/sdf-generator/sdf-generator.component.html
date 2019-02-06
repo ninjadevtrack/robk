@@ -2,9 +2,9 @@
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b">
       <mat-card>
-        <form novalidate [formGroup]="form">
+        <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="flex-container">
-            <div class="m-r-l">
+            <div class="">
               <mat-form-field class="regular-field">
                 <input
                     formControlName="campaignName"
@@ -58,6 +58,17 @@
                 </mat-select>
               </mat-form-field>
             </div>
+
+            <div></div>
+
+            <div class="m-t-l p-b-l text-right">
+                <span class="m-r-l">
+                    <button mat-raised-button class="mat-primary" [disabled]="!form.valid" type="submit">
+                      Generate
+                    </button>
+                </span>
+            </div>
+
           </div>
         </form>
       </mat-card>

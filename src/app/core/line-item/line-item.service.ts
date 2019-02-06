@@ -40,7 +40,6 @@ export class LineItemService {
         });
       });
 
-      console.log(`Data is generated ${(new Date()).toISOString()}`);
       return of(result);
   }
 }

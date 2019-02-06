@@ -17,6 +17,7 @@ import { StudentModule } from '../student/student.module';
 import { ClientModule } from '../client/client.module';
 import { TeacherModule } from '../teacher/teacher.module';
 import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
       MatSelectModule,
       MatCardModule,
       InternalCoreModule,
+      ReactiveFormsModule,
       StudentModule,
       ClientModule,
       TeacherModule

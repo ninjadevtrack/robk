@@ -4,6 +4,7 @@ import {IDevice} from "../../../core/device/device";
 import {DeviceService} from "../../../core/device/device.service";
 import {IGeo} from "../../../core/geo/geo";
 import {GeoService} from "../../../core/geo/geo.service";
+import {Observable, forkJoin } from "rxjs";
 
 @Component({
   selector: 'app-sdf-generator',
@@ -13,8 +14,8 @@ import {GeoService} from "../../../core/geo/geo.service";
 export class SdfGeneratorComponent implements OnInit {
 
     form: FormGroup;
-    devices: IDevice[];
-    geos: IGeo[];
+    devices: IDevice[] = [];
+    geos: IGeo[] = [];
     genders = ['Male', 'Female', 'Other'];
 
     constructor(
@@ -24,22 +25,25 @@ export class SdfGeneratorComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.form = this._formBuilder.group({
-            campaignName: ['', Validators.required],
-            devices: [[], Validators.required],
-            geos: [[], Validators.required],
-            gender: ['', Validators.required],
-            targeting: ['', Validators.required]
-        });
 
-        this._deviceService.getAll().subscribe((devices: IDevice[]) => {
+
+        forkJoin(this._deviceService.getAll(),
+            this._geoService.getAll()
+        ).subscribe(([devices, geos]) => {
             this.devices = devices;
-            this.form.controls['devices'].setValue([this.devices[0].id]);
-        });
-
-        this._geoService.getAll().subscribe((geos: IGeo[]) => {
             this.geos = geos;
-            this.form.controls['geos'].setValue([this.geos[0].id]);
+
+            this.form = this._formBuilder.group({
+                campaignName: ['', [Validators.required]],
+                devices: [this.devices.map(d => d.id), [Validators.required]],
+                geos: [this.geos.map(g => g.id), [Validators.required]],
+                genders: [this.genders, [Validators.required]],
+                targeting: ['', [Validators.required]]
+            });
+
+            console.log(this.form.controls['geos'].value);
+            console.log(this.form.controls['devices'].value);
+            console.log(this.form.controls['genders'].value);
         });
 
     }

@@ -12,7 +12,7 @@ export class DeviceService {
     { id: 2, name: 'Android Phone' },
     { id: 3, name: 'Android Tab' },
     { id: 4, name: 'iPhone' },
-    { id: 1, name: 'iPad' }
+    { id: 5, name: 'iPad' }
   ];
 
   constructor() { }

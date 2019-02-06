@@ -8,11 +8,11 @@ import { Observable, of } from "rxjs";
 export class DeviceService {
 
   devices: IDevice[] = [
-    { id: 1, name: 'Desktop'},
-    { id: 2, name: 'Android Phone'},
-    { id: 3, name: 'Android Tab'},
-    { id: 4, name: 'iPhone'},
-    { id: 1, name: 'iPad'}
+    { id: 1, name: 'Desktop' },
+    { id: 2, name: 'Android Phone' },
+    { id: 3, name: 'Android Tab' },
+    { id: 4, name: 'iPhone' },
+    { id: 1, name: 'iPad' }
   ];
 
   constructor() { }

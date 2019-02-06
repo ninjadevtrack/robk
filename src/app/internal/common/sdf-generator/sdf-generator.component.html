@@ -22,7 +22,13 @@
             </mat-form-field>
           </div>
           <div>
-            Man
+            <mat-form-field class="regular-field">
+              <mat-select placeholder="Geo" formControlName="geos" multiple>
+                <mat-option *ngFor="let geo of geos" [value]="geo.id">
+                  {{ geo.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
       </mat-card>

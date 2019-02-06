@@ -40,10 +40,6 @@ export class SdfGeneratorComponent implements OnInit {
                 genders: [this.genders, [Validators.required]],
                 targeting: ['', [Validators.required]]
             });
-
-            console.log(this.form.controls['geos'].value);
-            console.log(this.form.controls['devices'].value);
-            console.log(this.form.controls['genders'].value);
         });
 
     }

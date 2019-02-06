@@ -26,20 +26,20 @@ export class SdfGeneratorComponent implements OnInit {
     ngOnInit() {
         this.form = this._formBuilder.group({
             campaignName: ['', Validators.required],
-            devices: ['', Validators.required],
-            geos: ['', Validators.required],
+            devices: [[], Validators.required],
+            geos: [[], Validators.required],
             gender: ['', Validators.required],
             targeting: ['', Validators.required]
         });
 
         this._deviceService.getAll().subscribe((devices: IDevice[]) => {
             this.devices = devices;
-            this.form.controls['devices'].setValue(this.devices[0].id);
+            this.form.controls['devices'].setValue([this.devices[0].id]);
         });
 
         this._geoService.getAll().subscribe((geos: IGeo[]) => {
             this.geos = geos;
-            this.form.controls['geos'].setValue(this.geos[0].id);
+            this.form.controls['geos'].setValue([this.geos[0].id]);
         });
 
     }

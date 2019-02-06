@@ -69,7 +69,6 @@ export class SdfGeneratorComponent implements OnInit {
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {
             this.lineItems = lineItems;
-            console.log(lineItems);
         });
     }
 

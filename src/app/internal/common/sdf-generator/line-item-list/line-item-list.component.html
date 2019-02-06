@@ -1,0 +1,22 @@
+<div *ngIf="lineItems && lineItems.length > 0">
+    <table>
+        <thead>
+            <th>Campaign Name</th>
+            <th>Device</th>
+            <th>Geo</th>
+            <th>Interest</th>
+            <th>Gender</th>
+            <th>Age</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let li of lineItems">
+                <th>{{li.campaignName}}</th>
+                <th>{{li.device.name}}</th>
+                <th>{{li.geo.name}}</th>
+                <th>{{li.interest.name}}</th>
+                <th>{{li.gender}}</th>
+                <th>{{li.ageCategory}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'http://api.dechantmusicacademy.com/api'
+  apiURL: 'http://api.dbm-helper.laconic.agency/api'
 };

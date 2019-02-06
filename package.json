@@ -1,5 +1,5 @@
 {
-  "name": "school-erp-web",
+  "name": "laconic-dbm-helper-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -40,7 +40,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular-devkit/build-angular": "^0.13.0",
     "@angular/cli": "~7.0.3",
     "@angular/compiler-cli": "~7.0.0",
     "@angular/language-service": "~7.0.0",
@@ -57,9 +57,9 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0",
-    "typescript": "~3.1.1",
     "tsickle": "^0.33.0",
-    "tslib": "^1.9.0"
+    "tslib": "^1.9.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.1"
   }
 }

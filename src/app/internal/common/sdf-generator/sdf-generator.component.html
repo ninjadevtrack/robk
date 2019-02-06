@@ -40,6 +40,15 @@
                 </mat-select>
               </mat-form-field>
             </div>
+            <div>
+              <mat-form-field class="regular-field">
+                <mat-select placeholder="Interests" formControlName="interests" multiple>
+                  <mat-option *ngFor="let interest of interests" [value]="interest.id">
+                    {{ interest.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </form>
       </mat-card>

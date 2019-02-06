@@ -1,8 +1,8 @@
-<div *ngIf="_lineItems && _lineItems.length > 0">
+<div>
     <div class="text-right m-b"><em>Count: {{_lineItems.length}}</em></div>
 
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table *ngIf="_lineItems && _lineItems.length > 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->

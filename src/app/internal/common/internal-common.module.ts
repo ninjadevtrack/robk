@@ -9,6 +9,7 @@ import { CommonCalendarComponent } from './common-calendar/common-calendar.compo
 import { StudentModule } from '../student/student.module';
 import { ClientModule } from '../client/client.module';
 import { TeacherModule } from '../teacher/teacher.module';
+import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { TeacherModule } from '../teacher/teacher.module';
   declarations: [
       ProfileComponent,
       InternalHeaderComponent,
-      CommonCalendarComponent
+      CommonCalendarComponent,
+      SdfGeneratorComponent
   ],
   exports: [
       ProfileComponent,

@@ -31,6 +31,7 @@ import { InstrumentListRootComponent } from './admin/instrument/instrument-list-
 import { InstrumentViewComponent } from './admin/instrument/instrument-view/instrument-view.component';
 import { CommonCalendarComponent } from './common/common-calendar/common-calendar.component';
 import { InternalCommonModule } from './common/internal-common.module';
+import {SdfGeneratorComponent} from "./common/sdf-generator/sdf-generator.component";
 
 const routes: Routes = [
     { path: 'i', component: InternalEntryComponent,
@@ -60,7 +61,8 @@ const routes: Routes = [
                     { path: 'instruments/:id', component: InstrumentViewComponent }
                 ]
             },
-            { path: 'calendar', component: CommonCalendarComponent }
+            { path: 'calendar', component: CommonCalendarComponent },
+            { path: 'sdf', component: SdfGeneratorComponent }
         ]
     }
 ];

@@ -1,5 +1,5 @@
-<div *ngIf="lineItems && lineItems.length > 0">
-    <div class="text-right m-b"><em>Count: {{lineItems.length}}</em></div>
+<div *ngIf="_lineItems && _lineItems.length > 0">
+    <div class="text-right m-b"><em>Count: {{_lineItems.length}}</em></div>
 
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -48,6 +48,6 @@
 
     </table>
 
-    <mat-paginator [pageSizeOptions]="[50, 100, 200]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 
 </div>

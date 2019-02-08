@@ -54,9 +54,9 @@ export class SdfGeneratorComponent implements OnInit {
             this.geos = geos;
             this.interests = interests;
 
-            this.form.controls['devices'].setValue(this.devices.map(d => d.id));
-            this.form.controls['geos'].setValue(this.geos.map(g => g.id));
-            this.form.controls['interests'].setValue(this.interests.map(i => i.id));
+            // this.form.controls['devices'].setValue(this.devices.map(d => d.id));
+            // this.form.controls['geos'].setValue(this.geos.map(g => g.id));
+            // this.form.controls['interests'].setValue(this.interests.map(i => i.id));
         });
 
     }

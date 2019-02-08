@@ -11,6 +11,13 @@ export class InterestService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<IInterest[]> {
-    return this.http.get<IInterest[]>("./assets/data/interests.json");
+    return this.http.get<any>("./assets/data/interests.json").map((values) => {
+      return values.map((v) => { return {
+          id: parseInt(v["1"], 10),
+          name: v["2"],
+          parentId: parseInt(v["3"], 10)
+        };
+      });
+    });
   }
 }

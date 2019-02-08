@@ -36,6 +36,15 @@ export class SdfGeneratorComponent implements OnInit {
 
     ngOnInit() {
 
+        this.form = this._formBuilder.group({
+            campaignName: ['', [Validators.required]],
+            devices: [[], [Validators.required]],
+            geos: [[], [Validators.required]],
+            genders: [this.genders, [Validators.required]],
+            ageCategories: [this.ageCategories, [Validators.required]],
+            interests: [[], [Validators.required]]
+        });
+
         forkJoin(
             this._deviceService.getAll(),
             this._geoService.getAll(),
@@ -45,14 +54,9 @@ export class SdfGeneratorComponent implements OnInit {
             this.geos = geos;
             this.interests = interests;
 
-            this.form = this._formBuilder.group({
-                campaignName: ['', [Validators.required]],
-                devices: [this.devices.map(d => d.id), [Validators.required]],
-                geos: [this.geos.map(g => g.id), [Validators.required]],
-                genders: [this.genders, [Validators.required]],
-                ageCategories: [this.ageCategories, [Validators.required]],
-                interests: [this.interests.map(i => i.id), [Validators.required]]
-            });
+            this.form.controls['devices'].setValue(this.devices.map(d => d.id));
+            this.form.controls['geos'].setValue(this.geos.map(g => g.id));
+            this.form.controls['interests'].setValue(this.interests.map(i => i.id));
         });
 
     }

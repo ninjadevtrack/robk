@@ -5,10 +5,11 @@ import {DeviceService} from "../../../core/device/device.service";
 import {IGeo} from "../../../core/geo/geo";
 import {GeoService} from "../../../core/geo/geo.service";
 import {InterestService} from "../../../core/interest/interest.service";
-import {Observable, forkJoin } from "rxjs";
+import {Observable, forkJoin, of } from "rxjs";
 import {IInterest} from "../../../core/interest/interest";
 import {LineItemService} from "../../../core/line-item/line-item.service";
 import {ILineItem} from "../../../core/line-item/i-line-item";
+import {debounceTime, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-sdf-generator',
@@ -21,6 +22,7 @@ export class SdfGeneratorComponent implements OnInit {
     devices: IDevice[] = [];
     geos: IGeo[] = [];
     interests: IInterest[] = [];
+    filteredInterests: Observable<IInterest[]>;
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
     lineItems: ILineItem[] = [];
@@ -54,11 +56,17 @@ export class SdfGeneratorComponent implements OnInit {
             this.geos = geos;
             this.interests = interests;
 
-            // this.form.controls['devices'].setValue(this.devices.map(d => d.id));
-            // this.form.controls['geos'].setValue(this.geos.map(g => g.id));
-            // this.form.controls['interests'].setValue(this.interests.map(i => i.id));
+            this.filteredInterests = this.form.get('interests')
+                .valueChanges
+                .pipe(debounceTime(300), switchMap(
+                    value => of(this.interests.filter(i => RegExp(`${value}`).test(i.name)))
+                ));
         });
 
+    }
+
+    displayInterestFn (interest: IInterest) {
+        if (interest) { return interest.name; }
     }
 
     onSubmit() {

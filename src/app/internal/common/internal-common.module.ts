@@ -5,6 +5,7 @@ import { InternalHeaderComponent } from './header/header.component';
 import { InternalCoreModule } from '../core/internal-core.module';
 import { RouterModule } from '@angular/router';
 import {
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
@@ -38,6 +39,7 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       MatProgressSpinnerModule,
       MatPaginatorModule,
       MatTableModule,
+      MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,
       StudentModule,

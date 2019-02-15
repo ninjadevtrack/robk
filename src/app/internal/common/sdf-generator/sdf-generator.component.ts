@@ -44,7 +44,7 @@ export class SdfGeneratorComponent implements OnInit {
             geos: [[], [Validators.required]],
             genders: [this.genders, [Validators.required]],
             ageCategories: [this.ageCategories, [Validators.required]],
-            interests: [[], [Validators.required]]
+            interests: ['', [Validators.required]]
         });
 
         forkJoin(
@@ -58,9 +58,9 @@ export class SdfGeneratorComponent implements OnInit {
 
             this.filteredInterests = this.form.get('interests')
                 .valueChanges
-                .pipe(debounceTime(300), switchMap(
+                .pipe(debounceTime(500), switchMap(
                     value => of(this.interests.filter(i => {
-                        return value ? RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase()) : false;
+                        return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase()) : false;
                     }))
                 ));
         });
@@ -81,7 +81,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.form.controls['campaignName'].value,
             this.devices.filter((d) => this.form.controls['devices'].value.includes(d.id)),
             this.geos.filter((g) => this.form.controls['geos'].value.includes(g.id)),
-            this.interests.filter((i) => this.form.controls['interests'].value.includes(i.id)),
+            this.interests.filter((i) => this.form.controls['interests'].value.id === i.id),
             this.form.controls['genders'].value,
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {

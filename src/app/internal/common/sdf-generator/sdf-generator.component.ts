@@ -59,7 +59,9 @@ export class SdfGeneratorComponent implements OnInit {
             this.filteredInterests = this.form.get('interests')
                 .valueChanges
                 .pipe(debounceTime(300), switchMap(
-                    value => of(this.interests.filter(i => RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase())))
+                    value => of(this.interests.filter(i => {
+                        return value ? RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase()) : false;
+                    }))
                 ));
         });
 

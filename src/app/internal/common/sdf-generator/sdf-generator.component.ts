@@ -10,6 +10,7 @@ import {IInterest} from "../../../core/interest/interest";
 import {LineItemService} from "../../../core/line-item/line-item.service";
 import {ILineItem} from "../../../core/line-item/i-line-item";
 import {debounceTime, switchMap} from "rxjs/operators";
+import {IBasic} from "../../../core/basic/basic";
 
 @Component({
   selector: 'app-sdf-generator',
@@ -78,6 +79,11 @@ export class SdfGeneratorComponent implements OnInit {
 
     displayInterestFn (interest: IInterest) {
         if (interest) { return interest.name; }
+    }
+
+    deleteInterest(interest: IBasic) {
+        const index = this.selectedInterests.findIndex(i => i.id === interest.id );
+        if (index !== -1) { this.selectedInterests.splice(index, 1); }
     }
 
     onSubmit() {

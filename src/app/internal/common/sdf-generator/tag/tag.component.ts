@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { IBasic } from "../../../../core/basic/basic";
 
 @Component({
@@ -9,10 +9,15 @@ import { IBasic } from "../../../../core/basic/basic";
 export class TagComponent implements OnInit {
 
   @Input() tag: IBasic;
+  @Output() deleted: EventEmitter<IBasic> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteTag() {
+    this.deleted.emit(this.tag);
   }
 
 }

@@ -11,6 +11,8 @@ import {LineItemService} from "../../../core/line-item/line-item.service";
 import {ILineItem} from "../../../core/line-item/i-line-item";
 import {debounceTime, switchMap} from "rxjs/operators";
 import {IBasic} from "../../../core/basic/basic";
+import {AudienceService} from "../../../core/audience/audience.service";
+import {IAudience} from "../../../core/audience/audience";
 
 @Component({
   selector: 'app-sdf-generator',
@@ -25,8 +27,12 @@ export class SdfGeneratorComponent implements OnInit {
     interests: IInterest[] = [];
     filteredInterests$: Observable<IInterest[]>;
     filteredGeos$: Observable<IGeo[]>;
+    audiencies: IAudience[] = [];
+    filteredAudiencies$: Observable<IAudience[]>;
     selectedGeos: IGeo[] = [];
     selectedInterests: IInterest[] = [];
+    selectedAudiencies: IAudience[] = [];
+
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
     lineItems: ILineItem[] = [];
@@ -37,6 +43,7 @@ export class SdfGeneratorComponent implements OnInit {
         private _deviceService: DeviceService,
         private _geoService: GeoService,
         private _interestsService: InterestService,
+        private _audienceService: AudienceService,
         private _lineItemSevice: LineItemService
     ) { }
 
@@ -48,7 +55,8 @@ export class SdfGeneratorComponent implements OnInit {
             geos: ['', [Validators.required]],
             genders: [this.genders, [Validators.required]],
             ageCategories: [this.ageCategories, [Validators.required]],
-            interests: ['', [Validators.required]]
+            interests: ['', [Validators.required]],
+            audiencies: ['', [Validators.required]]
         });
 
         this.form.controls['interests'].valueChanges.subscribe((interest) => {
@@ -61,34 +69,59 @@ export class SdfGeneratorComponent implements OnInit {
 
         this.form.controls['geos'].valueChanges.subscribe((geo) => {
             if (!geo || !geo.id) { return; }
-            const selectedGeo = this.selectedGeos.find(i => i.id === geo.id);
+            const selectedGeo = this.selectedGeos.find(g => g.id === geo.id);
             if (!selectedGeo) {
                 this.selectedGeos.push(geo);
+            }
+        });
+
+        this.form.controls['audiencies'].valueChanges.subscribe((audience) => {
+            if (!audience || !audience.id) { return; }
+            const selectedAudience = this.selectedAudiencies.find(a => a.id === audience.id);
+            if (!selectedAudience) {
+                this.selectedAudiencies.push(audience);
             }
         });
 
         forkJoin(
             this._deviceService.getAll(),
             this._geoService.getAll(),
-            this._interestsService.getAll()
-        ).subscribe(([devices, geos, interests]) => {
+            this._interestsService.getAll(),
+            this._audienceService.getAll()
+        ).subscribe(([devices, geos, interests, audiencies]) => {
             this.devices = devices;
             this.geos = geos;
             this.interests = interests;
+            this.audiencies = audiencies;
 
+            const filterExpr = (value: any, basic: IBasic) => {
+                return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(basic.name.toLowerCase()) : false;
+            };
+
+            // Filter interests
             this.filteredInterests$ = this.form.get('interests')
                 .valueChanges
                 .pipe(debounceTime(300), switchMap(
                     value => of(this.interests.filter(i => {
-                        return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase()) : false;
+                        return filterExpr(value, i);
                     }))
                 ));
 
+            // Filter geos
             this.filteredGeos$ = this.form.get('geos')
                 .valueChanges
                 .pipe(debounceTime(300), switchMap(
                     value => of(this.geos.filter(g => {
-                        return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(g.name.toLowerCase()) : false;
+                        return filterExpr(value, g);
+                    }))
+                ));
+
+            // Filter audiencies
+            this.filteredAudiencies$ = this.form.get('audiencies')
+                .valueChanges
+                .pipe(debounceTime(500), switchMap(
+                    value => of(this.audiencies.filter(a => {
+                        return filterExpr(value, a);
                     }))
                 ));
         });

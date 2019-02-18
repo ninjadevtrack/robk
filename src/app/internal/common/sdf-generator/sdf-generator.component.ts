@@ -24,6 +24,8 @@ export class SdfGeneratorComponent implements OnInit {
     geos: IGeo[] = [];
     interests: IInterest[] = [];
     filteredInterests$: Observable<IInterest[]>;
+    filteredGeos$: Observable<IGeo[]>;
+    selectedGeos: IGeo[] = [];
     selectedInterests: IInterest[] = [];
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
@@ -43,7 +45,7 @@ export class SdfGeneratorComponent implements OnInit {
         this.form = this._formBuilder.group({
             campaignName: ['', [Validators.required]],
             devices: [[], [Validators.required]],
-            geos: [[], [Validators.required]],
+            geos: ['', [Validators.required]],
             genders: [this.genders, [Validators.required]],
             ageCategories: [this.ageCategories, [Validators.required]],
             interests: ['', [Validators.required]]
@@ -54,6 +56,14 @@ export class SdfGeneratorComponent implements OnInit {
             const selectedInterest = this.selectedInterests.find(i => i.id === interest.id);
             if (!selectedInterest) {
                 this.selectedInterests.push(interest);
+            }
+        });
+
+        this.form.controls['geos'].valueChanges.subscribe((geo) => {
+            if (!geo || !geo.id) { return; }
+            const selectedGeo = this.selectedGeos.find(i => i.id === geo.id);
+            if (!selectedGeo) {
+                this.selectedGeos.push(geo);
             }
         });
 
@@ -68,22 +78,30 @@ export class SdfGeneratorComponent implements OnInit {
 
             this.filteredInterests$ = this.form.get('interests')
                 .valueChanges
-                .pipe(debounceTime(500), switchMap(
+                .pipe(debounceTime(300), switchMap(
                     value => of(this.interests.filter(i => {
                         return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(i.name.toLowerCase()) : false;
+                    }))
+                ));
+
+            this.filteredGeos$ = this.form.get('geos')
+                .valueChanges
+                .pipe(debounceTime(300), switchMap(
+                    value => of(this.geos.filter(g => {
+                        return (value && typeof(value) === "string") ? RegExp(`${value.toLowerCase()}`).test(g.name.toLowerCase()) : false;
                     }))
                 ));
         });
 
     }
 
-    displayInterestFn (interest: IInterest) {
-        if (interest) { return interest.name; }
+    displayBasicFn (basic: IBasic) {
+        if (basic) { return basic.name; }
     }
 
-    deleteInterest(interest: IBasic) {
-        const index = this.selectedInterests.findIndex(i => i.id === interest.id );
-        if (index !== -1) { this.selectedInterests.splice(index, 1); }
+    deleteTag(basic: IBasic, tagDictionary: IBasic[]) {
+        const index = tagDictionary.findIndex(i => i.id === basic.id );
+        if (index !== -1) { tagDictionary.splice(index, 1); }
     }
 
     onSubmit() {

@@ -9,6 +9,7 @@ import {
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatMenuModule,
     MatProgressSpinnerModule,
@@ -24,6 +25,7 @@ import { TeacherModule } from '../teacher/teacher.module';
 import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-list.component';
+import { TagComponent } from './sdf-generator/tag/tag.component';
 
 @NgModule({
   imports: [
@@ -35,6 +37,7 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       MatButtonModule,
       MatInputModule,
       MatSelectModule,
+      MatIconModule,
       MatCardModule,
       MatProgressSpinnerModule,
       MatPaginatorModule,
@@ -51,7 +54,8 @@ import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-
       InternalHeaderComponent,
       CommonCalendarComponent,
       SdfGeneratorComponent,
-      LineItemListComponent
+      LineItemListComponent,
+      TagComponent
   ],
   exports: [
       ProfileComponent,

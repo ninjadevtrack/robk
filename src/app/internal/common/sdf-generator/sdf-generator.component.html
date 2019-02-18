@@ -57,7 +57,7 @@
               <div>Selected: {{form.get('interests').value | json}}</div>
 
               <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayInterestFn">
-                <mat-option *ngFor="let interest of (filteredInterests | async)" [value]="interest">
+                <mat-option *ngFor="let interest of (filteredInterests$ | async)" [value]="interest">
                   <span>{{ interest.name }}</span>
                   <small> | ID: {{interest.id}}</small>
                 </mat-option>

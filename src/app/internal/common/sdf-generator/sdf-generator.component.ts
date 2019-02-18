@@ -22,7 +22,8 @@ export class SdfGeneratorComponent implements OnInit {
     devices: IDevice[] = [];
     geos: IGeo[] = [];
     interests: IInterest[] = [];
-    filteredInterests: Observable<IInterest[]>;
+    filteredInterests$: Observable<IInterest[]>;
+    selectedInterests: IInterest[] = [];
     genders = ['Male', 'Female', 'Other'];
     ageCategories = ['18-20', '20-25', '25-30', '35-40', '40-45', '45-50', '50-55', '55-60', '60-65', '65-70'];
     lineItems: ILineItem[] = [];
@@ -47,6 +48,14 @@ export class SdfGeneratorComponent implements OnInit {
             interests: ['', [Validators.required]]
         });
 
+        this.form.controls['interests'].valueChanges.subscribe((interest) => {
+            if (!interest || !interest.id) { return; }
+            const selectedInterest = this.selectedInterests.find(i => i.id === interest.id);
+            if (!selectedInterest) {
+                this.selectedInterests.push(interest);
+            }
+        });
+
         forkJoin(
             this._deviceService.getAll(),
             this._geoService.getAll(),
@@ -56,7 +65,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.geos = geos;
             this.interests = interests;
 
-            this.filteredInterests = this.form.get('interests')
+            this.filteredInterests$ = this.form.get('interests')
                 .valueChanges
                 .pipe(debounceTime(500), switchMap(
                     value => of(this.interests.filter(i => {

@@ -54,7 +54,6 @@
               <mat-form-field class="regular-field">
                 <input matInput placeholder="Interest" [matAutocomplete]="auto" formControlName='interests'>
               </mat-form-field>
-              <!--<div>Selected: {{form.get('interests').value | json}}</div>-->
 
               <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayInterestFn">
                 <mat-option *ngFor="let interest of (filteredInterests$ | async)" [value]="interest">
@@ -62,14 +61,7 @@
                   <small> | ID: {{interest.id}}</small>
                 </mat-option>
               </mat-autocomplete>
-
-              <!--<mat-form-field class="regular-field">-->
-                <!--<mat-select placeholder="Interests" formControlName="interests" multiple>-->
-                  <!--<mat-option *ngFor="let interest of interests" [value]="interest.id">-->
-                    <!--{{ interest.name }}-->
-                  <!--</mat-option>-->
-                <!--</mat-select>-->
-              <!--</mat-form-field>-->
+              
             </div>
 
             <div></div>

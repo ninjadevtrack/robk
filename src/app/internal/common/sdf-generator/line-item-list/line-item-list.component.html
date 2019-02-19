@@ -31,6 +31,12 @@
             <td mat-cell *matCellDef="let element"> {{element.interest.name}} </td>
         </ng-container>
 
+        <!-- Audience Column -->
+        <ng-container matColumnDef="audience">
+            <th mat-header-cell *matHeaderCellDef> Audience </th>
+            <td mat-cell *matCellDef="let element"> {{shortenString(element.audience.name)}} </td>
+        </ng-container>
+
         <!-- Gender Column -->
         <ng-container matColumnDef="gender">
             <th mat-header-cell *matHeaderCellDef> Gender </th>

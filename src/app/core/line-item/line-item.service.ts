@@ -4,6 +4,7 @@ import { Observable, of } from "rxjs";
 import {IDevice} from "../device/device";
 import {IGeo} from "../geo/geo";
 import {IInterest} from "../interest/interest";
+import {IAudience} from "../audience/audience";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class LineItemService {
            devices: IDevice[],
            geos: IGeo[],
            interests: IInterest[],
+           audiencies: IAudience[],
            genders: string[],
            ageCategories: string[]
   ): Observable<ILineItem[]> {
@@ -24,15 +26,18 @@ export class LineItemService {
       devices.forEach((d) => {
         geos.forEach((geo) => {
           interests.forEach((i) => {
-            genders.forEach((gender) => {
-              ageCategories.forEach((ac) => {
-                result.push({
-                  campaignName: campaignName,
-                  device: d,
-                  geo: geo,
-                  interest: i,
-                  gender: gender,
-                  ageCategory: ac
+            audiencies.forEach((a) => {
+              genders.forEach((gender) => {
+                ageCategories.forEach((ac) => {
+                  result.push({
+                    campaignName: campaignName,
+                    device: d,
+                    geo: geo,
+                    interest: i,
+                    audience: a,
+                    gender: gender,
+                    ageCategory: ac
+                  });
                 });
               });
             });

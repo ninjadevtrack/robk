@@ -148,6 +148,7 @@ export class SdfGeneratorComponent implements OnInit {
             this.devices.filter((d) => this.form.controls['devices'].value.includes(d.id)),
             this.selectedGeos,
             this.selectedInterests,
+            this.selectedAudiencies,
             this.form.controls['genders'].value,
             this.form.controls['ageCategories'].value,
         ).subscribe((lineItems: ILineItem[]) => {

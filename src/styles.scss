@@ -677,6 +677,10 @@ table td {
     min-width: $control-width-xs;
   }
 
+  .double-field {
+    min-width: $control-width-xs * 2.25;
+  }
+
   .button-l {
     max-width: $control-width-s;
   }

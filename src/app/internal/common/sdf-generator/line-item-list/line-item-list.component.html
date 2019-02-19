@@ -34,7 +34,7 @@
         <!-- Audience Column -->
         <ng-container matColumnDef="audience">
             <th mat-header-cell *matHeaderCellDef> Audience </th>
-            <td mat-cell *matCellDef="let element"> {{shortenString(element.audience.name)}} </td>
+            <td mat-cell *matCellDef="let element"> {{shortenString(element.audience.name, 40)}} </td>
         </ng-container>
 
         <!-- Gender Column -->

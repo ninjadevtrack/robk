@@ -4,7 +4,7 @@
       <mat-card>
         <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="flex-container">
-            <div class="">
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <input
                     formControlName="campaignName"
@@ -13,7 +13,7 @@
                     placeholder="Campaign Name">
               </mat-form-field>
             </div>
-            <div>
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <mat-select placeholder="Devices" formControlName="devices" multiple>
                   <mat-option *ngFor="let device of devices" [value]="device.id">
@@ -22,7 +22,7 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div>
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <mat-select placeholder="Age" formControlName="ageCategories" multiple>
                   <mat-option *ngFor="let ac of ageCategories" [value]="ac">
@@ -31,7 +31,7 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div>
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <mat-select placeholder="Genders" formControlName="genders" multiple>
                   <mat-option *ngFor="let gender of genders" [value]="gender">
@@ -40,7 +40,7 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div>
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <input matInput placeholder="Geo" [matAutocomplete]="autoGeo" formControlName='geos'>
               </mat-form-field>
@@ -51,7 +51,7 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
-            <div>
+            <div class="m-r-l">
               <mat-form-field class="regular-field">
                 <input matInput placeholder="Interest" [matAutocomplete]="autoInterest" formControlName='interests'>
               </mat-form-field>
@@ -62,7 +62,11 @@
                 </mat-option>
               </mat-autocomplete>
             </div>
-            <div class="audience-list">
+            <div></div>
+            <div></div>
+          </div>
+          <div class="flex-container">
+            <div class="audience-list m-r-xl p-r-3xl">
               <mat-form-field class="double-field">
                 <input matInput placeholder="Audience" [matAutocomplete]="autoAudience" formControlName='audiencies'>
               </mat-form-field>

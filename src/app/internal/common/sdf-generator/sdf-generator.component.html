@@ -23,18 +23,13 @@
               </mat-form-field>
             </div>
             <div>
-
               <mat-form-field class="regular-field">
-                <input matInput placeholder="Geo" [matAutocomplete]="autoGeo" formControlName='geos'>
+                <mat-select placeholder="Age" formControlName="ageCategories" multiple>
+                  <mat-option *ngFor="let ac of ageCategories" [value]="ac">
+                    {{ ac }}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
-
-              <mat-autocomplete #autoGeo="matAutocomplete" [displayWith]="displayBasicFn">
-                <mat-option *ngFor="let geo of (filteredGeos$ | async)" [value]="geo">
-                  <span>{{ geo.name }}</span>
-                  <small> | ID: {{geo.id}}</small>
-                </mat-option>
-              </mat-autocomplete>
-
             </div>
             <div>
               <mat-form-field class="regular-field">
@@ -47,12 +42,14 @@
             </div>
             <div>
               <mat-form-field class="regular-field">
-                <mat-select placeholder="Age" formControlName="ageCategories" multiple>
-                  <mat-option *ngFor="let ac of ageCategories" [value]="ac">
-                    {{ ac }}
-                  </mat-option>
-                </mat-select>
+                <input matInput placeholder="Geo" [matAutocomplete]="autoGeo" formControlName='geos'>
               </mat-form-field>
+              <mat-autocomplete #autoGeo="matAutocomplete" [displayWith]="displayBasicFn">
+                <mat-option *ngFor="let geo of (filteredGeos$ | async)" [value]="geo">
+                  <span>{{ geo.name }}</span>
+                  <small> | ID: {{geo.id}}</small>
+                </mat-option>
+              </mat-autocomplete>
             </div>
             <div>
               <mat-form-field class="regular-field">

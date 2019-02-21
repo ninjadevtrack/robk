@@ -9,7 +9,7 @@ import {
      * for `document.querySelectorAll(selector)` in our index.html
      * where, in this case, selector is the string 'home'.
      */
-    selector: 'laconic-footer',  // <laconic-footer></laconic-footer>
+    selector: 'robscore-footer',  // <robscore-footer></robscore-footer>
     /**
      * We need to tell Angular's Dependency Injection which providers are in our app.
      */

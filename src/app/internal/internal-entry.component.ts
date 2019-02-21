@@ -4,11 +4,11 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'laconic-internal-entry',
+    selector: 'robscore-internal-entry',
     providers: [
     ],
     template: `
-        <laconic-internal-header></laconic-internal-header>
+        <robscore-internal-header></robscore-internal-header>
 		<router-outlet></router-outlet>
     `
 })

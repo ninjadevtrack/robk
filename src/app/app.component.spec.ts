@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'laconic-dbm-helper-web'`, () => {
+  it(`should have as title 'robscore-web'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('laconic-dbm-helper-web');
+    expect(app.title).toEqual('robscore-web');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to laconic-dbm-helper-web!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to robscore-web!');
   });
 });

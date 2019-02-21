@@ -5,7 +5,7 @@ import {
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'laconic-public-entry',
+    selector: 'robscore-public-entry',
     providers: [
     ],
     template: `

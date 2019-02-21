@@ -3,11 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DataFieldComponent } from './data-field/data-field.component';
 import { NumberWithSeparatorPipe } from './number-with-separator.pipe';
 import { SearchPipe } from './search.pipe';
-import { CalendarModule, DateAdapter } from './calendar/angular-calendar';
-import { adapterFactory } from './calendar/angular-calendar/date-adapters/date-fns';
-import { DemoUtilsModule } from './calendar/utils/module';
-import { CalendarComponent } from './calendar/calendar/calendar.component';
-import { IndividualLessonAddEditComponent } from './calendar/individual-lesson/individual-lesson-add-edit/individual-lesson-add-edit.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { IconLinkButtonComponent } from './icon-link-button/icon-link-button.component';
 import {
@@ -28,21 +23,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { CardTemplateComponent } from './templates/card-template/card-template.component';
 import { EntityModule } from './entity/entity.module';
-import { AllActionsWithExceptionsPipe } from './all-actions-with-exceptions.pipe';
-import { IndividualLessonActivityComponent } from './calendar/individual-lesson/individual-lesson-activity/individual-lesson-activity.component';
-import { ActivityRecordListComponent } from './activity-record/activity-record-list/activity-record-list.component';
-import { CommentAddComponent } from './comment/comment-add/comment-add.component';
 
 @NgModule({
   imports: [
       CommonModule,
       ReactiveFormsModule,
       RouterModule,
-      CalendarModule.forRoot({
-          provide: DateAdapter,
-          useFactory: adapterFactory
-      }),
-      DemoUtilsModule,
       EntityModule,
       MatFormFieldModule,
       MatInputModule,
@@ -63,31 +49,20 @@ import { CommentAddComponent } from './comment/comment-add/comment-add.component
       DataFieldComponent,
       NumberWithSeparatorPipe,
       SearchPipe,
-      CalendarComponent,
-      IndividualLessonAddEditComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
-      CardTemplateComponent,
-      AllActionsWithExceptionsPipe,
-      IndividualLessonActivityComponent,
-      ActivityRecordListComponent,
-      CommentAddComponent
+      CardTemplateComponent
   ],
   exports: [
       EntityModule,
       DataFieldComponent,
       NumberWithSeparatorPipe,
       SearchPipe,
-      CalendarModule,
-      CalendarComponent,
-      IndividualLessonAddEditComponent,
       ConfirmDialogComponent,
       IconLinkButtonComponent,
-      CardTemplateComponent,
-      AllActionsWithExceptionsPipe
+      CardTemplateComponent
   ],
   entryComponents: [
-      IndividualLessonAddEditComponent,
       ConfirmDialogComponent
   ]
 })

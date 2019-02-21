@@ -3,7 +3,6 @@ import { IClient, ClientModel } from '../../../../core/client/model/client.model
 import { ClientService } from '../../../../core/client/client.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
-import { AppealService } from '../../../../core/appeal/appeal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {UserModel} from '../../../../core/user/model/user.model';
 
@@ -28,7 +27,6 @@ export class ClientEditComponent implements OnInit {
         private _router: Router,
         private _route: ActivatedRoute,
         private _clientService: ClientService,
-        private _appealService: AppealService,
         private _formBuilder: FormBuilder
     ) { }
 
@@ -41,10 +39,6 @@ export class ClientEditComponent implements OnInit {
             phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
             notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
-        });
-
-        this._appealService.getAll().subscribe((appeals: string[]) => {
-            this.appeals = appeals;
         });
 
         this._route.params.subscribe((params) => {

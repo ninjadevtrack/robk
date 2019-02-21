@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
-import {StudentModel} from '../../../../core/student/model/student.model';
 import {MatDialog} from '@angular/material';
 import {ConfirmDialogComponent} from '../../../core/confirm-dialog/confirm-dialog.component';
 
@@ -16,7 +15,6 @@ export class ClientViewComponent implements OnInit {
     hasStudentAccount: boolean = false;
     id: string;
     client: ClientModel;
-    students: StudentModel[];
 
     constructor(
         private _dialog: MatDialog,
@@ -40,9 +38,7 @@ export class ClientViewComponent implements OnInit {
     }
 
     verifyIfClientHasStudentAccount() {
-        this._clientService.hasStudentAccount(this.id).subscribe((res: boolean) => {
-            this.hasStudentAccount = res;
-        });
+
     }
 
     getClient() {
@@ -52,9 +48,7 @@ export class ClientViewComponent implements OnInit {
     }
 
     getStudents() {
-        this._clientService.getStudents(this.id).subscribe((students: StudentModel[]) => {
-            this.students = students;
-        });
+
     }
 
     createStudentAccount() {
@@ -68,10 +62,7 @@ export class ClientViewComponent implements OnInit {
         dialogRef.afterClosed().subscribe( (result) => {
 
             if (result.confirmed) {
-                this._clientService.createStudentAccount(this.id).subscribe(() => {
-                    this.getStudents();
-                    this.verifyIfClientHasStudentAccount();
-                });
+                // Create Student Account
             }
         });
     }

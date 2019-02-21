@@ -18,14 +18,8 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import { MatPaginatorModule } from "@angular/material/paginator";
-import { CommonCalendarComponent } from './common-calendar/common-calendar.component';
-import { StudentModule } from '../student/student.module';
-import { ClientModule } from '../client/client.module';
-import { TeacherModule } from '../teacher/teacher.module';
-import { SdfGeneratorComponent } from './sdf-generator/sdf-generator.component';
 import { ReactiveFormsModule } from "@angular/forms";
-import { LineItemListComponent } from './sdf-generator/line-item-list/line-item-list.component';
-import { TagComponent } from './sdf-generator/tag/tag.component';
+import { GraphWatchListComponent } from './graph-watch-list/graph-watch-list.component';
 
 @NgModule({
   imports: [
@@ -45,22 +39,15 @@ import { TagComponent } from './sdf-generator/tag/tag.component';
       MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,
-      StudentModule,
-      ClientModule,
-      TeacherModule
   ],
   declarations: [
       ProfileComponent,
       InternalHeaderComponent,
-      CommonCalendarComponent,
-      SdfGeneratorComponent,
-      LineItemListComponent,
-      TagComponent
+      GraphWatchListComponent
   ],
   exports: [
       ProfileComponent,
-      InternalHeaderComponent,
-      CommonCalendarComponent
+      InternalHeaderComponent
   ]
 })
 export class InternalCommonModule { }

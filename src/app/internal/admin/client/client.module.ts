@@ -11,19 +11,16 @@ import {
   MatOptionModule,
   MatSelectModule
 } from '@angular/material';
-import {AdminClientCalendarComponent} from './admin-client-calendar/admin-client-calendar.component';
 import {ClientAddComponent} from './client-add/client-add.component';
 import {ClientEditComponent} from './client-edit/client-edit.component';
 import {ClientListComponent} from './client-list/client-list.component';
 import {ClientListRootComponent} from './client-list-root/client-list-root.component';
 import {ClientViewComponent} from './client-view/client-view.component';
-import {StudentModule} from '../student/student.module';
 
 @NgModule({
     imports: [
         CommonModule,
         CoreModule,
-        StudentModule,
         RouterModule,
         InternalCoreModule,
         ReactiveFormsModule,
@@ -37,7 +34,6 @@ import {StudentModule} from '../student/student.module';
         DatePipe
     ],
     declarations: [
-        AdminClientCalendarComponent,
         ClientAddComponent,
         ClientEditComponent,
         ClientListComponent,

@@ -8,7 +8,6 @@ import { ClientModel } from '../../../../core/client/model/client.model';
 import { ClientService } from '../../../../core/client/client.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
-import { AppealService } from '../../../../core/appeal/appeal.service';
 import {UserModel} from '../../../../core/user/model/user.model';
 
 @Component({
@@ -23,26 +22,21 @@ export class ClientAddComponent implements OnInit {
 
     constructor(
         private _clientService: ClientService,
-        private _appealService: AppealService,
         public dialogRef: MatDialogRef<ClientAddComponent>,
         private _formBuilder: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() {
 
-
-        this._appealService.getAll().subscribe((appeals: string[]) => {
-            this.appeals = appeals;
-
-            this.form = this._formBuilder.group({
-                firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-                notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
-            });
+        this.form = this._formBuilder.group({
+            firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+            lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+            appeal: [this.appeals[0], [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+            phone: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+            email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
+            notes: ['', [Validators.required, Validators.maxLength(3000), NotSpacesStringValidator()]]
         });
+
     }
 
     onNoClick(): void {

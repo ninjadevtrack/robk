@@ -32,15 +32,5 @@
       </div>
     </div>
 
-    <div class="m-b-3xl">
-      <student-list
-              [addDialogData]="{clientId: client?._id}"
-              [floatingAddButton]="false"
-              [addEntityEnabled]="true"
-              [searchFieldEnabled]="false"
-              [entities]="students"
-              (entitiesListShouldBeUpdated)="getStudents()">
-      </student-list>
-    </div>
   </div>
 </card-template>

@@ -1,9 +1,28 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b-xl">
-      <p>
-        graph-watch-list works!
-      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Company
+            </th>
+            <th>
+              CRM
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>
+              <a href="{{company.value.linkedinUrl}}">{{company.value.name}}</a>
+            </td>
+            <td>
+              <a href="{{company.value.crmLink}}">CRM</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

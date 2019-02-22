@@ -20,6 +20,7 @@ import {
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
 import { GraphWatchListComponent } from './graph-watch-list/graph-watch-list.component';
+import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-list.service";
 
 @NgModule({
   imports: [
@@ -48,6 +49,10 @@ import { GraphWatchListComponent } from './graph-watch-list/graph-watch-list.com
   exports: [
       ProfileComponent,
       InternalHeaderComponent
+  ],
+  providers: [
+      GraphWatchListService
   ]
+
 })
 export class InternalCommonModule { }

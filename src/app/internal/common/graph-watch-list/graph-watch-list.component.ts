@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {GraphWatchListService} from "../../../core/graph-watch-list/graph-watch-list.service";
+import {ICompany} from "../../../core/graph-watch-list/model/company.model";
 
 @Component({
   selector: 'app-graph-watch-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraphWatchListComponent implements OnInit {
 
-  constructor() { }
+  companies: ICompany[];
+
+  constructor(
+      private _graphWatchlistService: GraphWatchListService
+  ) { }
 
   ngOnInit() {
+    this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
+      this.companies = companies;
+    });
   }
 
 }

@@ -70,6 +70,11 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/clients/${id}/archive`;
             }
         },
+        GraphWatchlist: {
+            default: () => {
+                return `${Consts.API_URL}/v1/graphwatchlist`;
+            }
+        }
     };
 
     constructor() {}

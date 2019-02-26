@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { InternalModule } from './internal/internal.module';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -51,6 +52,7 @@ type StoreType = {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        FlexLayoutModule,
         RouterModule.forRoot(ROUTES, {
             useHash: Boolean(history.pushState) === false,
             preloadingStrategy: PreloadAllModules

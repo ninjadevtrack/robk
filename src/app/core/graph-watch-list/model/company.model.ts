@@ -13,6 +13,7 @@ export interface ICompanyValue {
     tags: string;
     location: string;
     graph: string;
+    graphBig: string;
     eng: number;
     sales: number;
     percent_eng: number;

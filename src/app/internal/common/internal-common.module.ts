@@ -7,13 +7,13 @@ import { RouterModule } from '@angular/router';
 import {
     MatAutocompleteModule,
     MatButtonModule,
-    MatCardModule,
+    MatCardModule, MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule,
+    MatInputModule, MatListModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatSelectModule,
+    MatSelectModule, MatSortModule,
     MatTableModule,
     MatToolbarModule
 } from '@angular/material';
@@ -37,6 +37,9 @@ import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-l
       MatProgressSpinnerModule,
       MatPaginatorModule,
       MatTableModule,
+      MatListModule,
+      MatExpansionModule,
+      MatSortModule,
       MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,
@@ -56,3 +59,6 @@ import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-l
 
 })
 export class InternalCommonModule { }
+
+
+/*BrowserModule, FormsModule, MatListModule, MatExpansionModule, MatSortModule, BrowserAnimationsModule, FlexLayoutModule, MatPaginatorModule*/

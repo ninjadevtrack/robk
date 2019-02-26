@@ -1,28 +1,48 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b-xl">
-      <table>
-        <thead>
-          <tr>
-            <th>
-              Company
-            </th>
-            <th>
-              CRM
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let company of companies">
-            <td>
-              <a href="{{company.value.linkedinUrl}}">{{company.value.name}}</a>
-            </td>
-            <td>
-              <a href="{{company.value.crmLink}}">CRM</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <mat-accordion displayMode="flat" multi class="mat-table">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+          <span class="mat-header-cell" mat-sort-header="name">Name</span>
+          <span class="mat-header-cell" mat-sort-header="CRM">CRM</span>
+          <span class="mat-header-cell" mat-sort-header="maxEmp">Max H/C</span>
+          <span class="mat-header-cell" mat-sort-header="mavgTrend">3 mo Accel%</span>
+          <span class="mat-header-cell" mat-sort-header="weight">Weight</span>
+          <span class="mat-header-cell" mat-sort-header="maTrend">YoY H/C Gain%</span>
+          <span class="mat-header-cell" mat-sort-header="eng">Eng H/C</span>
+          <span class="mat-header-cell" mat-sort-header="sales">Sales</span>
+          <span class="mat-header-cell" mat-sort-header="percent_eng">H/C Eng%</span>
+          <span class="mat-header-cell" mat-sort-header="growth6_eng">6mo Eng Growth%</span>
+          <span class="mat-header-cell" mat-sort-header="growth6_sales">6mo Sales Growth%</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let c of companies">
+          <mat-expansion-panel-header class="mat-row">
+            <span class="mat-cell">
+              <a href="{{c.value.linkedinUrl}}" target="_blank">{{c.value.name}}</a>
+            </span>
+            <span class="mat-cell">
+              <a href="{{c.value.crmLink}}" target="_blank">CRM</a>
+            </span>
+            <span class="mat-cell">{{c.value.maxEmp}}</span>
+            <span class="mat-cell">{{c.value.mavgTrend}}%</span>
+            <span class="mat-cell">{{c.value.weight}}</span>
+            <span class="mat-cell">{{c.value.maTrend}}%</span>
+            <span class="mat-cell">{{c.value.eng}}</span>
+            <span class="mat-cell">{{c.value.sales}}</span>
+            <span class="mat-cell">{{c.value.percent_eng}}%</span>
+            <span class="mat-cell">{{c.value.growth6_eng}}%</span>
+            <span class="mat-cell">{{c.value.growth6_sales}}%</span>
+          </mat-expansion-panel-header>
+          <div>Tags: {{c.value.tags}}</div>
+          <div>
+            <a href="{{c.value.graphBig}}" target="_blank"><img src="{{c.value.graph}}"></a>
+          </div>
+          <!--<div><pre>{{c | json}}</pre></div>-->
+        </mat-expansion-panel>
+
+      </mat-accordion>
     </div>
   </div>
 </div>
+

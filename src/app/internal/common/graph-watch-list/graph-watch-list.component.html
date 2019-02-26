@@ -34,9 +34,9 @@
             <span class="mat-cell">{{c.value.growth6_eng}}%</span>
             <span class="mat-cell">{{c.value.growth6_sales}}%</span>
           </mat-expansion-panel-header>
-          <div>Tags: {{c.value.tags}}</div>
+          <div class="m-b-l"><small>Tags: <em>{{c.value.tags}}</em></small></div>
           <div>
-            <a href="{{c.value.graphBig}}" target="_blank"><img src="{{c.value.graph}}"></a>
+            <a href="{{c.value.graphBig}}" target="_blank"><img width="100%" src="{{c.value.graphBig}}"></a>
           </div>
           <!--<div><pre>{{c | json}}</pre></div>-->
         </mat-expansion-panel>

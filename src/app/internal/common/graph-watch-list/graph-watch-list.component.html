@@ -16,7 +16,7 @@
           <span class="mat-header-cell" mat-sort-header="growth6_sales">6mo Sales Growth%</span>
         </section>
 
-        <mat-expansion-panel *ngFor="let c of companies">
+        <mat-expansion-panel [expanded]="true" *ngFor="let c of companies">
           <mat-expansion-panel-header class="mat-row">
             <span class="mat-cell">
               <a href="{{c.value.linkedinUrl}}" target="_blank">{{c.value.name}}</a>

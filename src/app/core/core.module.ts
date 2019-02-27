@@ -10,6 +10,7 @@ import { HttpHelperService } from './http-helper.service';
 import { SmoothScrollService } from './smooth-scroll.service';
 import { WindowRefService } from './window.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ScalingService } from "./scaling/scaling.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
       AuthService,
       ClientService,
       UserService,
-
+      ScalingService
   ],
   exports: [
       CoreCommonModule

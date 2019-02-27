@@ -3,8 +3,15 @@
     <div class="p-l-l p-r-l m-b-xl">
 
       <form novalidate [formGroup]="form">
-        <div class="flex-container text-right">
+        <div class="flex-container">
           <div>
+            <mat-form-field class="regular-field m-r-l">
+              <mat-select placeholder="Scaling" formControlName="scaling"  (selectionChange)="updateCompanyValuesToDisplay()">
+                <mat-option *ngFor="let scaling of scalings" [value]="scaling">
+                  {{ getScalingName(scaling) }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
             <mat-form-field class="regular-field m-r-l" (keyup)="updateCompanyValuesToDisplay()">
               <input
                 formControlName="search"

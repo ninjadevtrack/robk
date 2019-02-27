@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewChild } from '@angular/core';
-import { Observable  } from 'rxjs/Observable';
-import {filter, map} from 'rxjs/operators';
-import { MatSort, Sort } from '@angular/material';
-import { fromMatSort, sortRows} from './../../../core/datasource-utils';
-
-
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {map} from 'rxjs/operators';
+import {MatSort, Sort} from '@angular/material';
+import {fromMatSort, sortRows} from './../../../core/datasource-utils';
 import {GraphWatchListService} from "../../../core/graph-watch-list/graph-watch-list.service";
 import {ICompany, ICompanyValue} from "../../../core/graph-watch-list/model/company.model";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {from, of} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {of} from "rxjs";
+import {EScaling} from "../../../core/scaling/scaling.enum";
+import {ScalingService} from "../../../core/scaling/scaling.service";
 
 @Component({
   selector: 'app-graph-watch-list',
@@ -22,6 +21,7 @@ export class GraphWatchListComponent implements OnInit {
   companies: ICompany[];
   tags: string[] = [];
   cities: string[] = [];
+  scalings: EScaling[] = [EScaling.SEED, EScaling.GROWTH, EScaling.SCALING, EScaling.ALL_DEALS];
   companyValuesToDisplay$: Observable<ICompanyValue[]>;
   form: FormGroup;
   sortEvents$: Observable<Sort>;
@@ -29,6 +29,7 @@ export class GraphWatchListComponent implements OnInit {
 
   constructor(
       private _graphWatchlistService: GraphWatchListService,
+      private _scalingSerivce: ScalingService,
       private _formBuilder: FormBuilder
   ) { }
 
@@ -37,7 +38,8 @@ export class GraphWatchListComponent implements OnInit {
     this.form = this._formBuilder.group({
       tags: [[], []],
       cities: [[], []],
-      search: ['', []]
+      search: ['', []],
+      scaling: [EScaling.SEED, [Validators.required]]
     });
     this.sortEvents$ = fromMatSort(this.sort);
 
@@ -106,6 +108,10 @@ export class GraphWatchListComponent implements OnInit {
           return filteredCompanyValues;
         }),
         sortRows(this.sortEvents$));
+  }
+
+  getScalingName(scaling: EScaling) {
+    return this._scalingSerivce.getScalingName(scaling);
   }
 
 }

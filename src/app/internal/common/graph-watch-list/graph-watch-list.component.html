@@ -3,17 +3,17 @@
     <div class="p-l-l p-r-l m-b-xl">
 
       <form novalidate [formGroup]="form">
-        <div class="m-b-l flex-container text-right">
+        <div class="flex-container text-right">
           <div>
             <mat-form-field class="regular-field m-r-l">
-              <mat-select placeholder="Cities" formControlName="cities" multiple (selectionChange)="selectedCitiesChanged($event)">
+              <mat-select placeholder="Cities" formControlName="cities" multiple (selectionChange)="updateCompanyValuesToDisplay()">
                 <mat-option *ngFor="let city of cities" [value]="city">
                   {{ city }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field class="regular-field">
-              <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="selectedTagsChanged($event)">
+              <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="updateCompanyValuesToDisplay()">
                 <mat-option *ngFor="let tag of tags" [value]="tag">
                   {{ tag }}
                 </mat-option>
@@ -21,9 +21,12 @@
             </mat-form-field>
           </div>
         </div>
+        <div class="text-right m-t">
+          <small>Count {{ filteredCompanyValuesCount }}</small>
+        </div>
       </form>
 
-      <mat-accordion displayMode="flat" multi class="mat-table">
+      <mat-accordion displayMode="flat" multi class="mat-table m-t-l">
         <section matSort class="mat-elevation-z2 mat-header-row">
           <span class="mat-header-cell" mat-sort-header="name">Name</span>
           <span class="mat-header-cell" mat-sort-header="CRM">CRM</span>

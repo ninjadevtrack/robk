@@ -25,6 +25,7 @@ export class GraphWatchListComponent implements OnInit {
   companyValuesToDisplay$: Observable<ICompanyValue[]>;
   form: FormGroup;
   sortEvents$: Observable<Sort>;
+  filteredCompanyValuesCount: number;
 
   constructor(
       private _graphWatchlistService: GraphWatchListService,
@@ -42,7 +43,7 @@ export class GraphWatchListComponent implements OnInit {
     this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
 
       this.companies = companies;
-      this.updateCompanyValuesToDisplay([]);
+      this.updateCompanyValuesToDisplay();
 
       // Let's collect all unique tags and cities
       let tags, city;
@@ -64,7 +65,11 @@ export class GraphWatchListComponent implements OnInit {
     });
   }
 
-  private updateCompanyValuesToDisplay(tags: string[]) {
+  private updateCompanyValuesToDisplay() {
+
+    const tags = this.form.controls['tags'].value;
+    const cities = this.form.controls['cities'].value;
+
     this.companyValuesToDisplay$ = (of(this.companies)).pipe(
         map((co: ICompany[]) => {
           const companyValues = co.map(c => c.value);
@@ -89,14 +94,10 @@ export class GraphWatchListComponent implements OnInit {
 
             return false;
           });
+          this.filteredCompanyValuesCount = filteredCompanyValues.length;
           return filteredCompanyValues;
         }),
         sortRows(this.sortEvents$));
-  }
-
-  selectedTagsChanged(event) {
-    console.log(event);
-    this.updateCompanyValuesToDisplay(event.value);
   }
 
 }

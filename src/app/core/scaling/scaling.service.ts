@@ -16,7 +16,7 @@ export class ScalingService {
         result = 'Growth (100+ employees)';
         break;
       case EScaling.SEED:
-        result = 'Scaling (> 30 employees)';
+        result = 'Seed (< 30 employees)';
         break;
       case EScaling.ALL_DEALS:
         result = 'All deals';

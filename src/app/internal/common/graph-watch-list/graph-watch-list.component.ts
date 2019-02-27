@@ -73,37 +73,62 @@ export class GraphWatchListComponent implements OnInit {
     const tags = this.form.controls['tags'].value;
     const cities = this.form.controls['cities'].value;
     const search = this.form.controls['search'].value;
+    const scaling = this.form.controls['scaling'].value;
 
     this.companyValuesToDisplay$ = (of(this.companies)).pipe(
         map((co: ICompany[]) => {
-          const companyValues = co.map(c => c.value);
+          let filteredCompanyValues = co.map(c => c.value);
           let cvTags;
 
-          // If there are no tags and cities defined then just return companies
-          if (tags.length === 0 && cities.length === 0 && !search) {
-            return companyValues;
+          // First of all filter it out according to scaling
+          if (scaling) {
+              filteredCompanyValues = filteredCompanyValues.filter((cv) => {
+                let result;
+
+                switch (scaling) {
+                  case EScaling.SCALING:
+                    result = cv.maxEmp >= 30 && cv.maxEmp < 100;
+                    break;
+                  case EScaling.GROWTH:
+                    result = cv.maxEmp >= 100;
+                    break;
+                  case EScaling.SEED:
+                    result = cv.maxEmp < 30;
+                    break;
+                  case EScaling.ALL_DEALS:
+                    result = true;
+                    break;
+                  default:
+                    result = true;
+                    break;
+                }
+
+                return result;
+              });
           }
 
-          // Otherwise, filter companies by tags
-          const filteredCompanyValues = companyValues.filter(cv => {
-            cvTags = cv.tags.split(',').map(t => t.trim());
+          // filter companies by tags, cities and search if they are defined
+          if (tags.length > 0 || cities.length > 0 || search) {
+              filteredCompanyValues = filteredCompanyValues.filter(cv => {
+                cvTags = cv.tags.split(',').map(t => t.trim());
 
-            for (let i = 0; i < tags.length; i++) {
-              for (let j = 0; j < cvTags.length; j++) {
-                if (tags[i] === cvTags[j]) {
+                for (let i = 0; i < tags.length; i++) {
+                  for (let j = 0; j < cvTags.length; j++) {
+                    if (tags[i] === cvTags[j]) {
+                      return true;
+                    }
+                  }
+                }
+
+                if (cities.includes(cv.location.split(',')[0].trim())
+                    || cv.name.toLowerCase().includes(search.toLowerCase())) {
                   return true;
                 }
-              }
-            }
 
-            if (cities.includes(cv.location.split(',')[0].trim())
-              || cv.name.toLowerCase().includes(search.toLowerCase())) {
-              return true;
-            }
+                return false;
+              });
+          }
 
-
-            return false;
-          });
           this.filteredCompanyValuesCount = filteredCompanyValues.length;
           return filteredCompanyValues;
         }),

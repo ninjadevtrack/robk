@@ -27,7 +27,8 @@ export class GraphWatchListComponent implements OnInit {
   ngOnInit() {
     const sortEvents$: Observable<Sort> = fromMatSort(this.sort);
     this.companies$ = this._graphWatchlistService.getCompanies();
-    this.sortedCompanyValues$ = this.companies$.pipe(map(co => co.map(c => c.value)),  sortRows(sortEvents$));
+    this.sortedCompanyValues$ = this.companies$.pipe(
+        map(co => co.map(c => c.value)), sortRows(sortEvents$));
   }
 
 }

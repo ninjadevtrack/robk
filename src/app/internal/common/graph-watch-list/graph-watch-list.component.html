@@ -1,6 +1,21 @@
 <div class="m-t-6xl">
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b-xl">
+
+      <form novalidate [formGroup]="form">
+        <div class="m-b-l flex-container">
+          <div>
+            <mat-form-field class="regular-field">
+              <mat-select placeholder="Tags" formControlName="tags" multiple>
+                <mat-option *ngFor="let tag of tags" [value]="tag">
+                  {{ tag }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+
       <mat-accordion displayMode="flat" multi class="mat-table">
         <section matSort class="mat-elevation-z2 mat-header-row">
           <span class="mat-header-cell" mat-sort-header="name">Name</span>

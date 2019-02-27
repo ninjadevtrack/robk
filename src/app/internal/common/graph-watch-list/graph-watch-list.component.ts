@@ -36,7 +36,8 @@ export class GraphWatchListComponent implements OnInit {
 
     this.form = this._formBuilder.group({
       tags: [[], []],
-      cities: [[], []]
+      cities: [[], []],
+      search: ['', []]
     });
     this.sortEvents$ = fromMatSort(this.sort);
 
@@ -69,6 +70,7 @@ export class GraphWatchListComponent implements OnInit {
 
     const tags = this.form.controls['tags'].value;
     const cities = this.form.controls['cities'].value;
+    const search = this.form.controls['search'].value;
 
     this.companyValuesToDisplay$ = (of(this.companies)).pipe(
         map((co: ICompany[]) => {
@@ -76,7 +78,7 @@ export class GraphWatchListComponent implements OnInit {
           let cvTags;
 
           // If there are no tags and cities defined then just return companies
-          if (tags.length === 0 && cities.length === 0) {
+          if (tags.length === 0 && cities.length === 0 && !search) {
             return companyValues;
           }
 
@@ -92,9 +94,11 @@ export class GraphWatchListComponent implements OnInit {
               }
             }
 
-            if (cities.includes(cv.location.split(',')[0].trim())) {
+            if (cities.includes(cv.location.split(',')[0].trim())
+              || cv.name.toLowerCase().includes(search.toLowerCase())) {
               return true;
             }
+
 
             return false;
           });

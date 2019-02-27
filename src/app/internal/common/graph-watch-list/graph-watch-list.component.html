@@ -5,6 +5,13 @@
       <form novalidate [formGroup]="form">
         <div class="flex-container text-right">
           <div>
+            <mat-form-field class="regular-field m-r-l" (keyup)="updateCompanyValuesToDisplay()">
+              <input
+                formControlName="search"
+                name="search"
+                matInput
+                placeholder="Search">
+            </mat-form-field>
             <mat-form-field class="regular-field m-r-l">
               <mat-select placeholder="Cities" formControlName="cities" multiple (selectionChange)="updateCompanyValuesToDisplay()">
                 <mat-option *ngFor="let city of cities" [value]="city">

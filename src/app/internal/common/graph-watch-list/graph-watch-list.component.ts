@@ -21,6 +21,7 @@ export class GraphWatchListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   companies: ICompany[];
   tags: string[] = [];
+  cities: string[] = [];
   companyValuesToDisplay$: Observable<ICompanyValue[]>;
   form: FormGroup;
   sortEvents$: Observable<Sort>;
@@ -33,7 +34,8 @@ export class GraphWatchListComponent implements OnInit {
   ngOnInit() {
 
     this.form = this._formBuilder.group({
-      tags: [[], []]
+      tags: [[], []],
+      cities: [[], []]
     });
     this.sortEvents$ = fromMatSort(this.sort);
 
@@ -42,8 +44,8 @@ export class GraphWatchListComponent implements OnInit {
       this.companies = companies;
       this.updateCompanyValuesToDisplay([]);
 
-      // Let's collect all unique tags
-      let tags;
+      // Let's collect all unique tags and cities
+      let tags, city;
       companies.forEach(cmp => {
         tags = cmp.value.tags.split(',').map(t => t.trim());
         tags.forEach(tag => {
@@ -51,8 +53,14 @@ export class GraphWatchListComponent implements OnInit {
             this.tags.push(tag);
           }
         });
+
+        city = cmp.value.location.split(',')[0].trim();
+        if (city && !this.cities.includes(city)) {
+          this.cities.push(city);
+        }
       });
       this.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      this.cities.sort();
     });
   }
 
@@ -81,7 +89,6 @@ export class GraphWatchListComponent implements OnInit {
 
             return false;
           });
-          console.log(filteredCompanyValues);
           return filteredCompanyValues;
         }),
         sortRows(this.sortEvents$));

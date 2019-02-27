@@ -5,6 +5,13 @@
       <form novalidate [formGroup]="form">
         <div class="m-b-l flex-container text-right">
           <div>
+            <mat-form-field class="regular-field m-r-l">
+              <mat-select placeholder="Cities" formControlName="cities" multiple (selectionChange)="selectedCitiesChanged($event)">
+                <mat-option *ngFor="let city of cities" [value]="city">
+                  {{ city }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
             <mat-form-field class="regular-field">
               <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="selectedTagsChanged($event)">
                 <mat-option *ngFor="let tag of tags" [value]="tag">

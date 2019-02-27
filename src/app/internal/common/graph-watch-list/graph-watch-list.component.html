@@ -6,7 +6,7 @@
         <div class="m-b-l flex-container text-right">
           <div>
             <mat-form-field class="regular-field">
-              <mat-select placeholder="Tags" formControlName="tags" multiple>
+              <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="selectedTagsChanged($event)">
                 <mat-option *ngFor="let tag of tags" [value]="tag">
                   {{ tag }}
                 </mat-option>
@@ -36,7 +36,7 @@
           <span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>
         </section>
 
-        <mat-expansion-panel [expanded]="true" *ngFor="let cv of sortedCompanyValues$ | async">
+        <mat-expansion-panel [expanded]="true" *ngFor="let cv of companyValuesToDisplay$ | async">
           <mat-expansion-panel-header class="mat-row">
             <span class="mat-cell">
               <a href="{{cv.linkedinUrl}}" target="_blank">{{cv.name}}</a>

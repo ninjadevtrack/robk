@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Observable  } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import { MatSort, Sort } from '@angular/material';
 import { fromMatSort, sortRows} from './../../../core/datasource-utils';
 
@@ -9,6 +9,7 @@ import { fromMatSort, sortRows} from './../../../core/datasource-utils';
 import {GraphWatchListService} from "../../../core/graph-watch-list/graph-watch-list.service";
 import {ICompany, ICompanyValue} from "../../../core/graph-watch-list/model/company.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {from, of} from "rxjs";
 
 @Component({
   selector: 'app-graph-watch-list',
@@ -18,10 +19,11 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class GraphWatchListComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
-  companies$: Observable<ICompany[]>;
+  companies: ICompany[];
   tags: string[] = [];
-  sortedCompanyValues$: Observable<ICompanyValue[]>;
+  companyValuesToDisplay$: Observable<ICompanyValue[]>;
   form: FormGroup;
+  sortEvents$: Observable<Sort>;
 
   constructor(
       private _graphWatchlistService: GraphWatchListService,
@@ -33,26 +35,61 @@ export class GraphWatchListComponent implements OnInit {
     this.form = this._formBuilder.group({
       tags: [[], []]
     });
+    this.sortEvents$ = fromMatSort(this.sort);
 
-    const sortEvents$: Observable<Sort> = fromMatSort(this.sort);
-    this.companies$ = this._graphWatchlistService.getCompanies();
-    this.sortedCompanyValues$ = this.companies$.pipe(
-        map(co => co.map(c => c.value)), sortRows(sortEvents$));
+    this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
 
-    // Let's collect all unique tags
-    this.companies$.subscribe((cmps: ICompany[]) => {
-        let tags;
-        cmps.forEach(cmp => {
-          tags = cmp.value.tags.split(',');
-          tags = tags.map(t => t.trim());
-          tags.forEach(tag => {
-            if (tag && !this.tags.includes(tag)) {
-              this.tags.push(tag);
-            }
-          });
+      this.companies = companies;
+      this.updateCompanyValuesToDisplay([]);
+
+      // Let's collect all unique tags
+      let tags;
+      companies.forEach(cmp => {
+        tags = cmp.value.tags.split(',').map(t => t.trim());
+        tags.forEach(tag => {
+          if (tag && !this.tags.includes(tag)) {
+            this.tags.push(tag);
+          }
         });
-        this.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      });
+      this.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
     });
+  }
+
+  private updateCompanyValuesToDisplay(tags: string[]) {
+    this.companyValuesToDisplay$ = (of(this.companies)).pipe(
+        map((co: ICompany[]) => {
+          const companyValues = co.map(c => c.value);
+          let cvTags;
+
+          // If there are no tags defined then just return companies
+          if (tags.length === 0) {
+            return companyValues;
+          }
+
+          // Otherwise, filter companies by tags
+          const filteredCompanyValues = companyValues.filter(cv => {
+            cvTags = cv.tags.split(',').map(t => t.trim());
+
+            for (let i = 0; i < tags.length; i++) {
+              for (let j = 0; j < cvTags.length; j++) {
+                if (tags[i] === cvTags[j]) {
+                  return true;
+                }
+              }
+            }
+
+            return false;
+          });
+          console.log(filteredCompanyValues);
+          return filteredCompanyValues;
+        }),
+        sortRows(this.sortEvents$));
+  }
+
+  selectedTagsChanged(event) {
+    console.log(event);
+    this.updateCompanyValuesToDisplay(event.value);
   }
 
 }

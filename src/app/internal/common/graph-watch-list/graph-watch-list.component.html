@@ -21,7 +21,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="text-right m-t">
+        <div class="text-right m-t" *ngIf="filteredCompanyValuesCount > 0">
           <small>Count {{ filteredCompanyValuesCount }}</small>
         </div>
       </form>

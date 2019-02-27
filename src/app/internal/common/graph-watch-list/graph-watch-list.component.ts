@@ -75,8 +75,8 @@ export class GraphWatchListComponent implements OnInit {
           const companyValues = co.map(c => c.value);
           let cvTags;
 
-          // If there are no tags defined then just return companies
-          if (tags.length === 0) {
+          // If there are no tags and cities defined then just return companies
+          if (tags.length === 0 && cities.length === 0) {
             return companyValues;
           }
 
@@ -90,6 +90,10 @@ export class GraphWatchListComponent implements OnInit {
                   return true;
                 }
               }
+            }
+
+            if (cities.includes(cv.location.split(',')[0].trim())) {
+              return true;
             }
 
             return false;

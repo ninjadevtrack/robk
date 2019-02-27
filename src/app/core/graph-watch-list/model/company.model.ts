@@ -16,10 +16,13 @@ export interface ICompanyValue {
     graphBig: string;
     eng: number;
     sales: number;
-    percent_eng: number;
-    percent_sales: number;
-    growth6_eng: number;
-    growth6_sales: number;
+    percentEng: number;
+    percentSales: number;
+    growth6Eng: number;
+    growth6Sales: number;
+    cbLastFundingDate: string;
+    cbLastSeries: string;
+    cbLastPremoneyUsd: string;
 }
 
 export interface ICompany {

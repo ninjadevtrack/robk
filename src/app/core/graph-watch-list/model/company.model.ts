@@ -14,6 +14,7 @@ export interface ICompanyValue {
     location: string;
     graph: string;
     graphBig: string;
+    data: any;
     eng: number;
     sales: number;
     percentEng: number;

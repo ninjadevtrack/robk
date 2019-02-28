@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {map} from 'rxjs/operators';
+import {Chart} from 'chart.js';
 import {MatSort, Sort} from '@angular/material';
 import {fromMatSort, sortRows} from './../../../core/datasource-utils';
 import {GraphWatchListService} from "../../../core/graph-watch-list/graph-watch-list.service";
@@ -15,10 +16,12 @@ import {ScalingService} from "../../../core/scaling/scaling.service";
   templateUrl: './graph-watch-list.component.html',
   styleUrls: ['./graph-watch-list.component.scss']
 })
-export class GraphWatchListComponent implements OnInit {
+export class GraphWatchListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
-  companies: ICompany[];
+  @ViewChild('canvas') canvas: ElementRef;
+
+  companies: ICompany[] = [];
   tags: string[] = [];
   cities: string[] = [];
   scalings: EScaling[] = [EScaling.SEED, EScaling.GROWTH, EScaling.SCALING, EScaling.ALL_DEALS];
@@ -26,11 +29,14 @@ export class GraphWatchListComponent implements OnInit {
   form: FormGroup;
   sortEvents$: Observable<Sort>;
   filteredCompanyValuesCount: number;
+  charts: any[] = [];
+  chart: any = [];
 
   constructor(
       private _graphWatchlistService: GraphWatchListService,
       private _scalingSerivce: ScalingService,
-      private _formBuilder: FormBuilder
+      private _formBuilder: FormBuilder,
+      private _elementRef: ElementRef
   ) { }
 
   ngOnInit() {
@@ -44,6 +50,8 @@ export class GraphWatchListComponent implements OnInit {
     this.sortEvents$ = fromMatSort(this.sort);
 
     this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
+
+      console.log(companies);
 
       this.companies = companies;
       this.updateCompanyValuesToDisplay();
@@ -66,6 +74,51 @@ export class GraphWatchListComponent implements OnInit {
       this.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
       this.cities.sort();
     });
+  }
+
+  addChart(chart) {
+    this.charts.push(chart);
+  }
+
+  getChart(customId) {
+    return this.charts.find((c) => c.customId === customId);
+  }
+
+  ngAfterViewInit() {
+
+      // this.companies.forEach(cmp => {
+      //   this.charts.push(new Chart(this.canvas.nativeElement.getContext('2d'), {
+      //     type: 'line',
+      //     data: {
+      //       labels: ['11/01', '12/02'],
+      //       datasets: [
+      //         {
+      //           data: 10,
+      //           borderColor: '#3cba9f',
+      //           fill: false
+      //         },
+      //         {
+      //           data: 23,
+      //           borderColor: '#ffcc00',
+      //           fill: false
+      //         },
+      //       ]
+      //     },
+      //     options: {
+      //       legend: {
+      //         display: false
+      //       },
+      //       scales: {
+      //         xAxes: [{
+      //           display: true
+      //         }],
+      //         yAxes: [{
+      //           display: true
+      //         }]
+      //       }
+      //     }
+      //   }));
+      // });
   }
 
   private updateCompanyValuesToDisplay() {
@@ -130,6 +183,37 @@ export class GraphWatchListComponent implements OnInit {
           }
 
           this.filteredCompanyValuesCount = filteredCompanyValues.length;
+
+
+          ///
+
+          setTimeout(() => {
+
+            this.charts = [];
+
+            filteredCompanyValues.forEach(cmp => {
+              const htmlRef = this._elementRef.nativeElement.querySelector(`#canvas_${cmp.name}`);
+              const chart = new Chart(htmlRef, {
+                type: "line",
+                data: {
+                  labels: ["January", "February", "March", "April", "May", "June", "July"],
+                  datasets: [{
+                    label: "My First Dataset",
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    lineTension: 0.1
+                  }]
+                },
+                options: {}
+              });
+              chart.customId = cmp.name; // Decorating the chart with customId
+              this.addChart(chart);
+            });
+
+          }, 6000);
+
+
           return filteredCompanyValues;
         }),
         sortRows(this.sortEvents$));

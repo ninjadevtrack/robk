@@ -19,8 +19,6 @@ import {ScalingService} from "../../../core/scaling/scaling.service";
 export class GraphWatchListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('canvas') canvas: ElementRef;
-
   companies: ICompany[] = [];
   tags: string[] = [];
   cities: string[] = [];
@@ -29,8 +27,6 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
   form: FormGroup;
   sortEvents$: Observable<Sort>;
   filteredCompanyValuesCount: number;
-  charts: any[] = [];
-  chart: any = [];
 
   constructor(
       private _graphWatchlistService: GraphWatchListService,
@@ -74,14 +70,6 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
       this.tags.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
       this.cities.sort();
     });
-  }
-
-  addChart(chart) {
-    this.charts.push(chart);
-  }
-
-  getChart(customId) {
-    return this.charts.find((c) => c.customId === customId);
   }
 
   ngAfterViewInit() {
@@ -183,36 +171,6 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
           }
 
           this.filteredCompanyValuesCount = filteredCompanyValues.length;
-
-
-          ///
-
-          setTimeout(() => {
-
-            this.charts = [];
-
-            filteredCompanyValues.forEach(cmp => {
-              const htmlRef = this._elementRef.nativeElement.querySelector(`#canvas_${cmp.name}`);
-              const chart = new Chart(htmlRef, {
-                type: "line",
-                data: {
-                  labels: ["January", "February", "March", "April", "May", "June", "July"],
-                  datasets: [{
-                    label: "My First Dataset",
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    lineTension: 0.1
-                  }]
-                },
-                options: {}
-              });
-              chart.customId = cmp.name; // Decorating the chart with customId
-              this.addChart(chart);
-            });
-
-          }, 6000);
-
 
           return filteredCompanyValues;
         }),

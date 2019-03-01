@@ -21,6 +21,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
 import { GraphWatchListComponent } from './graph-watch-list/graph-watch-list.component';
 import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-list.service";
+import { ChartComponent } from './chart/chart/chart.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-l
   declarations: [
       ProfileComponent,
       InternalHeaderComponent,
-      GraphWatchListComponent
+      GraphWatchListComponent,
+      ChartComponent
   ],
   exports: [
       ProfileComponent,

@@ -89,9 +89,7 @@
           </div>
           <div>
             <!-- Chart goes here -->
-            <div>
-              <canvas id="canvas_{{cv.name}}">{{getChart(cv.name)}}</canvas>
-            </div>
+            <app-chart [companyValue]="cv"></app-chart>
           </div>
           <!--<div><small><pre>{{c | json}}</pre></small></div>-->
         </mat-expansion-panel>

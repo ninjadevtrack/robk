@@ -32,7 +32,7 @@ export class ChartComponent implements OnInit {
         },
         options: {}
       });
-    }, 2000);
+    }, 1000);
 
   }
 

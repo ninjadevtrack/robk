@@ -14,7 +14,7 @@ export class ChartComponent implements OnInit {
   @Input() companyValue: ICompanyValue;
   chart: any = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
 
@@ -41,6 +41,9 @@ export class ChartComponent implements OnInit {
                   suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
                 }
               }]
+            },
+            chartArea: {
+              backgroundColor: `rgba(${Math.round(Math.random() * 250)}, ${Math.round(Math.random() * 250)}, ${Math.round(Math.random() * 250)}, 0.4)`
             }
           }
         }

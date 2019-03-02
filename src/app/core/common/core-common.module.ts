@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthStorageService } from './auth-storage.service';
 import { ConfigService } from './config.service';
 import { NoContentComponent } from './no-content/no-content.component';
+import { ChartService } from "./chart.service";
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { NoContentComponent } from './no-content/no-content.component';
   providers: [
       AuthStorageService,
       ConfigService,
+      ChartService
   ],
   exports: [
       NoContentComponent

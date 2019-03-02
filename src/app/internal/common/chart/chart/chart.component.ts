@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild, Input} from '@angular/core';
 import {Chart} from 'chart.js';
-import {ICompanyValue} from "../../../../core/graph-watch-list/model/company.model";
+import {ICompany} from "../../../../core/graph-watch-list/model/company.model";
 import * as moment from 'moment';
 
 @Component({
@@ -11,7 +11,7 @@ import * as moment from 'moment';
 export class ChartComponent implements OnInit {
 
   @ViewChild('canvas') canvas: ElementRef;
-  @Input() companyValue: ICompanyValue;
+  @Input() company: ICompany;
   chart: any = [];
 
   constructor() {}
@@ -19,13 +19,13 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
 
     setTimeout(() => {
-      this.chart = new Chart(`canvas_${this.companyValue.name}`, {
+      this.chart = new Chart(`canvas_${this.company.name}`, {
           type: "line",
           data: {
-            labels: this.companyValue.data.map((d) => moment(d[0]).format('MM/YY')),
+            labels: this.company.data.map((d) => moment(d[0]).format('MM/YY')),
             datasets: [{
-              label: this.companyValue.name,
-              data: this.companyValue.data.map((d) => d[1]),
+              label: this.company.name,
+              data: this.company.data.map((d) => d[1]),
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               lineTension: 0.1
@@ -43,7 +43,7 @@ export class ChartComponent implements OnInit {
               }]
             },
             chartArea: {
-              backgroundColor: `rgba(${Math.round(Math.random() * 250)}, ${Math.round(Math.random() * 250)}, ${Math.round(Math.random() * 250)}, 0.4)`
+              backgroundColor: this.getColor()
             }
           }
         }
@@ -52,42 +52,24 @@ export class ChartComponent implements OnInit {
 
   }
 
-  /*
-  * ///
-  *
-  *
-  *  addChart(chart) {
-    this.charts.push(chart);
+  getColor() {
+    let color;
+    switch (this.company.color) {
+      case 'row-green':
+        color = '#98FB98';
+        break;
+      case 'row-yellow':
+        color = '#FFFACD';
+        break;
+      case 'row-red':
+        color = '#FFE4E1';
+        break;
+      default:
+        color = '#ffffff';
+        break;
+    }
+
+    return color;
   }
-
-  getChart(customId) {
-    return this.charts.find((c) => c.customId === customId);
-  }
-
-          setTimeout(() => {
-
-            this.charts = [];
-
-            filteredCompanyValues.forEach(cmp => {
-              const htmlRef = this._elementRef.nativeElement.querySelector(`#canvas_${cmp.name}`);
-              const chart = new Chart(htmlRef, {
-                type: "line",
-                data: {
-                  labels: ["January", "February", "March", "April", "May", "June", "July"],
-                  datasets: [{
-                    label: "My First Dataset",
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    lineTension: 0.1
-                  }]
-                },
-                options: {}
-              });
-              chart.customId = cmp.name; // Decorating the chart with customId
-              this.addChart(chart);
-            });
-
-          }, 6000);*/
 
 }

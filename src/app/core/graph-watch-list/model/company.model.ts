@@ -1,8 +1,4 @@
-export interface ICompanyOptions {
-    classes: string;
-}
-
-export interface ICompanyValue {
+export interface ICompany {
     name: string;
     linkedinUrl: string;
     crmLink: string;
@@ -24,9 +20,5 @@ export interface ICompanyValue {
     cbLastFundingDate: string;
     cbLastSeries: string;
     cbLastPremoneyUsd: string;
-}
-
-export interface ICompany {
-    options: ICompanyOptions;
-    value: ICompanyValue;
+    color: string;
 }

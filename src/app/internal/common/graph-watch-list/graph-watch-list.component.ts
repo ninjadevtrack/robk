@@ -5,7 +5,7 @@ import {Chart} from 'chart.js';
 import {MatSort, Sort} from '@angular/material';
 import {fromMatSort, sortRows} from './../../../core/datasource-utils';
 import {GraphWatchListService} from "../../../core/graph-watch-list/graph-watch-list.service";
-import {ICompany, ICompanyValue} from "../../../core/graph-watch-list/model/company.model";
+import {ICompany} from "../../../core/graph-watch-list/model/company.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import {EScaling} from "../../../core/scaling/scaling.enum";
@@ -17,14 +17,14 @@ import {ChartService} from "../../../core/common/chart.service";
   templateUrl: './graph-watch-list.component.html',
   styleUrls: ['./graph-watch-list.component.scss']
 })
-export class GraphWatchListComponent implements OnInit, AfterViewInit {
+export class GraphWatchListComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   companies: ICompany[] = [];
   tags: string[] = [];
   cities: string[] = [];
   scalings: EScaling[] = [EScaling.SEED, EScaling.GROWTH, EScaling.SCALING, EScaling.ALL_DEALS];
-  companyValuesToDisplay$: Observable<ICompanyValue[]>;
+  companiesToDisplay$: Observable<ICompany[]>;
   form: FormGroup;
   sortEvents$: Observable<Sort>;
   filteredCompanyValuesCount: number;
@@ -58,14 +58,14 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
       // Let's collect all unique tags and cities
       let tags, city;
       companies.forEach(cmp => {
-        tags = cmp.value.tags.split(',').map(t => t.trim());
+        tags = cmp.tags.split(',').map(t => t.trim());
         tags.forEach(tag => {
           if (tag && !this.tags.includes(tag)) {
             this.tags.push(tag);
           }
         });
 
-        city = cmp.value.location.split(',')[0].trim();
+        city = cmp.location.split(',')[0].trim();
         if (city && !this.cities.includes(city)) {
           this.cities.push(city);
         }
@@ -75,43 +75,6 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-
-      // this.companies.forEach(cmp => {
-      //   this.charts.push(new Chart(this.canvas.nativeElement.getContext('2d'), {
-      //     type: 'line',
-      //     data: {
-      //       labels: ['11/01', '12/02'],
-      //       datasets: [
-      //         {
-      //           data: 10,
-      //           borderColor: '#3cba9f',
-      //           fill: false
-      //         },
-      //         {
-      //           data: 23,
-      //           borderColor: '#ffcc00',
-      //           fill: false
-      //         },
-      //       ]
-      //     },
-      //     options: {
-      //       legend: {
-      //         display: false
-      //       },
-      //       scales: {
-      //         xAxes: [{
-      //           display: true
-      //         }],
-      //         yAxes: [{
-      //           display: true
-      //         }]
-      //       }
-      //     }
-      //   }));
-      // });
-  }
-
   private updateCompanyValuesToDisplay() {
 
     const tags = this.form.controls['tags'].value;
@@ -119,14 +82,14 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
     const search = this.form.controls['search'].value;
     const scaling = this.form.controls['scaling'].value;
 
-    this.companyValuesToDisplay$ = (of(this.companies)).pipe(
+    this.companiesToDisplay$ = (of(this.companies)).pipe(
         map((co: ICompany[]) => {
-          let filteredCompanyValues = co.map(c => c.value);
+          let filteredCompanies = co.map(c => c);
           let cvTags;
 
           // First of all filter it out according to scaling
           if (scaling) {
-              filteredCompanyValues = filteredCompanyValues.filter((cv) => {
+              filteredCompanies = filteredCompanies.filter((cv) => {
                 let result;
 
                 switch (scaling) {
@@ -153,7 +116,7 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
 
           // filter companies by tags, cities and search if they are defined
           if (tags.length > 0 || cities.length > 0 || search) {
-              filteredCompanyValues = filteredCompanyValues.filter(cv => {
+              filteredCompanies = filteredCompanies.filter(cv => {
                 cvTags = cv.tags.split(',').map(t => t.trim());
 
                 for (let i = 0; i < tags.length; i++) {
@@ -173,9 +136,9 @@ export class GraphWatchListComponent implements OnInit, AfterViewInit {
               });
           }
 
-          this.filteredCompanyValuesCount = filteredCompanyValues.length;
+          this.filteredCompanyValuesCount = filteredCompanies.length;
 
-          return filteredCompanyValues;
+          return filteredCompanies;
         }),
         sortRows(this.sortEvents$));
   }

@@ -48,7 +48,7 @@ export class ChartComponent implements OnInit {
           }
         }
       );
-    }, 100);
+    }, 10);
 
   }
 

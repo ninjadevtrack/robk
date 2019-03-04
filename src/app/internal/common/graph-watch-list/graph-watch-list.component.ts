@@ -50,8 +50,6 @@ export class GraphWatchListComponent implements OnInit {
 
     this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
 
-      console.log(companies);
-
       this.companies = companies;
       this.updateCompanyValuesToDisplay();
 
@@ -128,7 +126,7 @@ export class GraphWatchListComponent implements OnInit {
                 }
 
                 if (cities.includes(cv.location.split(',')[0].trim())
-                    || cv.name.toLowerCase().includes(search.toLowerCase())) {
+                    || (search && cv.name.toLowerCase().includes(search.toLowerCase()))) {
                   return true;
                 }
 

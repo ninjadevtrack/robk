@@ -28,7 +28,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
           data: this.company.data.map((d) => d[1]),
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
-          lineTension: 0.1
+          lineTension: 0.5
         }]
       },
       options: {

@@ -1,3 +1,3 @@
-<div>
-  <canvas class="chart" id="canvas_{{company.name}}">{{ chart }}</canvas>
+<div *ngIf="company && chart">
+  <canvas class="chart" #canvas id="canvas_{{company.name}}">{{ chart }}</canvas>
 </div>

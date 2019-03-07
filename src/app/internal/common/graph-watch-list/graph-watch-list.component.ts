@@ -152,4 +152,8 @@ export class GraphWatchListComponent implements OnInit {
     return this._scalingSerivce.getScalingName(scaling);
   }
 
+  ignoreCompany(campaign: ICompany) {
+
+  }
+
 }

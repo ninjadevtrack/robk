@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import {
     MatAutocompleteModule,
     MatButtonModule,
-    MatCardModule, MatExpansionModule,
+    MatCardModule, MatCheckboxModule, MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule, MatListModule,
@@ -41,6 +41,7 @@ import { ChartComponent } from './chart/chart/chart.component';
       MatListModule,
       MatExpansionModule,
       MatSortModule,
+      MatCheckboxModule,
       MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,

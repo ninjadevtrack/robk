@@ -44,8 +44,10 @@ export class GraphWatchListComponent implements OnInit {
       tags: [[], []],
       cities: [[], []],
       search: ['', []],
-      scaling: [EScaling.SEED, [Validators.required]]
+      scaling: [EScaling.SEED, [Validators.required]],
+      ignored: [false, [Validators.required]]
     });
+
     this.sortEvents$ = fromMatSort(this.sort);
 
     this._graphWatchlistService.getCompanies().subscribe((companies: ICompany[]) => {
@@ -79,6 +81,7 @@ export class GraphWatchListComponent implements OnInit {
     const cities = this.form.controls['cities'].value;
     const search = this.form.controls['search'].value;
     const scaling = this.form.controls['scaling'].value;
+    const ignored = this.form.controls['ignored'].value;
 
     this.companiesToDisplay$ = (of(this.companies)).pipe(
         map((co: ICompany[]) => {
@@ -113,7 +116,7 @@ export class GraphWatchListComponent implements OnInit {
           }
 
           // filter companies by tags, cities and search if they are defined
-          if (tags.length > 0 || cities.length > 0 || search) {
+          if (tags.length > 0 || cities.length > 0 || search || ignored) {
               filteredCompanies = filteredCompanies.filter(cv => {
                 cvTags = cv.tags.split(',').map(t => t.trim());
 
@@ -127,6 +130,10 @@ export class GraphWatchListComponent implements OnInit {
 
                 if (cities.includes(cv.location.split(',')[0].trim())
                     || (search && cv.name.toLowerCase().includes(search.toLowerCase()))) {
+                  return true;
+                }
+
+                if (cv.ignore === ignored) {
                   return true;
                 }
 

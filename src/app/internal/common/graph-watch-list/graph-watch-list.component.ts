@@ -115,8 +115,14 @@ export class GraphWatchListComponent implements OnInit {
               });
           }
 
+          // Then let's filter according 'Ignore flag'
+          filteredCompanies = filteredCompanies.filter((cv) => {
+            return (ignored) ? cv.ignore : !(cv.ignore);
+          });
+
+
           // filter companies by tags, cities and search if they are defined
-          if (tags.length > 0 || cities.length > 0 || search || ignored) {
+          if (tags.length > 0 || cities.length > 0 || search) {
               filteredCompanies = filteredCompanies.filter(cv => {
                 cvTags = cv.tags.split(',').map(t => t.trim());
 
@@ -130,10 +136,6 @@ export class GraphWatchListComponent implements OnInit {
 
                 if (cities.includes(cv.location.split(',')[0].trim())
                     || (search && cv.name.toLowerCase().includes(search.toLowerCase()))) {
-                  return true;
-                }
-
-                if (cv.ignore === ignored) {
                   return true;
                 }
 

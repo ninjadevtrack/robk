@@ -21,4 +21,5 @@ export interface ICompany {
     cbLastSeries: string;
     cbLastPremoneyUsd: string;
     color: string;
+    ignore: boolean;
 }

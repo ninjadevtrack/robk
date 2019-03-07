@@ -86,7 +86,7 @@
           </mat-expansion-panel-header>
           <div class="m-b-l" class="flex-container">
             <div><small>Tags: <em>{{c.tags}}</em></small></div>
-            <div class="text-right">
+            <div *ngIf="!c.ignore" class="text-right">
               <button mat-button class="mat-primary" (click)="ignoreCompany(c)">
                 Ignore
               </button>

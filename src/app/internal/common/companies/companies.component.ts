@@ -154,8 +154,14 @@ export class CompaniesComponent implements OnInit {
     return this._scalingSerivce.getScalingName(scaling);
   }
 
-  ignoreCompany(campaign: ICompany) {
-
+  ignoreCompany(company: ICompany) {
+    this._companyService.ignoreCompany(company.cpId).subscribe((res) => {
+      const index = this.companies.findIndex(v => v.cpId === company.cpId);
+      if (index !== -1) {
+        this.companies[index].ignore = true;
+        this.updateCompanyValuesToDisplay();
+      }
+    });
   }
 
 }

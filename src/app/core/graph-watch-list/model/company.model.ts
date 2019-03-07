@@ -1,5 +1,6 @@
 export interface ICompany {
     name: string;
+    cpId: number;
     linkedinUrl: string;
     crmLink: string;
     maxEmp: number;

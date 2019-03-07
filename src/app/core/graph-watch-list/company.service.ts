@@ -16,7 +16,7 @@ export class CompanyService {
     return this._httpHelper.get(true, this._configService.API.Company.default() );
   }
 
-  public ignoreCompany(id: number): Observable<ICompany[]> {
+  public ignoreCompany(id: number): Observable<any> {
     return this._httpHelper.get(true, this._configService.API.Company.ignore(id) );
   }
 }

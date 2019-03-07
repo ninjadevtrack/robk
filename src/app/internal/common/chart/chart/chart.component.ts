@@ -50,9 +50,6 @@ export class ChartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
-    }, 0);
   }
 
   getColor() {
@@ -73,6 +70,17 @@ export class ChartComponent implements OnInit, AfterViewInit {
     }
 
     return color;
+  }
+
+  onIntersection(event) {
+    if (event.visible) {
+      console.log(event);
+      console.log(`Rendering a chart for ${this.company.name}`);
+      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
+      // setTimeout(() => {
+      //
+      // }, 0);
+    }
   }
 
 }

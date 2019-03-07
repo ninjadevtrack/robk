@@ -74,8 +74,6 @@ export class ChartComponent implements OnInit, AfterViewInit {
 
   onIntersection(event) {
     if (event.visible) {
-      console.log(event);
-      console.log(`Rendering a chart for ${this.company.name}`);
       this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
     }
   }

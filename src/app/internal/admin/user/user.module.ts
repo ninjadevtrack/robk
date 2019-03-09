@@ -44,7 +44,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
       UserViewComponent
   ],
   entryComponents: [
-      UserViewComponent
+      UserViewComponent,
+      UserEditComponent,
+      UserAddComponent
   ]
 })
 export class UserModule { }

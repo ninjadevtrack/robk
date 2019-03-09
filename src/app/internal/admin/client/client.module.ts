@@ -43,8 +43,7 @@ import {ClientViewComponent} from './client-view/client-view.component';
     entryComponents: [
         ClientViewComponent,
         ClientAddComponent,
-        ClientEditComponent,
-        ClientAddComponent
+        ClientEditComponent
     ]
 })
 export class ClientModule { }

@@ -1,23 +1,55 @@
-<div>
-  <h2 class="text-center p-b-l font-color-pale">User</h2>
+<!--<div>-->
+  <!--<h2 class="text-center p-b-l font-color-pale">User</h2>-->
 
-  <data-field header="Name" data="{{ model.lastName }}" [isSmall]="false"></data-field>
-  <data-field header="Name" data="{{ model.firstName }}" [isSmall]="false"></data-field>
-  <data-field header="Email" data="{{ model.email }}" [isSmall]="false"></data-field>
-  <data-field header="Status" data="{{ model.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>
+  <!--<data-field header="Name" data="{{ user?.lastName }}" [isSmall]="false"></data-field>-->
+  <!--<data-field header="Name" data="{{ user?.firstName }}" [isSmall]="false"></data-field>-->
+  <!--<data-field header="Email" data="{{ user?.email }}" [isSmall]="false"></data-field>-->
+  <!--<data-field header="Status" data="{{ user?.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>-->
 
-  <div class="data-field">
-    <div class="header">
-      Roles
+  <!--<div class="data-field">-->
+    <!--<div class="header">-->
+      <!--Roles-->
+    <!--</div>-->
+    <!--<div *ngFor="let role of user.roles" class="data">-->
+      <!--{{role}}-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash;<div class="justifying-containter">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button mat-button class="mat-primary font-size-l button-l" (click)="onClose()">&ndash;&gt;-->
+      <!--&lt;!&ndash;CLOSE&ndash;&gt;-->
+    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+
+
+<card-template>
+  <div class="flex-container">
+    <div class="flex-container-left">
+      <div>
+        <h1>
+          {{user?.lastName}} {{user?.firstName}}
+        </h1>
+      </div>
     </div>
-    <div *ngFor="let role of model.roles" class="data">
-      {{role}}
+    <div class="text-right">
+      <icon-link-button [iconName]="'edit'" routerLink="/i/admin/users/{{user?._id}}/edit"></icon-link-button>
     </div>
   </div>
-
-  <div class="justifying-containter">
-    <button mat-button class="mat-primary font-size-l button-l" (click)="onClose()">
-      CLOSE
-    </button>
+  <div class="flex-container">
+    <div>
+      <data-field header="Email" [data]="user?.email"></data-field>
+    </div>
+    <div>
+      <data-field header="Roles" data="{{ user?.roles }}" [isSmall]="false"></data-field>
+      <!--<div class="data-field">-->
+        <!--<div class="header">-->
+          <!--Roles-->
+        <!--</div>-->
+        <!--<div *ngFor="let role of user?.roles" class="data">-->
+          <!--{{role}}-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
   </div>
-</div>
+</card-template>

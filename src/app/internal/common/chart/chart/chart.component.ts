@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild, Input, AfterViewInit} from '@angular/core';
 import {Chart} from 'chart.js';
-import {ICompany} from "../../../../core/graph-watch-list/model/company.model";
+import {ICompany} from "../../../../core/company/model/company.model";
 import * as moment from 'moment';
 
 @Component({

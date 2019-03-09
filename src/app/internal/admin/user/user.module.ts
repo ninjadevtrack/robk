@@ -16,10 +16,12 @@ import {
 import { InternalCoreModule } from '../../core/internal-core.module';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
       CommonModule,
+      RouterModule,
       ReactiveFormsModule,
       MatInputModule,
       MatFormFieldModule,

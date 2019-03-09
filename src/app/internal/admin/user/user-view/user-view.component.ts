@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../core/user/user.service';
 import { UserModel } from '../../../../core/user/model/user.model';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'user-view',
@@ -10,24 +10,26 @@ import { UserModel } from '../../../../core/user/model/user.model';
 })
 export class UserViewComponent implements OnInit {
 
-    model: UserModel;
+    id: string;
+    user: UserModel;
     serverErrorMessage: string;
 
     constructor(
-        private _userService: UserService,
-        public dialogRef: MatDialogRef<UserViewComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any
+        private _router: Router,
+        private _route: ActivatedRoute,
+        private _userService: UserService
     ) { }
 
     ngOnInit() {
-        this.model = new UserModel();
-        this._userService.get(this.data.userId).subscribe((result) => {
-            this.model = result;
+
+        this._route.params.subscribe((params) => {
+            this.id = params.id;
+
+            this._userService.get(this.id).subscribe((user: UserModel) => {
+                this.user = user;
+            });
         });
     }
 
-    onClose(): void {
-        this.dialogRef.close();
-    }
 
 }

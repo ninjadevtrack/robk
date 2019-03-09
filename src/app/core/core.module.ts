@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './auth/auth.service';
-import { ClientService } from './client/client.service';
 import { CoreCommonModule } from './common/core-common.module';
 import { UserService } from './user/user.service';
 import { CustomBrowserXhr } from './custom-browser-xhr.service';
@@ -27,7 +26,6 @@ import { ScalingService } from "./scaling/scaling.service";
       SmoothScrollService,
       WindowRefService,
       AuthService,
-      ClientService,
       UserService,
       ScalingService
   ],

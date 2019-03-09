@@ -19,15 +19,35 @@ export class UserService {
         return this._httpHelper.get(true, this._configService.API.User.dafaultWithId(id));
     }
 
-    public getAll(): Observable<UsersResultModel> {
-        return this._httpHelper.get(true, this._configService.API.User.getAll());
+    public getAll(): Observable<UserModel[]> {
+        return this._httpHelper.get(true, this._configService.API.User.default());
     }
 
-    public getAllActive(): Observable<UsersResultModel> {
+    public getAllActive(): Observable<UserModel[]> {
         return this._httpHelper.get(true, this._configService.API.User.getAllActive());
     }
 
-    public getAllArchived(): Observable<UsersResultModel> {
+    public getAllArchived(): Observable<UserModel[]> {
         return this._httpHelper.get(true, this._configService.API.User.getAllArchived());
+    }
+
+    public add(model: UserModel): Observable<UserModel> {
+        return this._httpHelper.post(true, this._configService.API.User.default(), model);
+    }
+
+    public delete(id: string): Observable<UserModel> {
+        return this._httpHelper.delete(true, this._configService.API.User.dafaultWithId(id));
+    }
+
+    public update(id: string, model: UserModel): Observable<UserModel> {
+        return this._httpHelper.put(true, this._configService.API.User.dafaultWithId(id), model);
+    }
+
+    public activate(id: string): Observable<UserModel> {
+        return this._httpHelper.get(true, this._configService.API.User.activate(id));
+    }
+
+    public archive(id: string): Observable<UserModel> {
+        return this._httpHelper.get(true, this._configService.API.User.archive(id));
     }
 }

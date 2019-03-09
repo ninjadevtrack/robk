@@ -20,7 +20,7 @@ export class ClientListRootComponent implements OnInit {
     }
 
     getEntities() {
-        this._entityService.getAll().subscribe((entities: ClientModel[]) => {
+        this._entityService.default().subscribe((entities: ClientModel[]) => {
             this.entities = entities;
         });
     }

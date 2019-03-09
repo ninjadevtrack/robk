@@ -34,20 +34,26 @@ export class ConfigService {
             }
         },
         User: {
-            profile: () => {
-                return `${Consts.API_URL}/v1/user/profile`;
+            default: () => {
+                return `${Consts.API_URL}/v1/users`;
             },
             dafaultWithId: (id) => {
                 return `${Consts.API_URL}/v1/users/${id}`;
             },
-            getAll: () => {
-                return `${Consts.API_URL}/v1/users`;
+            profile: () => {
+                return `${Consts.API_URL}/v1/user/profile`;
             },
             getAllActive: () => {
                 return `${Consts.API_URL}/v1/users/active`;
             },
             getAllArchived: () => {
                 return `${Consts.API_URL}/v1/users/archived`;
+            },
+            activate:  (id) => {
+                return `${Consts.API_URL}/v1/users/${id}/activate`;
+            },
+            archive:  (id) => {
+                return `${Consts.API_URL}/v1/users/${id}/archive`;
             }
         },
         Client: {

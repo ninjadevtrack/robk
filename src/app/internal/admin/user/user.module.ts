@@ -14,6 +14,8 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { InternalCoreModule } from '../../core/internal-core.module';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { InternalCoreModule } from '../../core/internal-core.module';
       UserListComponent,
       UserMenuComponent,
       UserTableComponent,
-      UserViewComponent
+      UserViewComponent,
+      UserAddComponent,
+      UserEditComponent
   ],
   exports: [
       UserListComponent,

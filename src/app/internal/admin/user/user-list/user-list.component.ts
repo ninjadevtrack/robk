@@ -3,48 +3,67 @@ import {
     OnInit
 } from '@angular/core';
 import { UserService } from '../../../../core/user/user.service';
-import { IUser } from "../../../../core/user/model/user.model";
-import { SearchPipe } from '../../../core/search.pipe';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { EntityListComponentResolver } from "../../../core/entity/entity-list/entity-list.component.resolver";
+import { EEntityEventType } from "../../../core/entity/entity-event-type.enum";
+import {ComponentType} from '@angular/cdk/typings/portal';
+import {MatDialog} from "@angular/material";
+import {IEntityService} from "../../../../core/entity-service.model";
+import {UserAddComponent} from "../user-add/user-add.component";
+import {UserEditComponent} from "../user-edit/user-edit.component";
+import {UserModel, UsersResultModel} from "../../../../core/user/model/user.model";
 
 @Component({
     selector: 'user-list',
     styleUrls: [ './user-list.component.scss' ],
     templateUrl: './user-list.component.html'
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent extends EntityListComponentResolver implements OnInit {
 
-    form: FormGroup;
-    public activeUsers: IUser[] = [];
-    public archivedUsers: IUser[] = [];
-    searchPipe: SearchPipe = new SearchPipe();
-    searchFields: string = 'firstName,lastName,email';
+    entities: UserModel[];
+    eventTypesForActiveEntities: EEntityEventType[] = [ EEntityEventType.ARCHIVE ];
+    eventTypesForArchivedEntities: EEntityEventType[] = [ EEntityEventType.ACTIVATE, EEntityEventType.DELETE];
 
     constructor(
-        private _userService: UserService,
-        private _formBuilder: FormBuilder,
-    ) {}
+        protected _dialog: MatDialog,
+        private _entityService: UserService,
+    ) {
+        super(_dialog);
+    }
+
+    protected getAllEntities() {
+        this._entityService.getAll().subscribe((entities: UserModel[]) => {
+            this.entities = entities;
+        });
+    }
+
+    protected getEntities(): any[] {
+
+        if (!this.entities) { return []; }
+
+        return this.entities.map((e) => {
+            // @ts-ignore
+            e.name = this.entityLabel(e);
+            return e;
+        });
+    }
 
     public ngOnInit() {
-        this.form = this._formBuilder.group({
-            search: ['', []]
-        });
-
-        // Get active users
-        this._userService.getAllActive().subscribe((users: any) => {
-            this.activeUsers = users;
-        });
-        // Get archived users
-        this._userService.getAllArchived().subscribe((users: any) => {
-            this.archivedUsers = users;
-        });
+        super.ngOnInit();
     }
 
-    public getFilteredActiveUsers() {
-        return this.searchPipe.transform(this.activeUsers, this.searchFields, this.form.controls['search'].value);
+    protected getEntityService(): IEntityService {
+        return this._entityService;
     }
 
-    public getFilteredArchivedUsers() {
-        return this.searchPipe.transform(this.archivedUsers, this.searchFields, this.form.controls['search'].value);
+    protected getAddComponent(): ComponentType<any> {
+        return UserAddComponent;
+    }
+
+    protected getEditComponent(): ComponentType<any> {
+        return UserEditComponent;
+    }
+
+    protected entityLabel(entity: UserModel) {
+        return `${entity.lastName} ${entity.firstName}`;
     }
 }

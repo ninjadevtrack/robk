@@ -28,6 +28,7 @@ export class CompaniesComponent implements OnInit {
   form: FormGroup;
   sortEvents$: Observable<Sort>;
   filteredCompanyValuesCount: number;
+  dataIsLoading = false;
 
   constructor(
       private _companyService: CompanyService,
@@ -49,11 +50,13 @@ export class CompaniesComponent implements OnInit {
     });
 
     this.sortEvents$ = fromMatSort(this.sort);
+    this.dataIsLoading = true;
 
     this._companyService.getCompanies().subscribe((companies: ICompany[]) => {
 
       this.companies = companies;
       this.updateCompanyValuesToDisplay();
+      this.dataIsLoading = false;
 
       // Let's collect all unique tags and cities
       let tags, city;

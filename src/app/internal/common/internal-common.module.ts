@@ -43,6 +43,7 @@ import { InViewportModule } from "ng-in-viewport";
       MatExpansionModule,
       MatSortModule,
       MatCheckboxModule,
+      MatProgressSpinnerModule,
       MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,

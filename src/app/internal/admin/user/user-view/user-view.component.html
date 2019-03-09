@@ -1,28 +1,3 @@
-<!--<div>-->
-  <!--<h2 class="text-center p-b-l font-color-pale">User</h2>-->
-
-  <!--<data-field header="Name" data="{{ user?.lastName }}" [isSmall]="false"></data-field>-->
-  <!--<data-field header="Name" data="{{ user?.firstName }}" [isSmall]="false"></data-field>-->
-  <!--<data-field header="Email" data="{{ user?.email }}" [isSmall]="false"></data-field>-->
-  <!--<data-field header="Status" data="{{ user?.isActive ? 'Active' : 'Archived' }}" [isSmall]="false"></data-field>-->
-
-  <!--<div class="data-field">-->
-    <!--<div class="header">-->
-      <!--Roles-->
-    <!--</div>-->
-    <!--<div *ngFor="let role of user.roles" class="data">-->
-      <!--{{role}}-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--&lt;!&ndash;<div class="justifying-containter">&ndash;&gt;-->
-    <!--&lt;!&ndash;<button mat-button class="mat-primary font-size-l button-l" (click)="onClose()">&ndash;&gt;-->
-      <!--&lt;!&ndash;CLOSE&ndash;&gt;-->
-    <!--&lt;!&ndash;</button>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--</div>-->
-
-
 <card-template>
   <div class="flex-container">
     <div class="flex-container-left">
@@ -42,14 +17,6 @@
     </div>
     <div>
       <data-field header="Roles" data="{{ user?.roles }}" [isSmall]="false"></data-field>
-      <!--<div class="data-field">-->
-        <!--<div class="header">-->
-          <!--Roles-->
-        <!--</div>-->
-        <!--<div *ngFor="let role of user?.roles" class="data">-->
-          <!--{{role}}-->
-        <!--</div>-->
-      <!--</div>-->
     </div>
   </div>
 </card-template>

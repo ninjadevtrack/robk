@@ -5,7 +5,7 @@ import {HttpHelperService} from "../http-helper.service";
 import {ICompany} from "./model/company.model";
 
 @Injectable()
-export class GraphWatchListService {
+export class CompanyService {
 
   constructor(
       private _configService: ConfigService,
@@ -13,6 +13,10 @@ export class GraphWatchListService {
   ) { }
 
   public getCompanies(): Observable<ICompany[]> {
-    return this._httpHelper.get(true, this._configService.API.GraphWatchlist.default() );
+    return this._httpHelper.get(true, this._configService.API.Company.default() );
+  }
+
+  public ignoreCompany(id: number): Observable<any> {
+    return this._httpHelper.get(true, this._configService.API.Company.ignore(id) );
   }
 }

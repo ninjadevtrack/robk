@@ -2,7 +2,7 @@
   <div class="m-t-3xl">
     <div class="p-l-l p-r-l m-b-xl">
 
-      <form novalidate [formGroup]="form">
+      <form novalidate [formGroup]="form" class="m-b-l">
         <div class="flex-container">
           <div>
             <mat-form-field class="regular-field m-r-l">
@@ -26,21 +26,22 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field class="regular-field">
+            <mat-form-field class="regular-field m-r-l">
               <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="updateCompanyValuesToDisplay()">
                 <mat-option *ngFor="let tag of tags" [value]="tag">
                   {{ tag }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
+            <mat-checkbox formControlName="ignored" (change)="updateCompanyValuesToDisplay()">Ingored</mat-checkbox>
           </div>
         </div>
-        <div class="text-right m-t" *ngIf="filteredCompanyValuesCount > 0">
-          <small>Count {{ filteredCompanyValuesCount }}</small>
+        <div class="text-right m-t" *ngIf="!dataIsLoading">
+          <small>Count: {{ filteredCompanyValuesCount }}</small>
         </div>
       </form>
 
-      <mat-accordion displayMode="flat" multi class="mat-table m-t-l">
+      <mat-accordion displayMode="flat" multi class="mat-table">
         <section matSort class="mat-elevation-z2 mat-header-row">
           <span class="mat-header-cell" mat-sort-header="name">Name</span>
           <span class="mat-header-cell" mat-sort-header="CRM">CRM</span>
@@ -60,37 +61,51 @@
           <span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>
         </section>
 
-        <mat-expansion-panel [expanded]="true" *ngFor="let cv of companyValuesToDisplay$ | async">
+        <mat-expansion-panel [expanded]="true" *ngFor="let c of companiesToDisplay$ | async">
           <mat-expansion-panel-header class="mat-row">
             <span class="mat-cell">
-              <a href="{{cv.linkedinUrl}}" target="_blank">{{cv.name}}</a>
+              <a href="{{c.linkedinUrl}}" target="_blank">{{c.name}}</a>
             </span>
             <span class="mat-cell">
-              <a href="{{cv.crmLink}}" target="_blank">CRM</a>
+              <a href="{{c.crmLink}}" target="_blank">CRM</a>
             </span>
-            <span class="mat-cell">{{cv.maxEmp}}</span>
-            <span class="mat-cell">{{cv.mavgTrend}}%</span>
-            <span class="mat-cell">{{cv.weight}}</span>
-            <span class="mat-cell">{{cv.maTrend}}%</span>
-            <span class="mat-cell">{{cv.eng}}</span>
-            <span class="mat-cell">{{cv.sales}}</span>
-            <span class="mat-cell">{{cv.percentEng}}%</span>
-            <span class="mat-cell">{{cv.percentSales}}%</span>
-            <span class="mat-cell">{{cv.growth6Eng}}%</span>
-            <span class="mat-cell">{{cv.growth6Sales}}%</span>
-            <span class="mat-cell">{{cv.location}}</span>
-            <span class="mat-cell">{{cv.cbLastFundingDate}}</span>
-            <span class="mat-cell">{{cv.cbLastSeries}}</span>
-            <span class="mat-cell">{{cv.cbLastPremoneyUsd}}</span>
+            <span class="mat-cell">{{c.maxEmp}}</span>
+            <span class="mat-cell">{{c.mavgTrend}}%</span>
+            <span class="mat-cell">{{c.weight}}</span>
+            <span class="mat-cell">{{c.maTrend}}%</span>
+            <span class="mat-cell">{{c.eng}}</span>
+            <span class="mat-cell">{{c.sales}}</span>
+            <span class="mat-cell">{{c.percentEng}}%</span>
+            <span class="mat-cell">{{c.percentSales}}%</span>
+            <span class="mat-cell">{{c.growth6Eng}}%</span>
+            <span class="mat-cell">{{c.growth6Sales}}%</span>
+            <span class="mat-cell">{{c.location}}</span>
+            <span class="mat-cell">{{c.cbLastFundingDate}}</span>
+            <span class="mat-cell">{{c.cbLastSeries}}</span>
+            <span class="mat-cell">{{c.cbLastPremoneyUsd}}</span>
           </mat-expansion-panel-header>
-          <div class="m-b-l"><small>Tags: <em>{{cv.tags}}</em></small></div>
+          <div class="m-b-l" class="flex-container">
+            <div><small>Tags: <em>{{c.tags}}</em></small></div>
+            <div *ngIf="!c.ignore" class="text-right">
+              <button mat-button class="mat-primary" (click)="ignoreCompany(c)">
+                Ignore
+              </button>
+            </div>
+          </div>
           <div>
-            <a href="{{cv.graphBig}}" target="_blank"><img width="100%" src="{{cv.graphBig}}"></a>
+            <!--<a href="{{c.graphBig}}" target="_blank"><img width="100%" src="{{c.graphBig}}"></a>-->
+          </div>
+          <div>
+            <!-- Chart goes here -->
+            <app-chart [company]="c"></app-chart>
           </div>
           <!--<div><small><pre>{{c | json}}</pre></small></div>-->
         </mat-expansion-panel>
 
       </mat-accordion>
+
+      <mat-spinner *ngIf="dataIsLoading" class="m-t-2xl spinner"></mat-spinner>
+
     </div>
   </div>
 </div>

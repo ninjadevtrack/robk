@@ -1,0 +1,6 @@
+<div *ngIf="company && chart"
+     inViewport
+     [inViewportOptions]="{ threshold: [1000] }"
+     (inViewportAction)="onIntersection($event)">
+  <canvas class="chart" #canvas id="canvas_{{company.name}}">{{ chart }}</canvas>
+</div>

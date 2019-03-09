@@ -70,10 +70,13 @@ export class ConfigService {
                 return `${Consts.API_URL}/v1/clients/${id}/archive`;
             }
         },
-        GraphWatchlist: {
+        Company: {
             default: () => {
-                return `${Consts.API_URL}/v1/graphwatchlist`;
-            }
+                return `${Consts.API_URL}/v1/companies`;
+            },
+            ignore: (id) => {
+                return `${Consts.API_URL}/v1/companies/${id}/ignore`;
+            },
         }
     };
 

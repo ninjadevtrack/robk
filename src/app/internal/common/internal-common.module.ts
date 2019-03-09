@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import {
     MatAutocompleteModule,
     MatButtonModule,
-    MatCardModule, MatExpansionModule,
+    MatCardModule, MatCheckboxModule, MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule, MatListModule,
@@ -19,8 +19,10 @@ import {
 } from '@angular/material';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
-import { GraphWatchListComponent } from './graph-watch-list/graph-watch-list.component';
-import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-list.service";
+import { CompaniesComponent } from './companies/companies.component';
+import { CompanyService } from "../../core/graph-watch-list/company.service";
+import { ChartComponent } from './chart/chart/chart.component';
+import { InViewportModule } from "ng-in-viewport";
 
 @NgModule({
   imports: [
@@ -40,21 +42,25 @@ import { GraphWatchListService } from "../../core/graph-watch-list/graph-watch-l
       MatListModule,
       MatExpansionModule,
       MatSortModule,
+      MatCheckboxModule,
+      MatProgressSpinnerModule,
       MatAutocompleteModule,
       InternalCoreModule,
       ReactiveFormsModule,
+      InViewportModule
   ],
   declarations: [
       ProfileComponent,
       InternalHeaderComponent,
-      GraphWatchListComponent
+      CompaniesComponent,
+      ChartComponent
   ],
   exports: [
       ProfileComponent,
       InternalHeaderComponent
   ],
   providers: [
-      GraphWatchListService
+      CompanyService
   ]
 
 })

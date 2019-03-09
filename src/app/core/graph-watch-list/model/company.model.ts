@@ -1,9 +1,6 @@
-export interface ICompanyOptions {
-    classes: string;
-}
-
-export interface ICompanyValue {
+export interface ICompany {
     name: string;
+    cpId: number;
     linkedinUrl: string;
     crmLink: string;
     maxEmp: number;
@@ -14,6 +11,7 @@ export interface ICompanyValue {
     location: string;
     graph: string;
     graphBig: string;
+    data: any;
     eng: number;
     sales: number;
     percentEng: number;
@@ -23,9 +21,6 @@ export interface ICompanyValue {
     cbLastFundingDate: string;
     cbLastSeries: string;
     cbLastPremoneyUsd: string;
-}
-
-export interface ICompany {
-    options: ICompanyOptions;
-    value: ICompanyValue;
+    color: string;
+    ignore: boolean;
 }

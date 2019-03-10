@@ -43,6 +43,9 @@ export class ConfigService {
             profile: () => {
                 return `${Consts.API_URL}/v1/user/profile`;
             },
+            getAllAvailableRoles: () => {
+                return `${Consts.API_URL}/v1/user/getallavailableroles`;
+            },
             getAllActive: () => {
                 return `${Consts.API_URL}/v1/users/active`;
             },

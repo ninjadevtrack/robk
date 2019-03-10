@@ -7,11 +7,11 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { CoreModule } from '../../../core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatMenuModule,
-  MatTabsModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule, MatSelectModule,
+    MatTabsModule
 } from '@angular/material';
 import { InternalCoreModule } from '../../core/internal-core.module';
 import { UserAddComponent } from './user-add/user-add.component';
@@ -28,6 +28,7 @@ import { RouterModule } from "@angular/router";
       MatTabsModule,
       MatMenuModule,
       MatButtonModule,
+      MatSelectModule,
       CoreModule,
       InternalCoreModule
   ],

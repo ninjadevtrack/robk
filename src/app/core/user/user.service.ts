@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../common/config.service';
 import { Observable } from 'rxjs';
-import { UserModel, UsersResultModel } from './model/user.model';
+import { UserModel } from './model/user.model';
 import { HttpHelperService } from "../http-helper.service";
 
 @Injectable()
@@ -49,5 +49,9 @@ export class UserService {
 
     public archive(id: string): Observable<UserModel> {
         return this._httpHelper.get(true, this._configService.API.User.archive(id));
+    }
+
+    public getAllAvailableRoles(): Observable<string[]> {
+        return this._httpHelper.get(true, this._configService.API.User.getAllAvailableRoles());
     }
 }

@@ -10,7 +10,7 @@ import {MatDialog} from "@angular/material";
 import {IEntityService} from "../../../../core/entity-service.model";
 import {UserAddComponent} from "../user-add/user-add.component";
 import {UserEditComponent} from "../user-edit/user-edit.component";
-import {UserModel, UsersResultModel} from "../../../../core/user/model/user.model";
+import {UserModel} from "../../../../core/user/model/user.model";
 
 @Component({
     selector: 'user-list',

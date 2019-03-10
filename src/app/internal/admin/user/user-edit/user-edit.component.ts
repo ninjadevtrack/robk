@@ -36,7 +36,9 @@ export class UserEditComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
       lastName: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
       email: ['', [Validators.required, Validators.maxLength(60), NotSpacesStringValidator()]],
-      roles: [[], [Validators.required]]
+      roles: [[], [Validators.required]],
+      resetPassword: [false, [Validators.required]],
+      password: ['', []],
     });
 
     this._userService.getAllAvailableRoles().subscribe((roles: string[]) => {
@@ -69,6 +71,11 @@ export class UserEditComponent implements OnInit {
     userModel.email = this.form.controls['email'].value;
     userModel.roles = this.form.controls['roles'].value;
 
+    if (this.form.controls['resetPassword'].value === true) {
+      // @ts-ignore
+      userModel.password = this.form.controls['password'].value;
+    }
+
     return userModel;
   }
 
@@ -88,16 +95,7 @@ export class UserEditComponent implements OnInit {
     this.user = this.buildModelFromForm();
   }
 
-  firstNameChanged(event) {
-    console.log(event);
+  public resettingPassword() {
+    return this.form.controls['resetPassword'].value;
   }
-
-  lastNameChanged(event) {
-    console.log(event);
-  }
-
-  appealChanged(event) {
-    console.log(event);
-  }
-
 }

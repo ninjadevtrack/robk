@@ -8,9 +8,11 @@ import { CoreModule } from '../../../core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule, MatSelectModule,
+    MatMenuModule,
+    MatSelectModule,
     MatTabsModule
 } from '@angular/material';
 import { InternalCoreModule } from '../../core/internal-core.module';
@@ -29,6 +31,7 @@ import { RouterModule } from "@angular/router";
       MatMenuModule,
       MatButtonModule,
       MatSelectModule,
+      MatCheckboxModule,
       CoreModule,
       InternalCoreModule
   ],

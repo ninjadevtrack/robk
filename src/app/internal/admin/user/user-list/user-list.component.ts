@@ -47,6 +47,10 @@ export class UserListComponent extends EntityListComponentResolver implements On
         });
     }
 
+    public getTheEntities(): any[] {
+        return this.getEntities();
+    }
+
     public ngOnInit() {
         super.ngOnInit();
     }

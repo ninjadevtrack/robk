@@ -78,7 +78,7 @@ export class CompaniesComponent implements OnInit {
     });
   }
 
-  private updateCompanyValuesToDisplay() {
+  public updateCompanyValuesToDisplay() {
 
     const tags = this.form.controls['tags'].value;
     const cities = this.form.controls['cities'].value;

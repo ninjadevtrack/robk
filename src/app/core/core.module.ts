@@ -10,9 +10,12 @@ import { SmoothScrollService } from './smooth-scroll.service';
 import { WindowRefService } from './window.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ScalingService } from "./scaling/scaling.service";
+import { RouterModule } from "@angular/router";
+import {  AuthGuardService } from "./auth/auth-guard.service";
 
 @NgModule({
   imports: [
+      RouterModule,
       CommonModule,
       CoreCommonModule,
       HttpClientModule
@@ -26,6 +29,7 @@ import { ScalingService } from "./scaling/scaling.service";
       SmoothScrollService,
       WindowRefService,
       AuthService,
+      AuthGuardService,
       UserService,
       ScalingService
   ],

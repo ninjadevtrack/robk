@@ -11,9 +11,10 @@ import { InternalCommonModule } from './common/internal-common.module';
 import { CompaniesComponent } from "./common/companies/companies.component";
 import { UserViewComponent } from "./admin/user/user-view/user-view.component";
 import { UserEditComponent } from "./admin/user/user-edit/user-edit.component";
+import { AuthGuardService } from "../core/auth/auth-guard.service";
 
 const routes: Routes = [
-    { path: 'i', component: InternalEntryComponent,
+    { path: 'i', component: InternalEntryComponent, canActivate: [AuthGuardService],
         children: [
             { path: 'profile', component: ProfileComponent },
             { path: 'admin', component: AdminComponent,

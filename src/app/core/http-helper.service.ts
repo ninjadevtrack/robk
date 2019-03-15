@@ -33,7 +33,7 @@ export class HttpHelperService {
         return {
             headers: new HttpHeaders({
                 'Content-Type':  'application/json',
-                'Authorization': token
+                'Authorization': token || ''
             })
         };
     }

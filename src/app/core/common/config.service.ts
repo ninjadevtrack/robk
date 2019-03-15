@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../../environments/environment";
 
 export namespace Consts {
-    export const PROJECT_NAME: string = 'TECHTON PLANNER';
     export const API_URL: string = environment.apiURL;
     export const AUTH_TOKEN_KEY: string = 'ju_auth_token';
     export const USER_PERMISSIONS: string = 'ju_user_permissions';

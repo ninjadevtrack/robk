@@ -11,6 +11,10 @@ export class UserService {
 
     }
 
+    public validateToken(): Observable<any> {
+        return this._httpHelper.get(true, this._configService.API.Auth.validateToken());
+    }
+
     public profile(): Observable<UserModel> {
         return this._httpHelper.get(true, this._configService.API.User.profile());
     }

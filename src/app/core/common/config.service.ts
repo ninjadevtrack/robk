@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../../environments/environment";
 
 export namespace Consts {
-    export const PROJECT_NAME: string = 'TECHTON PLANNER';
     export const API_URL: string = environment.apiURL;
     export const AUTH_TOKEN_KEY: string = 'ju_auth_token';
     export const USER_PERMISSIONS: string = 'ju_user_permissions';
@@ -34,20 +33,29 @@ export class ConfigService {
             }
         },
         User: {
-            profile: () => {
-                return `${Consts.API_URL}/v1/user/profile`;
+            default: () => {
+                return `${Consts.API_URL}/v1/users`;
             },
             dafaultWithId: (id) => {
                 return `${Consts.API_URL}/v1/users/${id}`;
             },
-            getAll: () => {
-                return `${Consts.API_URL}/v1/users`;
+            profile: () => {
+                return `${Consts.API_URL}/v1/user/profile`;
+            },
+            getAllAvailableRoles: () => {
+                return `${Consts.API_URL}/v1/user/getallavailableroles`;
             },
             getAllActive: () => {
                 return `${Consts.API_URL}/v1/users/active`;
             },
             getAllArchived: () => {
                 return `${Consts.API_URL}/v1/users/archived`;
+            },
+            activate:  (id) => {
+                return `${Consts.API_URL}/v1/users/${id}/activate`;
+            },
+            archive:  (id) => {
+                return `${Consts.API_URL}/v1/users/${id}/archive`;
             }
         },
         Client: {

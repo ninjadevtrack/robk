@@ -37,14 +37,14 @@ export class UserMenuComponent implements OnInit {
     edit() {
         /*let dialogRef = this._dialog.open(TeamEditComponent, {
             data: {
-                teamId: this.model._id
+                teamId: this.user._id
             }
         });
 
         dialogRef.afterClosed().subscribe( (result) => {
 
             if(result.edited) {
-                this.onUserEvent.emit(this.model._id);
+                this.onUserEvent.emit(this.user._id);
             }
         });*/
     }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
-import { ClientModule } from './client/client.module';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 
@@ -9,7 +8,6 @@ import { RouterModule } from '@angular/router';
   imports: [
       CommonModule,
       RouterModule,
-      ClientModule,
       UserModule
   ],
   declarations: [
@@ -18,7 +16,6 @@ import { RouterModule } from '@angular/router';
   exports: [
       AdminComponent,
       UserModule,
-      ClientModule,
       UserModule
   ]
 })

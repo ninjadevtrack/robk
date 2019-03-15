@@ -20,7 +20,7 @@ import {
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CompaniesComponent } from './companies/companies.component';
-import { CompanyService } from "../../core/graph-watch-list/company.service";
+import { CompanyService } from "../../core/company/company.service";
 import { ChartComponent } from './chart/chart/chart.component';
 import { InViewportModule } from "ng-in-viewport";
 

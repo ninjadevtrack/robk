@@ -29,7 +29,7 @@ export class AuthService {
 
     public recoverPassword(recoverPasswordModel: RecoverPasswordModel): Observable<any> {
         return this._httpHelper.post(false, this._configService.API.Auth.recoverPwd(), recoverPasswordModel);
-    };
+    }
 
     public validateRecoveryPasswordToken(token: string): Observable<any> {
         return this._httpHelper.post(false, this._configService.API.Auth.validateRecoveryPwdToken(), {recoverPwdToken: token });

@@ -7,23 +7,31 @@ import { UserViewComponent } from './user-view/user-view.component';
 import { CoreModule } from '../../../core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatMenuModule,
-  MatTabsModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatTabsModule
 } from '@angular/material';
 import { InternalCoreModule } from '../../core/internal-core.module';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
       CommonModule,
+      RouterModule,
       ReactiveFormsModule,
       MatInputModule,
       MatFormFieldModule,
       MatTabsModule,
       MatMenuModule,
       MatButtonModule,
+      MatSelectModule,
+      MatCheckboxModule,
       CoreModule,
       InternalCoreModule
   ],
@@ -31,7 +39,9 @@ import { InternalCoreModule } from '../../core/internal-core.module';
       UserListComponent,
       UserMenuComponent,
       UserTableComponent,
-      UserViewComponent
+      UserViewComponent,
+      UserAddComponent,
+      UserEditComponent
   ],
   exports: [
       UserListComponent,
@@ -40,7 +50,9 @@ import { InternalCoreModule } from '../../core/internal-core.module';
       UserViewComponent
   ],
   entryComponents: [
-      UserViewComponent
+      UserViewComponent,
+      UserEditComponent,
+      UserAddComponent
   ]
 })
 export class UserModule { }

@@ -4,8 +4,8 @@ import {map} from 'rxjs/operators';
 import {Chart} from 'chart.js';
 import {MatSort, Sort} from '@angular/material';
 import {fromMatSort, sortRows} from './../../../core/datasource-utils';
-import {CompanyService} from "../../../core/graph-watch-list/company.service";
-import {ICompany} from "../../../core/graph-watch-list/model/company.model";
+import {CompanyService} from "../../../core/company/company.service";
+import {ICompany} from "../../../core/company/model/company.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import {EScaling} from "../../../core/scaling/scaling.enum";
@@ -78,7 +78,7 @@ export class CompaniesComponent implements OnInit {
     });
   }
 
-  private updateCompanyValuesToDisplay() {
+  public updateCompanyValuesToDisplay() {
 
     const tags = this.form.controls['tags'].value;
     const cities = this.form.controls['cities'].value;

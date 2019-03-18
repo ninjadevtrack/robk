@@ -16,6 +16,11 @@ import { AuthGuardService } from "../core/auth/auth-guard.service";
 const routes: Routes = [
     { path: 'i', component: InternalEntryComponent, canActivate: [AuthGuardService],
         children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'gwl'
+            },
             { path: 'profile', component: ProfileComponent },
             { path: 'admin', component: AdminComponent,
                 children: [

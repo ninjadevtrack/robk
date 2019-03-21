@@ -68,6 +68,6 @@ export class UserListComponent extends EntityListComponentResolver implements On
     }
 
     protected entityLabel(entity: UserModel) {
-        return `${entity.lastName} ${entity.firstName}`;
+        return `${entity.firstName} ${entity.lastName}`;
     }
 }

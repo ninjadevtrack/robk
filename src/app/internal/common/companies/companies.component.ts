@@ -5,7 +5,7 @@ import {Chart} from 'chart.js';
 import {MatSort, Sort} from '@angular/material';
 import {fromMatSort, sortRows} from './../../../core/datasource-utils';
 import {CompanyService} from "../../../core/company/company.service";
-import {ICompany} from "../../../core/company/model/company.model";
+import {ICompaniesResult, ICompany} from "../../../core/company/model/company.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {of} from "rxjs";
 import {EScaling} from "../../../core/scaling/scaling.enum";
@@ -29,6 +29,7 @@ export class CompaniesComponent implements OnInit {
   sortEvents$: Observable<Sort>;
   filteredCompanyValuesCount: number;
   dataIsLoading = false;
+  lastUpdated: Date;
 
   constructor(
       private _companyService: CompanyService,
@@ -52,15 +53,16 @@ export class CompaniesComponent implements OnInit {
     this.sortEvents$ = fromMatSort(this.sort);
     this.dataIsLoading = true;
 
-    this._companyService.getCompanies().subscribe((companies: ICompany[]) => {
+    this._companyService.getCompanies().subscribe((companiesResult: ICompaniesResult) => {
 
-      this.companies = companies;
+      this.companies = companiesResult.data;
+      this.lastUpdated = new Date(companiesResult.lastUpdated);
       this.updateCompanyValuesToDisplay();
       this.dataIsLoading = false;
 
       // Let's collect all unique tags and cities
       let tags, city;
-      companies.forEach(cmp => {
+      this.companies.forEach(cmp => {
         tags = cmp.tags.split(',').map(t => t.trim());
         tags.forEach(tag => {
           if (tag && !this.tags.includes(tag)) {

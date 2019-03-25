@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {ConfigService} from "../common/config.service";
 import {HttpHelperService} from "../http-helper.service";
-import {ICompany} from "./model/company.model";
+import {ICompaniesResult} from "./model/company.model";
 
 @Injectable()
 export class CompanyService {
@@ -12,7 +12,7 @@ export class CompanyService {
       private  _httpHelper: HttpHelperService
   ) { }
 
-  public getCompanies(): Observable<ICompany[]> {
+  public getCompanies(): Observable<ICompaniesResult> {
     return this._httpHelper.get(true, this._configService.API.Company.default() );
   }
 

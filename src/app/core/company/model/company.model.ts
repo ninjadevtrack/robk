@@ -24,3 +24,8 @@ export interface ICompany {
     color: string;
     ignore: boolean;
 }
+
+export interface ICompaniesResult {
+    data: ICompany[];
+    lastUpdated: string;
+}

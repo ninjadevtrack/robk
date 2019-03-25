@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="text-right m-t" *ngIf="!dataIsLoading">
-          <small>Count: {{ filteredCompanyValuesCount }}</small>
+          <small>Last updated: {{ lastUpdated | date:'short' }}. Count: {{ filteredCompanyValuesCount }}.</small>
         </div>
       </form>
 

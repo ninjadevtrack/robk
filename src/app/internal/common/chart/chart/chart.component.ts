@@ -51,6 +51,10 @@ export class ChartComponent implements OnInit, AfterViewInit {
         }
       }
     };
+
+    if (Array.isArray(this.chart)) {
+      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
+    }
   }
 
   ngAfterViewInit(): void {

@@ -19,13 +19,17 @@ export class ChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
+    const labels = this.company.data.map((d) => moment(d[0]).format('MM/YY'));
+    const data = this.company.data.map((d) => d[1]);
+    const backgroundColor = '#AAAAAA'; // this.getColor();
+
     this.data = {
       type: "line",
       data: {
-        labels: this.company.data.map((d) => moment(d[0]).format('MM/YY')),
+        labels,
         datasets: [{
           label: this.company.name,
-          data: this.company.data.map((d) => d[1]),
+          data,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           lineTension: 0.5
@@ -43,7 +47,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
           }]
         },
         chartArea: {
-          backgroundColor: this.getColor()
+          backgroundColor
         }
       }
     };

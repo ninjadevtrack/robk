@@ -21,7 +21,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
 
     const labels = this.company.data.map((d) => moment(d[0]).format('MM/YY'));
     const data = this.company.data.map((d) => d[1]);
-    const backgroundColor = '#AAAAAA'; // this.getColor();
+    const backgroundColor = this.getColor();
 
     this.data = {
       type: "line",
@@ -51,11 +51,6 @@ export class ChartComponent implements OnInit, AfterViewInit {
         }
       }
     };
-
-    if (Array.isArray(this.chart)) {
-      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
-      console.log(`Rendering chart for '${this.company.name}'`);
-    }
   }
 
   ngAfterViewInit(): void {

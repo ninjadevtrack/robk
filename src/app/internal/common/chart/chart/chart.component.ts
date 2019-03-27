@@ -54,6 +54,9 @@ export class ChartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
+    }, 10);
   }
 
   getColor() {

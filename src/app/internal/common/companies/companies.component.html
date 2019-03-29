@@ -56,6 +56,7 @@
           <!--<span class="mat-header-cell" mat-sort-header="sales">Sales H/C</span>-->
           <!--<span class="mat-header-cell" mat-sort-header="percentEng">H/C Eng%</span>-->
           <!--<span class="mat-header-cell" mat-sort-header="percentSales">H/C Sales%</span>-->
+
           <!--<span class="mat-header-cell" mat-sort-header="cbLastFundingDate">Since last rnd</span>-->
           <!--<span class="mat-header-cell" mat-sort-header="cbLastSeries">Last round</span>-->
           <!--<span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>-->
@@ -85,27 +86,31 @@
             <!--<span class="mat-cell">{{c.sales}}</span>-->
             <!--<span class="mat-cell">{{c.percentEng}}%</span>-->
             <!--<span class="mat-cell">{{c.percentSales}}%</span>-->
+
+
             <!--<span class="mat-cell">{{c.cbLastFundingDate}}</span>-->
             <!--<span class="mat-cell">{{c.cbLastSeries}}</span>-->
             <!--<span class="mat-cell">{{c.cbLastPremoneyUsd}}</span>-->
 
           </mat-expansion-panel-header>
-          <div class="m-b-l" class="flex-container">
-            <div><small>Tags: <em>{{c.tags}}</em></small></div>
-            <div *ngIf="!c.ignore" class="text-right">
-              <button mat-button class="mat-primary" (click)="ignoreCompany(c)">
-                Ignore
-              </button>
+
+          <div>
+            <div class="m-b-l" class="flex-container">
+              <div><small>Tags: <em>{{c.tags}}</em></small></div>
+              <div *ngIf="!c.ignore" class="text-right">
+                <button mat-button class="mat-primary" (click)="ignoreCompany(c)">
+                  Ignore
+                </button>
+              </div>
+            </div>
+            <div>
+              <!-- Chart goes here -->
+              <app-chart [company]="c"></app-chart>
+            </div>
+            <div class="m-t-xl m-b-2xl">
+              <app-company-details [company]="c"></app-company-details>
             </div>
           </div>
-          <div>
-            <!--<a href="{{c.graphBig}}" target="_blank"><img width="100%" src="{{c.graphBig}}"></a>-->
-          </div>
-          <div>
-            <!-- Chart goes here -->
-            <app-chart [company]="c"></app-chart>
-          </div>
-          <!--<div><small><pre>{{c | json}}</pre></small></div>-->
         </mat-expansion-panel>
 
       </mat-accordion>

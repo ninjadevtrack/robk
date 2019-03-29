@@ -46,7 +46,7 @@ export class CompaniesComponent implements OnInit {
       tags: [[], []],
       cities: [[], []],
       search: ['', []],
-      scaling: [EScaling.SEED, [Validators.required]],
+      scaling: [EScaling.SCALING, [Validators.required]],
       ignored: [false, [Validators.required]]
     });
 

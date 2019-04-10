@@ -75,14 +75,16 @@ export class ChartComponent implements OnInit, AfterViewInit {
         color = '#ffffff';
         break;
     }
-    
+
     return color;
   }
 
   onIntersection(event) {
     if (event.visible && Array.isArray(this.chart)) {
-      console.log(`Rendering ${this.company.name}`);
-      this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
+      setTimeout(() => {
+        console.log(`Rendering ${this.company.name}`);
+        this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
+      }, 200);
     }
   }
 

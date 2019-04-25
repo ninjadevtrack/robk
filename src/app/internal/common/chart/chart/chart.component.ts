@@ -84,7 +84,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
       setTimeout(() => {
         console.log(`Rendering ${this.company.name}`);
         this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
-      }, 500);
+      }, 250);
     }
   }
 

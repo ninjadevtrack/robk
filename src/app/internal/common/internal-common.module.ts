@@ -24,6 +24,7 @@ import { CompanyService } from "../../core/company/company.service";
 import { ChartComponent } from './chart/chart/chart.component';
 import { InViewportModule } from "ng-in-viewport";
 import { CompanyDetailsComponent } from "./company-details/company-details.component";
+import { ActivityFeedComponent } from './activity-feed/activity-feed.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { CompanyDetailsComponent } from "./company-details/company-details.compo
       InternalHeaderComponent,
       CompaniesComponent,
       ChartComponent,
-      CompanyDetailsComponent
+      CompanyDetailsComponent,
+      ActivityFeedComponent
   ],
   exports: [
       ProfileComponent,

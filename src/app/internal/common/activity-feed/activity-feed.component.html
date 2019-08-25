@@ -1,9 +1,11 @@
 <div class="m-t-6xl">
     <div class="m-t-3xl">
         <div class="p-l-l p-r-l m-b-xl">
-            <p>
-                activity-feed works!!
-            </p>
+            <div *ngIf="activities && activities.length > 0">
+                <div *ngFor="let scoreResult of activities">
+                    <div>{{ stringify(scoreResult) }}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

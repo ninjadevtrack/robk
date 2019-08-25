@@ -15,7 +15,10 @@ export class ActivityFeedComponent implements OnInit {
     ngOnInit() {
         this._activityFeedService.getFeed(100, 0).subscribe(activities => {
             this.activities = activities;
-            console.log(this.activities);
         });
+    }
+
+    stringify(obj: any): string {
+        return JSON.stringify(obj);
     }
 }

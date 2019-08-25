@@ -3,6 +3,8 @@ import * as stream from "getstream";
 import { Consts, ConfigService } from "../common/config.service";
 import { AuthStorageService } from "../common/auth-storage.service";
 import { Observable, from } from "rxjs";
+import { switchMap, mapTo, map } from "rxjs/operators";
+import { IScoreResult } from "./model/activity-feed.model";
 
 @Injectable()
 export class ActivityFeedService {
@@ -22,14 +24,27 @@ export class ActivityFeedService {
         );
     }
 
-    getFeed(limit, offset): Observable<any> {
+    getFeed(limit, offset): Observable<IScoreResult[]> {
         const getStreamSettings = this._configService.getGetStreamSettings();
 
         const feed = this.client.feed(
             getStreamSettings.MAIN_FEED.FEED_GROUP,
             getStreamSettings.MAIN_FEED.USER_ID
         );
-        return from(feed.get({ limit, offset }));
+
+        const r = from(feed.get({ limit, offset })).pipe(
+            map((obj: any) => {
+                return <IScoreResult[]>obj.results;
+            })
+        );
+        /*
+        const r = from(feed.get({ limit, offset })).pipe(
+            switchMap((res: any) => {
+                return <IScoreResult[]>res.results;
+            })
+        );*/
+
+        return r;
     }
 }
 

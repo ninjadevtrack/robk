@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivityFeedService } from "src/app/core/activity-feed/activity-feed.service";
+import { IScoreResult } from "src/app/core/activity-feed/model/activity-feed.model";
 
 @Component({
     selector: "app-activity-feed",
@@ -7,13 +8,13 @@ import { ActivityFeedService } from "src/app/core/activity-feed/activity-feed.se
     styleUrls: ["./activity-feed.component.scss"]
 })
 export class ActivityFeedComponent implements OnInit {
-    activities: any[];
+    activities: IScoreResult[];
 
     constructor(private _activityFeedService: ActivityFeedService) {}
 
     ngOnInit() {
-        this._activityFeedService.getFeed(100, 0).subscribe(res => {
-            this.activities = res.results;
+        this._activityFeedService.getFeed(100, 0).subscribe(activities => {
+            this.activities = activities;
             console.log(this.activities);
         });
     }

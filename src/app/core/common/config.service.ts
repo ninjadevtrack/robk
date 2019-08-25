@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
+import { GetStreamSettings } from "./models/get-stream-settings.model";
 
 export namespace Consts {
     export const API_URL: string = environment.apiURL;
@@ -8,6 +9,7 @@ export namespace Consts {
     export const USER_ROLES: string = "ju_user_roles";
     export const USER_PROFILE: string = "ju_user_profile";
     export const GET_STREAM_TOKEN: string = "get_stream_token";
+    export const GET_STREAM_SETTINGS: GetStreamSettings = environment.getStream;
 }
 
 @Injectable()

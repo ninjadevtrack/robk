@@ -7,11 +7,14 @@ import { ActivityFeedService } from "src/app/core/activity-feed/activity-feed.se
     styleUrls: ["./activity-feed.component.scss"]
 })
 export class ActivityFeedComponent implements OnInit {
+    activities: any[];
+
     constructor(private _activityFeedService: ActivityFeedService) {}
 
     ngOnInit() {
-        this._activityFeedService.getFeed(100, 0).subscribe(activities => {
-            console.log(activities);
+        this._activityFeedService.getFeed(100, 0).subscribe(res => {
+            this.activities = res.results;
+            console.log(this.activities);
         });
     }
 }

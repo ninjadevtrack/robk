@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
-import { GetStreamSettings } from "./models/get-stream-settings.model";
+import { IGetStreamSettings } from "./models/get-stream-settings.model";
 
 export namespace Consts {
     export const API_URL: string = environment.apiURL;
@@ -90,7 +90,7 @@ export class ConfigService {
         }
     };
 
-    public getGetStreamSettings(): GetStreamSettings {
+    public getGetStreamSettings(): IGetStreamSettings {
         return environment.getStream;
     }
 

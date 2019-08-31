@@ -8,13 +8,13 @@ import { IScoreResult } from "src/app/core/score-feed/model/score-feed.model";
     styleUrls: ["./score-feed.component.scss"]
 })
 export class ScoreFeedComponent implements OnInit {
-    activities: IScoreResult[];
+    scores: IScoreResult[];
 
     constructor(private _scoreFeedService: ScoreFeedService) {}
 
     ngOnInit() {
         this._scoreFeedService.getFeed(100, 0).subscribe(activities => {
-            this.activities = activities;
+            this.scores = activities;
         });
     }
 

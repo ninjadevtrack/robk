@@ -1,6 +1,6 @@
 <div class="score-card">
     <mat-card *ngIf="score && score.payload">
-        <div>
+        <div class="m-b-l">
             <a class="company-name" [href]="getLinkedInLink()">
                 {{ score.payload.message.name }}
             </a>
@@ -9,5 +9,17 @@
         <div class="main-message">
             {{ score.payload.message.growthEng }}
         </div>
+        <div class="flex-container">
+            <div class="column">
+                <p class="description">
+                    {{ score.payload.message.description }}
+                </p>
+                <p>Tags: {{ score.payload.tags }}</p>
+            </div>
+            <div class="column">
+                <p>Last funding: {{ score.payload.message.last_funding }}</p>
+            </div>
+        </div>
+        <div>{{ stringify(score.payload) }}</div>
     </mat-card>
 </div>

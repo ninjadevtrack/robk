@@ -13,6 +13,10 @@ export class ScoreComponent implements OnInit {
 
     ngOnInit() {}
 
+    getLinkedInLink() {
+        return `https://linkedin.com/company/${this.score.payload.message.linkedin_id}`;
+    }
+
     stringify(obj: any): string {
         return JSON.stringify(obj);
     }

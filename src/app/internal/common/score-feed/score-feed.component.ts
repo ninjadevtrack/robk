@@ -13,8 +13,9 @@ export class ScoreFeedComponent implements OnInit {
     constructor(private _scoreFeedService: ScoreFeedService) {}
 
     ngOnInit() {
-        this._scoreFeedService.getFeed(100, 0).subscribe(activities => {
-            this.scores = activities;
+        this._scoreFeedService.getFeed(100, 0).subscribe(scores => {
+            this.scores = scores;
+            console.log(this.scores);
         });
     }
 }

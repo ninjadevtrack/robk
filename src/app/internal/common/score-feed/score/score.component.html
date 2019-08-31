@@ -6,20 +6,37 @@
             </a>
             <span class="location">{{ score.payload.locationCity }}</span>
         </div>
-        <div class="main-message">
+        <div class="main-message m-b">
             {{ score.payload.message.growthEng }}
+        </div>
+        <div class="secondary-message">
+            {{ score.payload.message.overallGrowth }}
         </div>
         <div class="flex-container">
             <div class="column">
                 <p class="description">
                     {{ score.payload.message.description }}
                 </p>
-                <p>Tags: {{ score.payload.tags }}</p>
+                <p><i>Tags:</i> {{ score.payload.tags }}</p>
+                <a [href]="score.payload.website">{{
+                    score.payload.website
+                }}</a>
             </div>
             <div class="column">
-                <p>Last funding: {{ score.payload.message.last_funding }}</p>
+                <p>
+                    <i>Last funding:</i>
+                    {{ score.payload.message.last_funding }}
+                </p>
+                <p>
+                    <i>Latest headcount:</i>
+                    {{ score.payload.latestEmployeeCount }}
+                </p>
+                <p>
+                    <i>Score</i>:
+                    {{ score.payload.score }}
+                </p>
             </div>
         </div>
-        <div>{{ stringify(score.payload) }}</div>
+        <!-- <div>{{ stringify(score.payload) }}</div> -->
     </mat-card>
 </div>

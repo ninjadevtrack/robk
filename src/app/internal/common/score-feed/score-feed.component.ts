@@ -17,8 +17,4 @@ export class ScoreFeedComponent implements OnInit {
             this.scores = activities;
         });
     }
-
-    stringify(obj: any): string {
-        return JSON.stringify(obj);
-    }
 }

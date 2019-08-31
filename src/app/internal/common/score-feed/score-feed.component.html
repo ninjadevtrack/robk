@@ -3,7 +3,7 @@
         <div class="p-l-l p-r-l m-b-xl">
             <div *ngIf="scores && scores.length > 0">
                 <div *ngFor="let score of scores">
-                    <div>{{ stringify(score) }}</div>
+                    <app-score [score]="score"></app-score>
                 </div>
             </div>
         </div>

@@ -4,10 +4,10 @@ import { Consts, ConfigService } from "../common/config.service";
 import { AuthStorageService } from "../common/auth-storage.service";
 import { Observable, from } from "rxjs";
 import { switchMap, mapTo, map } from "rxjs/operators";
-import { IScoreResult } from "./model/activity-feed.model";
+import { IScoreResult } from "./model/score-feed.model";
 
 @Injectable()
-export class ActivityFeedService {
+export class ScoreFeedService {
     private client: stream.Client;
 
     constructor(

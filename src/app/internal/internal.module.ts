@@ -12,7 +12,7 @@ import { CompaniesComponent } from "./common/companies/companies.component";
 import { UserViewComponent } from "./admin/user/user-view/user-view.component";
 import { UserEditComponent } from "./admin/user/user-edit/user-edit.component";
 import { AuthGuardService } from "../core/auth/auth-guard.service";
-import { ActivityFeedComponent } from "./common/activity-feed/activity-feed.component";
+import { ScoreFeedComponent } from "./common/score-feed/score-feed.component";
 
 const routes: Routes = [
     {
@@ -35,7 +35,7 @@ const routes: Routes = [
                     { path: "users/:id/edit", component: UserEditComponent }
                 ]
             },
-            { path: "feed", component: ActivityFeedComponent },
+            { path: "feed", component: ScoreFeedComponent },
             { path: "gwl", component: CompaniesComponent }
         ]
     }

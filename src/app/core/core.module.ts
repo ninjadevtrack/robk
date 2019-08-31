@@ -13,7 +13,7 @@ import { ScalingService } from "./scaling/scaling.service";
 import { RouterModule } from "@angular/router";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { CompanyService } from "./company/company.service";
-import { ActivityFeedService } from "./activity-feed/activity-feed.service";
+import { ScoreFeedService } from "./score-feed/score-feed.service";
 
 @NgModule({
     imports: [RouterModule, CommonModule, CoreCommonModule, HttpClientModule],
@@ -29,7 +29,7 @@ import { ActivityFeedService } from "./activity-feed/activity-feed.service";
         UserService,
         ScalingService,
         CompanyService,
-        ActivityFeedService
+        ScoreFeedService
     ],
     exports: [CoreCommonModule]
 })

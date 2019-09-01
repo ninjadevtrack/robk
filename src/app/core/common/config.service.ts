@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
+import { IGetStreamSettings } from "./models/get-stream-settings.model";
 
 export namespace Consts {
     export const API_URL: string = environment.apiURL;
-    export const AUTH_TOKEN_KEY: string = 'ju_auth_token';
-    export const USER_PERMISSIONS: string = 'ju_user_permissions';
-    export const USER_ROLES: string = 'ju_user_roles';
-    export const USER_PROFILE: string = 'ju_user_profile';
+    export const AUTH_TOKEN_KEY: string = "ju_auth_token";
+    export const USER_PERMISSIONS: string = "ju_user_permissions";
+    export const USER_ROLES: string = "ju_user_roles";
+    export const USER_PROFILE: string = "ju_user_profile";
+    export const GET_STREAM_TOKEN: string = "get_stream_token";
 }
 
 @Injectable()
@@ -36,7 +38,7 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/users`;
             },
-            dafaultWithId: (id) => {
+            dafaultWithId: id => {
                 return `${Consts.API_URL}/v1/users/${id}`;
             },
             profile: () => {
@@ -51,10 +53,10 @@ export class ConfigService {
             getAllArchived: () => {
                 return `${Consts.API_URL}/v1/users/archived`;
             },
-            activate:  (id) => {
+            activate: id => {
                 return `${Consts.API_URL}/v1/users/${id}/activate`;
             },
-            archive:  (id) => {
+            archive: id => {
                 return `${Consts.API_URL}/v1/users/${id}/archive`;
             }
         },
@@ -62,7 +64,7 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/clients`;
             },
-            dafaultWithId: (id) => {
+            dafaultWithId: id => {
                 return `${Consts.API_URL}/v1/clients/${id}`;
             },
             getAllActive: () => {
@@ -71,10 +73,10 @@ export class ConfigService {
             getAllArchived: () => {
                 return `${Consts.API_URL}/v1/clients/archived`;
             },
-            activate:  (id) => {
+            activate: id => {
                 return `${Consts.API_URL}/v1/clients/${id}/activate`;
             },
-            archive:  (id) => {
+            archive: id => {
                 return `${Consts.API_URL}/v1/clients/${id}/archive`;
             }
         },
@@ -82,11 +84,15 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/companies`;
             },
-            ignore: (id) => {
+            ignore: id => {
                 return `${Consts.API_URL}/v1/companies/${id}/ignore`;
-            },
+            }
         }
     };
+
+    public getGetStreamSettings(): IGetStreamSettings {
+        return environment.getStream;
+    }
 
     constructor() {}
 }

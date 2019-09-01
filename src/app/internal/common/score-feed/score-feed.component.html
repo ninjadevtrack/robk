@@ -1,0 +1,11 @@
+<div class="m-t-6xl">
+    <div class="m-t-3xl">
+        <div class="p-l-l p-r-l m-b-xl">
+            <div *ngIf="scores && scores.length > 0">
+                <div *ngFor="let score of scores">
+                    <app-score [score]="score"></app-score>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

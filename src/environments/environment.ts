@@ -3,8 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiURL: 'http://localhost/api'
+    production: false,
+    apiURL: "http://localhost:4035/api",
+    getStream: {
+        API_KEY: "xtqgfc8rmy9v",
+        APP_ID: "57765",
+        MAIN_FEED: {
+            FEED_GROUP: "timeline",
+            USER_ID: "hoxtonVentures"
+        }
+    }
 };
 
 /*

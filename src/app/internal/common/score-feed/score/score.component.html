@@ -1,0 +1,48 @@
+<div class="score-card">
+    <mat-card *ngIf="score && score.payload">
+        <div class="m-b-l">
+            <a class="company-name" [href]="getLinkedInLink()">
+                {{ score.payload.message.name }}
+            </a>
+            <span class="location">{{ score.payload.locationCity }}</span>
+        </div>
+        <div class="main-message m-b">
+            {{ score.payload.message.growthEng }}
+        </div>
+        <div class="secondary-message m-b-l">
+            {{ score.payload.message.overallGrowth }}
+        </div>
+        <div class="flex-container">
+            <div class="column">
+                <p class="description">
+                    {{ score.payload.message.description }}
+                </p>
+                <p><i>Tags:</i> {{ score.payload.tags }}</p>
+                <a [href]="score.payload.website">{{
+                    score.payload.website
+                }}</a>
+            </div>
+            <div class="column">
+                <table class="score-table">
+                    <tbody>
+                        <tr>
+                            <td><mat-icon>attach_money</mat-icon></td>
+                            <td>{{ score.payload.message.last_funding }}</td>
+                        </tr>
+                        <tr>
+                            <td><mat-icon>people</mat-icon></td>
+                            <td>{{ score.payload.latestEmployeeCount }}</td>
+                        </tr>
+                        <tr>
+                            <td><mat-icon>trending_up</mat-icon></td>
+                            <td>{{ score.payload.score }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="text-right">
+            <i>{{ getHumanizedTimeAgo() }} ago</i>
+        </div>
+    </mat-card>
+</div>

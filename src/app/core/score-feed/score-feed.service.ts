@@ -9,6 +9,7 @@ import { IScoreResult } from "./model/score-feed.model";
 @Injectable()
 export class ScoreFeedService {
     private client: stream.Client;
+    private feed: stream.Feed;
 
     constructor(
         private _configService: ConfigService,
@@ -22,29 +23,19 @@ export class ScoreFeedService {
             getStreamToken,
             getStreamSettings.APP_ID
         );
-    }
 
-    getFeed(limit, offset): Observable<IScoreResult[]> {
-        const getStreamSettings = this._configService.getGetStreamSettings();
-
-        const feed = this.client.feed(
+        this.feed = this.client.feed(
             getStreamSettings.MAIN_FEED.FEED_GROUP,
             getStreamSettings.MAIN_FEED.USER_ID
         );
+    }
 
-        const r = from(feed.get({ limit, offset })).pipe(
+    getFeed(limit, offset): Observable<IScoreResult[]> {
+        return from(this.feed.get({ limit, offset })).pipe(
             map((obj: any) => {
                 return <IScoreResult[]>obj.results;
             })
         );
-        /*
-        const r = from(feed.get({ limit, offset })).pipe(
-            switchMap((res: any) => {
-                return <IScoreResult[]>res.results;
-            })
-        );*/
-
-        return r;
     }
 }
 

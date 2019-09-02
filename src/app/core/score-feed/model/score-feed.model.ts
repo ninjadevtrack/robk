@@ -32,3 +32,8 @@ export interface IScoreResult {
     time: string;
     verb: string;
 }
+
+export interface IScoreNotificationResult {
+    deleted: IScoreResult[];
+    new: IScoreResult[];
+}

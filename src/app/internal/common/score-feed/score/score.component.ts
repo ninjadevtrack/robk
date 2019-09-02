@@ -23,7 +23,7 @@ export class ScoreComponent implements OnInit {
     }
 
     getHumanizedTimeAgo() {
-        const scoreTime = moment(new Date(`${this.score.time}Z`)),
+        const scoreTime = moment(this.score.time),
             duration = moment.duration(scoreTime.diff(moment(new Date())));
 
         return duration.humanize();

@@ -2,13 +2,21 @@ import { Injectable } from "@angular/core";
 import * as stream from "getstream";
 import { Consts, ConfigService } from "../common/config.service";
 import { AuthStorageService } from "../common/auth-storage.service";
-import { Observable, from } from "rxjs";
-import { switchMap, mapTo, map } from "rxjs/operators";
-import { IScoreResult } from "./model/score-feed.model";
+import { Observable, from, Subject } from "rxjs";
+import { map } from "rxjs/operators";
+import {
+    IScoreResult,
+    IScoreNotificationResult
+} from "./model/score-feed.model";
 
 @Injectable()
 export class ScoreFeedService {
     private client: stream.Client;
+    private feed: stream.Feed;
+    private notificationsDS: Subject<IScoreNotificationResult> = new Subject<
+        IScoreNotificationResult
+    >();
+    notifications$: Observable<IScoreNotificationResult>;
 
     constructor(
         private _configService: ConfigService,
@@ -22,89 +30,47 @@ export class ScoreFeedService {
             getStreamToken,
             getStreamSettings.APP_ID
         );
-    }
 
-    getFeed(limit, offset): Observable<IScoreResult[]> {
-        const getStreamSettings = this._configService.getGetStreamSettings();
-
-        const feed = this.client.feed(
+        this.feed = this.client.feed(
             getStreamSettings.MAIN_FEED.FEED_GROUP,
             getStreamSettings.MAIN_FEED.USER_ID
         );
 
-        const r = from(feed.get({ limit, offset })).pipe(
+        this.notifications$ = this.notificationsDS.asObservable();
+
+        const notificationsCallback = (data: IScoreNotificationResult) => {
+            const res = {
+                ...data,
+                deleted: this.convert(data.deleted),
+                new: this.convert(data.new)
+            };
+            this.notificationsDS.next(res);
+        };
+
+        this.feed
+            .subscribe(notificationsCallback)
+            .then(
+                () =>
+                    console.log(
+                        `Listening to the feed notifications in realtime`
+                    ),
+                err => console.log(`Can't listen feed's notifications ${err}`)
+            );
+    }
+
+    private convert(results: any[]): IScoreResult[] {
+        const l = results.map(r => {
+            return <IScoreResult>{ ...r, time: new Date(`${r.time}Z`) };
+        });
+
+        return l;
+    }
+
+    getFeed(limit, offset): Observable<IScoreResult[]> {
+        return from(this.feed.get({ limit, offset })).pipe(
             map((obj: any) => {
-                return <IScoreResult[]>obj.results;
+                return <IScoreResult[]>this.convert(obj.results);
             })
         );
-        /*
-        const r = from(feed.get({ limit, offset })).pipe(
-            switchMap((res: any) => {
-                return <IScoreResult[]>res.results;
-            })
-        );*/
-
-        return r;
     }
 }
-
-/**
- * 
- * function getActivities(limit, offset) {
-    return Feed.get({ limit, offset });
-}
-
-module.exports = (streamClient, feedSettings) => {
-    Feed = streamClient.feed(feedSettings.feedGroup, feedSettings.userId);
-    FeedSettigns = feedSettings;
-
-    return {
-        addActivity,
-        getActivities
-    };
-};
-
- */
-
-/**
- * 
-
-import { StreamActivity } from './stream-activity';
-const APP_TOKEN = 'ejafvxbtfbz6';
-const APP_ID = '24870';
-const FEED_GROUP = 'conversation';
-const FEED_ID = 'conversation_9876';
-const FEED_TOKEN = 'qkrJTwSrK9-a1ZSmiGVJniWeTtY';
-const TOPIC_FEED_GROUP = 'topic_timeline';
-const TOPIC_FEED_ID = 'topic_123';
-const TOPIC_FEED_TOKEN = 'SSg7p93Fjpw_aqJe3l-oR8TC0oI';
-
-@Injectable()
-export class StreamClientService {
-  client: stream.Client;
-
-  constructor() {
-    // Instantiate a new client (client side)
-    this.client = stream.connect(APP_TOKEN, null, APP_ID);
-  }
-
-  getFeed(): Promise<StreamActivity[]> {
-    // Instantiate the feed via factory method
-    const feed = this.client.feed(FEED_GROUP, FEED_ID, FEED_TOKEN);
-
-    // Fetch the feed and pick the results property off the response object
-    return feed.get().then(response => response['results'])
-  }
-
-  addActivity(activity: StreamActivity): Promise<string> {
-    // Instantiate the feed via factory method
-    const feed = this.client.feed(FEED_GROUP, FEED_ID, FEED_TOKEN);
-    const addActivityPromise = feed.addActivity(activity)
-      .then(response => response['id']);
-
-    // return the promise resolution
-    return Promise.resolve(addActivityPromise);
-  }
-}
-
- */

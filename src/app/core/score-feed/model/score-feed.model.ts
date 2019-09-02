@@ -29,7 +29,7 @@ export interface IScoreResult {
     origin: any;
     payload: IScorePayload;
     target: string;
-    time: string;
+    time: Date;
     verb: string;
 }
 

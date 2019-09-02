@@ -38,8 +38,13 @@ export class ScoreFeedService {
 
         this.notifications$ = this.notificationsDS.asObservable();
 
-        const notificationsCallback = data => {
-            this.notificationsDS.next(data);
+        const notificationsCallback = (data: IScoreNotificationResult) => {
+            const res = {
+                ...data,
+                deleted: this.convert(data.deleted),
+                new: this.convert(data.new)
+            };
+            this.notificationsDS.next(res);
         };
 
         this.feed
@@ -53,10 +58,18 @@ export class ScoreFeedService {
             );
     }
 
+    private convert(results: any[]): IScoreResult[] {
+        const l = results.map(r => {
+            return <IScoreResult>{ ...r, time: new Date(`${r.time}Z`) };
+        });
+
+        return l;
+    }
+
     getFeed(limit, offset): Observable<IScoreResult[]> {
         return from(this.feed.get({ limit, offset })).pipe(
             map((obj: any) => {
-                return <IScoreResult[]>obj.results;
+                return <IScoreResult[]>this.convert(obj.results);
             })
         );
     }

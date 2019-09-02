@@ -30,6 +30,8 @@ export class ScoreFeedComponent implements OnInit {
     }
 
     addScores(scores: IScoreResult[]) {
-        this.scores = this.scores.concat(scores);
+        this.scores = this.scores.concat(scores).sort((a, b) => {
+            return b.time.getTime() - a.time.getTime();
+        });
     }
 }

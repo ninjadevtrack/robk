@@ -9,6 +9,7 @@ export interface ICompany {
     maTrend: number;
     tags: string;
     location: string;
+    calculatedLocation: string;
     graph: string;
     graphBig: string;
     data: any;

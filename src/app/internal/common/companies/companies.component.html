@@ -1,123 +1,195 @@
 <div class="m-t-6xl">
-  <div class="m-t-3xl">
-    <div class="p-l-l p-r-l m-b-xl">
+    <div class="m-t-3xl">
+        <div class="p-l-l p-r-l m-b-xl">
+            <form novalidate [formGroup]="form" class="m-b-l">
+                <div class="flex-container">
+                    <div>
+                        <mat-form-field class="regular-field m-r-l">
+                            <mat-select
+                                placeholder="Scaling"
+                                formControlName="scaling"
+                                (selectionChange)="
+                                    updateCompanyValuesToDisplay()
+                                "
+                            >
+                                <mat-option
+                                    *ngFor="let scaling of scalings"
+                                    [value]="scaling"
+                                >
+                                    {{ getScalingName(scaling) }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field
+                            class="regular-field m-r-l"
+                            (keyup)="updateCompanyValuesToDisplay()"
+                        >
+                            <input
+                                formControlName="search"
+                                name="search"
+                                matInput
+                                placeholder="Search"
+                            />
+                        </mat-form-field>
+                        <mat-form-field class="regular-field m-r-l">
+                            <mat-select
+                                placeholder="Cities"
+                                formControlName="cities"
+                                multiple
+                                (selectionChange)="
+                                    updateCompanyValuesToDisplay()
+                                "
+                            >
+                                <mat-option
+                                    *ngFor="let city of cities"
+                                    [value]="city"
+                                >
+                                    {{ city }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="regular-field m-r-l">
+                            <mat-select
+                                placeholder="Tags"
+                                formControlName="tags"
+                                multiple
+                                (selectionChange)="
+                                    updateCompanyValuesToDisplay()
+                                "
+                            >
+                                <mat-option
+                                    *ngFor="let tag of tags"
+                                    [value]="tag"
+                                >
+                                    {{ tag }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-checkbox
+                            formControlName="ignored"
+                            (change)="updateCompanyValuesToDisplay()"
+                            >Show Ignored Companies</mat-checkbox
+                        >
+                    </div>
+                </div>
+                <div
+                    class="text-right m-t"
+                    *ngIf="!dataIsLoading && lastUpdated"
+                >
+                    <small
+                        >Last updated: {{ lastUpdated | date: "short" }}. Count:
+                        {{ filteredCompanyValuesCount }}.</small
+                    >
+                </div>
+            </form>
 
-      <form novalidate [formGroup]="form" class="m-b-l">
-        <div class="flex-container">
-          <div>
-            <mat-form-field class="regular-field m-r-l">
-              <mat-select placeholder="Scaling" formControlName="scaling"  (selectionChange)="updateCompanyValuesToDisplay()">
-                <mat-option *ngFor="let scaling of scalings" [value]="scaling">
-                  {{ getScalingName(scaling) }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="regular-field m-r-l" (keyup)="updateCompanyValuesToDisplay()">
-              <input
-                      formControlName="search"
-                      name="search"
-                      matInput
-                      placeholder="Search">
-            </mat-form-field>
-            <mat-form-field class="regular-field m-r-l">
-              <mat-select placeholder="Cities" formControlName="cities" multiple (selectionChange)="updateCompanyValuesToDisplay()">
-                <mat-option *ngFor="let city of cities" [value]="city">
-                  {{ city }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="regular-field m-r-l">
-              <mat-select placeholder="Tags" formControlName="tags" multiple (selectionChange)="updateCompanyValuesToDisplay()">
-                <mat-option *ngFor="let tag of tags" [value]="tag">
-                  {{ tag }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-checkbox formControlName="ignored" (change)="updateCompanyValuesToDisplay()">Show Ignored Companies</mat-checkbox>
-          </div>
+            <mat-accordion displayMode="flat" multi class="mat-table">
+                <section matSort class="mat-elevation-z2 mat-header-row">
+                    <span class="mat-header-cell" mat-sort-header="name"
+                        >Name</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="mavgTrend"
+                        >3 mo Accel%</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="maTrend"
+                        >YoY H/C Gain%</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="weight"
+                        >Robscore</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="growth6Eng"
+                        >6mo Eng Growth%</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="growth6Sales"
+                        >6mo Sales Growth%</span
+                    >
+
+                    <!--<span class="mat-header-cell" mat-sort-header="CRM">CRM</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="maxEmp">Max H/C</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="eng">Eng H/C</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="sales">Sales H/C</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="percentEng">H/C Eng%</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="percentSales">H/C Sales%</span>-->
+
+                    <!--<span class="mat-header-cell" mat-sort-header="cbLastFundingDate">Since last rnd</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="cbLastSeries">Last round</span>-->
+                    <!--<span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>-->
+                </section>
+
+                <mat-expansion-panel
+                    [expanded]="true"
+                    *ngFor="let c of companiesToDisplay$ | async"
+                >
+                    <mat-expansion-panel-header class="mat-row">
+                        <span class="mat-cell">
+                            <div>
+                                <a href="{{ c.linkedinUrl }}" target="_blank">{{
+                                    c.name
+                                }}</a>
+                            </div>
+                            <div>
+                                <small
+                                    >{{ c.location }}
+                                    <span *ngIf="c.calculatedLocation"
+                                        >({{ c.calculatedLocation }})</span
+                                    ></small
+                                >
+                            </div>
+                        </span>
+                        <span class="mat-cell">{{ c.mavgTrend }}%</span>
+                        <span class="mat-cell">{{ c.maTrend }}%</span>
+                        <span class="mat-cell">{{ c.weight }}</span>
+                        <span class="mat-cell">{{ c.growth6Eng }}%</span>
+                        <span class="mat-cell">{{ c.growth6Sales }}%</span>
+
+                        <!--<span class="mat-cell">-->
+                        <!--<a href="{{c.crmLink}}" target="_blank">CRM</a>-->
+                        <!--</span>-->
+                        <!--<span class="mat-cell">{{c.maxEmp}}</span>-->
+                        <!--<span class="mat-cell">{{c.eng}}</span>-->
+                        <!--<span class="mat-cell">{{c.sales}}</span>-->
+                        <!--<span class="mat-cell">{{c.percentEng}}%</span>-->
+                        <!--<span class="mat-cell">{{c.percentSales}}%</span>-->
+
+                        <!--<span class="mat-cell">{{c.cbLastFundingDate}}</span>-->
+                        <!--<span class="mat-cell">{{c.cbLastSeries}}</span>-->
+                        <!--<span class="mat-cell">{{c.cbLastPremoneyUsd}}</span>-->
+                    </mat-expansion-panel-header>
+
+                    <div>
+                        <div class="m-b-l" class="flex-container">
+                            <div>
+                                <small
+                                    >Tags: <em>{{ c.tags }}</em></small
+                                >
+                            </div>
+                            <div *ngIf="!c.ignore" class="text-right">
+                                <button
+                                    mat-button
+                                    class="mat-primary"
+                                    (click)="ignoreCompany(c)"
+                                >
+                                    Ignore
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Chart goes here -->
+                            <app-chart [company]="c"></app-chart>
+                        </div>
+                        <div class="m-t-xl m-b-2xl">
+                            <app-company-details
+                                [company]="c"
+                            ></app-company-details>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-spinner
+                *ngIf="dataIsLoading"
+                class="m-t-2xl spinner"
+            ></mat-spinner>
         </div>
-        <div class="text-right m-t" *ngIf="!dataIsLoading && lastUpdated">
-          <small>Last updated: {{ lastUpdated | date:'short' }}. Count: {{ filteredCompanyValuesCount }}.</small>
-        </div>
-      </form>
-
-      <mat-accordion displayMode="flat" multi class="mat-table">
-        <section matSort class="mat-elevation-z2 mat-header-row">
-          <span class="mat-header-cell" mat-sort-header="name">Name</span>
-          <span class="mat-header-cell" mat-sort-header="mavgTrend">3 mo Accel%</span>
-          <span class="mat-header-cell" mat-sort-header="maTrend">YoY H/C Gain%</span>
-          <span class="mat-header-cell" mat-sort-header="weight">Robscore</span>
-          <span class="mat-header-cell" mat-sort-header="growth6Eng">6mo Eng Growth%</span>
-          <span class="mat-header-cell" mat-sort-header="growth6Sales">6mo Sales Growth%</span>
-
-          <!--<span class="mat-header-cell" mat-sort-header="CRM">CRM</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="maxEmp">Max H/C</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="eng">Eng H/C</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="sales">Sales H/C</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="percentEng">H/C Eng%</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="percentSales">H/C Sales%</span>-->
-
-          <!--<span class="mat-header-cell" mat-sort-header="cbLastFundingDate">Since last rnd</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="cbLastSeries">Last round</span>-->
-          <!--<span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>-->
-        </section>
-
-        <mat-expansion-panel [expanded]="true" *ngFor="let c of companiesToDisplay$ | async">
-          <mat-expansion-panel-header class="mat-row">
-            <span class="mat-cell">
-              <div>
-                <a href="{{c.linkedinUrl}}" target="_blank">{{c.name}}</a>
-              </div>
-              <div>
-                <small>{{c.location}}</small>
-              </div>
-            </span>
-            <span class="mat-cell">{{c.mavgTrend}}%</span>
-            <span class="mat-cell">{{c.maTrend}}%</span>
-            <span class="mat-cell">{{c.weight}}</span>
-            <span class="mat-cell">{{c.growth6Eng}}%</span>
-            <span class="mat-cell">{{c.growth6Sales}}%</span>
-
-            <!--<span class="mat-cell">-->
-            <!--<a href="{{c.crmLink}}" target="_blank">CRM</a>-->
-            <!--</span>-->
-            <!--<span class="mat-cell">{{c.maxEmp}}</span>-->
-            <!--<span class="mat-cell">{{c.eng}}</span>-->
-            <!--<span class="mat-cell">{{c.sales}}</span>-->
-            <!--<span class="mat-cell">{{c.percentEng}}%</span>-->
-            <!--<span class="mat-cell">{{c.percentSales}}%</span>-->
-
-
-            <!--<span class="mat-cell">{{c.cbLastFundingDate}}</span>-->
-            <!--<span class="mat-cell">{{c.cbLastSeries}}</span>-->
-            <!--<span class="mat-cell">{{c.cbLastPremoneyUsd}}</span>-->
-
-          </mat-expansion-panel-header>
-
-          <div>
-            <div class="m-b-l" class="flex-container">
-              <div><small>Tags: <em>{{c.tags}}</em></small></div>
-              <div *ngIf="!c.ignore" class="text-right">
-                <button mat-button class="mat-primary" (click)="ignoreCompany(c)">
-                  Ignore
-                </button>
-              </div>
-            </div>
-            <div>
-              <!-- Chart goes here -->
-              <app-chart [company]="c"></app-chart>
-            </div>
-            <div class="m-t-xl m-b-2xl">
-              <app-company-details [company]="c"></app-company-details>
-            </div>
-          </div>
-        </mat-expansion-panel>
-
-      </mat-accordion>
-
-      <mat-spinner *ngIf="dataIsLoading" class="m-t-2xl spinner"></mat-spinner>
-
     </div>
-  </div>
 </div>
-

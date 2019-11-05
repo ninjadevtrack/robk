@@ -26,16 +26,16 @@
                 <table class="score-table">
                     <tbody>
                         <tr>
+                            <td><mat-icon>trending_up</mat-icon></td>
+                            <td>{{ score.payload.score }}</td>
+                        </tr>
+                        <tr>
                             <td><mat-icon>attach_money</mat-icon></td>
                             <td>{{ score.payload.message.last_funding }}</td>
                         </tr>
                         <tr>
                             <td><mat-icon>people</mat-icon></td>
                             <td>{{ score.payload.latestEmployeeCount }}</td>
-                        </tr>
-                        <tr>
-                            <td><mat-icon>trending_up</mat-icon></td>
-                            <td>{{ score.payload.score }}</td>
                         </tr>
                     </tbody>
                 </table>

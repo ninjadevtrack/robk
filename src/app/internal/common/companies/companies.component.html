@@ -129,7 +129,9 @@
                             </div>
                             <div>
                                 <small
-                                    >{{ c.location }}
+                                    ><span *ngIf="c.location?.length > 3"
+                                        >({{ c.location }})</span
+                                    >
                                     <span *ngIf="c.calculatedLocation"
                                         >({{ c.calculatedLocation }})</span
                                     ></small

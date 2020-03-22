@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { AuthService } from "./auth/auth.service";
 import { CoreCommonModule } from "./common/core-common.module";
 import { UserService } from "./user/user.service";
-import { CustomBrowserXhr } from "./custom-browser-xhr.service";
 import { FakeStorage } from "./fake-storage";
 import { HttpHelperService } from "./http-helper.service";
 import { SmoothScrollService } from "./smooth-scroll.service";
@@ -19,7 +18,6 @@ import { ScoreFeedService } from "./score-feed/score-feed.service";
     imports: [RouterModule, CommonModule, CoreCommonModule, HttpClientModule],
     declarations: [],
     providers: [
-        CustomBrowserXhr,
         FakeStorage,
         HttpHelperService,
         SmoothScrollService,

@@ -1,20 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, Inject, OnInit } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+    selector: "app-confirm-dialog",
+    templateUrl: "./confirm-dialog.component.html",
+    styleUrls: ["./confirm-dialog.component.scss"]
 })
 export class ConfirmDialogComponent implements OnInit {
-
     constructor(
         public dialogRef: MatDialogRef<ConfirmDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
+    ) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     onCancel(): void {
         this.dialogRef.close({
@@ -27,5 +25,4 @@ export class ConfirmDialogComponent implements OnInit {
             confirmed: true
         });
     }
-
 }

@@ -8,7 +8,7 @@ import {
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Chart } from "chart.js";
-import { MatSort, Sort } from "@angular/material";
+import { MatSort, Sort } from "@angular/material/sort";
 import { fromMatSort, sortRows } from "./../../../core/datasource-utils";
 import { CompanyService } from "../../../core/company/company.service";
 import {

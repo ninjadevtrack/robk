@@ -1,6 +1,7 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { Observable, of, concat, combineLatest } from "rxjs";
-import { MatPaginator, MatSort, PageEvent, Sort } from "@angular/material";
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
+import { MatSort, Sort } from "@angular/material/sort";
 import {
     distinctUntilChanged,
     map,

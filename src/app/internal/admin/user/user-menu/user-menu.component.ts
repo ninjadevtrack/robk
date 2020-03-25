@@ -1,30 +1,20 @@
-import {
-    Component,
-    OnInit,
-    Input,
-    Output,
-    EventEmitter
-} from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { UserViewComponent } from '../user-view/user-view.component';
-import { UserModel } from '../../../../core/user/model/user.model';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { UserViewComponent } from "../user-view/user-view.component";
+import { UserModel } from "../../../../core/user/model/user.model";
 
 @Component({
-    selector: 'user-menu',
-    templateUrl: './user-menu.component.html',
-    styleUrls: ['./user-menu.component.css']
+    selector: "user-menu",
+    templateUrl: "./user-menu.component.html",
+    styleUrls: ["./user-menu.component.css"]
 })
 export class UserMenuComponent implements OnInit {
-
     @Input() model: UserModel;
     @Output() onUserEvent = new EventEmitter<string>();
 
-    constructor(
-        private _dialog: MatDialog
-    ) { }
+    constructor(private _dialog: MatDialog) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     view() {
         let dialogRef = this._dialog.open(UserViewComponent, {
@@ -48,5 +38,4 @@ export class UserMenuComponent implements OnInit {
             }
         });*/
     }
-
 }

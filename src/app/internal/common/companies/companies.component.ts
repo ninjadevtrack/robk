@@ -177,15 +177,17 @@ export class CompaniesComponent implements OnInit {
         return this._scalingSerivce.getScalingName(scaling);
     }
 
-    ignoreCompany(company: ICompany) {
-        this._companyService.ignoreCompany(company.cpId).subscribe(res => {
-            const index = this.companies.findIndex(
-                v => v.cpId === company.cpId
-            );
-            if (index !== -1) {
-                this.companies[index].ignore = true;
-                this.updateCompanyValuesToDisplay();
-            }
-        });
+    toggleIgnoreCompany(company: ICompany) {
+        this._companyService
+            .toggleIgnoreCompany(company.cpId)
+            .subscribe(res => {
+                const index = this.companies.findIndex(
+                    v => v.cpId === company.cpId
+                );
+                if (index !== -1) {
+                    this.companies[index].ignore = +res.ignore ? true : false;
+                    this.updateCompanyValuesToDisplay();
+                }
+            });
     }
 }

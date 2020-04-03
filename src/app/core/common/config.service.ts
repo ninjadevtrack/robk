@@ -84,8 +84,8 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/companies`;
             },
-            ignore: id => {
-                return `${Consts.API_URL}/v1/companies/${id}/ignore`;
+            toggleIgnore: id => {
+                return `${Consts.API_URL}/v1/companies/${id}/toggle-ignore`;
             }
         }
     };

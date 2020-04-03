@@ -103,17 +103,6 @@
                     <span class="mat-header-cell" mat-sort-header="growth6Sales"
                         >6mo Sales Growth%</span
                     >
-
-                    <!--<span class="mat-header-cell" mat-sort-header="CRM">CRM</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="maxEmp">Max H/C</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="eng">Eng H/C</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="sales">Sales H/C</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="percentEng">H/C Eng%</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="percentSales">H/C Sales%</span>-->
-
-                    <!--<span class="mat-header-cell" mat-sort-header="cbLastFundingDate">Since last rnd</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="cbLastSeries">Last round</span>-->
-                    <!--<span class="mat-header-cell" mat-sort-header="cbLastPremoneyUsd">Valuation</span>-->
                 </section>
 
                 <mat-expansion-panel
@@ -130,10 +119,11 @@
                             <div>
                                 <small
                                     ><span *ngIf="c.location?.length > 3"
-                                        >{{ c.location }} </span
-                                    >
+                                        >{{ c.location }}
+                                    </span>
                                     <span *ngIf="c.calculatedLocation"
-                                        >(Weighted: {{ c.calculatedLocation }})</span
+                                        >(Weighted:
+                                        {{ c.calculatedLocation }})</span
                                     ></small
                                 >
                             </div>
@@ -143,19 +133,6 @@
                         <span class="mat-cell">{{ c.weight }}</span>
                         <span class="mat-cell">{{ c.growth6Eng }}%</span>
                         <span class="mat-cell">{{ c.growth6Sales }}%</span>
-
-                        <!--<span class="mat-cell">-->
-                        <!--<a href="{{c.crmLink}}" target="_blank">CRM</a>-->
-                        <!--</span>-->
-                        <!--<span class="mat-cell">{{c.maxEmp}}</span>-->
-                        <!--<span class="mat-cell">{{c.eng}}</span>-->
-                        <!--<span class="mat-cell">{{c.sales}}</span>-->
-                        <!--<span class="mat-cell">{{c.percentEng}}%</span>-->
-                        <!--<span class="mat-cell">{{c.percentSales}}%</span>-->
-
-                        <!--<span class="mat-cell">{{c.cbLastFundingDate}}</span>-->
-                        <!--<span class="mat-cell">{{c.cbLastSeries}}</span>-->
-                        <!--<span class="mat-cell">{{c.cbLastPremoneyUsd}}</span>-->
                     </mat-expansion-panel-header>
 
                     <div>
@@ -165,13 +142,13 @@
                                     >Tags: <em>{{ c.tags }}</em></small
                                 >
                             </div>
-                            <div *ngIf="!c.ignore" class="text-right">
+                            <div class="text-right">
                                 <button
                                     mat-button
                                     class="mat-primary"
-                                    (click)="ignoreCompany(c)"
+                                    (click)="toggleIgnoreCompany(c)"
                                 >
-                                    Ignore
+                                    {{ c.ignore ? "Undo Ignore" : "Ignore" }}
                                 </button>
                             </div>
                         </div>

@@ -43,6 +43,7 @@ export class CompaniesComponent implements OnInit {
     filteredCompanyValuesCount: number;
     dataIsLoading = false;
     lastUpdated: Date;
+    companiesIgnoreBeingUpdated = {};
 
     constructor(
         private _companyService: CompanyService,
@@ -178,9 +179,11 @@ export class CompaniesComponent implements OnInit {
     }
 
     toggleIgnoreCompany(company: ICompany) {
+        this.companiesIgnoreBeingUpdated[company.cpId] = true;
         this._companyService
             .toggleIgnoreCompany(company.cpId)
             .subscribe(res => {
+                this.companiesIgnoreBeingUpdated[company.cpId] = false;
                 const index = this.companies.findIndex(
                     v => v.cpId === company.cpId
                 );
@@ -189,5 +192,9 @@ export class CompaniesComponent implements OnInit {
                     this.updateCompanyValuesToDisplay();
                 }
             });
+    }
+
+    isIgnoreBeingUpdated(company: ICompany) {
+        return this.companiesIgnoreBeingUpdated[company.cpId];
     }
 }

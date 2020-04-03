@@ -144,12 +144,20 @@
                             </div>
                             <div class="text-right">
                                 <button
+                                    *ngIf="!isIgnoreBeingUpdated(c)"
                                     mat-button
                                     class="mat-primary"
                                     (click)="toggleIgnoreCompany(c)"
                                 >
                                     {{ c.ignore ? "Undo Ignore" : "Ignore" }}
                                 </button>
+                                <span *ngIf="isIgnoreBeingUpdated(c)">
+                                    {{
+                                        c.ignore
+                                            ? "Undoing Ignore..."
+                                            : "Ignoring..."
+                                    }}
+                                </span>
                             </div>
                         </div>
                         <div>

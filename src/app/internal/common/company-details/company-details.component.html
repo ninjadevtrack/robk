@@ -30,19 +30,19 @@
     </ng-container>
 
     <ng-container matColumnDef="cbLastFundingDate">
-        <th mat-header-cell *matHeaderCellDef>Since last rnd</th>
+        <th mat-header-cell *matHeaderCellDef>Days snc last rnd</th>
         <td mat-cell *matCellDef="let company">
             {{ company.cbLastFundingDate }}
         </td>
     </ng-container>
 
     <ng-container matColumnDef="cbLastSeries">
-        <th mat-header-cell *matHeaderCellDef>Last round</th>
+        <th mat-header-cell *matHeaderCellDef>Last series</th>
         <td mat-cell *matCellDef="let company">{{ company.cbLastSeries }}</td>
     </ng-container>
 
     <ng-container matColumnDef="cbLastPremoneyUsd">
-        <th mat-header-cell *matHeaderCellDef>Valuation</th>
+        <th mat-header-cell *matHeaderCellDef>Last val.</th>
         <td mat-cell *matCellDef="let company">
             {{ company.cbLastPremoneyUsd }}
         </td>

@@ -24,6 +24,9 @@ export interface ICompany {
     cbLastPremoneyUsd: string;
     color: string;
     ignore: boolean;
+    robscore: number;
+    educationScore: number;
+    cpWebsite: string;
 }
 
 export interface ICompaniesResult {

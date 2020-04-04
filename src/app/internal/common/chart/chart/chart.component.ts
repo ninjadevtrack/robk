@@ -4,7 +4,7 @@ import {
     OnInit,
     ViewChild,
     Input,
-    AfterViewInit
+    AfterViewInit,
 } from "@angular/core";
 import { Chart } from "chart.js";
 import { ICompany } from "../../../../core/company/model/company.model";
@@ -13,7 +13,7 @@ import * as moment from "moment";
 @Component({
     selector: "app-chart",
     templateUrl: "./chart.component.html",
-    styleUrls: ["./chart.component.scss"]
+    styleUrls: ["./chart.component.scss"],
 })
 export class ChartComponent implements OnInit, AfterViewInit {
     @ViewChild("canvas", { static: false }) canvas: ElementRef;
@@ -24,8 +24,24 @@ export class ChartComponent implements OnInit, AfterViewInit {
     constructor() {}
 
     ngOnInit() {
-        const labels = this.company.data.map(d => moment(d[0]).format("MM/YY"));
-        const data = this.company.data.map(d => d[1]);
+        const labels = this.company.data.map((d) =>
+            moment(d[0]).format("MM/YY")
+        );
+        const data = this.company.data.map((d) => d[1]);
+        const max = data.reduce((acc, v) => {
+            if (v > acc) {
+                acc = v;
+            }
+            return acc;
+        }, -Infinity);
+
+        const ticksObject = {
+            suggestedMin: 0, // minimum will be 0, unless there is a lower value.,
+        };
+        if (max <= 10) {
+            ticksObject.stepSize = 1;
+        }
+
         const backgroundColor = this.getColor();
 
         this.data = {
@@ -38,9 +54,9 @@ export class ChartComponent implements OnInit, AfterViewInit {
                         data,
                         fill: false,
                         borderColor: "rgb(75, 192, 192)",
-                        lineTension: 0.5
-                    }
-                ]
+                        lineTension: 0.5,
+                    },
+                ],
             },
             options: {
                 animation: false,
@@ -49,16 +65,14 @@ export class ChartComponent implements OnInit, AfterViewInit {
                     yAxes: [
                         {
                             display: true,
-                            ticks: {
-                                suggestedMin: 0 // minimum will be 0, unless there is a lower value.
-                            }
-                        }
-                    ]
+                            ticks: ticksObject,
+                        },
+                    ],
                 },
                 chartArea: {
-                    backgroundColor
-                }
-            }
+                    backgroundColor,
+                },
+            },
         };
     }
 

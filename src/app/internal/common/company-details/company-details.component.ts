@@ -10,7 +10,6 @@ export class CompanyDetailsComponent implements OnInit {
     @Input() company: ICompany;
     displayedColumns: string[] = [
         "crmLink",
-        "maxEmp",
         "eng",
         "sales",
         "percentEng",

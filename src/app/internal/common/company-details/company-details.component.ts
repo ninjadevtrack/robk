@@ -9,7 +9,6 @@ import { ICompany } from "../../../core/company/model/company.model";
 export class CompanyDetailsComponent implements OnInit {
     @Input() company: ICompany;
     displayedColumns: string[] = [
-        "crmLink",
         "eng",
         "sales",
         "percentEng",

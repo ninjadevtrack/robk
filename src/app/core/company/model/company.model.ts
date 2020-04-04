@@ -26,6 +26,7 @@ export interface ICompany {
     ignore: boolean;
     robscore: number;
     educationScore: number;
+    cpWebsite: string;
 }
 
 export interface ICompaniesResult {

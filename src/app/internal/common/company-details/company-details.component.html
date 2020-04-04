@@ -6,7 +6,9 @@
         <th mat-header-cell *matHeaderCellDef>
             <a href="{{ company.crmLink }}" target="_blank">CRM</a>
         </th>
-        <td mat-cell *matCellDef="let company">{{ company.maxEmp }}</td>
+        <td mat-cell *matCellDef="let company">
+            <a [href]="company.cpWebsite" target="_blank">Homepage</a>
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="eng">

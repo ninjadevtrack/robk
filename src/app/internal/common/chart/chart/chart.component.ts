@@ -35,11 +35,16 @@ export class ChartComponent implements OnInit, AfterViewInit {
             return acc;
         }, -Infinity);
 
-        const ticksObject = {
-            suggestedMin: 0, // minimum will be 0, unless there is a lower value.,
-        };
+        let ticksObject;
         if (max <= 10) {
-            ticksObject.stepSize = 1;
+            ticksObject = {
+                suggestedMin: 0, // minimum will be 0, unless there is a lower value.,
+                stepSize: 1,
+            };
+        } else {
+            ticksObject = {
+                suggestedMin: 0, // minimum will be 0, unless there is a lower value.,
+            };
         }
 
         const backgroundColor = this.getColor();

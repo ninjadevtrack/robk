@@ -21,6 +21,7 @@ import { of } from "rxjs";
 import { EScaling } from "../../../core/scaling/scaling.enum";
 import { ScalingService } from "../../../core/scaling/scaling.service";
 import { ChartService } from "../../../core/common/chart.service";
+import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({
     selector: "app-companies",
@@ -45,16 +46,17 @@ export class CompaniesComponent implements OnInit {
     isDataLoading = false;
     lastUpdated: Date;
     companiesIgnoreBeingUpdated = {};
-    pageSize = 10;
+    pageSize = 25;
     pageIndex = 0;
-    pageSizeOptions: number[] = [5, 10, 25, 100];
+    pageSizeOptions: number[] = [10, 25, 50, 100];
 
     constructor(
         private _companyService: CompanyService,
         private _scalingSerivce: ScalingService,
         private _formBuilder: FormBuilder,
         private _elementRef: ElementRef,
-        private _chartService: ChartService
+        private _chartService: ChartService,
+        private _smoothScrollService: SmoothScrollService
     ) {}
 
     ngOnInit() {
@@ -209,7 +211,8 @@ export class CompaniesComponent implements OnInit {
 
     onPage(pageEvent: PageEvent) {
         this.pageIndex = pageEvent.pageIndex;
+        this.pageSize = pageEvent.pageSize;
         this.updateCompanyValuesToDisplay();
-        console.log(pageEvent);
+        this._smoothScrollService.scrollTo(0, 0);
     }
 }

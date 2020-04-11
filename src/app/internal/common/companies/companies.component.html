@@ -184,6 +184,7 @@
             </mat-accordion>
 
             <mat-paginator
+                *ngIf="!isDataLoading"
                 [length]="filteredCompanyValuesCount"
                 [pageSize]="pageSize"
                 [pageSizeOptions]="pageSizeOptions"

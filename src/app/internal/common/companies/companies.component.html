@@ -74,7 +74,7 @@
                 </div>
                 <div
                     class="text-right m-t"
-                    *ngIf="!dataIsLoading && lastUpdated"
+                    *ngIf="!isDataLoading && lastUpdated"
                 >
                     <small
                         >Last updated: {{ lastUpdated | date: "short" }}. Count:
@@ -183,8 +183,16 @@
                 </mat-expansion-panel>
             </mat-accordion>
 
+            <mat-paginator
+                [length]="filteredCompanyValuesCount"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="onPage($event)"
+            >
+            </mat-paginator>
+
             <mat-spinner
-                *ngIf="dataIsLoading"
+                *ngIf="isDataLoading"
                 class="m-t-2xl spinner"
             ></mat-spinner>
         </div>

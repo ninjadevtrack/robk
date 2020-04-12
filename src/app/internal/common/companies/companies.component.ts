@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Chart } from "chart.js";
 import { MatSort, Sort } from "@angular/material/sort";
+import { PageEvent } from "@angular/material/paginator";
 import { fromMatSort, sortRows } from "./../../../core/datasource-utils";
 import { CompanyService } from "../../../core/company/company.service";
 import {
@@ -20,6 +21,7 @@ import { of } from "rxjs";
 import { EScaling } from "../../../core/scaling/scaling.enum";
 import { ScalingService } from "../../../core/scaling/scaling.service";
 import { ChartService } from "../../../core/common/chart.service";
+import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({
     selector: "app-companies",
@@ -40,17 +42,21 @@ export class CompaniesComponent implements OnInit {
     companiesToDisplay$: Observable<ICompany[]>;
     form: FormGroup;
     sortEvents$: Observable<Sort>;
-    filteredCompanyValuesCount: number;
-    dataIsLoading = false;
+    filteredCompanyValuesCount: number = 0;
+    isDataLoading = false;
     lastUpdated: Date;
     companiesIgnoreBeingUpdated = {};
+    pageSize = 25;
+    pageIndex = 0;
+    pageSizeOptions: number[] = [10, 25, 50, 100];
 
     constructor(
         private _companyService: CompanyService,
         private _scalingSerivce: ScalingService,
         private _formBuilder: FormBuilder,
         private _elementRef: ElementRef,
-        private _chartService: ChartService
+        private _chartService: ChartService,
+        private _smoothScrollService: SmoothScrollService
     ) {}
 
     ngOnInit() {
@@ -63,7 +69,7 @@ export class CompaniesComponent implements OnInit {
         });
 
         this.sortEvents$ = fromMatSort(this.sort);
-        this.dataIsLoading = true;
+        this.isDataLoading = true;
 
         this._companyService
             .getCompanies()
@@ -71,7 +77,7 @@ export class CompaniesComponent implements OnInit {
                 this.companies = companiesResult.data;
                 this.lastUpdated = new Date(companiesResult.lastUpdated);
                 this.updateCompanyValuesToDisplay();
-                this.dataIsLoading = false;
+                this.isDataLoading = false;
 
                 // Let's collect all unique tags and cities
                 let tags, city;
@@ -170,7 +176,12 @@ export class CompaniesComponent implements OnInit {
 
                 return filteredCompanies;
             }),
-            sortRows(this.sortEvents$)
+            sortRows(this.sortEvents$),
+            map((co: ICompany[]) => {
+                const start = this.pageIndex * this.pageSize;
+                const end = this.pageSize * (1 + this.pageIndex);
+                return co.slice(start, end);
+            })
         );
     }
 
@@ -196,5 +207,12 @@ export class CompaniesComponent implements OnInit {
 
     isIgnoreBeingUpdated(company: ICompany) {
         return this.companiesIgnoreBeingUpdated[company.cpId];
+    }
+
+    onPage(pageEvent: PageEvent) {
+        this.pageIndex = pageEvent.pageIndex;
+        this.pageSize = pageEvent.pageSize;
+        this.updateCompanyValuesToDisplay();
+        this._smoothScrollService.scrollTo(0, 0);
     }
 }

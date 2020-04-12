@@ -5,7 +5,6 @@ export interface ICompany {
     crmLink: string;
     maxEmp: number;
     mavgTrend: number;
-    weight: number;
     maTrend: number;
     tags: string;
     location: string;

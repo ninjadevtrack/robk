@@ -183,19 +183,22 @@
                 </mat-expansion-panel>
             </mat-accordion>
 
-            <mat-paginator
-                *ngIf="!isDataLoading"
-                [length]="filteredCompanyValuesCount"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="onPage($event)"
-            >
-            </mat-paginator>
-
             <mat-spinner
                 *ngIf="isDataLoading"
                 class="m-t-2xl spinner"
             ></mat-spinner>
+        </div>
+        <div class="m-t-xl m-b-2xl m-l-l m-r-l mat-elevation-z8">
+            <div class="flex-container justify-content-space-evenly">
+                <mat-paginator
+                    *ngIf="!isDataLoading"
+                    [length]="filteredCompanyValuesCount"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="onPage($event)"
+                >
+                </mat-paginator>
+            </div>
         </div>
     </div>
 </div>

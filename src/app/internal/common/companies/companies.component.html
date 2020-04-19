@@ -141,14 +141,23 @@
                                         >Tags: <em>{{ c.tags }}</em></small
                                     >
                                 </div>
-                                <div>
+                                <div class="m-t">
                                     <small>
-                                        <a [href]="c.crmLink" target="_blank"
-                                            >CRM</a
-                                        >&nbsp;
-                                        <a [href]="c.cpWebsite" target="_blank"
-                                            >Homepage</a
+                                        <a
+                                            [href]="c.crmLink"
+                                            target="_blank"
+                                            class="p-r-xl"
                                         >
+                                            <img
+                                                height="25"
+                                                src="/assets/img/capsule-crm.svg"
+                                            />
+                                        </a>
+                                        <a [href]="c.cpWebsite" target="_blank"
+                                            ><img
+                                                height="25"
+                                                src="/assets/img/homepage.png"
+                                        /></a>
                                     </small>
                                 </div>
                             </div>
@@ -183,19 +192,22 @@
                 </mat-expansion-panel>
             </mat-accordion>
 
-            <mat-paginator
-                *ngIf="!isDataLoading"
-                [length]="filteredCompanyValuesCount"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="onPage($event)"
-            >
-            </mat-paginator>
-
             <mat-spinner
                 *ngIf="isDataLoading"
                 class="m-t-2xl spinner"
             ></mat-spinner>
+        </div>
+        <div class="m-t-xl m-b-2xl m-l-l m-r-l mat-elevation-z8">
+            <div class="flex-container justify-content-space-evenly">
+                <mat-paginator
+                    *ngIf="!isDataLoading"
+                    [length]="filteredCompanyValuesCount"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="onPage($event)"
+                >
+                </mat-paginator>
+            </div>
         </div>
     </div>
 </div>

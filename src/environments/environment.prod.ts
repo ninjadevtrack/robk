@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiURL: "https://dev.hoxtonventures.com:4035/api",
+    apiURL: "https://dev.hoxtonventures.com/api",
     getStream: {
         API_KEY: "xtqgfc8rmy9v",
         APP_ID: "57765",

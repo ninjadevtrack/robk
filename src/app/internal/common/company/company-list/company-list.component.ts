@@ -189,6 +189,10 @@ export class CompanyListComponent implements OnInit {
         return this._scalingSerivce.getScalingName(scaling);
     }
 
+    getUrlSlug(company: ICompany) {
+        return this._companyService.getUrlSlug(company);
+    }
+
     toggleIgnoreCompany(company: ICompany) {
         this.companiesIgnoreBeingUpdated[company.cpId] = true;
         this._companyService

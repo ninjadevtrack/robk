@@ -10,17 +10,17 @@ import { map } from "rxjs/operators";
 import { Chart } from "chart.js";
 import { MatSort, Sort } from "@angular/material/sort";
 import { PageEvent } from "@angular/material/paginator";
-import { fromMatSort, sortRows } from "./../../../core/datasource-utils";
-import { CompanyService } from "../../../core/company/company.service";
+import { fromMatSort, sortRows } from "../../../../core/datasource-utils";
+import { CompanyService } from "../../../../core/company/company.service";
 import {
     ICompaniesResult,
     ICompany
-} from "../../../core/company/model/company.model";
+} from "../../../../core/company/model/company.model";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { of } from "rxjs";
-import { EScaling } from "../../../core/scaling/scaling.enum";
-import { ScalingService } from "../../../core/scaling/scaling.service";
-import { ChartService } from "../../../core/common/chart.service";
+import { EScaling } from "../../../../core/scaling/scaling.enum";
+import { ScalingService } from "../../../../core/scaling/scaling.service";
+import { ChartService } from "../../../../core/common/chart.service";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({

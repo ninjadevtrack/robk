@@ -28,6 +28,7 @@ import { CompanyDetailsComponent } from "./company/company-details/company-detai
 import { ScoreFeedComponent } from "./score-feed/score-feed.component";
 import { CoreModule } from "src/app/core/core.module";
 import { ScoreComponent } from "./score-feed/score/score.component";
+import { CompanyViewComponent } from './company/company-view/company-view.component';
 
 @NgModule({
     imports: [
@@ -62,7 +63,8 @@ import { ScoreComponent } from "./score-feed/score/score.component";
         ChartComponent,
         CompanyDetailsComponent,
         ScoreFeedComponent,
-        ScoreComponent
+        ScoreComponent,
+        CompanyViewComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

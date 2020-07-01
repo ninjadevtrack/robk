@@ -84,6 +84,9 @@ export class ConfigService {
             default: () => {
                 return `${Consts.API_URL}/v1/companies`;
             },
+            getByLIUrlSlug: urlSlug => {
+                return `${Consts.API_URL}/v1/companies/${urlSlug}`;
+            },
             toggleIgnore: id => {
                 return `${Consts.API_URL}/v1/companies/${id}/toggle-ignore`;
             }

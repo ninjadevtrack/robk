@@ -108,8 +108,6 @@ export class ChartComponent implements OnInit, AfterViewInit {
     onIntersection(event) {
         if (event.visible && Array.isArray(this.chart)) {
             setTimeout(() => {
-                console.log(`Rendering ${this.company.name}`);
-                console.log(this.canvas);
                 this.chart = new Chart(
                     this.canvas.nativeElement.getContext("2d"),
                     this.data

@@ -21,7 +21,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CompaniesComponent } from "./company/companies/companies.component";
+import { CompanyListComponent } from "./company/company-list/company-list.component";
 import { ChartComponent } from "./company/chart/chart.component";
 import { InViewportModule } from "ng-in-viewport";
 import { CompanyDetailsComponent } from "./company/company-details/company-details.component";
@@ -58,7 +58,7 @@ import { ScoreComponent } from "./score-feed/score/score.component";
     declarations: [
         ProfileComponent,
         InternalHeaderComponent,
-        CompaniesComponent,
+        CompanyListComponent,
         ChartComponent,
         CompanyDetailsComponent,
         ScoreFeedComponent,

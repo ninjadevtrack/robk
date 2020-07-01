@@ -24,11 +24,11 @@ import { ChartService } from "../../../../core/common/chart.service";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({
-    selector: "app-companies",
-    templateUrl: "./companies.component.html",
-    styleUrls: ["./companies.component.scss"]
+    selector: "app-company-list",
+    templateUrl: "./company-list.component.html",
+    styleUrls: ["./company-list.component.scss"]
 })
-export class CompaniesComponent implements OnInit {
+export class CompanyListComponent implements OnInit {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     companies: ICompany[] = [];
     tags: string[] = [];

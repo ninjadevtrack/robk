@@ -19,13 +19,15 @@
             <div class="m-t-l">
                 <app-kpi-card
                     [name]="'3mo h/c Δ'"
-                    [value]="company.mavgTrend + '%'"
+                    [value]="company.mavgTrend"
+                    [percentageMode]="true"
                 ></app-kpi-card>
             </div>
             <div class="m-t-l">
                 <app-kpi-card
                     [name]="'12mo h/c Δ'"
-                    [value]="company.maTrend + '%'"
+                    [value]="company.maTrend"
+                    [percentageMode]="true"
                 ></app-kpi-card>
             </div>
             <div class="m-t-l">
@@ -101,12 +103,14 @@
                 <app-kpi-card
                     [name]="'6mo eng Δ'"
                     [value]="company.growth6Eng"
+                    [percentageMode]="true"
                 ></app-kpi-card>
             </div>
             <div>
                 <app-kpi-card
                     [name]="'6mo sales Δ'"
                     [value]="company.growth6Sales"
+                    [percentageMode]="true"
                 ></app-kpi-card>
             </div>
         </div>

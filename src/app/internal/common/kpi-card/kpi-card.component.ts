@@ -8,8 +8,16 @@ import { Component, OnInit, Input } from "@angular/core";
 export class KpiCardComponent implements OnInit {
     @Input() name: any;
     @Input() value: any;
+    @Input() percentageMode: boolean = false;
 
     constructor() {}
 
     ngOnInit(): void {}
+
+    getValueToShow(): string {
+        if (!this.value) {
+            return "-";
+        }
+        return this.percentageMode ? this.value + "%" : this.value;
+    }
 }

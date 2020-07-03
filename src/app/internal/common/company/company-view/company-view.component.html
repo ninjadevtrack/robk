@@ -1,10 +1,45 @@
-<div class="m-t-6xl">
+<div class="m-t-6xl company-view">
     <card-template *ngIf="company">
-        <div class="flex-container">
+        <div class="flex-container m-b-l">
             <div class="flex-container-left">
-                <h1>{{ company?.name }}</h1>
+                <div>
+                    <h1>{{ company?.name }}</h1>
+                    <div>
+                        <small>
+                            <span *ngIf="company.location?.length > 3"
+                                >{{ company.location }}
+                            </span>
+                            <span *ngIf="company.calculatedLocation"
+                                >(Weighted: {{ company.calculatedLocation }})
+                            </span>
+                        </small>
+                    </div>
+                </div>
             </div>
-            <div></div>
+            <div class="m-t-l">
+                <app-kpi-card
+                    [name]="'3mo h/c Δ'"
+                    [value]="company.mavgTrend"
+                ></app-kpi-card>
+            </div>
+            <div class="m-t-l">
+                <app-kpi-card
+                    [name]="'12mo h/c Δ'"
+                    [value]="company.maTrend"
+                ></app-kpi-card>
+            </div>
+            <div class="m-t-l">
+                <app-kpi-card
+                    [name]="'Robscore'"
+                    [value]="company.robscore"
+                ></app-kpi-card>
+            </div>
+            <div class="m-t-l">
+                <app-kpi-card
+                    [name]="'EduScore'"
+                    [value]="company.educationScore"
+                ></app-kpi-card>
+            </div>
         </div>
         <div>
             <app-chart [company]="company"></app-chart>

@@ -1,828 +1,839 @@
 /* this file will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
-@import 'assets/styles/variables';
-@import './../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "assets/styles/variables";
+@import "./../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "./../node_modules/normalize.css/normalize.css";
 
-html, body {
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto','Segoe UI', sans-serif;
+    font-family: "Roboto", "Segoe UI", sans-serif;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 body {
-  margin: 0px;
-  color: $font-color;
-  background-color: rgba(104, 59, 182, 0.03);
-  font-weight: 100;
-  font-size: $font-size-standard;
-  line-height: 1.2;
+    margin: 0px;
+    color: $font-color;
+    background-color: rgba(104, 59, 182, 0.03);
+    font-weight: 100;
+    font-size: $font-size-standard;
+    line-height: 1.2;
 }
 
 h1 {
-  color: $font-color;
+    color: $font-color;
 }
 
-h1, h2, h3, h4, h5 {
-  font-weight: 100;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 100;
 }
 
 a {
-  color: $mat-color-500;
-  text-decoration: none;
+    color: $mat-color-500;
+    text-decoration: none;
 }
 
 a:hover {
-  color: $mat-color-500;
+    color: $mat-color-500;
 }
 
 nav a {
-  color: rgba(255, 255, 255, 0.5);
-  padding: 8px 16px;
-  margin: 8px;
-  vertical-align: middle;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 100;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 8px 16px;
+    margin: 8px;
+    vertical-align: middle;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 100;
 }
 
 nav a:hover {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .font-weight-100 {
-  font-weight: 100;
+    font-weight: 100;
 }
 
 .font-weight-300 {
-  font-weight: 300;
+    font-weight: 300;
 }
 
 .font-weight-400 {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 .font-color-pale {
-  color: $font-color-pale;
+    color: $font-color-pale;
 }
 
 .mat-card {
-  color: $font-color;
+    color: $font-color;
 }
 
 .logo a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .m-l {
-  margin-left: $offset-size-standard;
+    margin-left: $offset-size-standard;
 }
 
 .m-r {
-  margin-right: $offset-size-standard;
+    margin-right: $offset-size-standard;
 }
 
 .m-t {
-  margin-top: $offset-size-standard;
+    margin-top: $offset-size-standard;
 }
 
 .m-b {
-  margin-bottom: $offset-size-standard;
+    margin-bottom: $offset-size-standard;
 }
 
 .m-l-s {
-  margin-left: $offset-size-s;
+    margin-left: $offset-size-s;
 }
 
 .m-r-s {
-  margin-right: $offset-size-s;
+    margin-right: $offset-size-s;
 }
 
 .m-t-s {
-  margin-top: $offset-size-s;
+    margin-top: $offset-size-s;
 }
 
 .m-b-s {
-  margin-bottom: $offset-size-s;
+    margin-bottom: $offset-size-s;
 }
 
 .m-l-l {
-  margin-left: $offset-size-l;
+    margin-left: $offset-size-l;
 }
 
 .m-r-l {
-  margin-right: $offset-size-l;
+    margin-right: $offset-size-l;
 }
 
 .m-t-l {
-  margin-top: $offset-size-l;
+    margin-top: $offset-size-l;
 }
 
 .m-b-l {
-  margin-bottom: $offset-size-l;
+    margin-bottom: $offset-size-l;
 }
 
 .m-l-xl {
-  margin-left: $offset-size-xl;
+    margin-left: $offset-size-xl;
 }
 
 .m-r-xl {
-  margin-right: $offset-size-xl;
+    margin-right: $offset-size-xl;
 }
 
 .m-t-xl {
-  margin-top: $offset-size-xl;
+    margin-top: $offset-size-xl;
 }
 
 .m-b-xl {
-  margin-bottom: $offset-size-xl;
+    margin-bottom: $offset-size-xl;
 }
 
 .m-l-2xl {
-  margin-left: $offset-size-2xl;
+    margin-left: $offset-size-2xl;
 }
 
 .m-r-2xl {
-  margin-right: $offset-size-2xl;
+    margin-right: $offset-size-2xl;
 }
 
 .m-t-2xl {
-  margin-top: $offset-size-2xl;
+    margin-top: $offset-size-2xl;
 }
 
 .m-b-2xl {
-  margin-bottom: $offset-size-2xl;
+    margin-bottom: $offset-size-2xl;
 }
 
 .m-l-3xl {
-  margin-left: $offset-size-3xl;
+    margin-left: $offset-size-3xl;
 }
 
 .m-r-3xl {
-  margin-right: $offset-size-3xl;
+    margin-right: $offset-size-3xl;
 }
 
 .m-t-3xl {
-  margin-top: $offset-size-3xl;
+    margin-top: $offset-size-3xl;
 }
 
 .m-b-3xl {
-  margin-bottom: $offset-size-3xl;
+    margin-bottom: $offset-size-3xl;
 }
 
 .m-b-4xl {
-  margin-bottom: $offset-size-4xl;
+    margin-bottom: $offset-size-4xl;
 }
 
 .m-b-5xl {
-  margin-bottom: $offset-size-5xl;
+    margin-bottom: $offset-size-5xl;
 }
 
 .m-l-4xl {
-  margin-left: $offset-size-4xl;
+    margin-left: $offset-size-4xl;
 }
 
 .m-r-4xl {
-  margin-right: $offset-size-4xl;
+    margin-right: $offset-size-4xl;
 }
 
 .m-t-4xl {
-  margin-top: $offset-size-4xl;
+    margin-top: $offset-size-4xl;
 }
 
 .m-b-4xl {
-  margin-bottom: $offset-size-4xl;
+    margin-bottom: $offset-size-4xl;
 }
 
 .m-l-5xl {
-  margin-left: $offset-size-5xl;
+    margin-left: $offset-size-5xl;
 }
 
 .m-r-5xl {
-  margin-right: $offset-size-5xl;
+    margin-right: $offset-size-5xl;
 }
 
 .m-t-5xl {
-  margin-top: $offset-size-5xl;
+    margin-top: $offset-size-5xl;
 }
 
 .m-b-5xl {
-  margin-bottom: $offset-size-5xl;
+    margin-bottom: $offset-size-5xl;
 }
 
 .m-l-6xl {
-  margin-left: $offset-size-6xl;
+    margin-left: $offset-size-6xl;
 }
 
 .m-r-6xl {
-  margin-right: $offset-size-6xl;
+    margin-right: $offset-size-6xl;
 }
 
 .m-t-6xl {
-  margin-top: $offset-size-6xl;
+    margin-top: $offset-size-6xl;
 }
 
 .m-b-6xl {
-  margin-bottom: $offset-size-6xl;
+    margin-bottom: $offset-size-6xl;
 }
 
 .m-l-0 {
-  margin-left: $offset-size-0;
+    margin-left: $offset-size-0;
 }
 
 .m-r-0 {
-  margin-right: $offset-size-0;
+    margin-right: $offset-size-0;
 }
 
 .m-t-0 {
-  margin-top: $offset-size-0;
+    margin-top: $offset-size-0;
 }
 
 .m-b-0 {
-  margin-bottom: $offset-size-0;
+    margin-bottom: $offset-size-0;
 }
 
 .m-l-xs {
-  margin-left: $offset-size-xs;
+    margin-left: $offset-size-xs;
 }
 
 .m-r-xs {
-  margin-right: $offset-size-xs;
+    margin-right: $offset-size-xs;
 }
 
 .m-t-xs {
-  margin-top: $offset-size-xs;
+    margin-top: $offset-size-xs;
 }
 
 .m-b-xs {
-  margin-bottom: $offset-size-xs;
+    margin-bottom: $offset-size-xs;
 }
 
 .p-l {
-  padding-left: $offset-size-standard;
+    padding-left: $offset-size-standard;
 }
 
 .p-r {
-  padding-right: $offset-size-standard;
+    padding-right: $offset-size-standard;
 }
 
 .p-t {
-  padding-top: $offset-size-standard;
+    padding-top: $offset-size-standard;
 }
 
 .p-b {
-  padding-bottom: $offset-size-standard;
+    padding-bottom: $offset-size-standard;
 }
 
 .p-l-s {
-  padding-left: $offset-size-s;
+    padding-left: $offset-size-s;
 }
 
 .p-r-s {
-  padding-right: $offset-size-s;
+    padding-right: $offset-size-s;
 }
 
 .p-t-s {
-  padding-top: $offset-size-s;
+    padding-top: $offset-size-s;
 }
 
 .p-b-s {
-  padding-bottom: $offset-size-s;
+    padding-bottom: $offset-size-s;
 }
 
 .p-l-l {
-  padding-left: $offset-size-l;
+    padding-left: $offset-size-l;
 }
 
 .p-r-l {
-  padding-right: $offset-size-l;
+    padding-right: $offset-size-l;
 }
 
 .p-t-l {
-  padding-top: $offset-size-l;
+    padding-top: $offset-size-l;
 }
 
 .p-b-l {
-  padding-bottom: $offset-size-l;
+    padding-bottom: $offset-size-l;
 }
 
 .p-l-xl {
-  padding-left: $offset-size-xl;
+    padding-left: $offset-size-xl;
 }
 
 .p-r-xl {
-  padding-right: $offset-size-xl;
+    padding-right: $offset-size-xl;
 }
 
 .p-t-xl {
-  padding-top: $offset-size-xl;
+    padding-top: $offset-size-xl;
 }
 
 .p-b-xl {
-  padding-bottom: $offset-size-xl;
+    padding-bottom: $offset-size-xl;
 }
 
 .p-l-2xl {
-  padding-left: $offset-size-2xl;
+    padding-left: $offset-size-2xl;
 }
 
 .p-r-2xl {
-  padding-right: $offset-size-2xl;
+    padding-right: $offset-size-2xl;
 }
 
 .p-t-2xl {
-  padding-top: $offset-size-2xl;
+    padding-top: $offset-size-2xl;
 }
 
 .p-b-2xl {
-  padding-bottom: $offset-size-2xl;
+    padding-bottom: $offset-size-2xl;
 }
 
 .p-l-3xl {
-  padding-left: $offset-size-3xl;
+    padding-left: $offset-size-3xl;
 }
 
 .p-r-3xl {
-  padding-right: $offset-size-3xl;
+    padding-right: $offset-size-3xl;
 }
 
 .p-t-3xl {
-  padding-top: $offset-size-3xl;
+    padding-top: $offset-size-3xl;
 }
 
 .p-b-3xl {
-  padding-bottom: $offset-size-3xl;
+    padding-bottom: $offset-size-3xl;
 }
 
 .public-menu {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .text-left {
-  text-align: left;
+    text-align: left;
 }
 
 .text-right {
-  text-align: right;
+    text-align: right;
 }
 
 .font-size-l {
-  font-size: $font-size-l;
+    font-size: $font-size-l;
 }
 
 .font-size-xl {
-  font-size: $font-size-xl;
+    font-size: $font-size-xl;
 }
 
 .font-size-2xl {
-  font-size: $font-size-2xl;
+    font-size: $font-size-2xl;
 }
 
 .justifying-containter {
-  display: flex;
-  flex-wrap: wrap;
-  text-align:center;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
 }
 
 .message {
-  background-color: $mat-color-50;
-  padding-top: $offset-size-xs;
-  padding-left: $offset-size-s;
-  padding-right: $offset-size-s;
-  padding-bottom: $offset-size-xs;
-  width: 100%;
-  max-width: 338px;
-  border: 1px dashed $mat-color-300;
+    background-color: $mat-color-50;
+    padding-top: $offset-size-xs;
+    padding-left: $offset-size-s;
+    padding-right: $offset-size-s;
+    padding-bottom: $offset-size-xs;
+    width: 100%;
+    max-width: 338px;
+    border: 1px dashed $mat-color-300;
 }
 
 .public-field {
-  height: 48px;
-  width: $control-width-standard;
-  max-width: $control-width-s;
+    height: 48px;
+    width: $control-width-standard;
+    max-width: $control-width-s;
 }
 
 .public-card {
-  width: 420px;
-  max-width: 420px;
+    width: 420px;
+    max-width: 420px;
 }
 
 .button-l {
-  height: 48px;
-  width: $control-width-standard;
-  max-width: $control-width-s;
+    height: 48px;
+    width: $control-width-standard;
+    max-width: $control-width-s;
 }
 
 .main-menu-public {
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  right: 0;
-  top: 0;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .field-error-block {
-  margin-top: $offset-size-xs;
-  margin-bottom: $offset-size-0;
-  color: $mat-color-w500;
-  text-align: left;
+    margin-top: $offset-size-xs;
+    margin-bottom: $offset-size-0;
+    color: $mat-color-w500;
+    text-align: left;
 }
 
 .form-error-block {
-  padding: $offset-size-l $offset-size-l;
-  color: $mat-color-w500;
-  text-align: left;
-  background-color: $mat-color-w50;
+    padding: $offset-size-l $offset-size-l;
+    color: $mat-color-w500;
+    text-align: left;
+    background-color: $mat-color-w50;
 }
 
 .form-info-block {
-  padding: $offset-size-l $offset-size-l;
-  text-align: left;
-  background-color: $mat-color-50;
+    padding: $offset-size-l $offset-size-l;
+    text-align: left;
+    background-color: $mat-color-50;
 }
 
 .main-menu-nested-item {
-  min-width: 200px;
+    min-width: 200px;
 }
 
 .data-field {
-  font-weight: 100;
-  font-size: $font-size-l;
-  margin-bottom: $offset-size-xl;
+    font-weight: 100;
+    font-size: $font-size-l;
+    margin-bottom: $offset-size-xl;
 }
 
 .data-field-header {
-  font-size: $font-size-s;
-  margin-bottom: $offset-size-xs;
-  color: $font-color-pale;
+    font-size: $font-size-s;
+    margin-bottom: $offset-size-xs;
+    color: $font-color-pale;
 }
 
 .data-field-data {
-  font-size: $font-size-standard;
+    font-size: $font-size-standard;
 }
 
 .data-field-small {
-  font-weight: 100;
-  font-size: $font-size-s;
-  margin-bottom: $offset-size-l;
+    font-weight: 100;
+    font-size: $font-size-s;
+    margin-bottom: $offset-size-l;
 }
 
 .data-field-small .header {
-  font-size: $font-size-xs;
-  margin-bottom: $offset-size-xs;
-  color: $font-color-pale;
+    font-size: $font-size-xs;
+    margin-bottom: $offset-size-xs;
+    color: $font-color-pale;
 }
 
 .data-field-small .data {
-  font-size: $font-size-standard;
+    font-size: $font-size-standard;
 }
 
 .secondary-menu {
-  text-align: center;
-  font-family: Roboto;
+    text-align: center;
+    font-family: Roboto;
 }
 
 .secondary-menu a {
-  padding-right: $offset-size-2xl;
-  color: $mat-color-500;
-  font-size: $font-size-xl;
-  font-weight: 100;
-  line-height: 1.5;
-  text-decoration: none;
+    padding-right: $offset-size-2xl;
+    color: $mat-color-500;
+    font-size: $font-size-xl;
+    font-weight: 100;
+    line-height: 1.5;
+    text-decoration: none;
 }
 
 .default-min-height {
-  min-height: 800px;
+    min-height: 800px;
 }
 
 u {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .active-alt {
-  color: white;
+    color: white;
 }
 
 .active u {
-  text-decoration: none;
-  padding-bottom: 4px;
-  border-bottom: 1px solid $mat-color-500;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $mat-color-500;
 }
 
 .archived-item {
-  color: $mat-color-w200;
+    color: $mat-color-w200;
 }
 
 .active-item {
-  color: $mat-color-a800;
+    color: $mat-color-a800;
 }
 
 // table
 .flex-table table {
-  border: 1px solid $table-border-color;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
+    border: 1px solid $table-border-color;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
 }
 .flex-table table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
+    font-size: 1.5em;
+    margin: 0.5em 0 0.75em;
 }
 .flex-table table tr {
-  background: white;
-  border: 1px solid $table-border-color;
-  padding: .35em;
+    background: white;
+    border: 1px solid $table-border-color;
+    padding: 0.35em;
 }
 .flex-table table th,
 table td {
-  padding: 1em;
-  text-align: left;
-  font-size: 0.9em;
+    padding: 1em;
+    text-align: left;
+    font-size: 0.9em;
 }
 .flex-table table th {
-  height: 40px;
-  font-size: 1em;
-  letter-spacing: .1em;
-  color: $font-color-pale;
+    height: 40px;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    color: $font-color-pale;
 }
 @media screen and (max-width: 600px) {
-  .flex-table table {
-    border: 0;
-  }
-  .flex-table table caption {
-    font-size: 1.3em;
-  }
-  .flex-table table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  .flex-table table tr {
-    border-bottom: 1px solid $table-border-color;
-    display: block;
-    margin-bottom: .625em;
-  }
-  .flex-table table td {
-    border-bottom: 1px solid $table-border-color;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-  .flex-table table td:before {
-    /*
+    .flex-table table {
+        border: 0;
+    }
+    .flex-table table caption {
+        font-size: 1.3em;
+    }
+    .flex-table table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .flex-table table tr {
+        border-bottom: 1px solid $table-border-color;
+        display: block;
+        margin-bottom: 0.625em;
+    }
+    .flex-table table td {
+        border-bottom: 1px solid $table-border-color;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+    }
+    .flex-table table td:before {
+        /*
     * aria-label has no advantage, it won't be read inside a table
     content: attr(aria-label);
     */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  .flex-table table td:last-child {
-    border-bottom: 0;
-  }
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .flex-table table td:last-child {
+        border-bottom: 0;
+    }
 }
 
 .fixed-button {
-  position: relative;
-  text-align: right;
-  top: 1rem;
-  z-index: 1;
+    position: relative;
+    text-align: right;
+    top: 1rem;
+    z-index: 1;
 }
 
 .floating-button {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 1;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
 }
 
 .floating-button button {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .fixed-button button {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .vertical-align-top {
-  vertical-align: top;
+    vertical-align: top;
 }
 
-@media(min-width: 1024px) {
-  .floating-button {
-    bottom: 2rem;
-    right: 2rem;
-  }
+@media (min-width: 1024px) {
+    .floating-button {
+        bottom: 2rem;
+        right: 2rem;
+    }
 
-  .fixed-button {
-    text-align: right;
-    top: 1rem;
-  }
+    .fixed-button {
+        text-align: right;
+        top: 1rem;
+    }
 
-  .padding-for-tables {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
+    .padding-for-tables {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
 }
 
-@media(min-width: 360px) {
-  .pop-up-field {
-    min-width: $control-width-xs;
-  }
+@media (min-width: 360px) {
+    .pop-up-field {
+        min-width: $control-width-xs;
+    }
 
-  .regular-field {
-    min-width: $control-width-xs;
-  }
+    .regular-field {
+        min-width: $control-width-xs;
+    }
 
-  .button-l {
-    max-width: $control-width-xs;
-  }
+    .button-l {
+        max-width: $control-width-xs;
+    }
 }
 
-@media only screen and (min-width:960px){
-  .pop-up-field {
-    min-width: $control-width-s;
-  }
+@media only screen and (min-width: 960px) {
+    .pop-up-field {
+        min-width: $control-width-s;
+    }
 
-  .regular-field {
-    min-width: $control-width-xs;
-  }
+    .regular-field {
+        min-width: $control-width-xs;
+    }
 
-  .double-field {
-    min-width: 100%;
-  }
+    .double-field {
+        min-width: 100%;
+    }
 
-  .button-l {
-    max-width: $control-width-s;
-  }
+    .button-l {
+        max-width: $control-width-s;
+    }
 }
 
 .menu-button {
-  min-width: 20px !important;
+    min-width: 20px !important;
 }
 
 .flex-container {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .flex-container > div {
-  flex: 1;
+    flex: 1;
 }
 
 .justify-content-space-evenly {
-  justify-content: space-evenly;
+    justify-content: space-evenly;
 }
 
 .margin-left-auto {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .margin-right-auto {
-  margin-right: auto;
+    margin-right: auto;
 }
 
 .flex-container > mat-form-field {
-  flex: 1 1 $control-width-xs;
+    flex: 1 1 $control-width-xs;
 }
 
 .flex-container > .long-field {
-  flex: 1 1 $control-width-standard;
+    flex: 1 1 $control-width-standard;
 }
 
 .default-border {
-  border: $default-border;
+    border: $default-border;
 }
 
 .min-width-xxs {
-  min-width: $control-width-xxs;
+    min-width: $control-width-xxs;
 }
 
 .min-width-s {
-  min-width: $control-width-s;
+    min-width: $control-width-s;
 }
 
 .min-width-standard {
-  min-width: $control-width-standard;
+    min-width: $control-width-standard;
 }
 
 .min-width-l {
-  min-width: $control-width-l;
+    min-width: $control-width-l;
 }
 
 .min-width-pre-standard {
-  min-width: $control-width-pre-standard;
+    min-width: $control-width-pre-standard;
 }
 
 .default-table > div {
-  border-left: $default-border;
-  border-right: $default-border;
-  border-top: $default-border;
+    border-left: $default-border;
+    border-right: $default-border;
+    border-top: $default-border;
 }
 
 .default-table:last-child {
-  border-bottom: $default-border;
+    border-bottom: $default-border;
 }
 
 .spinner {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .mat-toolbar-layout {
-  position: relative;
-  z-index: 10;
+    position: relative;
+    z-index: 10;
 }
 
 media-plan-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .date-picker {
-  max-width: 160px;
+    max-width: 160px;
 }
 
 .full-width {
-  width: 100%;
+    width: 100%;
 }
 
 .search-container {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .search-box {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .search-field {
-  min-width: 300px;
+    min-width: 300px;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: $mat-color-500;
-  border-color: $mat-color-900;
+    color: #fff;
+    background-color: $mat-color-500;
+    border-color: $mat-color-900;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active {
-  color: #fff;
-  background-color: $mat-color-200;
-  border-color: $mat-color-900;
+    color: #fff;
+    background-color: $mat-color-200;
+    border-color: $mat-color-900;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: $mat-color-200;
-  border-color: $mat-color-900;
+    color: #fff;
+    background-color: $mat-color-200;
+    border-color: $mat-color-900;
 }
 
 .btn-outline-secondary:hover {
-  color: #fff;
-  background-color: $mat-color-200;
-  border-color: $mat-color-900;
+    color: #fff;
+    background-color: $mat-color-200;
+    border-color: $mat-color-900;
 }
 
 .flex-container-left {
-  display: flex;
+    display: flex;
 
-  .center-the-rest {
-    flex: 2;
-  }
+    .center-the-rest {
+        flex: 2;
+    }
+}
+
+.gray {
+    color: #636363;
 }

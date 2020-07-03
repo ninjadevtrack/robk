@@ -8,7 +8,7 @@ import { ChartService } from "src/app/core/common/chart.service";
 @Component({
     selector: "app-company-view",
     templateUrl: "./company-view.component.html",
-    styleUrls: ["./company-view.component.css"]
+    styleUrls: ["./company-view.component.scss"]
 })
 export class CompanyViewComponent implements OnInit {
     slug: string;

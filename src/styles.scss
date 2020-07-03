@@ -837,3 +837,27 @@ media-plan-view {
 .gray {
     color: #636363;
 }
+
+.kpi-card-big {
+    .kpi-value {
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 100;
+    }
+}
+
+.kpi-card-small {
+    .kpi-value {
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 100;
+    }
+}

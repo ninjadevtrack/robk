@@ -15,7 +15,7 @@ import { PublicFooterComponent } from "./footer";
 import { PublicHeaderComponent } from "./header";
 import { SignInComponent } from "./sign-in";
 import { CoreCommonModule } from "../core/common/core-common.module";
-import { NoContentComponent } from "../core/common/no-content/no-content.component";
+import { NotFoundComponent } from "../core/common/not-found/not-found.component";
 
 const routes: Routes = [
     {
@@ -31,7 +31,8 @@ const routes: Routes = [
             }
         ]
     },
-    { path: "**", component: NoContentComponent }
+    { path: "404", component: NotFoundComponent },
+    { path: "**", redirectTo: "/404" }
 ];
 
 @NgModule({

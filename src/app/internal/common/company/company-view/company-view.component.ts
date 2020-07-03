@@ -31,7 +31,6 @@ export class CompanyViewComponent implements OnInit {
                 .getCompany(this.slug)
                 .subscribe((company: ICompany) => {
                     this.company = company;
-                    console.log(this.company);
                 });
         });
     }

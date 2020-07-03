@@ -57,66 +57,11 @@
                 <app-company-links [company]="company"></app-company-links>
             </div>
         </div>
-        <div>
+        <div class="m-b-xl">
             <app-chart [company]="company"></app-chart>
         </div>
-        <div class="flex-container m-t-xl">
-            <div>
-                <app-kpi-card
-                    [name]="'Eng H/C'"
-                    [value]="company.eng"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'Sales H/C'"
-                    [value]="company.sales"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'H/C Eng%'"
-                    [value]="company.percentEng"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'H/C Sales%'"
-                    [value]="company.percentSales"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'Days snc last rnd'"
-                    [value]="company.cbLastFundingDate"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'Last series'"
-                    [value]="company.cbLastSeries"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'Last val.'"
-                    [value]="company.cbLastPremoneyUsd"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'6mo eng Δ'"
-                    [value]="company.growth6Eng"
-                    [percentageMode]="true"
-                ></app-kpi-card>
-            </div>
-            <div>
-                <app-kpi-card
-                    [name]="'6mo sales Δ'"
-                    [value]="company.growth6Sales"
-                    [percentageMode]="true"
-                ></app-kpi-card>
-            </div>
-        </div>
+        <app-company-details-by-cards
+            [company]="company"
+        ></app-company-details-by-cards>
     </card-template>
 </div>

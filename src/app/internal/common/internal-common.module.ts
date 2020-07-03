@@ -28,8 +28,9 @@ import { CompanyDetailsComponent } from "./company/company-details/company-detai
 import { ScoreFeedComponent } from "./score-feed/score-feed.component";
 import { CoreModule } from "src/app/core/core.module";
 import { ScoreComponent } from "./score-feed/score/score.component";
-import { CompanyViewComponent } from './company/company-view/company-view.component';
-import { KpiCardComponent } from './kpi-card/kpi-card.component';
+import { CompanyViewComponent } from "./company/company-view/company-view.component";
+import { KpiCardComponent } from "./kpi-card/kpi-card.component";
+import { CompanyLinksComponent } from "./company/company-links/company-links.component";
 
 @NgModule({
     imports: [
@@ -66,7 +67,8 @@ import { KpiCardComponent } from './kpi-card/kpi-card.component';
         ScoreFeedComponent,
         ScoreComponent,
         CompanyViewComponent,
-        KpiCardComponent
+        KpiCardComponent,
+        CompanyLinksComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

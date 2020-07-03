@@ -15,7 +15,7 @@ import { PublicFooterComponent } from "./footer";
 import { PublicHeaderComponent } from "./header";
 import { SignInComponent } from "./sign-in";
 import { CoreCommonModule } from "../core/common/core-common.module";
-import { NotFoundComponent } from "../core/common/not-found/not-found.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 const routes: Routes = [
     {
@@ -54,6 +54,7 @@ const routes: Routes = [
         ForgotPasswordComponent,
         PublicHeaderComponent,
         HomeComponent,
+        NotFoundComponent,
         SetPasswordComponent,
         SignInComponent
     ],

@@ -19,13 +19,13 @@
             <div class="m-t-l">
                 <app-kpi-card
                     [name]="'3mo h/c Δ'"
-                    [value]="company.mavgTrend"
+                    [value]="company.mavgTrend + '%'"
                 ></app-kpi-card>
             </div>
             <div class="m-t-l">
                 <app-kpi-card
                     [name]="'12mo h/c Δ'"
-                    [value]="company.maTrend"
+                    [value]="company.maTrend + '%'"
                 ></app-kpi-card>
             </div>
             <div class="m-t-l">
@@ -39,6 +39,16 @@
                     [name]="'EduScore'"
                     [value]="company.educationScore"
                 ></app-kpi-card>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="company.tags !== ''">
+                <small
+                    >Tags: <em>{{ company.tags }}</em></small
+                >
+            </div>
+            <div class="m-t m-b">
+                <app-company-links [company]="company"></app-company-links>
             </div>
         </div>
         <div>

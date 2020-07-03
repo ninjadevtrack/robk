@@ -1,1 +1,13 @@
-<p>company-view works!</p>
+<div class="m-t-6xl">
+    <card-template *ngIf="company">
+        <div class="flex-container">
+            <div class="flex-container-left">
+                <h1>{{ company?.name }}</h1>
+            </div>
+            <div></div>
+        </div>
+        <div>
+            <app-chart [company]="company"></app-chart>
+        </div>
+    </card-template>
+</div>

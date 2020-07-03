@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Chart } from "chart.js";
 import { CompanyService } from "src/app/core/company/company.service";
 import { ICompany } from "src/app/core/company/model/company.model";
+import { ChartService } from "src/app/core/common/chart.service";
 
 @Component({
     selector: "app-company-view",
@@ -14,6 +16,7 @@ export class CompanyViewComponent implements OnInit {
 
     constructor(
         private _route: ActivatedRoute,
+        private _chartService: ChartService,
         private _companyService: CompanyService
     ) {}
 

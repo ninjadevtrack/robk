@@ -9,6 +9,7 @@ export class KpiCardComponent implements OnInit {
     @Input() name: any;
     @Input() value: any;
     @Input() percentageMode: boolean = false;
+    @Input() isBig: boolean = false;
 
     constructor() {}
 
@@ -19,5 +20,9 @@ export class KpiCardComponent implements OnInit {
             return "-";
         }
         return this.percentageMode ? this.value + "%" : this.value;
+    }
+
+    getCardClass() {
+        return this.isBig ? "kpi-card-big" : "kpi-card-small";
     }
 }

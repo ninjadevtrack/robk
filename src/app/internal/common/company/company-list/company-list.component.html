@@ -127,10 +127,18 @@
                                 >
                             </div>
                         </span>
-                        <span class="mat-cell">{{ c.mavgTrend }}%</span>
-                        <span class="mat-cell">{{ c.maTrend }}%</span>
-                        <span class="mat-cell">{{ c.robscore }}</span>
-                        <span class="mat-cell">{{ c.educationScore }}</span>
+                        <span class="mat-cell mat-cell-kpi"
+                            >{{ c.mavgTrend }}%</span
+                        >
+                        <span class="mat-cell mat-cell-kpi"
+                            >{{ c.maTrend }}%</span
+                        >
+                        <span class="mat-cell mat-cell-kpi">{{
+                            c.robscore
+                        }}</span>
+                        <span class="mat-cell mat-cell-kpi">{{
+                            c.educationScore
+                        }}</span>
                     </mat-expansion-panel-header>
 
                     <div>
@@ -170,9 +178,9 @@
                             <app-chart [company]="c"></app-chart>
                         </div>
                         <div class="m-t-xl m-b-2xl">
-                            <app-company-details
+                            <app-company-details-by-cards
                                 [company]="c"
-                            ></app-company-details>
+                            ></app-company-details-by-cards>
                         </div>
                     </div>
                 </mat-expansion-panel>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Chart } from "chart.js";
 import { CompanyService } from "src/app/core/company/company.service";
 import { ICompany } from "src/app/core/company/model/company.model";
@@ -16,6 +16,7 @@ export class CompanyViewComponent implements OnInit {
     company: ICompany;
 
     constructor(
+        private _router: Router,
         private _route: ActivatedRoute,
         private _chartService: ChartService,
         private _smoothScrollService: SmoothScrollService,
@@ -30,6 +31,9 @@ export class CompanyViewComponent implements OnInit {
             this._companyService
                 .getCompany(this.slug)
                 .subscribe((company: ICompany) => {
+                    if (!company) {
+                        this._router.navigate(["/404"]);
+                    }
                     this.company = company;
                 });
         });

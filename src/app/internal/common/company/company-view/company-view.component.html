@@ -68,8 +68,9 @@
                 Capsule info goes here
             </div>
             <div class="notes">
+                <h2>Notes</h2>
                 <div *ngFor="let note of capsuleNotes$ | async">
-                    {{ note.content }}
+                    <app-capsule-note [note]="note"></app-capsule-note>
                 </div>
             </div>
         </div>

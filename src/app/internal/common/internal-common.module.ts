@@ -32,6 +32,7 @@ import { CompanyViewComponent } from "./company/company-view/company-view.compon
 import { KpiCardComponent } from "./kpi-card/kpi-card.component";
 import { CompanyLinksComponent } from "./company/company-links/company-links.component";
 import { CompanyDetailsByCardsComponent } from './company/company-details-by-cards/company-details-by-cards.component';
+import { CapsuleNoteComponent } from './company/capsule-note/capsule-note.component';
 
 @NgModule({
     imports: [
@@ -70,7 +71,8 @@ import { CompanyDetailsByCardsComponent } from './company/company-details-by-car
         CompanyViewComponent,
         KpiCardComponent,
         CompanyLinksComponent,
-        CompanyDetailsByCardsComponent
+        CompanyDetailsByCardsComponent,
+        CapsuleNoteComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

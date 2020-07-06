@@ -67,11 +67,31 @@
             <div class="company-info">
                 Capsule info goes here
             </div>
+            <!-- <ul *ngIf="users$ | async as users; else indicator">
+                <li *ngFor="let user of users">
+                  {{ user.name }}
+                </li>
+              </ul>
+              <ng-template #indicator>
+                <loading-indicator></loading-indicator>
+              </ng-template> -->
             <div class="notes">
                 <h2>Notes</h2>
-                <div *ngFor="let note of capsuleNotes$ | async">
-                    <app-capsule-note [note]="note"></app-capsule-note>
+                <div
+                    *ngIf="
+                        capsuleNotes$ | async as capsuleNotes;
+                        else capsuleNotesSpinner
+                    "
+                >
+                    <div *ngFor="let note of capsuleNotes">
+                        <app-capsule-note [note]="note"></app-capsule-note>
+                    </div>
                 </div>
+                <ng-template #capsuleNotesSpinner>
+                    <div class="text-center m-t-2xl">
+                        <mat-spinner class="spinner"></mat-spinner>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </card-template>

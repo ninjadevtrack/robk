@@ -90,6 +90,9 @@ export class ConfigService {
             getNotes: urlSlug => {
                 return `${Consts.API_URL}/v1/companies/${urlSlug}/notes`;
             },
+            getCapsuleDetails: urlSlug => {
+                return `${Consts.API_URL}/v1/companies/${urlSlug}/capsule`;
+            },
             toggleIgnore: id => {
                 return `${Consts.API_URL}/v1/companies/${id}/toggle-ignore`;
             }

@@ -5,6 +5,7 @@ import { HttpHelperService } from "../http-helper.service";
 import { ICompaniesResult, ICompany } from "./model/company.model";
 import { ICapsuleNote } from "./model/capsule-note.model";
 import { map } from "rxjs/operators";
+import { ICapsuleDetails } from "./model/capsule-details.model";
 
 @Injectable()
 export class CompanyService {
@@ -58,6 +59,26 @@ export class CompanyService {
                             };
                         })
                         .sort((a, b) => b.createdAt - a.createdAt);
+                })
+            );
+    }
+
+    public getCapsuleDetails(urlSlug: string): Observable<ICapsuleDetails> {
+        return this._httpHelper
+            .get(
+                true,
+                this._configService.API.Company.getCapsuleDetails(urlSlug)
+            )
+            .pipe(
+                map((capsuleDetails: any) => {
+                    return {
+                        ...capsuleDetails,
+                        createdAt: new Date(capsuleDetails.createdAt),
+                        updatedAt: new Date(capsuleDetails.updatedAt),
+                        lastContactedAt: new Date(
+                            capsuleDetails.lastContactedAt
+                        )
+                    };
                 })
             );
     }

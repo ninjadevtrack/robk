@@ -48,14 +48,16 @@ export class CompanyService {
             .get(true, this._configService.API.Company.getNotes(urlSlug))
             .pipe(
                 map((notes: any[]) => {
-                    return notes.map(note => {
-                        return {
-                            ...note,
-                            createdAt: new Date(note.createdAt),
-                            updatedAt: new Date(note.updatedAt),
-                            entryAt: new Date(note.entryAt)
-                        };
-                    });
+                    return notes
+                        .map(note => {
+                            return {
+                                ...note,
+                                createdAt: new Date(note.createdAt),
+                                updatedAt: new Date(note.updatedAt),
+                                entryAt: new Date(note.entryAt)
+                            };
+                        })
+                        .sort((a, b) => b.createdAt - a.createdAt);
                 })
             );
     }

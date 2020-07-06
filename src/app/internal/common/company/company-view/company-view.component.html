@@ -68,7 +68,9 @@
                 Capsule info goes here
             </div>
             <div class="notes">
-                Capsule notes go here
+                <div *ngFor="let note of capsuleNotes">
+                    {{ note.content }}
+                </div>
             </div>
         </div>
     </card-template>

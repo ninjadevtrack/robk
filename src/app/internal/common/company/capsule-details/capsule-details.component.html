@@ -1,10 +1,8 @@
 <div>
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
         <h2>Capsule</h2>
-        <div>
-            <span class="field-header m-r">Type</span>
-            <span>{{ capsuleDetails.type }}</span>
-        </div>
+        <data-field header="Type" [data]="capsuleDetails?.type"></data-field>
+        <data-field header="About" [data]="capsuleDetails?.about"></data-field>
     </div>
     <ng-template #capsuleDetailsSpinner>
         <div class="text-center m-t-2xl">

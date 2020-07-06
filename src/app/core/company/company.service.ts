@@ -70,7 +70,8 @@ export class CompanyService {
                 this._configService.API.Company.getCapsuleDetails(urlSlug)
             )
             .pipe(
-                map((capsuleDetails: any) => {
+                map((cd: any) => {
+                    const capsuleDetails = cd.party;
                     return {
                         ...capsuleDetails,
                         createdAt: new Date(capsuleDetails.createdAt),

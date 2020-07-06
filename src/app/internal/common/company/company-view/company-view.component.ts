@@ -7,6 +7,7 @@ import { ChartService } from "src/app/core/common/chart.service";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ICapsuleNote } from "src/app/core/company/model/capsule-note.model";
 import { Observable } from "rxjs";
+import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.model";
 
 @Component({
     selector: "app-company-view",
@@ -17,6 +18,7 @@ export class CompanyViewComponent implements OnInit {
     slug: string;
     company: ICompany;
     capsuleNotes$: Observable<ICapsuleNote[]>;
+    capsuleDetails$: Observable<ICapsuleDetails>;
 
     constructor(
         private _router: Router,
@@ -40,6 +42,9 @@ export class CompanyViewComponent implements OnInit {
                     this.company = company;
                 });
             this.capsuleNotes$ = this._companyService.getNotes(this.slug);
+            this.capsuleDetails$ = this._companyService.getCapsuleDetails(
+                this.slug
+            );
         });
     }
 }

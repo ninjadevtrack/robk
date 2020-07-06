@@ -5,6 +5,7 @@ import { CompanyService } from "src/app/core/company/company.service";
 import { ICompany } from "src/app/core/company/model/company.model";
 import { ChartService } from "src/app/core/common/chart.service";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
+import { ICapsuleNote } from "src/app/core/company/model/capsule-note.model";
 
 @Component({
     selector: "app-company-view",
@@ -14,6 +15,7 @@ import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 export class CompanyViewComponent implements OnInit {
     slug: string;
     company: ICompany;
+    capsuleNotes: ICapsuleNote[];
 
     constructor(
         private _router: Router,
@@ -35,6 +37,12 @@ export class CompanyViewComponent implements OnInit {
                         this._router.navigate(["/404"]);
                     }
                     this.company = company;
+                });
+            this._companyService
+                .getNotes(this.slug)
+                .subscribe((capsuleNotes: ICapsuleNote[]) => {
+                    this.capsuleNotes = capsuleNotes;
+                    console.log(this.capsuleNotes);
                 });
         });
     }

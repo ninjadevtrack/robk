@@ -3,6 +3,8 @@ import { Observable } from "rxjs";
 import { ConfigService } from "../common/config.service";
 import { HttpHelperService } from "../http-helper.service";
 import { ICompaniesResult, ICompany } from "./model/company.model";
+import { ICapsuleNote } from "./model/capsule-note.model";
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class CompanyService {
@@ -39,6 +41,23 @@ export class CompanyService {
             true,
             this._configService.API.Company.getByLIUrlSlug(urlSlug)
         );
+    }
+
+    public getNotes(urlSlug: string): Observable<ICapsuleNote[]> {
+        return this._httpHelper
+            .get(true, this._configService.API.Company.getNotes(urlSlug))
+            .pipe(
+                map((notes: any[]) => {
+                    return notes.map(note => {
+                        return {
+                            ...note,
+                            createdAt: new Date(note.createdAt),
+                            updatedAt: new Date(note.updatedAt),
+                            entryAt: new Date(note.entryAt)
+                        };
+                    });
+                })
+            );
     }
 
     public toggleIgnoreCompany(id: number): Observable<any> {

@@ -1,10 +1,11 @@
 <div>
-    <h2>Notes</h2>
     <div *ngIf="capsuleNotes; else capsuleNotesSpinner">
+        <h2>Notes</h2>
         <div *ngFor="let note of capsuleNotes">
             <app-capsule-note [note]="note"></app-capsule-note>
         </div>
     </div>
+
     <ng-template #capsuleNotesSpinner>
         <div class="text-center m-t-2xl">
             <mat-spinner class="spinner"></mat-spinner>

@@ -70,22 +70,9 @@
                 ></app-capsule-details>
             </div>
             <div class="notes">
-                <h2>Notes</h2>
-                <div
-                    *ngIf="
-                        capsuleNotes$ | async as capsuleNotes;
-                        else capsuleNotesSpinner
-                    "
-                >
-                    <div *ngFor="let note of capsuleNotes">
-                        <app-capsule-note [note]="note"></app-capsule-note>
-                    </div>
-                </div>
-                <ng-template #capsuleNotesSpinner>
-                    <div class="text-center m-t-2xl">
-                        <mat-spinner class="spinner"></mat-spinner>
-                    </div>
-                </ng-template>
+                <app-capsule-notes
+                    [capsuleNotes]="capsuleNotes$ | async"
+                ></app-capsule-notes>
             </div>
         </div>
     </card-template>

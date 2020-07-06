@@ -34,6 +34,7 @@ import { CompanyLinksComponent } from "./company/company-links/company-links.com
 import { CompanyDetailsByCardsComponent } from './company/company-details-by-cards/company-details-by-cards.component';
 import { CapsuleNoteComponent } from './company/capsule-note/capsule-note.component';
 import { CapsuleDetailsComponent } from './company/capsule-details/capsule-details.component';
+import { CapsuleNotesComponent } from './company/capsule-notes/capsule-notes.component';
 
 @NgModule({
     imports: [
@@ -74,7 +75,8 @@ import { CapsuleDetailsComponent } from './company/capsule-details/capsule-detai
         CompanyLinksComponent,
         CompanyDetailsByCardsComponent,
         CapsuleNoteComponent,
-        CapsuleDetailsComponent
+        CapsuleDetailsComponent,
+        CapsuleNotesComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

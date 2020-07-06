@@ -63,13 +63,13 @@
         <app-company-details-by-cards
             [company]="company"
         ></app-company-details-by-cards>
-        <div class="capsule-container m-t-2xl">
-            <div class="company-info">
+        <div class="capsule-container m-t-3xl">
+            <div class="company-info p-r">
                 <app-capsule-details
                     [capsuleDetails]="capsuleDetails$ | async"
                 ></app-capsule-details>
             </div>
-            <div class="notes">
+            <div class="notes p-r">
                 <app-capsule-notes
                     [capsuleNotes]="capsuleNotes$ | async"
                 ></app-capsule-notes>

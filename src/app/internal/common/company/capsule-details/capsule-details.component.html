@@ -1,3 +1,23 @@
 <div>
-    <h2>{{ capsuleDetails?.name }}</h2>
+    <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
+        <h2>Capsule</h2>
+        <div>
+            <span class="field-header m-r">Type</span>
+            <span>{{ capsuleDetails.type }}</span>
+        </div>
+    </div>
+    <ng-template #capsuleDetailsSpinner>
+        <div class="text-center m-t-2xl">
+            <mat-spinner class="spinner"></mat-spinner>
+        </div>
+    </ng-template>
 </div>
+
+<!-- linkedin
+website
+London, United Kingdom
+Type: Deal
+Crunchbase: https://crunchbase
+Dealroom: https://app.dealroom
+
+About -->

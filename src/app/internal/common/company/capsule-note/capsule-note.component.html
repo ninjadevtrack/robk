@@ -1,6 +1,9 @@
-<div class="m-b-xl">
+<div class="m-b-2xl">
     <div class="author">
-        {{ note.creator.name }}
+        <span class="m-r"
+            ><img [src]="note.creator.pictureURL" class="author-img"
+        /></span>
+        <span>{{ note.creator.name }}</span>
     </div>
     <div class="note-content gray">
         {{ note.content }}

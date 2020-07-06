@@ -3,3 +3,15 @@
         margin-bottom: 7px;
     }
 }
+
+.capsule-container {
+    display: flex;
+}
+
+.capsule-container > .company-info {
+    flex: 1;
+}
+
+.capsule-container > .notes {
+    flex: 2;
+}

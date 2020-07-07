@@ -35,6 +35,7 @@ import { CompanyDetailsByCardsComponent } from './company/company-details-by-car
 import { CapsuleNoteComponent } from './company/capsule-note/capsule-note.component';
 import { CapsuleDetailsComponent } from './company/capsule-details/capsule-details.component';
 import { CapsuleNotesComponent } from './company/capsule-notes/capsule-notes.component';
+import { CapsuleFieldsComponent } from './company/capsule-fields/capsule-fields.component';
 
 @NgModule({
     imports: [
@@ -76,7 +77,8 @@ import { CapsuleNotesComponent } from './company/capsule-notes/capsule-notes.com
         CompanyDetailsByCardsComponent,
         CapsuleNoteComponent,
         CapsuleDetailsComponent,
-        CapsuleNotesComponent
+        CapsuleNotesComponent,
+        CapsuleFieldsComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

@@ -2,6 +2,10 @@
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
         <h2>Capsule</h2>
         <data-field header="Type" [data]="capsuleDetails?.type"></data-field>
+        <app-capsule-fields
+            [capsuleDetails]="capsuleDetails"
+        ></app-capsule-fields>
+        <br />
         <data-field header="About" [data]="capsuleDetails?.about"></data-field>
     </div>
     <ng-template #capsuleDetailsSpinner>

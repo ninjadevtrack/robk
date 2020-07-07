@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.model";
+import { ESize } from "src/app/internal/core/size.enum";
 
 @Component({
     selector: "app-capsule-details",
@@ -8,6 +9,7 @@ import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.mode
 })
 export class CapsuleDetailsComponent implements OnInit {
     @Input() capsuleDetails: ICapsuleDetails;
+    dataFieldSize: ESize = ESize.MEDIUM;
     constructor() {}
 
     ngOnInit(): void {}

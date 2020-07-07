@@ -1,12 +1,19 @@
 <div>
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
         <h2>Capsule</h2>
-        <data-field header="Type" [data]="capsuleDetails?.type"></data-field>
+        <data-field
+            header="Type"
+            [data]="capsuleDetails?.type"
+            [size]="dataFieldSize"
+        ></data-field>
         <app-capsule-fields
             [capsuleDetails]="capsuleDetails"
         ></app-capsule-fields>
-        <br />
-        <data-field header="About" [data]="capsuleDetails?.about"></data-field>
+        <data-field
+            header="About"
+            [data]="capsuleDetails?.about"
+            [size]="dataFieldSize"
+        ></data-field>
     </div>
     <ng-template #capsuleDetailsSpinner>
         <div class="text-center m-t-2xl">

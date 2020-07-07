@@ -15,11 +15,16 @@
             [data]="capsuleDetails?.about"
             [size]="dataFieldSize"
         ></data-field>
-        <div>
+        <div class="m-b-l">
             <div class="data-field-header">Tags</div>
             <span *ngFor="let tag of capsuleDetails.tags" class="m-b m-r gray">
                 <small>{{ tag.name }}</small>
             </span>
+        </div>
+        <div>
+            <button mat-button class="" type="button">
+                Debug
+            </button>
         </div>
     </div>
     <ng-template #capsuleDetailsSpinner>
@@ -28,12 +33,3 @@
         </div>
     </ng-template>
 </div>
-
-<!-- linkedin
-website
-London, United Kingdom
-Type: Deal
-Crunchbase: https://crunchbase
-Dealroom: https://app.dealroom
-
-About -->

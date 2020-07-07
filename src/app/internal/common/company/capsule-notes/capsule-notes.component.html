@@ -1,6 +1,6 @@
 <div>
     <div *ngIf="capsuleNotes; else capsuleNotesSpinner">
-        <h2>Notes</h2>
+        <h3>History</h3>
         <div *ngFor="let note of capsuleNotes">
             <app-capsule-note [note]="note"></app-capsule-note>
         </div>

@@ -15,6 +15,12 @@
             [data]="capsuleDetails?.about"
             [size]="dataFieldSize"
         ></data-field>
+        <div>
+            <div class="data-field-header">Tags</div>
+            <span *ngFor="let tag of capsuleDetails.tags" class="m-b m-r gray">
+                <small>{{ tag.name }}</small>
+            </span>
+        </div>
     </div>
     <ng-template #capsuleDetailsSpinner>
         <div class="text-center m-t-2xl">

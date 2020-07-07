@@ -1,9 +1,11 @@
-<div [ngClass]="{'data-field': !isSmall, 'data-field-small': isSmall}">
-	<div class="data-field-header">
-		{{ header }}
-	</div>
-	<div class="data-field-data">
-		<span *ngIf="!url">{{ data }}</span>
-		<a *ngIf="url" (click)="navigateByUrl()" class="cursor-pointer">{{ data }}</a>
-	</div>
+<div [ngClass]="getStyle()">
+    <div class="data-field-header">
+        {{ header }}
+    </div>
+    <div class="data-field-data">
+        <span *ngIf="!url">{{ data }}</span>
+        <a *ngIf="url" (click)="navigateByUrl()" class="cursor-pointer">{{
+            data
+        }}</a>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.model";
+import * as moment from "moment";
 
 @Component({
     selector: "app-last-contact",
@@ -11,4 +12,8 @@ export class LastContactComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {}
+
+    getLastConstactedAtString() {
+        return moment(this.capsuleDetails.lastContactedAt).fromNow();
+    }
 }

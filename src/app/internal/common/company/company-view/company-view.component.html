@@ -63,7 +63,7 @@
         <app-company-details-by-cards
             [company]="company"
         ></app-company-details-by-cards>
-        <div class="capsule-container m-t-xl">
+        <div class="capsule-container flex-wrap m-t-xl">
             <div class="company-info p-r-xl m-t-xl">
                 <app-capsule-details
                     [capsuleDetails]="capsuleDetails$ | async"
@@ -91,6 +91,11 @@
                 <app-capsule-notes
                     [capsuleNotes]="capsuleNotes$ | async"
                 ></app-capsule-notes>
+                <div class="text-right">
+                    <button mat-button class="" type="button">
+                        Debug
+                    </button>
+                </div>
             </div>
         </div>
     </card-template>

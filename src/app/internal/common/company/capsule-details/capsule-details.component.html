@@ -1,6 +1,9 @@
 <div>
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
-        <h2>Capsule</h2>
+        <h2>{{ capsuleDetails.name }}</h2>
+        <app-capsule-addresses
+            [capsuleDetails]="capsuleDetails"
+        ></app-capsule-addresses>
         <app-capsule-fields
             [capsuleDetails]="capsuleDetails"
         ></app-capsule-fields>

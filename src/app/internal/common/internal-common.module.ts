@@ -31,11 +31,12 @@ import { ScoreComponent } from "./score-feed/score/score.component";
 import { CompanyViewComponent } from "./company/company-view/company-view.component";
 import { KpiCardComponent } from "./kpi-card/kpi-card.component";
 import { CompanyLinksComponent } from "./company/company-links/company-links.component";
-import { CompanyDetailsByCardsComponent } from './company/company-details-by-cards/company-details-by-cards.component';
-import { CapsuleNoteComponent } from './company/capsule-note/capsule-note.component';
-import { CapsuleDetailsComponent } from './company/capsule-details/capsule-details.component';
-import { CapsuleNotesComponent } from './company/capsule-notes/capsule-notes.component';
-import { CapsuleFieldsComponent } from './company/capsule-fields/capsule-fields.component';
+import { CompanyDetailsByCardsComponent } from "./company/company-details-by-cards/company-details-by-cards.component";
+import { CapsuleNoteComponent } from "./company/capsule-note/capsule-note.component";
+import { CapsuleDetailsComponent } from "./company/capsule-details/capsule-details.component";
+import { CapsuleNotesComponent } from "./company/capsule-notes/capsule-notes.component";
+import { CapsuleFieldsComponent } from "./company/capsule-fields/capsule-fields.component";
+import { CapsuleAddressesComponent } from "./company/capsule-addresses/capsule-addresses.component";
 
 @NgModule({
     imports: [
@@ -78,7 +79,8 @@ import { CapsuleFieldsComponent } from './company/capsule-fields/capsule-fields.
         CapsuleNoteComponent,
         CapsuleDetailsComponent,
         CapsuleNotesComponent,
-        CapsuleFieldsComponent
+        CapsuleFieldsComponent,
+        CapsuleAddressesComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

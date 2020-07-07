@@ -16,6 +16,24 @@ export class CapsuleAddressesComponent implements OnInit {
     ngOnInit(): void {}
 
     getAddressString(address: ICapsuleDetailsAddress): string {
-        return `${address.city}, ${address.country}`;
+        let adr = "";
+        function appendToAddress(str) {
+            if (!str) {
+                return;
+            }
+
+            if (adr.length === 0) {
+                adr += str;
+            } else {
+                adr += `, ${str}`;
+            }
+        }
+        appendToAddress(address.street);
+        appendToAddress(address.city);
+        appendToAddress(address.state);
+        appendToAddress(address.country);
+        appendToAddress(address.zip);
+
+        return adr;
     }
 }

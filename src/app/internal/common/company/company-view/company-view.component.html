@@ -1,7 +1,7 @@
 <div class="m-t-6xl company-view">
     <card-template *ngIf="company">
-        <div class="flex-container m-b-l">
-            <div class="flex-container-left">
+        <div class="company-view-header-container flex-wrap m-b-l">
+            <div class="title m-b-l">
                 <div>
                     <h1>{{ company?.name }}</h1>
                     <div>
@@ -16,35 +16,37 @@
                     </div>
                 </div>
             </div>
-            <div class="m-t-l">
-                <app-kpi-card
-                    [name]="'3mo h/c Δ'"
-                    [value]="company.mavgTrend"
-                    [percentageMode]="true"
-                    [isBig]="true"
-                ></app-kpi-card>
-            </div>
-            <div class="m-t-l">
-                <app-kpi-card
-                    [name]="'12mo h/c Δ'"
-                    [value]="company.maTrend"
-                    [percentageMode]="true"
-                    [isBig]="true"
-                ></app-kpi-card>
-            </div>
-            <div class="m-t-l">
-                <app-kpi-card
-                    [name]="'Robscore'"
-                    [value]="company.robscore"
-                    [isBig]="true"
-                ></app-kpi-card>
-            </div>
-            <div class="m-t-l">
-                <app-kpi-card
-                    [name]="'EduScore'"
-                    [value]="company.educationScore"
-                    [isBig]="true"
-                ></app-kpi-card>
+            <div class="kpis m-t-l">
+                <div class="kpi-card-main">
+                    <app-kpi-card
+                        [name]="'3mo h/c Δ'"
+                        [value]="company.mavgTrend"
+                        [percentageMode]="true"
+                        [isBig]="true"
+                    ></app-kpi-card>
+                </div>
+                <div class="kpi-card-main">
+                    <app-kpi-card
+                        [name]="'12mo h/c Δ'"
+                        [value]="company.maTrend"
+                        [percentageMode]="true"
+                        [isBig]="true"
+                    ></app-kpi-card>
+                </div>
+                <div class="kpi-card-main">
+                    <app-kpi-card
+                        [name]="'Robscore'"
+                        [value]="company.robscore"
+                        [isBig]="true"
+                    ></app-kpi-card>
+                </div>
+                <div class="kpi-card-main">
+                    <app-kpi-card
+                        [name]="'EduScore'"
+                        [value]="company.educationScore"
+                        [isBig]="true"
+                    ></app-kpi-card>
+                </div>
             </div>
         </div>
         <div>

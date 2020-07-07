@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
 import { ESize } from "../size.enum";
 
 @Component({
@@ -10,15 +9,16 @@ import { ESize } from "../size.enum";
 export class DataFieldComponent implements OnInit {
     @Input() header: string;
     @Input() data: any;
-    @Input() url: string;
     @Input() size: ESize;
+    expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
-    constructor(private _router: Router) {}
+    constructor() {}
 
     public ngOnInit() {}
 
-    navigateByUrl() {
-        this._router.navigateByUrl(this.url);
+    isDataUrl(): boolean {
+        const regex = new RegExp(this.expression);
+        return this.data.match(regex) !== null ? true : false;
     }
 
     getStyle() {

@@ -1,11 +1,6 @@
 <div>
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
         <h2>Capsule</h2>
-        <data-field
-            header="Type"
-            [data]="capsuleDetails?.type"
-            [size]="dataFieldSize"
-        ></data-field>
         <app-capsule-fields
             [capsuleDetails]="capsuleDetails"
         ></app-capsule-fields>

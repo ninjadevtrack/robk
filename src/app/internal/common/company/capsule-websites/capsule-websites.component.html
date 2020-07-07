@@ -1,5 +1,13 @@
 <div class="m-b">
-    <div *ngFor="let wesite of websites">
-        <a [href]="wesite.address">{{ wesite.address }}</a>
+    <div *ngFor="let website of websites">
+        <a [href]="website.address" target="_blank">
+            <img
+                *ngIf="isLI(website)"
+                height="25"
+                src="/assets/img/linkedin.svg"
+                class="m-b"
+            />
+            <span *ngIf="!isLI(website)">{{ website.address }}</span>
+        </a>
     </div>
 </div>

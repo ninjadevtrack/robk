@@ -12,13 +12,13 @@ import {
 export class CapsuleWebsitesComponent implements OnInit {
     @Input() capsuleDetails: ICapsuleDetails;
     websites: ICapsuleDetailsWebsite[];
+    liService: string = "LINKED_IN";
     constructor() {}
 
     ngOnInit(): void {
-        const liType = "LINKED_IN";
-
+        const liService = this.liService;
         this.websites = this.capsuleDetails.websites.sort((a, b) => {
-            if (a.service === liType && b.service !== liType) {
+            if (a.service === liService && b.service !== liService) {
                 return -1;
             }
             if (a.service === b.service) {
@@ -27,6 +27,13 @@ export class CapsuleWebsitesComponent implements OnInit {
 
             return 1;
         });
+    }
+
+    isLI(website: ICapsuleDetailsWebsite) {
+        if (!website) {
+            return false;
+        }
+        return website.service === this.liService;
     }
 
     getWebsites() {}

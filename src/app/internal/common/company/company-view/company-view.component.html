@@ -93,17 +93,45 @@
                 <app-capsule-notes
                     [capsuleNotes]="capsuleNotes"
                 ></app-capsule-notes>
-                <div class="text-right">
-                    <button
-                        mat-button
-                        class=""
-                        (click)="openDebugDialog()"
-                        type="button"
-                    >
-                        Debug
-                    </button>
-                </div>
             </div>
+        </div>
+        <div class="">
+            <button
+                mat-button
+                class=""
+                (click)="toggleDebugInfo()"
+                type="button"
+            >
+                {{ showDebugInfo ? "Hide Debug Info" : "Show Debug Info" }}
+            </button>
+        </div>
+        <div *ngIf="showDebugInfo">
+            <mat-tab-group class="m-t-l">
+                <mat-tab label="RobScore">
+                    <div class="m-t">
+                        <ngx-json-viewer
+                            [json]="company"
+                            [expanded]="false"
+                        ></ngx-json-viewer>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Capsule Details">
+                    <div class="m-t">
+                        <ngx-json-viewer
+                            [json]="capsuleDetails"
+                            [expanded]="false"
+                        ></ngx-json-viewer>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Capsule Notes">
+                    <div class="m-t">
+                        <ngx-json-viewer
+                            [json]="capsuleNotes"
+                            [expanded]="false"
+                        ></ngx-json-viewer>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </card-template>
     <mat-spinner *ngIf="!company" class="m-t-2xl spinner"></mat-spinner>

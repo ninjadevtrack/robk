@@ -18,9 +18,11 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
+import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxJsonViewerModule } from "ngx-json-viewer";
 import { CompanyListComponent } from "./company/company-list/company-list.component";
 import { ChartComponent } from "./company/chart/chart.component";
 import { InViewportModule } from "ng-in-viewport";
@@ -56,12 +58,14 @@ import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
         MatProgressSpinnerModule,
         MatPaginatorModule,
         MatTableModule,
+        MatTabsModule,
         MatListModule,
         MatExpansionModule,
         MatSortModule,
         MatCheckboxModule,
         MatProgressSpinnerModule,
         MatAutocompleteModule,
+        NgxJsonViewerModule,
         InternalCoreModule,
         ReactiveFormsModule,
         InViewportModule,

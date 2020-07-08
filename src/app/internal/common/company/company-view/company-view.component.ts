@@ -21,6 +21,7 @@ export class CompanyViewComponent implements OnInit {
     company: ICompany;
     capsuleNotes: ICapsuleNote[];
     capsuleDetails: ICapsuleDetails;
+    showDebugInfo: boolean = false;
 
     constructor(
         private _router: Router,
@@ -57,13 +58,23 @@ export class CompanyViewComponent implements OnInit {
         });
     }
 
-    openDebugDialog(): void {
+    toggleDebugInfo(): void {
+        this.showDebugInfo = !this.showDebugInfo;
+        /*
         const dialogRef = this._dialog.open(DebugDialogComponent, {
             data: {
                 company: this.company,
                 capsuleNotes: this.capsuleNotes,
                 capsuleDetails: this.capsuleDetails
             }
-        });
+        });*/
+    }
+
+    getDebugInfo() {
+        return {
+            company: this.company,
+            capsuleNotes: this.capsuleNotes,
+            capsuleDetails: this.capsuleDetails
+        };
     }
 }

@@ -38,6 +38,7 @@
         "intersection-observer": "0.10.0",
         "moment": "2.26.0",
         "ng-in-viewport": "6.1.0",
+        "ngx-json-viewer": "^2.4.0",
         "normalize.css": "8.0.1",
         "positioning": "2.0.1",
         "rxjs": "6.5.5",

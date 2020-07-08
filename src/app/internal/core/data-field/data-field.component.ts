@@ -1,30 +1,34 @@
-import {
-    Component,
-    OnInit,
-    Input
-} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { ESize } from "../size.enum";
 
 @Component({
-    selector: 'data-field',
-    styleUrls: [ './data-field.component.scss'],
-    templateUrl: './data-field.component.html'
+    selector: "data-field",
+    styleUrls: ["./data-field.component.scss"],
+    templateUrl: "./data-field.component.html"
 })
 export class DataFieldComponent implements OnInit {
-
     @Input() header: string;
     @Input() data: any;
-    @Input() url: string;
-    @Input() isSmall: false;
+    @Input() size: ESize;
+    expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
-    constructor (
-        private _router: Router
-    ) { }
+    constructor() {}
 
-    public ngOnInit() { }
+    public ngOnInit() {}
 
-    navigateByUrl() {
-        this._router.navigateByUrl(this.url);
+    isDataUrl(): boolean {
+        const regex = new RegExp(this.expression);
+        return this.data.match(regex) !== null ? true : false;
     }
 
+    getStyle() {
+        switch (this.size) {
+            case ESize.SMALL:
+                return "data-field-small";
+            case ESize.MEDIUM:
+                return "data-field-medium";
+            default:
+                return "data-field";
+        }
+    }
 }

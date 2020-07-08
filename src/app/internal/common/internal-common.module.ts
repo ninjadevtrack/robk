@@ -18,16 +18,30 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
+import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
-import { CompaniesComponent } from "./companies/companies.component";
-import { ChartComponent } from "./chart/chart/chart.component";
+import { NgxJsonViewerModule } from "ngx-json-viewer";
+import { CompanyListComponent } from "./company/company-list/company-list.component";
+import { ChartComponent } from "./company/chart/chart.component";
 import { InViewportModule } from "ng-in-viewport";
-import { CompanyDetailsComponent } from "./company-details/company-details.component";
+import { CompanyDetailsComponent } from "./company/company-details/company-details.component";
 import { ScoreFeedComponent } from "./score-feed/score-feed.component";
 import { CoreModule } from "src/app/core/core.module";
 import { ScoreComponent } from "./score-feed/score/score.component";
+import { CompanyViewComponent } from "./company/company-view/company-view.component";
+import { KpiCardComponent } from "./kpi-card/kpi-card.component";
+import { CompanyLinksComponent } from "./company/company-links/company-links.component";
+import { CompanyDetailsByCardsComponent } from "./company/company-details-by-cards/company-details-by-cards.component";
+import { CapsuleNoteComponent } from "./company/capsule-note/capsule-note.component";
+import { CapsuleDetailsComponent } from "./company/capsule-details/capsule-details.component";
+import { CapsuleNotesComponent } from "./company/capsule-notes/capsule-notes.component";
+import { CapsuleFieldsComponent } from "./company/capsule-fields/capsule-fields.component";
+import { CapsuleAddressesComponent } from "./company/capsule-addresses/capsule-addresses.component";
+import { CapsuleWebsitesComponent } from "./company/capsule-websites/capsule-websites.component";
+import { LastContactComponent } from "./company/last-contact/last-contact.component";
+import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
 
 @NgModule({
     imports: [
@@ -44,12 +58,14 @@ import { ScoreComponent } from "./score-feed/score/score.component";
         MatProgressSpinnerModule,
         MatPaginatorModule,
         MatTableModule,
+        MatTabsModule,
         MatListModule,
         MatExpansionModule,
         MatSortModule,
         MatCheckboxModule,
         MatProgressSpinnerModule,
         MatAutocompleteModule,
+        NgxJsonViewerModule,
         InternalCoreModule,
         ReactiveFormsModule,
         InViewportModule,
@@ -58,11 +74,23 @@ import { ScoreComponent } from "./score-feed/score/score.component";
     declarations: [
         ProfileComponent,
         InternalHeaderComponent,
-        CompaniesComponent,
+        CompanyListComponent,
         ChartComponent,
         CompanyDetailsComponent,
         ScoreFeedComponent,
-        ScoreComponent
+        ScoreComponent,
+        CompanyViewComponent,
+        KpiCardComponent,
+        CompanyLinksComponent,
+        CompanyDetailsByCardsComponent,
+        CapsuleNoteComponent,
+        CapsuleDetailsComponent,
+        CapsuleNotesComponent,
+        CapsuleFieldsComponent,
+        CapsuleAddressesComponent,
+        CapsuleWebsitesComponent,
+        LastContactComponent,
+        DebugDialogComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

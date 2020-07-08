@@ -2,6 +2,7 @@ export interface ICompany {
     name: string;
     cpId: number;
     linkedinUrl: string;
+    linkedinUrlPrettified: string;
     crmLink: string;
     maxEmp: number;
     mavgTrend: number;

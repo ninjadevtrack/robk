@@ -1,0 +1,16 @@
+<div class="m-b-2xl">
+    <div class="flex-container">
+        <div class="author">
+            <span class="m-r"
+                ><img [src]="note.creator.pictureURL" class="author-img"
+            /></span>
+            <span>{{ note.creator.name }}</span>
+        </div>
+        <div class="text-right gray note-date">
+            {{ note.createdAt | date: "MMM d, y" }}
+        </div>
+    </div>
+    <div class="note-content gray">
+        {{ note.content }}
+    </div>
+</div>

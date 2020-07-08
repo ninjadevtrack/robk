@@ -1,0 +1,8 @@
+<div>
+    <data-field
+        *ngFor="let field of capsuleDetails.fields"
+        [header]="field.definition.name"
+        [data]="field.value"
+        [size]="dataFieldSize"
+    ></data-field>
+</div>

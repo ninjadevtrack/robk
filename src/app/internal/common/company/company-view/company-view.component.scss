@@ -1,0 +1,39 @@
+.company-view {
+    h1 {
+        margin-bottom: 7px;
+    }
+}
+
+.capsule-container {
+    display: flex;
+}
+
+.capsule-container > .company-info {
+    flex: 1;
+}
+
+.capsule-container > .notes {
+    flex: 2;
+}
+
+.kpi-card-main {
+    min-width: 100px;
+    margin-bottom: 20px;
+}
+
+.company-view-header-container {
+    display: flex;
+}
+
+.company-view-header-container > .title {
+    flex: 1;
+}
+
+.company-view-header-container > .kpis {
+    flex: 2;
+    display: flex;
+
+    div {
+        flex: 1;
+    }
+}

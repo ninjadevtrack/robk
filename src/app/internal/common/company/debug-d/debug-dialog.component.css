@@ -1,0 +1,5 @@
+.json-viewer-container {
+    width: 600px;
+    height: 600px;
+    overflow-y: auto;
+}

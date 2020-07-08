@@ -1,0 +1,30 @@
+<div>
+    <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
+        <h2>{{ capsuleDetails.name }}</h2>
+        <app-capsule-websites
+            [capsuleDetails]="capsuleDetails"
+        ></app-capsule-websites>
+        <app-capsule-addresses
+            [capsuleDetails]="capsuleDetails"
+        ></app-capsule-addresses>
+        <app-capsule-fields
+            [capsuleDetails]="capsuleDetails"
+        ></app-capsule-fields>
+        <data-field
+            header="About"
+            [data]="capsuleDetails?.about"
+            [size]="dataFieldSize"
+        ></data-field>
+        <div class="m-b-l">
+            <div class="data-field-header">Tags</div>
+            <span *ngFor="let tag of capsuleDetails.tags" class="m-b m-r gray">
+                <small>{{ tag.name }}</small>
+            </span>
+        </div>
+    </div>
+    <ng-template #capsuleDetailsSpinner>
+        <div class="text-center m-t-2xl">
+            <mat-spinner class="spinner"></mat-spinner>
+        </div>
+    </ng-template>
+</div>

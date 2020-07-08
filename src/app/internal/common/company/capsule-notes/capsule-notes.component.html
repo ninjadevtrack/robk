@@ -1,0 +1,14 @@
+<div>
+    <div *ngIf="capsuleNotes; else capsuleNotesSpinner">
+        <h3>History</h3>
+        <div *ngFor="let note of capsuleNotes">
+            <app-capsule-note [note]="note"></app-capsule-note>
+        </div>
+    </div>
+
+    <ng-template #capsuleNotesSpinner>
+        <div class="text-center m-t-2xl">
+            <mat-spinner class="spinner"></mat-spinner>
+        </div>
+    </ng-template>
+</div>

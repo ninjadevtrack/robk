@@ -111,7 +111,7 @@
                     <mat-expansion-panel-header class="mat-row">
                         <span class="mat-cell">
                             <div>
-                                <a href="{{ c.linkedinUrl }}" target="_blank">{{
+                                <a routerLink="/i/gwl/{{ getUrlSlug(c) }}">{{
                                     c.name
                                 }}</a>
                             </div>
@@ -127,10 +127,18 @@
                                 >
                             </div>
                         </span>
-                        <span class="mat-cell">{{ c.mavgTrend }}%</span>
-                        <span class="mat-cell">{{ c.maTrend }}%</span>
-                        <span class="mat-cell">{{ c.robscore }}</span>
-                        <span class="mat-cell">{{ c.educationScore }}</span>
+                        <span class="mat-cell mat-cell-kpi"
+                            >{{ c.mavgTrend }}%</span
+                        >
+                        <span class="mat-cell mat-cell-kpi"
+                            >{{ c.maTrend }}%</span
+                        >
+                        <span class="mat-cell mat-cell-kpi">{{
+                            c.robscore
+                        }}</span>
+                        <span class="mat-cell mat-cell-kpi">{{
+                            c.educationScore
+                        }}</span>
                     </mat-expansion-panel-header>
 
                     <div>
@@ -141,24 +149,10 @@
                                         >Tags: <em>{{ c.tags }}</em></small
                                     >
                                 </div>
-                                <div class="m-t">
-                                    <small>
-                                        <a
-                                            [href]="c.crmLink"
-                                            target="_blank"
-                                            class="p-r-xl"
-                                        >
-                                            <img
-                                                height="25"
-                                                src="/assets/img/capsule-crm.svg"
-                                            />
-                                        </a>
-                                        <a [href]="c.cpWebsite" target="_blank"
-                                            ><img
-                                                height="25"
-                                                src="/assets/img/homepage.png"
-                                        /></a>
-                                    </small>
+                                <div class="m-t m-b">
+                                    <app-company-links
+                                        [company]="c"
+                                    ></app-company-links>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -184,9 +178,9 @@
                             <app-chart [company]="c"></app-chart>
                         </div>
                         <div class="m-t-xl m-b-2xl">
-                            <app-company-details
+                            <app-company-details-by-cards
                                 [company]="c"
-                            ></app-company-details>
+                            ></app-company-details-by-cards>
                         </div>
                     </div>
                 </mat-expansion-panel>

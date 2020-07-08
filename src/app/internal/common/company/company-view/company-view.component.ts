@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
 import { Chart } from "chart.js";
 import { CompanyService } from "src/app/core/company/company.service";
 import { ICompany } from "src/app/core/company/model/company.model";
@@ -8,6 +9,7 @@ import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ICapsuleNote } from "src/app/core/company/model/capsule-note.model";
 import { Observable } from "rxjs";
 import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.model";
+import { DebugDialogComponent } from "../debug-d/debug-dialog.component";
 
 @Component({
     selector: "app-company-view",
@@ -17,12 +19,13 @@ import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.mode
 export class CompanyViewComponent implements OnInit {
     slug: string;
     company: ICompany;
-    capsuleNotes$: Observable<ICapsuleNote[]>;
-    capsuleDetails$: Observable<ICapsuleDetails>;
+    capsuleNotes: ICapsuleNote[];
+    capsuleDetails: ICapsuleDetails;
 
     constructor(
         private _router: Router,
         private _route: ActivatedRoute,
+        private _dialog: MatDialog,
         private _chartService: ChartService,
         private _smoothScrollService: SmoothScrollService,
         private _companyService: CompanyService
@@ -41,10 +44,26 @@ export class CompanyViewComponent implements OnInit {
                     }
                     this.company = company;
                 });
-            this.capsuleNotes$ = this._companyService.getNotes(this.slug);
-            this.capsuleDetails$ = this._companyService.getCapsuleDetails(
-                this.slug
-            );
+            this._companyService
+                .getNotes(this.slug)
+                .subscribe((capsuleNotes: ICapsuleNote[]) => {
+                    this.capsuleNotes = capsuleNotes;
+                });
+            this._companyService
+                .getCapsuleDetails(this.slug)
+                .subscribe((capsuleDetails: ICapsuleDetails) => {
+                    this.capsuleDetails = capsuleDetails;
+                });
+        });
+    }
+
+    openDebugDialog(): void {
+        const dialogRef = this._dialog.open(DebugDialogComponent, {
+            data: {
+                company: this.company,
+                capsuleNotes: this.capsuleNotes,
+                capsuleDetails: this.capsuleDetails
+            }
         });
     }
 }

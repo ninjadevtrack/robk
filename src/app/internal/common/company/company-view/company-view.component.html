@@ -68,11 +68,11 @@
         <div class="capsule-container flex-wrap">
             <div class="company-info p-r-xl m-t-xl">
                 <app-capsule-details
-                    [capsuleDetails]="capsuleDetails$ | async"
+                    [capsuleDetails]="capsuleDetails"
                 ></app-capsule-details>
             </div>
             <div class="notes m-t-xl">
-                <div *ngIf="capsuleDetails$ | async as capsuleDetails">
+                <div *ngIf="capsuleDetails">
                     <div class="flex-container p-b-xl">
                         <div>
                             <app-last-contact
@@ -91,10 +91,15 @@
                     </div>
                 </div>
                 <app-capsule-notes
-                    [capsuleNotes]="capsuleNotes$ | async"
+                    [capsuleNotes]="capsuleNotes"
                 ></app-capsule-notes>
                 <div class="text-right">
-                    <button mat-button class="" type="button">
+                    <button
+                        mat-button
+                        class=""
+                        (click)="openDebugDialog()"
+                        type="button"
+                    >
                         Debug
                     </button>
                 </div>

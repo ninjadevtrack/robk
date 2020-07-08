@@ -37,8 +37,9 @@ import { CapsuleDetailsComponent } from "./company/capsule-details/capsule-detai
 import { CapsuleNotesComponent } from "./company/capsule-notes/capsule-notes.component";
 import { CapsuleFieldsComponent } from "./company/capsule-fields/capsule-fields.component";
 import { CapsuleAddressesComponent } from "./company/capsule-addresses/capsule-addresses.component";
-import { CapsuleWebsitesComponent } from './company/capsule-websites/capsule-websites.component';
-import { LastContactComponent } from './company/last-contact/last-contact.component';
+import { CapsuleWebsitesComponent } from "./company/capsule-websites/capsule-websites.component";
+import { LastContactComponent } from "./company/last-contact/last-contact.component";
+import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
 
 @NgModule({
     imports: [
@@ -84,7 +85,8 @@ import { LastContactComponent } from './company/last-contact/last-contact.compon
         CapsuleFieldsComponent,
         CapsuleAddressesComponent,
         CapsuleWebsitesComponent,
-        LastContactComponent
+        LastContactComponent,
+        DebugDialogComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

@@ -1,9 +1,13 @@
 <div class="m-t-6xl">
     <div class="m-t-3xl">
         <div class="p-l-l p-r-l m-b-xl">
-            <div class="flex-table">
-                <table *ngIf="employerChanges$ | async as employerChanges">
+            <div
+                *ngIf="employerChanges$ | async as employerChanges"
+                class="flex-table"
+            >
+                <table>
                     <thead>
+                        <th>Level</th>
                         <th>Company On Watchlist</th>
                         <th>Person</th>
                         <th>Left</th>
@@ -15,6 +19,7 @@
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let change of employerChanges">
+                            <td>{{ getLevel(change) }}</td>
                             <td>
                                 {{ change.company_watchlist ? "Yes" : "No" }}
                             </td>
@@ -42,12 +47,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <div
-                    *ngIf="(employerChanges$ | async) === null"
-                    class="text-center m-t-2xl"
-                >
-                    <mat-spinner class="spinner"></mat-spinner>
-                </div>
+            </div>
+            <div
+                *ngIf="(employerChanges$ | async) === null"
+                class="text-center m-t-2xl"
+            >
+                <mat-spinner class="spinner"></mat-spinner>
             </div>
         </div>
     </div>

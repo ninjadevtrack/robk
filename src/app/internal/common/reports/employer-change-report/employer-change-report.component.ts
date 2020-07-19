@@ -16,4 +16,12 @@ export class EmployerChangeReportComponent implements OnInit {
     ngOnInit(): void {
         this.employerChanges$ = this._employerChangesService.getEmployerChanges();
     }
+
+    getLevel(employerChange: IEmployerChange): string {
+        let res = "";
+        res += employerChange.founder === 1 ? "FOUNDER" : "NON FOUNDER";
+        res += employerChange.ceo === 1 ? "/ CEO" : "/ UNKNOWN";
+
+        return res;
+    }
 }

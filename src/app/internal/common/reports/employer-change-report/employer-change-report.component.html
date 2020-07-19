@@ -4,12 +4,40 @@
             <div class="flex-table">
                 <table *ngIf="employerChanges$ | async as employerChanges">
                     <thead>
-                        <th width="100px">Name</th>
+                        <th>Company On Watchlist</th>
+                        <th>Person</th>
+                        <th>Left</th>
+                        <th>Joined</th>
+                        <th>Current Role</th>
+                        <th>Location</th>
+                        <th>Founder Score</th>
+                        <th>Career Level</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let change of employerChanges">
                             <td>
+                                {{ change.company_watchlist ? "Yes" : "No" }}
+                            </td>
+                            <td>
                                 {{ change.firstName }} {{ change.lastName }}
+                            </td>
+                            <td>
+                                {{ change.prior_employer_name }}
+                            </td>
+                            <td>
+                                {{ change.current_employer_name }}
+                            </td>
+                            <td>
+                                {{ change.current_occupation }}
+                            </td>
+                            <td>
+                                {{ change.location }}
+                            </td>
+                            <td>
+                                {{ change.founderScore }}
+                            </td>
+                            <td>
+                                {{ change.careerScore }}
                             </td>
                         </tr>
                     </tbody>

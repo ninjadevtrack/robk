@@ -3,7 +3,10 @@
         <div class="p-l-l p-r-l m-b-xl">
             <h1>Employer Change Report</h1>
             <div
-                *ngIf="employerChanges$ | async as employerChanges"
+                *ngIf="
+                    employerChanges$ | async as employerChanges;
+                    else spinner
+                "
                 class="flex-table"
             >
                 <table>
@@ -66,12 +69,11 @@
                     </tbody>
                 </table>
             </div>
-            <div
-                *ngIf="(employerChanges$ | async) === null"
-                class="text-center m-t-2xl"
-            >
-                <mat-spinner class="spinner"></mat-spinner>
-            </div>
+            <ng-template #spinner>
+                <div class="text-center m-t-2xl">
+                    <mat-spinner class="spinner"></mat-spinner>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>

@@ -43,6 +43,7 @@ import { CapsuleWebsitesComponent } from "./company/capsule-websites/capsule-web
 import { LastContactComponent } from "./company/last-contact/last-contact.component";
 import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
 import { ReportListComponent } from './reports/report-list/report-list.component';
+import { EmployerChangeComponent } from './reports/employer-change/employer-change.component';
 
 @NgModule({
     imports: [
@@ -92,7 +93,8 @@ import { ReportListComponent } from './reports/report-list/report-list.component
         CapsuleWebsitesComponent,
         LastContactComponent,
         DebugDialogComponent,
-        ReportListComponent
+        ReportListComponent,
+        EmployerChangeComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

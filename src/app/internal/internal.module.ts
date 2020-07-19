@@ -15,6 +15,7 @@ import { AuthGuardService } from "../core/auth/auth-guard.service";
 import { ScoreFeedComponent } from "./common/score-feed/score-feed.component";
 import { CompanyViewComponent } from "./common/company/company-view/company-view.component";
 import { ReportListComponent } from "./common/reports/report-list/report-list.component";
+import { EmployerChangeComponent } from "./common/reports/employer-change/employer-change.component";
 
 const routes: Routes = [
     {
@@ -40,7 +41,11 @@ const routes: Routes = [
             { path: "feed", component: ScoreFeedComponent },
             { path: "gwl", component: CompanyListComponent },
             { path: "gwl/:slug", component: CompanyViewComponent },
-            { path: "reports", component: ReportListComponent }
+            { path: "reports", component: ReportListComponent },
+            {
+                path: "reports/employer-change",
+                component: EmployerChangeComponent
+            }
         ]
     }
 ];

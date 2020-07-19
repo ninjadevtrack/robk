@@ -17,6 +17,7 @@
                         <th>Founder Score</th>
                         <th>Career Level</th>
                         <th>New Role Start</th>
+                        <th>Last Crawled</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let change of employerChanges">
@@ -51,6 +52,9 @@
                                         change.current_start_date
                                     )
                                 }}
+                            </td>
+                            <td>
+                                {{ getHumanizedTimeAgo(change.last_updated) }}
                             </td>
                         </tr>
                     </tbody>

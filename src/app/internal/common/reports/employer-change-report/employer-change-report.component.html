@@ -16,6 +16,7 @@
                         <th>Location</th>
                         <th>Founder Score</th>
                         <th>Career Level</th>
+                        <th>New Role Start</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let change of employerChanges">
@@ -43,6 +44,13 @@
                             </td>
                             <td>
                                 {{ change.careerScore }}
+                            </td>
+                            <td>
+                                {{
+                                    getHumanizedTimeAgo(
+                                        change.current_start_date
+                                    )
+                                }}
                             </td>
                         </tr>
                     </tbody>

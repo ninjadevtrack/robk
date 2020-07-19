@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { EmployerChangeService } from "src/app/core/reports/employer-change.service";
+import * as moment from "moment";
 import { Observable } from "rxjs";
+import { EmployerChangeService } from "src/app/core/reports/employer-change.service";
 import { IEmployerChange } from "src/app/core/reports/models/employer-change.model";
 
 @Component({
@@ -23,5 +24,12 @@ export class EmployerChangeReportComponent implements OnInit {
         res += employerChange.ceo === 1 ? "/ CEO" : "/ UNKNOWN";
 
         return res;
+    }
+
+    getHumanizedTimeAgo(date: Date): string {
+        const scoreTime = moment(date),
+            duration = moment.duration(scoreTime.diff(moment(new Date())));
+
+        return duration.humanize() + " ago";
     }
 }

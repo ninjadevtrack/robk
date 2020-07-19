@@ -1,14 +1,28 @@
 <div class="m-t-6xl">
     <div class="m-t-3xl">
         <div class="p-l-l p-r-l m-b-xl">
-            <h1>Employer Change Report</h1>
-            <div
-                *ngIf="
-                    employerChanges$ | async as employerChanges;
-                    else spinner
-                "
-                class="flex-table"
-            >
+            <div class="flex-container">
+                <div>
+                    <h1>Employer Change Report</h1>
+                </div>
+                <div>
+                    <form [formGroup]="form">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <mat-form-field class="search-field">
+                                    <input
+                                        formControlName="search"
+                                        name="search"
+                                        matInput
+                                        placeholder="Search"
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="employerChanges; else spinner" class="flex-table">
                 <table>
                     <thead>
                         <th>Level</th>
@@ -24,7 +38,7 @@
                         <th>Last Crawled</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
-                        <tr *ngFor="let change of employerChanges">
+                        <tr *ngFor="let change of getFilteredEntities()">
                             <td>{{ getLevel(change) }}</td>
                             <td>
                                 {{ change.company_watchlist ? "Yes" : "No" }}

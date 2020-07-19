@@ -42,8 +42,8 @@ import { CapsuleAddressesComponent } from "./company/capsule-addresses/capsule-a
 import { CapsuleWebsitesComponent } from "./company/capsule-websites/capsule-websites.component";
 import { LastContactComponent } from "./company/last-contact/last-contact.component";
 import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
-import { ReportListComponent } from './reports/report-list/report-list.component';
-import { EmployerChangeComponent } from './reports/employer-change/employer-change.component';
+import { ReportListComponent } from "./reports/report-list/report-list.component";
+import { EmployerChangeReportComponent } from "./reports/employer-change-report/employer-change-report.component";
 
 @NgModule({
     imports: [
@@ -94,7 +94,7 @@ import { EmployerChangeComponent } from './reports/employer-change/employer-chan
         LastContactComponent,
         DebugDialogComponent,
         ReportListComponent,
-        EmployerChangeComponent
+        EmployerChangeReportComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

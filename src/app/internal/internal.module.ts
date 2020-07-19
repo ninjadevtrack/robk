@@ -15,7 +15,7 @@ import { AuthGuardService } from "../core/auth/auth-guard.service";
 import { ScoreFeedComponent } from "./common/score-feed/score-feed.component";
 import { CompanyViewComponent } from "./common/company/company-view/company-view.component";
 import { ReportListComponent } from "./common/reports/report-list/report-list.component";
-import { EmployerChangeComponent } from "./common/reports/employer-change/employer-change.component";
+import { EmployerChangeReportComponent } from "./common/reports/employer-change-report/employer-change-report.component";
 
 const routes: Routes = [
     {
@@ -44,7 +44,7 @@ const routes: Routes = [
             { path: "reports", component: ReportListComponent },
             {
                 path: "reports/employer-change",
-                component: EmployerChangeComponent
+                component: EmployerChangeReportComponent
             }
         ]
     }

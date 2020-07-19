@@ -2,19 +2,24 @@
     <div class="m-t-3xl">
         <div class="p-l-l p-r-l m-b-xl">
             <div class="flex-table">
-                Employer Change go here
-                <!-- <table>
+                <table *ngIf="employerChanges$ | async as employerChanges">
                     <thead>
-                        <th width="100px">Reports</th>
+                        <th width="100px">Name</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
-                        <tr>
+                        <tr *ngFor="let change of employerChanges">
                             <td>
-                                <a href="google.ru">People Change Report</a>
+                                {{ change.firstName }} {{ change.lastName }}
                             </td>
                         </tr>
                     </tbody>
-                </table> -->
+                </table>
+                <div
+                    *ngIf="(employerChanges$ | async) === null"
+                    class="text-center m-t-2xl"
+                >
+                    <mat-spinner class="spinner"></mat-spinner>
+                </div>
             </div>
         </div>
     </div>

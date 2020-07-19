@@ -27,7 +27,12 @@
                                 {{ change.company_watchlist ? "Yes" : "No" }}
                             </td>
                             <td>
-                                {{ change.firstName }} {{ change.lastName }}
+                                <a
+                                    [href]="getLinkedinProfileLink(change)"
+                                    target="_blank"
+                                    >{{ change.firstName }}
+                                    {{ change.lastName }}</a
+                                >
                             </td>
                             <td>
                                 {{ change.prior_employer_name }}

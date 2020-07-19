@@ -32,4 +32,8 @@ export class EmployerChangeReportComponent implements OnInit {
 
         return duration.humanize() + " ago";
     }
+
+    getLinkedinProfileLink(employerChange: IEmployerChange): string {
+        return `https://linkedin.com/in/${employerChange.publicIdentifier}`;
+    }
 }

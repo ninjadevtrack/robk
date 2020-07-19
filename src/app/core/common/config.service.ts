@@ -96,6 +96,11 @@ export class ConfigService {
             toggleIgnore: id => {
                 return `${Consts.API_URL}/v1/companies/${id}/toggle-ignore`;
             }
+        },
+        Peoplewatch: {
+            employerChanges: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/employer-changes`;
+            }
         }
     };
 

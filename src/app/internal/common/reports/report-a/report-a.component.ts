@@ -5,6 +5,7 @@ import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { IReportAEntity } from "src/app/core/reports/models/report-a.model";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
+import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({
     selector: "app-report-a",
@@ -19,7 +20,8 @@ export class ReportAComponent implements OnInit {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private _peopleWatchService: PeopleWatchService
+        private _peopleWatchService: PeopleWatchService,
+        private _smoothScrollService: SmoothScrollService
     ) {}
 
     ngOnInit(): void {
@@ -32,6 +34,7 @@ export class ReportAComponent implements OnInit {
             .subscribe((entities: IReportAEntity[]) => {
                 this.entities = entities;
             });
+        this._smoothScrollService.scrollTo(0, 0);
     }
 
     getFilteredEntities(): IReportAEntity[] {

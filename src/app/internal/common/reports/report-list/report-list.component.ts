@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
 @Component({
     selector: "app-report-list",
@@ -6,7 +7,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./report-list.component.css"]
 })
 export class ReportListComponent implements OnInit {
-    constructor() {}
+    constructor(private _smoothScrollService: SmoothScrollService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this._smoothScrollService.scrollTo(0, 0);
+    }
 }

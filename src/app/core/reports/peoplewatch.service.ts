@@ -4,6 +4,9 @@ import { map } from "rxjs/operators";
 import { ConfigService } from "../common/config.service";
 import { HttpHelperService } from "../http-helper.service";
 import { IEmployerChange } from "./models/employer-change.model";
+import { IReportAEntity } from "./models/report-a.model";
+import { IReportBEntity } from "./models/report-b.model";
+import { IReportCEntity } from "./models/report-c.model";
 
 @Injectable()
 export class PeopleWatchService {
@@ -32,5 +35,26 @@ export class PeopleWatchService {
                     });
                 })
             );
+    }
+
+    public reportA(): Observable<IReportAEntity[]> {
+        return this._httpHelper.get(
+            true,
+            this._configService.API.Peoplewatch.reportA()
+        );
+    }
+
+    public reportB(): Observable<IReportBEntity[]> {
+        return this._httpHelper.get(
+            true,
+            this._configService.API.Peoplewatch.reportB()
+        );
+    }
+
+    public reportC(): Observable<IReportCEntity[]> {
+        return this._httpHelper.get(
+            true,
+            this._configService.API.Peoplewatch.reportC()
+        );
     }
 }

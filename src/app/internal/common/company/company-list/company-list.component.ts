@@ -64,7 +64,7 @@ export class CompanyListComponent implements OnInit {
             tags: [[], []],
             cities: [[], []],
             search: ["", []],
-            scaling: [EScaling.SCALING, [Validators.required]],
+            scaling: [EScaling.ALL_DEALS, [Validators.required]],
             ignored: [false, [Validators.required]]
         });
 

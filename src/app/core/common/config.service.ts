@@ -100,6 +100,15 @@ export class ConfigService {
         Peoplewatch: {
             employerChanges: () => {
                 return `${Consts.API_URL}/v1/peoplewatch/employer-changes`;
+            },
+            reportA: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/reportA`;
+            },
+            reportB: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/reportB`;
+            },
+            reportC: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/reportC`;
             }
         }
     };

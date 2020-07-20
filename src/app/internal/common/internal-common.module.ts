@@ -44,6 +44,9 @@ import { LastContactComponent } from "./company/last-contact/last-contact.compon
 import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
 import { ReportListComponent } from "./reports/report-list/report-list.component";
 import { EmployerChangeReportComponent } from "./reports/employer-change-report/employer-change-report.component";
+import { ReportAComponent } from './reports/report-a/report-a.component';
+import { ReportBComponent } from './reports/report-b/report-b.component';
+import { ReportCComponent } from './reports/report-c/report-c.component';
 
 @NgModule({
     imports: [
@@ -94,7 +97,10 @@ import { EmployerChangeReportComponent } from "./reports/employer-change-report/
         LastContactComponent,
         DebugDialogComponent,
         ReportListComponent,
-        EmployerChangeReportComponent
+        EmployerChangeReportComponent,
+        ReportAComponent,
+        ReportBComponent,
+        ReportCComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

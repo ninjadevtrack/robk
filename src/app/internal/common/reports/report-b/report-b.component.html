@@ -1,0 +1,54 @@
+<div class="m-t-6xl">
+    <div class="m-t-3xl">
+        <div class="p-l-l p-r-l m-b-xl">
+            <div class="flex-container flex-wrap">
+                <div class="report-header">
+                    <h1>Report B</h1>
+                </div>
+                <div>
+                    <form [formGroup]="form">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <mat-form-field class="search-field">
+                                    <input
+                                        formControlName="search"
+                                        name="search"
+                                        matInput
+                                        placeholder="Search"
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="entities; else spinner" class="flex-table">
+                <table>
+                    <thead>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Public Identifier</th>
+                    </thead>
+                    <tbody class="m-b-s font-size-l">
+                        <tr *ngFor="let entity of getFilteredEntities()">
+                            <td>
+                                {{ entity.id }}
+                            </td>
+                            <td>
+                                {{ entity.name }}
+                            </td>
+                            <td>
+                                {{ entity.publicIdentifier }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template #spinner>
+                <div class="text-center m-t-2xl">
+                    <mat-spinner class="spinner"></mat-spinner>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

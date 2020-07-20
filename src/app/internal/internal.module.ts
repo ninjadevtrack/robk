@@ -14,6 +14,11 @@ import { UserEditComponent } from "./admin/user/user-edit/user-edit.component";
 import { AuthGuardService } from "../core/auth/auth-guard.service";
 import { ScoreFeedComponent } from "./common/score-feed/score-feed.component";
 import { CompanyViewComponent } from "./common/company/company-view/company-view.component";
+import { ReportListComponent } from "./common/reports/report-list/report-list.component";
+import { EmployerChangeReportComponent } from "./common/reports/employer-change-report/employer-change-report.component";
+import { ReportAComponent } from "./common/reports/report-a/report-a.component";
+import { ReportBComponent } from "./common/reports/report-b/report-b.component";
+import { ReportCComponent } from "./common/reports/report-c/report-c.component";
 
 const routes: Routes = [
     {
@@ -38,7 +43,24 @@ const routes: Routes = [
             },
             { path: "feed", component: ScoreFeedComponent },
             { path: "gwl", component: CompanyListComponent },
-            { path: "gwl/:slug", component: CompanyViewComponent }
+            { path: "gwl/:slug", component: CompanyViewComponent },
+            { path: "reports", component: ReportListComponent },
+            {
+                path: "reports/employer-change",
+                component: EmployerChangeReportComponent
+            },
+            {
+                path: "reports/report-a",
+                component: ReportAComponent
+            },
+            {
+                path: "reports/report-b",
+                component: ReportBComponent
+            },
+            {
+                path: "reports/report-c",
+                component: ReportCComponent
+            }
         ]
     }
 ];

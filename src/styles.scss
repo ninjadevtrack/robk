@@ -534,7 +534,7 @@ u {
 table td {
     padding: 1em;
     text-align: left;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 .flex-table table th {
     height: 40px;
@@ -856,4 +856,8 @@ media-plan-view {
 
 .flex-wrap {
     flex-wrap: wrap;
+}
+
+.report-header {
+    min-width: 400px;
 }

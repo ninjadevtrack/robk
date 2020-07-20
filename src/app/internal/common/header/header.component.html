@@ -25,6 +25,13 @@
                 Companies
             </a>
             <a
+                [routerLink]="['/i/reports']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Run Reports
+            </a>
+            <a
                 [routerLink]="['/i/admin']"
                 *ngIf="showAdminMenu"
                 routerLinkActive="active-alt"

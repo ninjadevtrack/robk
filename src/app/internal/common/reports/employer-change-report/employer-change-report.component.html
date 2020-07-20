@@ -1,0 +1,93 @@
+<div class="m-t-6xl">
+    <div class="m-t-3xl">
+        <div class="p-l-l p-r-l m-b-xl">
+            <div class="flex-container flex-wrap">
+                <div class="report-header">
+                    <h1>Employer Change Report</h1>
+                </div>
+                <div>
+                    <form [formGroup]="form">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <mat-form-field class="search-field">
+                                    <input
+                                        formControlName="search"
+                                        name="search"
+                                        matInput
+                                        placeholder="Search"
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="employerChanges; else spinner" class="flex-table">
+                <table>
+                    <thead>
+                        <th>Level</th>
+                        <th>Company On Watchlist</th>
+                        <th>Person</th>
+                        <th>Left</th>
+                        <th>Joined</th>
+                        <th>Current Role</th>
+                        <th>Location</th>
+                        <th>Founder Score</th>
+                        <th>Career Level</th>
+                        <th>New Role Start</th>
+                        <th>Last Crawled</th>
+                    </thead>
+                    <tbody class="m-b-s font-size-l">
+                        <tr *ngFor="let change of getFilteredEntities()">
+                            <td>{{ getLevel(change) }}</td>
+                            <td>
+                                {{ change.company_watchlist ? "Yes" : "No" }}
+                            </td>
+                            <td>
+                                <a
+                                    [href]="getLinkedinProfileLink(change)"
+                                    target="_blank"
+                                    >{{ change.firstName }}
+                                    {{ change.lastName }}</a
+                                >
+                            </td>
+                            <td>
+                                {{ change.prior_employer_name }}
+                            </td>
+                            <td>
+                                {{ change.current_employer_name }}
+                            </td>
+                            <td>
+                                {{ change.current_occupation }}
+                            </td>
+                            <td>
+                                {{ change.location }}
+                            </td>
+                            <td>
+                                {{ change.founderScore }}
+                            </td>
+                            <td>
+                                {{ change.careerScore }}
+                            </td>
+                            <td>
+                                {{
+                                    getHumanizedTimeAgo(
+                                        change.current_start_date
+                                    )
+                                }}
+                            </td>
+                            <td>
+                                {{ getHumanizedTimeAgo(change.last_updated) }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template #spinner>
+                <div class="text-center m-t-2xl">
+                    <mat-spinner class="spinner"></mat-spinner>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

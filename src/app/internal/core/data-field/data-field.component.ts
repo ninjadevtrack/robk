@@ -17,6 +17,9 @@ export class DataFieldComponent implements OnInit {
     public ngOnInit() {}
 
     isDataUrl(): boolean {
+        if (!this.data) {
+            return false;
+        }
         const regex = new RegExp(this.expression);
         return this.data.match(regex) !== null ? true : false;
     }

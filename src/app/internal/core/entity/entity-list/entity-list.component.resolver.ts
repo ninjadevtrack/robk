@@ -1,4 +1,4 @@
-import { OnInit, HostListener } from "@angular/core";
+import { OnInit, HostListener, Component } from "@angular/core";
 import { EEntityEventType } from "../entity-event-type.enum";
 import { IEntityService } from "../../../../core/entity-service.model";
 import { IEntityEvent } from "../entity-event.model";
@@ -6,6 +6,10 @@ import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.comp
 import { MatDialog } from "@angular/material/dialog";
 import { ComponentType } from "@angular/cdk/portal";
 
+@Component({
+    selector: "app-entity-list",
+    template: "<div></div>"
+})
 export class EntityListComponentResolver implements OnInit {
     editEntityDialogOpened: boolean = false;
     addEntityDialogOpened: boolean;

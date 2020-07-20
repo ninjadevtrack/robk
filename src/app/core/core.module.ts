@@ -13,7 +13,7 @@ import { RouterModule } from "@angular/router";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { CompanyService } from "./company/company.service";
 import { ScoreFeedService } from "./score-feed/score-feed.service";
-import { EmployerChangeService } from "./reports/employer-change.service";
+import { PeopleWatchService } from "./reports/peoplewatch.service";
 
 @NgModule({
     imports: [RouterModule, CommonModule, CoreCommonModule, HttpClientModule],
@@ -28,7 +28,7 @@ import { EmployerChangeService } from "./reports/employer-change.service";
         UserService,
         ScalingService,
         CompanyService,
-        EmployerChangeService,
+        PeopleWatchService,
         ScoreFeedService
     ],
     exports: [CoreCommonModule]

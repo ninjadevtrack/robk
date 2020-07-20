@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as moment from "moment";
 import { Observable } from "rxjs";
-import { EmployerChangeService } from "src/app/core/reports/employer-change.service";
+import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { IEmployerChange } from "src/app/core/reports/models/employer-change.model";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
@@ -19,7 +19,7 @@ export class EmployerChangeReportComponent implements OnInit {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private _employerChangesService: EmployerChangeService
+        private _peopleWatchService: PeopleWatchService
     ) {}
 
     ngOnInit(): void {
@@ -36,7 +36,7 @@ export class EmployerChangeReportComponent implements OnInit {
         this.form = this._formBuilder.group({
             search: ["", []]
         });
-        this._employerChangesService
+        this._peopleWatchService
             .getEmployerChanges()
             .subscribe((employerChanges: IEmployerChange[]) => {
                 this.employerChanges = employerChanges;

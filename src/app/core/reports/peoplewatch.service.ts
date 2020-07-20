@@ -6,7 +6,7 @@ import { HttpHelperService } from "../http-helper.service";
 import { IEmployerChange } from "./models/employer-change.model";
 
 @Injectable()
-export class EmployerChangeService {
+export class PeopleWatchService {
     constructor(
         private _configService: ConfigService,
         private _httpHelper: HttpHelperService

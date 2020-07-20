@@ -34,7 +34,7 @@ export class ReportAComponent implements OnInit {
             });
     }
 
-    getFilteredEntities() {
+    getFilteredEntities(): IReportAEntity[] {
         return this.searchPipe.transform(
             this.entities,
             this.searchFields,

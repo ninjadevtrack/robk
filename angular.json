@@ -17,6 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "getstream",
+              "rxjs/index",
+              "@angularclass/hmr",
+              "chart.js"
+            ],
             "outputPath": "dist/robscore-web",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -52,7 +58,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "3mb",
                   "maximumError": "5mb"
                 }
               ]

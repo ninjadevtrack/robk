@@ -26,7 +26,7 @@ body {
 body {
     margin: 0px;
     color: $font-color;
-    background-color: rgba(104, 59, 182, 0.03);
+    background-color: #ebecf0;
     font-weight: 100;
     font-size: $font-size-standard;
     line-height: 1.2;
@@ -860,4 +860,12 @@ media-plan-view {
 
 .report-header {
     min-width: 400px;
+}
+
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+}
+
+.mat-card:not([class*="mat-elevation-z"]) {
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }

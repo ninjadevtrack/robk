@@ -14,7 +14,12 @@ export class ScoreComponent implements OnInit {
 
     ngOnInit() {}
 
-    getLinkedInLink() {
+    getLink() {
+        const slug = this.score.payload.message.linkedinSlug;
+        if (slug) {
+            return `/i/gwl/${slug}`;
+        }
+
         return `https://linkedin.com/company/${this.score.payload.message.linkedin_id}`;
     }
 

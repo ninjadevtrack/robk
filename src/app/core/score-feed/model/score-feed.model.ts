@@ -4,6 +4,8 @@ export interface IScorePayloadMessage {
     growthEng: string;
     growthSales: string;
     last_funding: string;
+    linkedinUrl?: string;
+    linkedinSlug?: string;
     latestHeadcount: string;
     linkedin_id: string;
     monthlyConsecutive: string;

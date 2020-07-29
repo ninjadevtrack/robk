@@ -19,6 +19,9 @@ $mat-row-horizontal-padding: 24px;
 
 .mat-header-row {
     min-height: $mat-header-row-height;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+    border-radius: 4px;
 }
 
 .mat-row {
@@ -59,4 +62,8 @@ $mat-row-horizontal-padding: 24px;
 .mat-cell-kpi {
     font-size: larger;
     font-weight: 700;
+}
+
+.company-item {
+    margin-bottom: 15px;
 }

@@ -13,16 +13,20 @@
             {{ score.payload.message.overallGrowth }}
         </div>
         <div class="flex-container">
-            <div class="column">
-                <p class="description">
+            <div class="column score-card-section p-t-l">
+                <p class="description m-b-l">
                     {{ score.payload.message.description }}
                 </p>
-                <p><i>Tags:</i> {{ score.payload.tags }}</p>
-                <a [href]="score.payload.website">{{
-                    score.payload.website
-                }}</a>
+                <div class="tags m-b-l">
+                    <p><i>Tags:</i> {{ score.payload.tags }}</p>
+                </div>
+                <div class="website">
+                    <a [href]="score.payload.website">{{
+                        score.payload.website
+                    }}</a>
+                </div>
             </div>
-            <div class="column">
+            <div class="column score-card-section">
                 <table class="score-table">
                     <tbody>
                         <tr>
@@ -41,8 +45,8 @@
                 </table>
             </div>
         </div>
-        <div class="text-right">
-            <i>{{ getHumanizedTimeAgo() }} ago</i>
+        <div class="text-right days-ago gray">
+            {{ getHumanizedTimeAgo() }} ago
         </div>
     </mat-card>
 </div>

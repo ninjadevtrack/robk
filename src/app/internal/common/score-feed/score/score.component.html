@@ -1,9 +1,11 @@
 <div class="score-card">
     <mat-card *ngIf="score && score.payload">
         <div class="m-b-l">
-            <a class="company-name" [href]="getLink()">
-                {{ score.payload.message.name }}
-            </a>
+            <span class="company-name">
+                <a [href]="getLink()">
+                    {{ score.payload.message.name }}
+                </a>
+            </span>
             <span class="location">{{ score.payload.locationCity }}</span>
         </div>
         <div class="main-message m-b">

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="main-menu-public">
+<!-- <mat-toolbar color="primary" class="main-menu-public">
     <div class="logo">
         <a
             [routerLink]="['/i']"
@@ -69,4 +69,68 @@
             </mat-menu>
         </nav>
     </div>
-</mat-toolbar>
+</mat-toolbar> -->
+
+<header class="header">
+    <a href="" class="logo">Hoxton Ventures</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"
+        ><span class="navicon"></span
+    ></label>
+    <ul class="menu">
+        <li>
+            <a
+                [routerLink]="['/i/feed']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Feed
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="['/i/gwl']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Companies
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="['/i/reports']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Run Reports
+            </a>
+        </li>
+        <li *ngIf="showAdminMenu">
+            <a
+                [routerLink]="['/i/admin']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Manage Users
+            </a>
+        </li>
+        <li>
+            <a
+                [routerLink]="['/i/profile']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                {{ userName }}
+            </a>
+        </li>
+        <li>
+            <a
+                (click)="signOut()"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
+                Sign Out
+            </a>
+        </li>
+    </ul>
+</header>

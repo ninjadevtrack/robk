@@ -868,3 +868,27 @@ media-plan-view {
 .mat-card:not([class*="mat-elevation-z"]) {
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }
+
+.kpi-card-big {
+    .kpi-value {
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 300;
+    }
+}
+
+.kpi-card-small {
+    .kpi-value {
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 300;
+    }
+}

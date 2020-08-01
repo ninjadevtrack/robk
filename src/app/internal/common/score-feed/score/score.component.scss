@@ -20,8 +20,9 @@
 }
 
 .main-message {
-    font-size: 1.3em;
+    font-size: 1.6em;
     font-weight: 600;
+    font-family: "Roboto Slab";
 }
 
 .secondary-message {
@@ -66,6 +67,8 @@
     font-family: "Inter";
     font-weight: 400;
     font-size: 1.1em;
+    min-width: 260px;
+    flex: 1;
 }
 
 .days-ago {
@@ -78,4 +81,8 @@
 .website {
     font-family: "Roboto Slab";
     font-weight: 400;
+}
+
+.last-funding {
+    font-family: "Roboto Slab";
 }

@@ -23,7 +23,7 @@ import { PermissionsEnum } from "../../../core/common/permissions.enum";
     styleUrls: ["./header.component.scss"]
 })
 export class InternalHeaderComponent implements OnInit {
-    public logo = "assets/img/logo-white.svg";
+    public logo = "assets/img/logo-dark.svg";
     public userName = "Loading profile...";
     public permissions: string[] = [];
     public showAdminMenu = false;

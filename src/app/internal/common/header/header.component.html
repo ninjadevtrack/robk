@@ -72,7 +72,15 @@
 </mat-toolbar> -->
 
 <header class="header">
-    <a href="" class="logo">Hoxton Ventures</a>
+    <div class="logo">
+        <a
+            [routerLink]="['/i']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            <img [src]="logo" height="52px" />
+        </a>
+    </div>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"
         ><span class="navicon"></span

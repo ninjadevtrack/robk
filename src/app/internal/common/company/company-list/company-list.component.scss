@@ -85,8 +85,13 @@ $mat-row-horizontal-padding: 24px;
             flex: 4;
         }
 
-        div {
+        .ignore-button {
             flex: 1;
         }
     }
+}
+
+.company-links-container {
+    display: flex;
+    flex-direction: row;
 }

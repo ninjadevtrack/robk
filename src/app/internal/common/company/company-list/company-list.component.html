@@ -132,13 +132,37 @@
                                         >Tags: <em>{{ c.tags }}</em></small
                                     >
                                 </div>
-                                <div class="m-t m-b">
-                                    <app-company-links
-                                        [company]="c"
-                                    ></app-company-links>
+                                <div class="company-links-container m-t m-b">
+                                    <div class="m-t-xs">
+                                        <app-company-links
+                                            [company]="c"
+                                        ></app-company-links>
+                                    </div>
+                                    <div class="ignore-button m-l-l">
+                                        <button
+                                            *ngIf="!isIgnoreBeingUpdated(c)"
+                                            mat-button
+                                            class="mat-primary"
+                                            (click)="toggleIgnoreCompany(c)"
+                                        >
+                                            {{
+                                                c.ignore
+                                                    ? "Undo Ignore"
+                                                    : "Ignore"
+                                            }}
+                                        </button>
+                                        <span *ngIf="isIgnoreBeingUpdated(c)">
+                                            {{
+                                                c.ignore
+                                                    ? "Undoing Ignore..."
+                                                    : "Ignoring..."
+                                            }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="flex-container company-main-kpis">
                             <div class="kpi-card">
                                 <app-kpi-card
@@ -179,25 +203,7 @@
                         </div>
                     </div>
 
-                    <div class="m-b-l" class="flex-container">
-                        <div class="text-right">
-                            <button
-                                *ngIf="!isIgnoreBeingUpdated(c)"
-                                mat-button
-                                class="mat-primary"
-                                (click)="toggleIgnoreCompany(c)"
-                            >
-                                {{ c.ignore ? "Undo Ignore" : "Ignore" }}
-                            </button>
-                            <span *ngIf="isIgnoreBeingUpdated(c)">
-                                {{
-                                    c.ignore
-                                        ? "Undoing Ignore..."
-                                        : "Ignoring..."
-                                }}
-                            </span>
-                        </div>
-                    </div>
+                    <div class="m-b-l" class="flex-container"></div>
 
                     <div>
                         <!-- Chart goes here -->

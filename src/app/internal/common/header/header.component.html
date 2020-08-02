@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="main-menu-public">
+<header class="header">
     <div class="logo">
         <a
             [routerLink]="['/i']"
@@ -8,8 +8,12 @@
             <img [src]="logo" height="52px" />
         </a>
     </div>
-    <div class="public-menu">
-        <nav class="main-nav">
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"
+        ><span class="navicon"></span
+    ></label>
+    <ul class="menu">
+        <li>
             <a
                 [routerLink]="['/i/feed']"
                 routerLinkActive="active-alt"
@@ -17,6 +21,8 @@
             >
                 Feed
             </a>
+        </li>
+        <li>
             <a
                 [routerLink]="['/i/gwl']"
                 routerLinkActive="active-alt"
@@ -24,6 +30,8 @@
             >
                 Companies
             </a>
+        </li>
+        <li>
             <a
                 [routerLink]="['/i/reports']"
                 routerLinkActive="active-alt"
@@ -31,42 +39,33 @@
             >
                 Run Reports
             </a>
+        </li>
+        <li *ngIf="showAdminMenu">
             <a
                 [routerLink]="['/i/admin']"
-                *ngIf="showAdminMenu"
                 routerLinkActive="active-alt"
                 [routerLinkActiveOptions]="{ exact: false }"
             >
                 Manage Users
             </a>
-        </nav>
-    </div>
-    <div class="public-menu">
-        <nav>
-            <a [matMenuTriggerFor]="appMenu">
+        </li>
+        <li>
+            <a
+                [routerLink]="['/i/profile']"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
+            >
                 {{ userName }}
             </a>
-            <mat-menu
-                #appMenu="matMenu"
-                yPosition="below"
-                xPosition="after"
-                [overlapTrigger]="false"
+        </li>
+        <li>
+            <a
+                (click)="signOut()"
+                routerLinkActive="active-alt"
+                [routerLinkActiveOptions]="{ exact: false }"
             >
-                <button
-                    mat-menu-item
-                    class="main-menu-nested-item"
-                    routerLink="/i/profile"
-                >
-                    Profile
-                </button>
-                <button
-                    mat-menu-item
-                    class="main-menu-nested-item"
-                    (click)="signOut()"
-                >
-                    Sign Out
-                </button>
-            </mat-menu>
-        </nav>
-    </div>
-</mat-toolbar>
+                Sign Out
+            </a>
+        </li>
+    </ul>
+</header>

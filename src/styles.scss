@@ -495,7 +495,8 @@ u {
 }
 
 .active-alt {
-    color: white;
+    font-weight: 900;
+    color: black;
 }
 
 .active u {
@@ -534,7 +535,6 @@ u {
 table td {
     padding: 1em;
     text-align: left;
-    font-size: 0.8em;
 }
 .flex-table table th {
     height: 40px;
@@ -868,4 +868,28 @@ media-plan-view {
 
 .mat-card:not([class*="mat-elevation-z"]) {
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+}
+
+.kpi-card-big {
+    .kpi-value {
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 300;
+    }
+}
+
+.kpi-card-small {
+    .kpi-value {
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+    .kpi-name {
+        font-size: small;
+        font-weight: 300;
+    }
 }

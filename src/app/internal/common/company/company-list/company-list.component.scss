@@ -66,4 +66,33 @@ $mat-row-horizontal-padding: 24px;
 
 .company-item {
     margin-bottom: 15px;
+
+    .company-header-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .company-main {
+            flex: 1;
+            min-width: 360px;
+
+            .company-name {
+                font-family: "Roboto Slab";
+                font-size: 2.5em;
+                font-weight: 600;
+            }
+
+            .company-name a:hover {
+                text-decoration: none;
+            }
+        }
+
+        .company-main-kpis {
+            flex: 3;
+        }
+    }
+}
+
+.company-links-container {
+    display: flex;
+    flex-direction: row;
 }

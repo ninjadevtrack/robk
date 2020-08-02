@@ -73,20 +73,21 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main {
             flex: 1;
-            min-width: 380px;
+            min-width: 360px;
 
             .company-name {
                 font-family: "Roboto Slab";
-                font-size: 1.2em;
+                font-size: 2.5em;
+                font-weight: 600;
+            }
+
+            .company-name a:hover {
+                text-decoration: none;
             }
         }
 
         .company-main-kpis {
-            flex: 4;
-        }
-
-        .ignore-button {
-            flex: 1;
+            flex: 3;
         }
     }
 }

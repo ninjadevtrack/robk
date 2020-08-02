@@ -163,7 +163,7 @@
                             </div>
                         </div>
 
-                        <div class="flex-container company-main-kpis">
+                        <div class="flex-container company-main-kpis m-t m-b-l">
                             <div class="kpi-card">
                                 <app-kpi-card
                                     [name]="
@@ -171,6 +171,7 @@
                                     3mo h/c Δ'
                                     "
                                     [value]="c.mavgTrend"
+                                    [isBig]="true"
                                 ></app-kpi-card>
                             </div>
                             <div class="kpi-card">
@@ -180,6 +181,7 @@
                                         12mo h/c Δ'
                                     "
                                     [value]="c.maTrend"
+                                    [isBig]="true"
                                 ></app-kpi-card>
                             </div>
                             <div class="kpi-card">
@@ -189,6 +191,7 @@
                                         Robscore'
                                     "
                                     [value]="c.robscore"
+                                    [isBig]="true"
                                 ></app-kpi-card>
                             </div>
                             <div class="kpi-card">
@@ -198,6 +201,7 @@
                                         EduScore'
                                     "
                                     [value]="c.educationScore"
+                                    [isBig]="true"
                                 ></app-kpi-card>
                             </div>
                         </div>

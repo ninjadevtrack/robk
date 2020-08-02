@@ -108,8 +108,8 @@
                     class="company-item"
                     *ngFor="let c of companiesToDisplay$ | async"
                 >
-                    <div class="company-header-container">
-                        <div>
+                    <div class="company-header-container flex-wrap">
+                        <div class="company-main">
                             <div class="company-name">
                                 <a routerLink="/i/gwl/{{ getUrlSlug(c) }}">{{
                                     c.name
@@ -127,41 +127,43 @@
                                 >
                             </div>
                         </div>
-                        <div class="kpi-card">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                3mo h/c Δ'
-                                "
-                                [value]="c.mavgTrend"
-                            ></app-kpi-card>
-                        </div>
-                        <div class="kpi-card">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                    12mo h/c Δ'
-                                "
-                                [value]="c.maTrend"
-                            ></app-kpi-card>
-                        </div>
-                        <div class="kpi-card">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                    Robscore'
-                                "
-                                [value]="c.robscore"
-                            ></app-kpi-card>
-                        </div>
-                        <div class="kpi-card">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                    EduScore'
-                                "
-                                [value]="c.educationScore"
-                            ></app-kpi-card>
+                        <div class="flex-container company-main-kpis">
+                            <div class="kpi-card">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                    3mo h/c Δ'
+                                    "
+                                    [value]="c.mavgTrend"
+                                ></app-kpi-card>
+                            </div>
+                            <div class="kpi-card">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        12mo h/c Δ'
+                                    "
+                                    [value]="c.maTrend"
+                                ></app-kpi-card>
+                            </div>
+                            <div class="kpi-card">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        Robscore'
+                                    "
+                                    [value]="c.robscore"
+                                ></app-kpi-card>
+                            </div>
+                            <div class="kpi-card">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        EduScore'
+                                    "
+                                    [value]="c.educationScore"
+                                ></app-kpi-card>
+                            </div>
                         </div>
                     </div>
 
@@ -196,10 +198,12 @@
                             </span>
                         </div>
                     </div>
+
                     <div>
                         <!-- Chart goes here -->
                         <app-chart [company]="c"></app-chart>
                     </div>
+
                     <div class="m-t-xl m-b-2xl">
                         <app-company-details-by-cards
                             [company]="c"

@@ -5,7 +5,7 @@ import { ESize } from "src/app/internal/core/size.enum";
 @Component({
     selector: "app-capsule-details",
     templateUrl: "./capsule-details.component.html",
-    styleUrls: ["./capsule-details.component.css"]
+    styleUrls: ["./capsule-details.component.scss"]
 })
 export class CapsuleDetailsComponent implements OnInit {
     @Input() capsuleDetails: ICapsuleDetails;

@@ -8,3 +8,9 @@
     font-size: 1.2em;
     font-weight: 500;
 }
+
+.company-name {
+    font-family: "Roboto Slab";
+    font-size: 2em;
+    font-weight: 600;
+}

@@ -64,6 +64,24 @@ $mat-row-horizontal-padding: 24px;
     font-weight: 700;
 }
 
+@media only screen and (max-width: 375px) {
+    .company-item {
+        max-width: 343px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .company-main {
+        min-width: 380px !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .company-main {
+        min-width: 550px !important;
+    }
+}
+
 .company-item {
     margin-bottom: 15px;
     font-family: "Inter";
@@ -74,7 +92,7 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main {
             flex: 1;
-            min-width: 360px;
+            min-width: 320px;
 
             .company-name {
                 font-family: "Roboto Slab";

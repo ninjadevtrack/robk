@@ -4,7 +4,7 @@ import { ICapsuleNote } from "src/app/core/company/model/capsule-note.model";
 @Component({
     selector: "app-capsule-notes",
     templateUrl: "./capsule-notes.component.html",
-    styleUrls: ["./capsule-notes.component.css"]
+    styleUrls: ["./capsule-notes.component.scss"]
 })
 export class CapsuleNotesComponent implements OnInit {
     @Input() capsuleNotes: ICapsuleNote[];

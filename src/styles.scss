@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    font-family: "Roboto", "Segoe UI", sans-serif;
+    font-family: "Inter", "Roboto", "Segoe UI", sans-serif;
 }
 
 *,
@@ -27,7 +27,7 @@ body {
     margin: 0px;
     color: $font-color;
     background-color: #ebecf0;
-    font-weight: 100;
+    font-weight: 200;
     font-size: $font-size-standard;
     line-height: 1.2;
 }
@@ -41,7 +41,9 @@ h2,
 h3,
 h4,
 h5 {
-    font-weight: 100;
+    font-weight: 500;
+    font-family: "Roboto Slab";
+    color: $font-color;
 }
 
 a {

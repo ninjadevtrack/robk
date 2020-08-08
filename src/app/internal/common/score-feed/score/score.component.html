@@ -44,6 +44,20 @@
                             [isBig]="true"
                         ></app-kpi-card>
                     </div>
+                    <div class="kpi-card">
+                        <app-kpi-card
+                            [name]="'6mo eng Δ'"
+                            [value]="score.payload.growth6_eng"
+                            [isBig]="true"
+                        ></app-kpi-card>
+                    </div>
+                    <div class="kpi-card">
+                        <app-kpi-card
+                            [name]="'12mo eng Δ'"
+                            [value]="score.payload.growth12_eng"
+                            [isBig]="true"
+                        ></app-kpi-card>
+                    </div>
                 </div>
                 <div class="kpi-card last-funding text-center">
                     {{ score.payload.message.last_funding }}

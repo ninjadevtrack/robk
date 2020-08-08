@@ -74,6 +74,10 @@ $mat-row-horizontal-padding: 24px;
     .company-main {
         min-width: 380px !important;
     }
+
+    .company-main-kpis {
+        min-width: 320px;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -96,7 +100,7 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main {
             flex: 1;
-            min-width: 320px;
+            min-width: 260px;
 
             .company-name {
                 font-family: "Roboto Slab";
@@ -111,7 +115,7 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main-kpis {
             flex: 3;
-            min-width: 320px;
+            min-width: 260px;
         }
     }
 }

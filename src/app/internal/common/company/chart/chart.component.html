@@ -1,10 +1,14 @@
 <!--<div *ngIf="company && chart">-->
-    <!--<canvas class="chart" #canvas id="canvas_{{company.name}}">{{ chart }}</canvas>-->
+<!--<canvas class="chart" #canvas id="canvas_{{company.name}}">{{ chart }}</canvas>-->
 <!--</div>-->
 <!-- OLD VERSION WITH LAZY RENDERING -->
-<div *ngIf="company && chart"
-     inViewport
-     [inViewportOptions]="{ threshold: [1000] }"
-     (inViewportAction)="onIntersection($event)">
-    <canvas class="chart" #canvas id="canvas_{{company.name}}">{{ chart }}</canvas>
+<div
+    *ngIf="company && chart"
+    inViewport
+    [inViewportOptions]="{ threshold: [1000] }"
+    (inViewportAction)="onIntersection($event)"
+>
+    <div class="chart-container">
+        <canvas #canvas id="canvas_{{ company.name }}">{{ chart }}</canvas>
+    </div>
 </div>

@@ -18,7 +18,6 @@
 }
 
 .kpi-card-main {
-    min-width: 100px;
     margin-bottom: 20px;
 }
 
@@ -48,6 +47,7 @@
 
 .company-name {
     font-family: "Roboto Slab";
+    min-width: 280px;
     font-size: 1.5em;
     font-weight: 600;
 }

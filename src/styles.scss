@@ -835,6 +835,26 @@ media-plan-view {
 
 .data-field-data {
     font-size: $font-size-standard;
+    width: 280px;
+    word-wrap: break-word;
+}
+
+@media only screen and (min-width: 600px) {
+    .data-field-data {
+        width: 100%;
+    }
+
+    .kpi-card-big {
+        .kpi-value {
+            font-size: xx-large !important;
+        }
+    }
+
+    .kpi-card-big {
+        .kpi-value {
+            font-size: x-large !important;
+        }
+    }
 }
 
 .data-field-medium {
@@ -887,7 +907,7 @@ media-plan-view {
 
 .kpi-card-big {
     .kpi-value {
-        font-size: xx-large;
+        font-size: large;
         font-weight: 700;
     }
 
@@ -899,7 +919,7 @@ media-plan-view {
 
 .kpi-card-small {
     .kpi-value {
-        font-size: x-large;
+        font-size: large;
         font-weight: 700;
     }
 

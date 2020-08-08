@@ -424,15 +424,27 @@ nav a:hover {
     border: 1px dashed $mat-color-300;
 }
 
+@media only screen and (min-width: 600px) {
+    .public-field {
+        width: $control-width-s !important;
+        max-width: $control-width-s !important;
+    }
+
+    .public-card {
+        width: 420px !important;
+        max-width: 420px !important;
+    }
+}
+
 .public-field {
     height: 48px;
-    width: $control-width-standard;
-    max-width: $control-width-s;
+    width: $control-width-xs;
+    max-width: $control-width-xs;
 }
 
 .public-card {
-    width: 420px;
-    max-width: 420px;
+    width: 350px;
+    max-width: 350px;
 }
 
 .button-l {

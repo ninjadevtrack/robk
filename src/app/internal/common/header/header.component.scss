@@ -53,6 +53,8 @@ a {
     clear: both;
     max-height: 0;
     transition: max-height 0.2s ease-out;
+    font-family: "Inter";
+    font-weight: 300;
 }
 
 /* menu icon */
@@ -123,7 +125,7 @@ a {
 
 /* 48em = 768px */
 
-@media (min-width: 48em) {
+@media (min-width: 68em) {
     .header li {
         float: left;
     }

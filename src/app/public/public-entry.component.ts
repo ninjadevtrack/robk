@@ -7,7 +7,7 @@ import { AuthService } from "../core/auth/auth.service";
     providers: [],
     template: ` <div *ngIf="showForm">
         <div class="m-b-2xl text-center m-t-6xl">
-            <a routerLink="/"><img [src]="logo" height="120px" /></a>
+            <a routerLink="/"><img [src]="logo" height="100px" /></a>
         </div>
         <router-outlet></router-outlet>
     </div>`

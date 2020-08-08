@@ -1,3 +1,13 @@
-.chart {
-  height: 300px;
+.chart-container {
+    position: relative;
+    height: 40vh;
+    width: 82vw;
+}
+
+@media only screen and (min-width: 600px) {
+    .chart-container {
+        position: relative;
+        height: 45vh;
+        width: 95vw;
+    }
 }

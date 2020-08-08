@@ -1,6 +1,6 @@
-<div>
+<div class="capsule-details">
     <div *ngIf="capsuleDetails; else capsuleDetailsSpinner">
-        <h2>{{ capsuleDetails.name }}</h2>
+        <h2 class="company-name">{{ capsuleDetails.name }}</h2>
         <app-capsule-websites
             [capsuleDetails]="capsuleDetails"
         ></app-capsule-websites>
@@ -15,7 +15,7 @@
             [data]="capsuleDetails?.about"
             [size]="dataFieldSize"
         ></data-field>
-        <div class="m-b-l">
+        <div class="m-b-l word-break-all">
             <div class="data-field-header">Tags</div>
             <span *ngFor="let tag of capsuleDetails.tags" class="m-b m-r gray">
                 <small>{{ tag.name }}</small>

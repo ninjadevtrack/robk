@@ -2,8 +2,26 @@
     margin-bottom: 10px;
 }
 
+@media only screen and (min-width: 600px) {
+    .company-name {
+        font-size: 2.2em !important;
+    }
+
+    .main-message {
+        font-size: 1.4em !important;
+    }
+
+    .secondary-message {
+        font-size: 1.2em !important;
+    }
+
+    .score-card-section {
+        font-size: 1.1em !important;
+    }
+}
+
 .company-name {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-family: "Roboto Slab";
     font-weight: 600;
 }
@@ -20,13 +38,13 @@
 }
 
 .main-message {
-    font-size: 1.6em;
+    font-size: 1.2em;
     font-weight: 600;
     font-family: "Roboto Slab";
 }
 
 .secondary-message {
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: 600;
     font-family: "Roboto Slab";
 }
@@ -66,7 +84,7 @@
 .score-card-section {
     font-family: "Inter";
     font-weight: 400;
-    font-size: 1.1em;
+    font-size: 1em;
     min-width: 260px;
     flex: 1;
 }

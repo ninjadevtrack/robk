@@ -21,6 +21,10 @@ export interface IScorePayload {
     score: number;
     tags: string;
     website: string;
+    growth6_eng: number;
+    growth12_eng: number;
+    growth6_sales: number;
+    growth12_sales: number;
 }
 
 export interface IScoreResult {

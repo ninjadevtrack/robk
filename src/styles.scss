@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    font-family: "Roboto", "Segoe UI", sans-serif;
+    font-family: "Inter", "Roboto", "Segoe UI", sans-serif;
 }
 
 *,
@@ -27,13 +27,14 @@ body {
     margin: 0px;
     color: $font-color;
     background-color: #ebecf0;
-    font-weight: 100;
+    font-weight: 200;
     font-size: $font-size-standard;
     line-height: 1.2;
 }
 
 h1 {
     color: $font-color;
+    font-size: 1.8em;
 }
 
 h1,
@@ -41,7 +42,9 @@ h2,
 h3,
 h4,
 h5 {
-    font-weight: 100;
+    font-weight: 500;
+    font-family: "Roboto Slab";
+    color: $font-color;
 }
 
 a {
@@ -422,15 +425,27 @@ nav a:hover {
     border: 1px dashed $mat-color-300;
 }
 
+@media only screen and (min-width: 600px) {
+    .public-field {
+        width: $control-width-s !important;
+        max-width: $control-width-s !important;
+    }
+
+    .public-card {
+        width: 420px !important;
+        max-width: 420px !important;
+    }
+}
+
 .public-field {
     height: 48px;
-    width: $control-width-standard;
-    max-width: $control-width-s;
+    width: $control-width-xs;
+    max-width: $control-width-xs;
 }
 
 .public-card {
-    width: 420px;
-    max-width: 420px;
+    width: 350px;
+    max-width: 350px;
 }
 
 .button-l {
@@ -495,7 +510,7 @@ u {
 }
 
 .active-alt {
-    font-weight: 900;
+    font-weight: 700;
     color: black;
 }
 
@@ -541,6 +556,7 @@ table td {
     font-size: 1em;
     letter-spacing: 0.1em;
     color: $font-color-pale;
+    background-color: white;
 }
 @media screen and (max-width: 600px) {
     .flex-table table {
@@ -820,10 +836,30 @@ media-plan-view {
 
 .data-field-data {
     font-size: $font-size-standard;
+    width: 280px;
+    word-wrap: break-word;
+}
+
+@media only screen and (min-width: 600px) {
+    .data-field-data {
+        width: 100%;
+    }
+
+    .kpi-card-big {
+        .kpi-value {
+            font-size: xx-large !important;
+        }
+    }
+
+    .kpi-card-big {
+        .kpi-value {
+            font-size: x-large !important;
+        }
+    }
 }
 
 .data-field-medium {
-    font-weight: 100;
+    font-weight: 200;
     font-size: $font-size-standard;
     margin-bottom: $offset-size-l;
 }
@@ -872,7 +908,7 @@ media-plan-view {
 
 .kpi-card-big {
     .kpi-value {
-        font-size: xx-large;
+        font-size: large;
         font-weight: 700;
     }
 
@@ -884,7 +920,7 @@ media-plan-view {
 
 .kpi-card-small {
     .kpi-value {
-        font-size: x-large;
+        font-size: large;
         font-weight: 700;
     }
 
@@ -892,4 +928,8 @@ media-plan-view {
         font-size: small;
         font-weight: 300;
     }
+}
+
+.word-break-all {
+    word-break: break-all;
 }

@@ -64,8 +64,35 @@ $mat-row-horizontal-padding: 24px;
     font-weight: 700;
 }
 
+@media only screen and (max-width: 375px) {
+    .company-item {
+        max-width: 343px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .company-main {
+        min-width: 380px !important;
+    }
+
+    .company-main-kpis {
+        min-width: 320px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .company-main {
+        min-width: 550px !important;
+    }
+
+    .company-name {
+        font-size: 2.2em !important;
+    }
+}
+
 .company-item {
     margin-bottom: 15px;
+    font-family: "Inter";
 
     .company-header-container {
         display: flex;
@@ -73,11 +100,11 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main {
             flex: 1;
-            min-width: 360px;
+            min-width: 260px;
 
             .company-name {
                 font-family: "Roboto Slab";
-                font-size: 2.5em;
+                font-size: 1.5em;
                 font-weight: 600;
             }
 
@@ -88,6 +115,7 @@ $mat-row-horizontal-padding: 24px;
 
         .company-main-kpis {
             flex: 3;
+            min-width: 260px;
         }
     }
 }

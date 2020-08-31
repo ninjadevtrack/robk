@@ -27,6 +27,7 @@ export interface ICompany {
     robscore: number;
     educationScore: number;
     cpWebsite: string;
+    isEuropean: boolean;
 }
 
 export interface ICompaniesResult {

@@ -66,6 +66,7 @@ export class CompanyListComponent implements OnInit {
             search: ["", []],
             daysSinceLastRound: ["", []],
             excludeUnknown: [false, []],
+            europeanOnly: [false, []],
             scaling: [EScaling.ALL_DEALS, [Validators.required]],
             ignored: [false, [Validators.required]]
         });
@@ -110,6 +111,7 @@ export class CompanyListComponent implements OnInit {
         const daysSinceLastRound = this.form.controls["daysSinceLastRound"]
             .value;
         const excludeUnknown = this.form.controls["excludeUnknown"].value;
+        const europeanOnly = this.form.controls["europeanOnly"].value;
         const scaling = this.form.controls["scaling"].value;
         const ignored = this.form.controls["ignored"].value;
 
@@ -154,13 +156,17 @@ export class CompanyListComponent implements OnInit {
                 filteredCompanies = filteredCompanies.filter(cv => {
                     if (excludeUnknown) {
                         return cv.cbLastFundingDate > daysSinceLastRound;
-                    } else {
-                        return (
-                            cv.cbLastFundingDate === undefined ||
-                            cv.cbLastFundingDate === null ||
-                            cv.cbLastFundingDate > daysSinceLastRound
-                        );
                     }
+                    return (
+                        cv.cbLastFundingDate === undefined ||
+                        cv.cbLastFundingDate === null ||
+                        cv.cbLastFundingDate > daysSinceLastRound
+                    );
+                });
+
+                // Then let's filter if it's set to show only european companies
+                filteredCompanies = filteredCompanies.filter(cv => {
+                    return europeanOnly ? cv.isEuropean : true;
                 });
 
                 // filter companies by tags, cities and search if they are defined

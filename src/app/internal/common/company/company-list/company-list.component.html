@@ -83,6 +83,12 @@
                             >Exclude Unknown</mat-checkbox
                         >
                         <mat-checkbox
+                            class="regular-field m-r-l"
+                            formControlName="europeanOnly"
+                            (change)="updateCompanyValuesToDisplay()"
+                            >European Only</mat-checkbox
+                        >
+                        <mat-checkbox
                             formControlName="ignored"
                             (change)="updateCompanyValuesToDisplay()"
                             >Show Ignored Companies</mat-checkbox

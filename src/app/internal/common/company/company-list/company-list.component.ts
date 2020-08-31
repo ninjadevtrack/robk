@@ -64,6 +64,7 @@ export class CompanyListComponent implements OnInit {
             tags: [[], []],
             cities: [[], []],
             search: ["", []],
+            daysSinceLastRound: ["", []],
             scaling: [EScaling.ALL_DEALS, [Validators.required]],
             ignored: [false, [Validators.required]]
         });
@@ -105,6 +106,8 @@ export class CompanyListComponent implements OnInit {
         const tags = this.form.controls["tags"].value;
         const cities = this.form.controls["cities"].value;
         const search = this.form.controls["search"].value;
+        const daysSinceLastRound = this.form.controls["daysSinceLastRound"]
+            .value;
         const scaling = this.form.controls["scaling"].value;
         const ignored = this.form.controls["ignored"].value;
 
@@ -143,6 +146,11 @@ export class CompanyListComponent implements OnInit {
                 // Then let's filter according 'Ignore flag'
                 filteredCompanies = filteredCompanies.filter(cv => {
                     return ignored ? cv.ignore : !cv.ignore;
+                });
+
+                // Then let's filter it according the cbLastFundingDate
+                filteredCompanies = filteredCompanies.filter(cv => {
+                    return cv.cbLastFundingDate > daysSinceLastRound;
                 });
 
                 // filter companies by tags, cities and search if they are defined

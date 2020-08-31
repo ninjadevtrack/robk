@@ -31,6 +31,17 @@
                                 placeholder="Search"
                             />
                         </mat-form-field>
+                        <mat-form-field
+                            class="regular-field m-r-l"
+                            (keyup)="updateCompanyValuesToDisplay()"
+                        >
+                            <input
+                                formControlName="daysSinceLastRound"
+                                name="daysSinceLastRound"
+                                matInput
+                                placeholder="Days Since Last Round"
+                            />
+                        </mat-form-field>
                         <mat-form-field class="regular-field m-r-l">
                             <mat-select
                                 placeholder="Cities"

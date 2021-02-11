@@ -45,9 +45,19 @@ export class EmployerChangeReportComponent implements OnInit {
 
     getLevel(employerChange: IEmployerChange): string {
         let res = "";
-        res += employerChange.founder === 1 ? "FOUNDER" : "NON FOUNDER";
-        res += employerChange.ceo === 1 ? "/ CEO" : "/ UNKNOWN";
-
+        if (employerChange.founder) {
+            res += "FOUNDER";
+            if (employerChange.ceo){
+                res += " & CEO";
+            }
+        } else if (employerChange.ceo){
+            res+= "CEO";
+        } else {
+            res+="LEVEL ";
+            res+=employerChange.level_id;
+        }
+        //res += employerChange.founder == 1 ? "FOUNDER" : "NON FOUNDER";
+        //res += employerChange.ceo == 1 ? "/ CEO" : "/ UNKNOWN";
         return res;
     }
 

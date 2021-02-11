@@ -16,7 +16,7 @@ import { ScoreFeedComponent } from "./common/score-feed/score-feed.component";
 import { CompanyViewComponent } from "./common/company/company-view/company-view.component";
 import { ReportListComponent } from "./common/reports/report-list/report-list.component";
 import { EmployerChangeReportComponent } from "./common/reports/employer-change-report/employer-change-report.component";
-import { ReportAComponent } from "./common/reports/report-a/report-a.component";
+import { NewFoundersReportComponent } from "./common/reports/new-founders-report/new-founders-report.component";
 import { ReportBComponent } from "./common/reports/report-b/report-b.component";
 import { ReportCComponent } from "./common/reports/report-c/report-c.component";
 
@@ -50,8 +50,8 @@ const routes: Routes = [
                 component: EmployerChangeReportComponent
             },
             {
-                path: "reports/report-a",
-                component: ReportAComponent
+                path: "reports/new-founders",
+                component: NewFoundersReportComponent
             },
             {
                 path: "reports/report-b",

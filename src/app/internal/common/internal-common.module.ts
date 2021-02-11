@@ -44,7 +44,7 @@ import { LastContactComponent } from "./company/last-contact/last-contact.compon
 import { DebugDialogComponent } from "./company/debug-d/debug-dialog.component";
 import { ReportListComponent } from "./reports/report-list/report-list.component";
 import { EmployerChangeReportComponent } from "./reports/employer-change-report/employer-change-report.component";
-import { ReportAComponent } from './reports/report-a/report-a.component';
+import { NewFoundersReportComponent } from './reports/new-founders-report/new-founders-report.component';
 import { ReportBComponent } from './reports/report-b/report-b.component';
 import { ReportCComponent } from './reports/report-c/report-c.component';
 
@@ -98,7 +98,7 @@ import { ReportCComponent } from './reports/report-c/report-c.component';
         DebugDialogComponent,
         ReportListComponent,
         EmployerChangeReportComponent,
-        ReportAComponent,
+        NewFoundersReportComponent,
         ReportBComponent,
         ReportCComponent
     ],

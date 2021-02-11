@@ -11,8 +11,8 @@ import {
 
 @Injectable()
 export class ScoreFeedService {
-    private client: stream.Client;
-    private feed: stream.Feed;
+    private client: stream.StreamClient;
+    private feed: stream.Feed; // StreamF
     private notificationsDS: Subject<IScoreNotificationResult> = new Subject<
         IScoreNotificationResult
     >();

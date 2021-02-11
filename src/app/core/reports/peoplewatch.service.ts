@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { ConfigService } from "../common/config.service";
 import { HttpHelperService } from "../http-helper.service";
 import { IEmployerChange } from "./models/employer-change.model";
-import { IReportAEntity } from "./models/report-a.model";
+import { INewFoundersEntity } from "./models/new-founders.model";
 import { IReportBEntity } from "./models/report-b.model";
 import { IReportCEntity } from "./models/report-c.model";
 
@@ -37,10 +37,10 @@ export class PeopleWatchService {
             );
     }
 
-    public reportA(): Observable<IReportAEntity[]> {
+    public reportNewFounders(): Observable<INewFoundersEntity[]> {
         return this._httpHelper.get(
             true,
-            this._configService.API.Peoplewatch.reportA()
+            this._configService.API.Peoplewatch.newFounders()
         );
     }
 

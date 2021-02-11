@@ -3,7 +3,7 @@
         <div class="p-l-l p-r-l m-b-xl">
             <div class="flex-container flex-wrap">
                 <div class="report-header">
-                    <h1>Employer Change Report</h1>
+                    <h1>Employer Recent Change Report</h1>
                 </div>
                 <div>
                     <form [formGroup]="form">
@@ -37,7 +37,7 @@
                         <th>New Role Start</th>
                         <th>Last Crawled</th>
                     </thead>
-                    <tbody class="m-b-s font-size-l">
+                    <tbody class="m-b-s font-size-m">
                         <tr *ngFor="let change of getFilteredEntities()">
                             <td>{{ getLevel(change) }}</td>
                             <td>

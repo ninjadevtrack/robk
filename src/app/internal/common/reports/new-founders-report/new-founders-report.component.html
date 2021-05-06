@@ -3,7 +3,7 @@
         <div class="p-l-l p-r-l m-b-xl">
             <div class="flex-container flex-wrap">
                 <div class="report-header">
-                    <h1>Newly Declared Founders</h1>
+                    <h1>Stealth Founders</h1>
                 </div>
                 <div>
                     <form [formGroup]="form">
@@ -25,20 +25,32 @@
             <div *ngIf="entities; else spinner" class="flex-table">
                 <table>
                     <thead>
-                        <th>id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
+                        <th>Employer</th>
+                        <th>Occupation</th>
+                        <th>Location</th>
+                        <th>Last Crawled</th>
+                        <th>Start Date</th>
                     </thead>
                     <tbody class="m-b-s font-size-m">
                         <tr *ngFor="let entity of getFilteredEntities()">
                             <td>
-                                {{ entity.id }}
+                                <a href="https://linkedin.com/in/{{ entity.profile_id }}">{{ entity.firstName }} {{ entity.lastName }}</a>
                             </td>
                             <td>
-                                {{ entity.firstName }}
+                                {{ entity.current_employer_linkedin_name }}
                             </td>
                             <td>
-                                {{ entity.lastName }}
+                                {{ entity.occupation }}
+                            </td>
+                            <td>
+                                {{ entity.location }}
+                            </td>
+                            <td>
+                                {{ entity.last_updated }}
+                            </td>
+                            <td>
+                                {{ entity.start_date }}
                             </td>
                         </tr>
                     </tbody>
@@ -52,3 +64,21 @@
         </div>
     </div>
 </div>
+
+<!--     linkedin_id: string;
+    publicIdentifier: string;
+    profile_id: string;
+    firstName: string;
+    lastName: string;
+    current_employer_linkedin_name: string;
+    location: string;
+    occupation: string;
+    last_updated: Date;
+    educationScore: number;
+    careerScore: number;
+    founderScore: number;
+    isOnWatchlist: number;
+    role_id: number;
+    level_id: number;
+    is_european: Boolean;
+    start_date: Date; -->

@@ -25,7 +25,7 @@ export class NewFoundersReportComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.searchFields = ["id", "firstName", "lastName"].join(",");
+        this.searchFields = ["firstName", "lastName", "occupation"].join(",");
         this.form = this._formBuilder.group({
             search: ["", []]
         });

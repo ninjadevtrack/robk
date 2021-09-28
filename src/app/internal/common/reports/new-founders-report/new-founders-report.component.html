@@ -47,10 +47,10 @@
                                 {{ entity.location }}
                             </td>
                             <td>
-                                {{ entity.last_updated }}
+                                {{ entity.last_updated | date:"mediumDate" }}
                             </td>
                             <td>
-                                {{ entity.start_date }}
+                                {{ entity.start_date | date:"mediumDate" }}
                             </td>
                         </tr>
                     </tbody>

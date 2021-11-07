@@ -9,7 +9,7 @@ import { ISearchEmployeesEntity } from 'src/app/core/reports/models/search-emplo
 @Component({
   selector: 'app-search-employees-report',
   templateUrl: './search-employees-report.component.html',
-  styleUrls: ['./search-employees-report.component.css']
+  styleUrls: ['./search-employees-report.component.scss']
 })
 export class SearchEmployeesReportComponent implements OnInit {
     entities: ISearchEmployeesEntity[];
@@ -28,7 +28,7 @@ export class SearchEmployeesReportComponent implements OnInit {
         this.form = this._formBuilder.group({
             search: ["", []]
         });
-        const model = {regex: "developer", pageSize: 20, pageNumber: 1};
+        const model = {regex: "developer", pageSize: 20, pageNumber: 3};
         this._peopleWatchService
             .searchEmployees(model)
             .subscribe((entities: ISearchEmployeesEntity[]) => {

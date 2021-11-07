@@ -22,7 +22,79 @@
                     </form>
                 </div>
             </div>
-            <div *ngIf="entities; else spinner" class="flex-table">
+            <mat-accordion displayMode="flat" multi class="">
+                <section matSort class="mat-header-row mat-table">
+                    <span class="mat-header-cell" mat-sort-header="fullName"
+                        >Full Name</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="employerName"
+                        >Employer Name</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="occupation"
+                        >Occuppation</span
+                    >
+                    <span
+                        class="mat-header-cell"
+                        mat-sort-header="location"
+                        >Location</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="isEuropean"
+                        >Is European</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="careerScore"
+                        >Carreer Score</span
+                    >
+                    <span class="mat-header-cell" mat-sort-header="educationScore"
+                        >Education Score</span
+                    >
+                </section>
+            </mat-accordion>
+            <mat-card class="search-employeees-item" *ngFor="let entity of getFilteredEntities()">
+                <div class="search-employees-item-header m-b">
+                    <div class="employee-main">
+                        <div class="employee-name">
+                            {{ entity.firstName}} {{entity.lastName}}
+                        </div>
+                    </div>
+                    <div class="employee-field">
+                        {{ entity.employerName }}
+                    </div>
+                    <div class="employee-field">
+                        {{ entity.occupation }}
+                    </div>
+                    <div class="employee-field">
+                        {{ entity.location }}
+                    </div>
+                    <!-- <div class="employee-field">
+                        {{ entity.isEuropean }}
+                    </div> -->
+                    <div class="kpi-card employee-field">
+                        <app-kpi-card
+                            [name]="
+                                '
+                                Career Score'
+                            "
+                            [value]="entity.careerScore"
+                            [isBig]="true"
+                        ></app-kpi-card>
+                    </div>
+                    <div class="kpi-card employee-field">
+                        <app-kpi-card
+                            [name]="
+                                '
+                                EduScore'
+                            "
+                            [value]="entity.educationScore"
+                            [isBig]="true"
+                        ></app-kpi-card>
+                    </div>
+                </div>
+                <div>
+                    {{ entity.historyDescription }}
+                </div>
+            </mat-card>
+            <!-- <div *ngIf="entities; else spinner" class="flex-table">
+            
                 <table>
                     <thead>
                         <th>Last Name</th>
@@ -67,7 +139,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             <ng-template #spinner>
                 <div class="text-center m-t-2xl">
                     <mat-spinner class="spinner"></mat-spinner>

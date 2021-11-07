@@ -4,6 +4,7 @@ import { IReportCEntity } from "src/app/core/reports/models/report-c.model";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
+import { ISearchEmployeesEntity } from 'src/app/core/reports/models/search-employees.model';
 
 @Component({
   selector: 'app-search-employees-report',
@@ -11,7 +12,7 @@ import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
   styleUrls: ['./search-employees-report.component.css']
 })
 export class SearchEmployeesReportComponent implements OnInit {
-    entities: IReportCEntity[];
+    entities: ISearchEmployeesEntity[];
     searchPipe: SearchPipe = new SearchPipe();
     form: FormGroup;
     searchFields: string;
@@ -27,9 +28,10 @@ export class SearchEmployeesReportComponent implements OnInit {
         this.form = this._formBuilder.group({
             search: ["", []]
         });
+        const model = {regex: "developer", pageSize: 20, pageNumber: 1};
         this._peopleWatchService
-            .reportC()
-            .subscribe((entities: IReportCEntity[]) => {
+            .searchEmployees(model)
+            .subscribe((entities: ISearchEmployeesEntity[]) => {
                 this.entities = entities;
             });
         this._smoothScrollService.scrollTo(0, 0);

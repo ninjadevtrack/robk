@@ -25,20 +25,24 @@
             <div *ngIf="entities; else spinner" class="flex-table">
                 <table>
                     <thead>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>RobScore</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Employer Name</th>
+                        <th>Occupation</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let entity of getFilteredEntities()">
                             <td>
-                                {{ entity.id }}
+                                {{ entity.lastName }}
                             </td>
                             <td>
-                                {{ entity.name }}
+                                {{ entity.firstName }}
                             </td>
                             <td>
-                                {{ entity.robScore }}
+                                {{ entity.employerName }}
+                            </td>
+                            <td>
+                                {{ entity.occupation }}
                             </td>
                         </tr>
                     </tbody>

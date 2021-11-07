@@ -47,6 +47,7 @@ import { EmployerChangeReportComponent } from "./reports/employer-change-report/
 import { NewFoundersReportComponent } from './reports/new-founders-report/new-founders-report.component';
 import { ReportBComponent } from './reports/report-b/report-b.component';
 import { ReportCComponent } from './reports/report-c/report-c.component';
+import { SearchEmployeesReportComponent } from './reports/search-employees-report/search-employees-report.component';
 
 @NgModule({
     imports: [
@@ -100,7 +101,8 @@ import { ReportCComponent } from './reports/report-c/report-c.component';
         EmployerChangeReportComponent,
         NewFoundersReportComponent,
         ReportBComponent,
-        ReportCComponent
+        ReportCComponent,
+        SearchEmployeesReportComponent
     ],
     exports: [ProfileComponent, InternalHeaderComponent]
 })

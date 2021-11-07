@@ -29,6 +29,11 @@
                         <th>First Name</th>
                         <th>Employer Name</th>
                         <th>Occupation</th>
+                        <th>Location</th>
+                        <th>Is European</th>
+                        <th>Carreer Score</th>
+                        <th>Education Score</th>
+                        <th>History Description</th>
                     </thead>
                     <tbody class="m-b-s font-size-l">
                         <tr *ngFor="let entity of getFilteredEntities()">
@@ -43,6 +48,21 @@
                             </td>
                             <td>
                                 {{ entity.occupation }}
+                            </td>
+                            <td>
+                                {{ entity.location }}
+                            </td>
+                            <td>
+                                {{ entity.isEuropean }}
+                            </td>
+                            <td>
+                                {{ entity.careerScore }}
+                            </td>
+                            <td>
+                                {{ entity.educationScore }}
+                            </td>
+                            <td>
+                                {{ entity.historyDescription }}
                             </td>
                         </tr>
                     </tbody>

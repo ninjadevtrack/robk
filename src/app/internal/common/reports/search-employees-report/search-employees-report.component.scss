@@ -17,9 +17,15 @@
             }
         }
 
-        .employee-field {
+        .employee-kpis {
+            display: flex;
             flex: 1;
             min-width: 260px;
+
+            .employee-kpi-field {
+                flex: 1;
+                min-width: 160px;
+            }
         }
         
     }

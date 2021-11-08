@@ -15,18 +15,24 @@
                 font-size: 1.5em;
                 font-weight: 600;
             }
-        }
 
-        .employee-kpis {
-            display: flex;
-            flex: 1;
-            min-width: 260px;
-
-            .employee-kpi-field {
+            .employee-kpis {
+                display: flex;
                 flex: 1;
-                min-width: 160px;
+                min-width: 260px;
+    
+                .employee-kpi-field {
+                    flex: 1;
+                }
             }
         }
+
+        .empoloyee-history-description {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        
         
     }
 }

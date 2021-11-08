@@ -55,47 +55,61 @@
                         <div class="employee-name m-b-l">
                             {{ entity.firstName}} {{entity.lastName}}
                         </div>
-                        <div class="employee-field">
-                            {{ entity.employerName }}
+                        <div class="m-b-l">
+                            <div class="employee-field">
+                                {{ entity.employerName }}
+                            </div>
+                            <div class="employee-field">
+                                {{ entity.occupation }}
+                            </div>
+                            <div class="employee-field">
+                                <small>{{ entity.location }}</small>
+                            </div>
                         </div>
-                        <div class="employee-field">
-                            {{ entity.occupation }}
-                        </div>
-                        <div class="employee-field">
-                            <small>{{ entity.location }}</small>
+                        <div class="employee-kpis">
+                            <div class="kpi-card employee-kpi-field">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        Is European'
+                                    "
+                                    [value]="entity.isEuropean"
+                                    [isBig]="true"
+                                ></app-kpi-card>
+                            </div>
+                            <div class="kpi-card employee-kpi-field">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        Career Score'
+                                    "
+                                    [value]="entity.careerScore"
+                                    [isBig]="true"
+                                ></app-kpi-card>
+                            </div>
+                            <div class="kpi-card employee-kpi-field ">
+                                <app-kpi-card
+                                    [name]="
+                                        '
+                                        EduScore'
+                                    "
+                                    [value]="entity.educationScore"
+                                    [isBig]="true"
+                                ></app-kpi-card>
+                            </div>
                         </div>
                     </div>
-                    <div class="employee-kpis">
-                        <div class="kpi-card employee-kpi-field">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                    Career Score'
-                                "
-                                [value]="entity.careerScore"
-                                [isBig]="true"
-                            ></app-kpi-card>
-                        </div>
-                        <div class="kpi-card employee-kpi-field ">
-                            <app-kpi-card
-                                [name]="
-                                    '
-                                    EduScore'
-                                "
-                                [value]="entity.educationScore"
-                                [isBig]="true"
-                            ></app-kpi-card>
-                        </div>
+                    <div class="empoloyee-history-description">
+                        {{ entity.historyDescription }}
                     </div>
+                    
                     
                     <!-- <div class="employee-field">
                         {{ entity.isEuropean }}
                     </div> -->
                     
                 </div>
-                <div>
-                    {{ entity.historyDescription }}
-                </div>
+                
             </mat-card>
             <!-- <div *ngIf="entities; else spinner" class="flex-table">
             

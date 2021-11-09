@@ -15,6 +15,7 @@
                                         name="search"
                                         matInput
                                         placeholder="Search"
+                                        (keyup)="searchOnKeyUp($event)"
                                     />
                                 </mat-form-field>
                             </div>
@@ -49,7 +50,7 @@
                     >
                 </section>
             </mat-accordion>
-            <mat-card class="search-employeees-item" *ngFor="let entity of getFilteredEntities()">
+            <mat-card class="search-employeees-item" *ngFor="let entity of entities">
                 <div class="search-employees-item-header m-b">
                     <div class="employee-main m-b-l">
                         <div class="employee-name m-b-l">
@@ -111,53 +112,6 @@
                 </div>
                 
             </mat-card>
-            <!-- <div *ngIf="entities; else spinner" class="flex-table">
-            
-                <table>
-                    <thead>
-                        <th>Last Name</th>
-                        <th>First Name</th>
-                        <th>Employer Name</th>
-                        <th>Occupation</th>
-                        <th>Location</th>
-                        <th>Is European</th>
-                        <th>Carreer Score</th>
-                        <th>Education Score</th>
-                        <th>History Description</th>
-                    </thead>
-                    <tbody class="m-b-s font-size-l">
-                        <tr *ngFor="let entity of getFilteredEntities()">
-                            <td>
-                                {{ entity.lastName }}
-                            </td>
-                            <td>
-                                {{ entity.firstName }}
-                            </td>
-                            <td>
-                                {{ entity.employerName }}
-                            </td>
-                            <td>
-                                {{ entity.occupation }}
-                            </td>
-                            <td>
-                                {{ entity.location }}
-                            </td>
-                            <td>
-                                {{ entity.isEuropean }}
-                            </td>
-                            <td>
-                                {{ entity.careerScore }}
-                            </td>
-                            <td>
-                                {{ entity.educationScore }}
-                            </td>
-                            <td>
-                                {{ entity.historyDescription }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> -->
             <ng-template #spinner>
                 <div class="text-center m-t-2xl">
                     <mat-spinner class="spinner"></mat-spinner>

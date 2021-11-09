@@ -13,9 +13,7 @@ import { ISearchEmployeesEntity } from 'src/app/core/reports/models/search-emplo
 })
 export class SearchEmployeesReportComponent implements OnInit {
     entities: ISearchEmployeesEntity[];
-    searchPipe: SearchPipe = new SearchPipe();
     form: FormGroup;
-    searchFields: string;
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -24,24 +22,24 @@ export class SearchEmployeesReportComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.searchFields = ["id", "name", "robScore"].join(",");
+        this.entities = [];
         this.form = this._formBuilder.group({
             search: ["", []]
         });
-        const model = {regex: "developer", pageSize: 20, pageNumber: 3};
+        
+        this._smoothScrollService.scrollTo(0, 0);
+    }
+
+    searchOnKeyUp(event) {
+        if (event.code !== 'Enter') { return; }
+        
+        this.entities = [];
+        const regex = this.form.controls["search"].value;
+        const model = {regex, pageSize: 100, pageNumber: 1};
         this._peopleWatchService
             .searchEmployees(model)
             .subscribe((entities: ISearchEmployeesEntity[]) => {
                 this.entities = entities;
             });
-        this._smoothScrollService.scrollTo(0, 0);
-    }
-
-    getFilteredEntities(): IReportCEntity[] {
-        return this.searchPipe.transform(
-            this.entities,
-            this.searchFields,
-            this.form.controls["search"].value
-        );
     }
 }

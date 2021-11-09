@@ -28,100 +28,102 @@
                     </form>
                 </div>
             </div>
-            <mat-accordion displayMode="flat" multi class="">
-                <section matSort class="mat-header-row mat-table">
-                    <span class="mat-header-cell" mat-sort-header="fullName"
-                        >Full Name</span
-                    >
-                    <span class="mat-header-cell" mat-sort-header="employerName"
-                        >Employer Name</span
-                    >
-                    <span class="mat-header-cell" mat-sort-header="occupation"
-                        >Occuppation</span
-                    >
-                    <span
-                        class="mat-header-cell"
-                        mat-sort-header="location"
-                        >Location</span
-                    >
-                    <span class="mat-header-cell" mat-sort-header="isEuropean"
-                        >Is European</span
-                    >
-                    <span class="mat-header-cell" mat-sort-header="careerScore"
-                        >Carreer Score</span
-                    >
-                    <span class="mat-header-cell" mat-sort-header="educationScore"
-                        >Education Score</span
-                    >
-                </section>
-            </mat-accordion>
-            <mat-card class="search-employeees-item" *ngFor="let entity of entities">
-                <div class="search-employees-item-header m-b">
-                    <div class="employee-main m-b-l">
-                        <div class="employee-name m-b-l">
-                            {{ entity.firstName}} {{entity.lastName}}
+            <div *ngIf="entities">
+                <mat-accordion displayMode="flat" multi class="">
+                    <section matSort class="mat-header-row mat-table">
+                        <span class="mat-header-cell" mat-sort-header="fullName"
+                            >Full Name</span
+                        >
+                        <span class="mat-header-cell" mat-sort-header="employerName"
+                            >Employer Name</span
+                        >
+                        <span class="mat-header-cell" mat-sort-header="occupation"
+                            >Occuppation</span
+                        >
+                        <span
+                            class="mat-header-cell"
+                            mat-sort-header="location"
+                            >Location</span
+                        >
+                        <span class="mat-header-cell" mat-sort-header="isEuropean"
+                            >Is European</span
+                        >
+                        <span class="mat-header-cell" mat-sort-header="careerScore"
+                            >Carreer Score</span
+                        >
+                        <span class="mat-header-cell" mat-sort-header="educationScore"
+                            >Education Score</span
+                        >
+                    </section>
+                </mat-accordion>
+                <mat-card class="search-employeees-item" *ngFor="let entity of entities">
+                    <div class="search-employees-item-header m-b">
+                        <div class="employee-main m-b-l">
+                            <div class="employee-name m-b-l">
+                                {{ entity.firstName}} {{entity.lastName}}
+                            </div>
+                            <div class="m-b-l">
+                                <div class="employee-field">
+                                    {{ entity.employerName }}
+                                </div>
+                                <div class="employee-field">
+                                    {{ entity.occupation }}
+                                </div>
+                                <div class="employee-field">
+                                    <small>{{ entity.location }}</small>
+                                </div>
+                            </div>
+                            <div class="employee-kpis">
+                                <div class="kpi-card employee-kpi-field">
+                                    <app-kpi-card
+                                        [name]="
+                                            '
+                                            Is European'
+                                        "
+                                        [value]="entity.isEuropean"
+                                        [isBig]="true"
+                                    ></app-kpi-card>
+                                </div>
+                                <div class="kpi-card employee-kpi-field">
+                                    <app-kpi-card
+                                        [name]="
+                                            '
+                                            Career Score'
+                                        "
+                                        [value]="entity.careerScore"
+                                        [isBig]="true"
+                                    ></app-kpi-card>
+                                </div>
+                                <div class="kpi-card employee-kpi-field ">
+                                    <app-kpi-card
+                                        [name]="
+                                            '
+                                            EduScore'
+                                        "
+                                        [value]="entity.educationScore"
+                                        [isBig]="true"
+                                    ></app-kpi-card>
+                                </div>
+                            </div>
                         </div>
-                        <div class="m-b-l">
-                            <div class="employee-field">
-                                {{ entity.employerName }}
-                            </div>
-                            <div class="employee-field">
-                                {{ entity.occupation }}
-                            </div>
-                            <div class="employee-field">
-                                <small>{{ entity.location }}</small>
-                            </div>
+                        <div class="empoloyee-history-description">
+                            {{ entity.historyDescription }}
                         </div>
-                        <div class="employee-kpis">
-                            <div class="kpi-card employee-kpi-field">
-                                <app-kpi-card
-                                    [name]="
-                                        '
-                                        Is European'
-                                    "
-                                    [value]="entity.isEuropean"
-                                    [isBig]="true"
-                                ></app-kpi-card>
-                            </div>
-                            <div class="kpi-card employee-kpi-field">
-                                <app-kpi-card
-                                    [name]="
-                                        '
-                                        Career Score'
-                                    "
-                                    [value]="entity.careerScore"
-                                    [isBig]="true"
-                                ></app-kpi-card>
-                            </div>
-                            <div class="kpi-card employee-kpi-field ">
-                                <app-kpi-card
-                                    [name]="
-                                        '
-                                        EduScore'
-                                    "
-                                    [value]="entity.educationScore"
-                                    [isBig]="true"
-                                ></app-kpi-card>
-                            </div>
-                        </div>
+                        
+                        
+                        <!-- <div class="employee-field">
+                            {{ entity.isEuropean }}
+                        </div> -->
+                        
                     </div>
-                    <div class="empoloyee-history-description">
-                        {{ entity.historyDescription }}
-                    </div>
                     
-                    
-                    <!-- <div class="employee-field">
-                        {{ entity.isEuropean }}
-                    </div> -->
-                    
-                </div>
-                
-            </mat-card>
-            <ng-template #spinner>
-                <div class="text-center m-t-2xl">
-                    <mat-spinner class="spinner"></mat-spinner>
-                </div>
-            </ng-template>
+                </mat-card>
+            </div>
+            
+            <mat-spinner
+                *ngIf="isDataLoading"
+                class="m-t-2xl spinner"
+            ></mat-spinner>
         </div>
     </div>
 </div>

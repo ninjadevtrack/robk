@@ -15,6 +15,7 @@ import { NotSpacesStringValidator } from 'src/app/core/validators/not-spaces-str
 export class SearchEmployeesReportComponent implements OnInit {
     entities: ISearchEmployeesEntity[];
     form: FormGroup;
+    isDataLoading: boolean;
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -23,14 +24,13 @@ export class SearchEmployeesReportComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.entities = [];
+        this.isDataLoading = false;
         this.form = this._formBuilder.group({
             search: ["", [
                 Validators.required,
                 NotSpacesStringValidator()
             ]]
         });
-        
         this._smoothScrollService.scrollTo(0, 0);
     }
 
@@ -42,13 +42,15 @@ export class SearchEmployeesReportComponent implements OnInit {
     search() {
         if (!this.form.valid) { return; }
 
-        this.entities = [];
+        this.isDataLoading = true;
+        this.entities = null;
         const regex = this.form.controls["search"].value;
         const model = {regex, pageSize: 100, pageNumber: 1};
         this._peopleWatchService
             .searchEmployees(model)
             .subscribe((entities: ISearchEmployeesEntity[]) => {
                 this.entities = entities;
+                this.isDataLoading = false;
             });
     }
 }

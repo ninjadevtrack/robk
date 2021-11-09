@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { IReportCEntity } from "src/app/core/reports/models/report-c.model";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ISearchEmployeesEntity } from 'src/app/core/reports/models/search-employees.model';
+import { NotSpacesStringValidator } from 'src/app/core/validators/not-spaces-string-validator';
 
 @Component({
   selector: 'app-search-employees-report',
@@ -24,7 +25,10 @@ export class SearchEmployeesReportComponent implements OnInit {
     ngOnInit(): void {
         this.entities = [];
         this.form = this._formBuilder.group({
-            search: ["", []]
+            search: ["", [
+                Validators.required,
+                NotSpacesStringValidator()
+            ]]
         });
         
         this._smoothScrollService.scrollTo(0, 0);
@@ -32,7 +36,12 @@ export class SearchEmployeesReportComponent implements OnInit {
 
     searchOnKeyUp(event) {
         if (event.code !== 'Enter') { return; }
-        
+        this.search();
+    }
+
+    search() {
+        if (!this.form.valid) { return; }
+
         this.entities = [];
         const regex = this.form.controls["search"].value;
         const model = {regex, pageSize: 100, pageNumber: 1};

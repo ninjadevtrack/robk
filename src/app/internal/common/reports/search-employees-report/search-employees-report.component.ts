@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ISearchEmployeesEntity } from 'src/app/core/reports/models/search-employees.model';
 import { NotSpacesStringValidator } from 'src/app/core/validators/not-spaces-string-validator';
-
+import * as moment from "moment";
 @Component({
   selector: 'app-search-employees-report',
   templateUrl: './search-employees-report.component.html',
@@ -54,7 +54,8 @@ export class SearchEmployeesReportComponent implements OnInit {
 
     export() {
         if (!this.form.valid) { return; }
-        const fileName = "Export.xlsx";
+        const suffix = moment().format("YYYY-MM-DD-hh_mm_ss");
+        const fileName = `Employees_Search_${suffix}.xlsx`;
         const regex = this.form.controls["search"].value;
         this._peopleWatchService.searchEmployeesExportToXLSX(regex)
         .subscribe(x => {

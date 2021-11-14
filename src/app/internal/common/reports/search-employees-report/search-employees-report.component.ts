@@ -14,6 +14,7 @@ export class SearchEmployeesReportComponent implements OnInit {
     entities: ISearchEmployeesEntity[];
     form: FormGroup;
     isDataLoading: boolean;
+    isExporting: boolean;
 
     constructor(
         private _formBuilder: FormBuilder,
@@ -23,6 +24,7 @@ export class SearchEmployeesReportComponent implements OnInit {
 
     ngOnInit(): void {
         this.isDataLoading = false;
+        this.isExporting = false;
         this.form = this._formBuilder.group({
             search: ["", [
                 Validators.required,
@@ -54,7 +56,9 @@ export class SearchEmployeesReportComponent implements OnInit {
 
     export() {
         if (!this.form.valid) { return; }
-        const suffix = moment().format("YYYY-MM-DD-hh_mm_ss");
+        this.isExporting = true;
+
+        const suffix = moment().format("MM-DD-YYYY-hh_mm_ss");
         const fileName = `Employees_Search_${suffix}.xlsx`;
         const regex = this.form.controls["search"].value;
         this._peopleWatchService.searchEmployeesExportToXLSX(regex)
@@ -87,6 +91,8 @@ export class SearchEmployeesReportComponent implements OnInit {
                 window.URL.revokeObjectURL(data);
                 link.remove();
             }, 100);
+
+            this.isExporting = false;
         });
     }
 }

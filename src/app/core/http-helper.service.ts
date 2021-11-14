@@ -18,24 +18,26 @@ export class HttpHelperService {
     ) { }
 
 
-    private getHttpOptions(secured) {
+    private getHttpOptions(secured, headersOptions = {}, responseType = null) {
 
-        if (!secured) {
-            return {
-                headers: new HttpHeaders({
-                    'Content-Type':  'application/json'
-                })
-            };
+        const defaultHeaderOptions = {
+            'Content-Type':  'application/json'
+        };
+
+        let patchedHeadersOptions = Object.assign({}, defaultHeaderOptions, headersOptions);
+        const token = this._session.getItem(Consts.AUTH_TOKEN_KEY);
+        if (secured) {
+            patchedHeadersOptions = Object.assign(patchedHeadersOptions, {'Authorization': token || ''});
         }
 
-        const token = this._session.getItem(Consts.AUTH_TOKEN_KEY);
+        if (responseType) {
+            return {
+                headers: new HttpHeaders(patchedHeadersOptions),
+                responseType
+            }
+        }
 
-        return {
-            headers: new HttpHeaders({
-                'Content-Type':  'application/json',
-                'Authorization': token || ''
-            })
-        };
+        return { headers: new HttpHeaders(patchedHeadersOptions) }
     }
 
     private handleError(error: HttpErrorResponse) {
@@ -57,29 +59,29 @@ export class HttpHelperService {
         return throwError(error);
     }
 
-    public get<T>(secured, url): Observable<T> {
-        return this._httpClient.get<T>(url, this.getHttpOptions(secured))
+    public get<T>(secured, url, headersOptions = {}, responseType = null): Observable<T> {
+        return this._httpClient.get<T>(url, this.getHttpOptions(secured, headersOptions, responseType))
             .pipe(catchError((err: HttpErrorResponse) => {
                 return this.handleError(err);
             }));
     }
 
-    public post<T>(secured, url, data): Observable<T> {
-        return this._httpClient.post<T>(url, data, this.getHttpOptions(secured))
+    public post<T>(secured, url, data, headersOptions = {}, responseType = null): Observable<T> {
+        return this._httpClient.post<T>(url, data, this.getHttpOptions(secured, headersOptions, responseType))
             .pipe(catchError((err: HttpErrorResponse) => {
                 return this.handleError(err);
             }));
     }
 
-    public delete<T>(secured, url): Observable<T> {
-        return this._httpClient.delete<T>(url, this.getHttpOptions(secured))
+    public delete<T>(secured, url, headersOptions = {}, responseType = null): Observable<T> {
+        return this._httpClient.delete<T>(url, this.getHttpOptions(secured, headersOptions, responseType))
             .pipe(catchError((err: HttpErrorResponse) => {
                 return this.handleError(err);
             }));
     }
 
-    public put<T>(secured, url, data): Observable<T> {
-        return this._httpClient.put<T>(url, data, this.getHttpOptions(secured))
+    public put<T>(secured, url, data, headersOptions = {}, responseType = null): Observable<T> {
+        return this._httpClient.put<T>(url, data, this.getHttpOptions(secured, headersOptions, responseType))
             .pipe(catchError((err: HttpErrorResponse) => {
                 return this.handleError(err);
             }));

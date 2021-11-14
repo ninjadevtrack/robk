@@ -54,6 +54,16 @@ export class PeopleWatchService {
         );
     }
 
+    public searchEmployeesExportToXLSX(regex: string): Observable<Blob> {
+        return this._httpHelper.post(
+            true,
+            this._configService.API.Peoplewatch.searchEmployeesExportToXLSX(),
+            { regex },
+            {},
+            'blob'
+        );
+    }
+
     public reportB(): Observable<IReportBEntity[]> {
         return this._httpHelper.get(
             true,

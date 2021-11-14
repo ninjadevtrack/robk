@@ -23,6 +23,11 @@
                                         Search
                                     </button>
                                 </span>
+                                <span class="m-l-l">
+                                    <button mat-raised-button class="mat-primary button" [disabled]="!form.valid" (click)="export()">
+                                        Export
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </form>

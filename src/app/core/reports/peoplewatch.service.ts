@@ -7,6 +7,8 @@ import { IEmployerChange } from "./models/employer-change.model";
 import { INewFoundersEntity } from "./models/new-founders.model";
 import { IReportBEntity } from "./models/report-b.model";
 import { IReportCEntity } from "./models/report-c.model";
+import { ISearchEmployeesEntity } from "./models/search-employees.model";
+import { ISearchEmployeesParams } from "./models/search-employees-params.model"
 
 @Injectable()
 export class PeopleWatchService {
@@ -41,6 +43,24 @@ export class PeopleWatchService {
         return this._httpHelper.get(
             true,
             this._configService.API.Peoplewatch.newFounders()
+        );
+    }
+
+    public searchEmployees(model: ISearchEmployeesParams): Observable<ISearchEmployeesEntity[]> {
+        return this._httpHelper.post(
+            true,
+            this._configService.API.Peoplewatch.searchEmployees(),
+            model
+        );
+    }
+
+    public searchEmployeesExportToXLSX(regex: string): Observable<Blob> {
+        return this._httpHelper.post(
+            true,
+            this._configService.API.Peoplewatch.searchEmployeesExportToXLSX(),
+            { regex },
+            {},
+            'blob'
         );
     }
 

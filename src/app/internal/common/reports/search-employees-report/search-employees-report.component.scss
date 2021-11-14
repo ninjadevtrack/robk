@@ -1,0 +1,38 @@
+.search-employeees-item {
+    margin-bottom: 15px;
+    font-family: "Inter";
+
+    .search-employees-item-header {
+        display: flex;
+        flex-wrap: wrap;
+
+        .employee-main {
+            flex: 1;
+            min-width: 260px;
+
+            .employee-name {
+                font-family: "Roboto Slab";
+                font-size: 1.5em;
+                font-weight: 600;
+            }
+
+            .employee-kpis {
+                display: flex;
+                flex: 1;
+                min-width: 260px;
+    
+                .employee-kpi-field {
+                    flex: 1;
+                }
+            }
+        }
+
+        .empoloyee-history-description {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        
+        
+    }
+}

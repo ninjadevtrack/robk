@@ -104,6 +104,12 @@ export class ConfigService {
             newFounders: () => {
                 return `${Consts.API_URL}/v1/peoplewatch/new-founders`;
             },
+            searchEmployees: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/search-employees`;
+            },
+            searchEmployeesExportToXLSX: () => {
+                return `${Consts.API_URL}/v1/peoplewatch/search-employees/xlsx`;
+            },
             reportB: () => {
                 return `${Consts.API_URL}/v1/peoplewatch/reportB`;
             },

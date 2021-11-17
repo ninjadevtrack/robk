@@ -6,6 +6,9 @@
                     <h1>Search Employees</h1>
                     <h3>Search is greedy so a word matches *word*. You can 'OR' by using the | bar.</h3>
                 </div>
+                <div class="report-header result-data">
+                    <h3 *ngIf="entities">{{ entities.length | number }} results returned. Up to 100 displayed, use Export for full set.</h3>
+                </div>
                 <div>
                     <form [formGroup]="form">
                         <div class="search-container">

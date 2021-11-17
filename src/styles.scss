@@ -907,6 +907,11 @@ media-plan-view {
     min-width: 400px;
 }
 
+.report-header .result-data {
+    min-width: 400px;
+    color: $font-color-result;
+}
+
 .mat-expansion-panel:not([class*="mat-elevation-z"]) {
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }

@@ -1,5 +1,6 @@
 #!/bin/bash
     rm -rf ./dist
+    sudo ls ./dist
 #    npm i
     npx ng build --prod
 #    find "/var/www/dev.hoxtonventures.com/public_html" -type f -mtime +5 -name 'main.*.js' -delete

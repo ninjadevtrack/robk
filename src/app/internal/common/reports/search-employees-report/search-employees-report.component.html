@@ -4,6 +4,7 @@
             <div class="flex-container flex-wrap">
                 <div class="report-header">
                     <h1>Search Employees</h1>
+                    <h3>Search is greedy so a word matches *word*. You can 'OR' by using the | bar.</h3>
                 </div>
                 <div>
                     <form [formGroup]="form">
@@ -43,7 +44,7 @@
                             >Employer Name</span
                         >
                         <span class="mat-header-cell" mat-sort-header="occupation"
-                            >Occuppation</span
+                            >Occupation</span
                         >
                         <span
                             class="mat-header-cell"
@@ -65,7 +66,7 @@
                     <div class="search-employees-item-header m-b">
                         <div class="employee-main m-b-l">
                             <div class="employee-name m-b-l">
-                                {{ entity.firstName}} {{entity.lastName}}
+                                <a href="https://www.linkedin.com/in/{{entity.publicIdentifier}}">{{ entity.firstName }} {{ entity.lastName }}</a> 
                             </div>
                             <div class="m-b-l">
                                 <div class="employee-field">

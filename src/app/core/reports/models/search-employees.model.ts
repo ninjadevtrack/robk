@@ -1,6 +1,7 @@
 export interface ISearchEmployeesEntity {
     firstName: string;
     lastName: string;
+    publicIdentifier: string;
     employerName: string;
     occupation: string;
     location: string;

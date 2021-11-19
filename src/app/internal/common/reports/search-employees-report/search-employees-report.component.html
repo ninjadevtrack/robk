@@ -1,54 +1,52 @@
 <div class="m-t-6xl">
     <div class="m-t-3xl">
         <div class="p-l-l p-r-l m-b-xl">
-            <div class="flex-container flex-wrap">
-                <div class="report-header">
+            <div class="report-header">
                     <h1>Search Employees</h1>
                     <h3>Search is greedy so a word matches *word*. You can 'OR' by using the | bar.</h3>
-                </div>
-                <div class="report-header result-data">
-                    <h3 *ngIf="entities">{{ entities.length | number }}{{ (entities.length >=100) ? '+' : ''}} results returned. Up to 100 displayed, use Export for full set.</h3>
-                </div>
-                <div>
-                    <form [formGroup]="form">
-                        <div class="search-container">
-                            <div class="search-box">
-                                <mat-form-field class="regular-field m-r-l">
-                                    <mat-select
-                                        placeholder="Search Field"
-                                        formControlName="searchField"
+            </div>
+            <div class="m-t-l">
+                <form [formGroup]="form">
+                    <div class="">
+                        <div class="search-box">
+                            <mat-form-field class="regular-field m-r-l">
+                                <mat-select
+                                    placeholder="Search Field"
+                                    formControlName="searchField"
+                                >
+                                    <mat-option
+                                        *ngFor="let searchField of searchFields"
+                                        [value]="searchField"
                                     >
-                                        <mat-option
-                                            *ngFor="let searchField of searchFields"
-                                            [value]="searchField"
-                                        >
-                                            {{ getEmployeeSearchFieldName(searchField) }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <mat-form-field class="search-field">
-                                    <input
-                                        formControlName="search"
-                                        name="search"
-                                        matInput
-                                        placeholder="Search"
-                                        (keyup)="searchOnKeyUp($event)"
-                                    />
-                                </mat-form-field>
-                                <span class="m-l-l">
-                                    <button mat-raised-button class="mat-primary button" [disabled]="!form.valid" (click)="search()">
-                                        Search
-                                    </button>
-                                </span>
-                                <span class="m-l-l">
-                                    <button mat-raised-button class="mat-primary button" [disabled]="!form.valid || isExporting" (click)="export()">
-                                        {{ isExporting ? 'Exporting...' : 'Export' }}
-                                    </button>
-                                </span>
-                            </div>
+                                        {{ getEmployeeSearchFieldName(searchField) }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="regular-field">
+                                <input
+                                    formControlName="search"
+                                    name="search"
+                                    matInput
+                                    placeholder="Search"
+                                    (keyup)="searchOnKeyUp($event)"
+                                />
+                            </mat-form-field>
+                            <span class="m-l-l">
+                                <button mat-raised-button class="mat-primary button" [disabled]="!form.valid" (click)="search()">
+                                    Search
+                                </button>
+                            </span>
+                            <span class="m-l-l">
+                                <button mat-raised-button class="mat-primary button" [disabled]="!form.valid || isExporting" (click)="export()">
+                                    {{ isExporting ? 'Exporting...' : 'Export' }}
+                                </button>
+                            </span>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+            </div>
+            <div class="report-header result-data">
+                <h3 *ngIf="entities">{{ entities.length | number }}{{ (entities.length >=100) ? '+' : ''}} results returned. Up to 100 displayed, use Export for full set.</h3>
             </div>
             <div *ngIf="entities">
                 <mat-accordion displayMode="flat" multi class="">

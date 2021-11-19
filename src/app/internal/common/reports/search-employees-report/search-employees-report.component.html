@@ -13,6 +13,19 @@
                     <form [formGroup]="form">
                         <div class="search-container">
                             <div class="search-box">
+                                <mat-form-field class="regular-field m-r-l">
+                                    <mat-select
+                                        placeholder="Search Field"
+                                        formControlName="searchField"
+                                    >
+                                        <mat-option
+                                            *ngFor="let searchField of searchFields"
+                                            [value]="searchField"
+                                        >
+                                            {{ getEmployeeSearchFieldName(searchField) }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                                 <mat-form-field class="search-field">
                                     <input
                                         formControlName="search"

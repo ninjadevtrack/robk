@@ -1,5 +1,11 @@
+export enum EmployeeSearchField {
+    OCCUPATION = "OCCUPATION",
+    HISTORY_DESCRIPTION = "HISTORY_DESCRIPTION"
+}
+
 export interface ISearchEmployeesParams {
     regex: string;
-    pageNumber: number;
-    pageSize: number;
+    searchField: EmployeeSearchField;
+    pageNumber?: number;
+    pageSize?: number;
 }

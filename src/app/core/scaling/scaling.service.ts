@@ -7,24 +7,18 @@ export class ScalingService {
   constructor() { }
 
   getScalingName(scaling: EScaling) {
-    let result;
     switch (scaling) {
       case EScaling.SCALING:
-        result = 'Scaling (30 - 100 employees)';
-        break;
+        return 'Scaling (30 - 100 employees)';
       case EScaling.GROWTH:
-        result = 'Growth (100+ employees)';
-        break;
+        return 'Growth (100+ employees)';
       case EScaling.SEED:
-        result = 'Seed (< 30 employees)';
-        break;
+        return 'Seed (< 30 employees)';
       case EScaling.ALL_DEALS:
-        result = 'All deals';
-        break;
+        return 'All deals';
       default:
-        result = '';
+        return "";
     }
-    return result;
   }
 
 }

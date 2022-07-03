@@ -71,7 +71,7 @@
                     [capsuleDetails]="capsuleDetails"
                 ></app-capsule-details>
             </div>
-            <div class="notes m-t-xl">
+            <div class="notes m-t-xl" *ngIf="hasCapsuleGetNotesPermission()">
                 <div *ngIf="capsuleDetails">
                     <div class="flex-container p-b-xl">
                         <div>

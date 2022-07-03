@@ -1,4 +1,5 @@
 #!/bin/bash
+export NODE_OPTIONS=--openssl-legacy-provider
     rm -rf ./dist
     sudo ls ./dist
 #    npm i

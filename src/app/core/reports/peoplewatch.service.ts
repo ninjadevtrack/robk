@@ -25,14 +25,12 @@ export class PeopleWatchService {
                     return changes.map(change => {
                         return {
                             ...change,
-                            endMoment: new Date(change.endMoment),
-                            startMoment: new Date(change.startMoment),
-                            start_date: new Date(change.start_date),
-                            end_date: new Date(change.end_date),
-                            last_updated: new Date(change.last_updated),
-                            current_start_date: new Date(
-                                change.current_start_date
-                            )
+                            endMoment: change.endMoment,
+                            startMoment: change.startMoment,
+                            start_date: moment(change.start_date),
+                            end_date: moment(change.end_date),
+                            last_updated: moment(change.last_updated),
+                            current_start_date: moment(change.start_date),
                         };
                     });
                 })

@@ -3,8 +3,15 @@
         <div class="p-l-l p-r-l m-b-xl">
             <div class="flex-container flex-wrap">
                 <div class="report-header">
-                    <h1>Employer Recent Change Report</h1>
+                    <h1>Employee 60-Day Job Change Report</h1>
+                    <h3>
+                        This returns matches for employees that have added a new
+                        role in the past 60 days. It may not correspond to
+                        leaving a previous job necessarily, but it does mean
+                        they have added a new role to their profile.
+                    </h3>
                 </div>
+                <div class="report-header"></div>
                 <div>
                     <form [formGroup]="form">
                         <div class="search-container">
@@ -70,14 +77,10 @@
                                 {{ change.careerScore }}
                             </td>
                             <td>
-                                {{
-                                    getHumanizedTimeAgo(
-                                        change.current_start_date
-                                    )
-                                }}
+                                {{ change.since_string }}
                             </td>
                             <td>
-                                {{ getHumanizedTimeAgo(change.last_updated) }}
+                                {{ change.end_string }}
                             </td>
                         </tr>
                     </tbody>

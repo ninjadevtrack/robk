@@ -8,8 +8,11 @@ import { INewFoundersEntity } from "./models/new-founders.model";
 import { IReportBEntity } from "./models/report-b.model";
 import { IReportCEntity } from "./models/report-c.model";
 import { ISearchEmployeesEntity } from "./models/search-employees.model";
-import { EmployeeSearchField, ISearchEmployeesParams } from "./models/search-employees-params.model"
-
+import {
+    EmployeeSearchField,
+    ISearchEmployeesParams
+} from "./models/search-employees-params.model";
+import * as moment from "moment";
 @Injectable()
 export class PeopleWatchService {
     constructor(
@@ -31,6 +34,8 @@ export class PeopleWatchService {
                             end_date: moment(change.end_date),
                             last_updated: moment(change.last_updated),
                             current_start_date: moment(change.start_date),
+                            since_string: change.since_string,
+                            last_updated_string: change.last_updated_string
                         };
                     });
                 })
@@ -44,7 +49,9 @@ export class PeopleWatchService {
         );
     }
 
-    public searchEmployees(model: ISearchEmployeesParams): Observable<ISearchEmployeesEntity[]> {
+    public searchEmployees(
+        model: ISearchEmployeesParams
+    ): Observable<ISearchEmployeesEntity[]> {
         return this._httpHelper.post(
             true,
             this._configService.API.Peoplewatch.searchEmployees(),
@@ -52,13 +59,15 @@ export class PeopleWatchService {
         );
     }
 
-    public searchEmployeesExportToXLSX(model: ISearchEmployeesParams): Observable<Blob> {
+    public searchEmployeesExportToXLSX(
+        model: ISearchEmployeesParams
+    ): Observable<Blob> {
         return this._httpHelper.post(
             true,
             this._configService.API.Peoplewatch.searchEmployeesExportToXLSX(),
             model,
             {},
-            'blob'
+            "blob"
         );
     }
 
@@ -77,7 +86,7 @@ export class PeopleWatchService {
     }
 
     public getEmployeeSearchFieldName(searchField: EmployeeSearchField) {
-        switch(searchField) {
+        switch (searchField) {
             case EmployeeSearchField.OCCUPATION:
                 return "Occupation";
             case EmployeeSearchField.HISTORY_DESCRIPTION:

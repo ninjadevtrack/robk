@@ -46,4 +46,5 @@ export interface IEmployerChange {
     company_watchlist: number;
     since_string: string;
     end_string: string;
+    last_updated_string: string;
 }

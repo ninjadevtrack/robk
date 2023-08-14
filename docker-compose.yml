@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    container_name: robscore-web
+    build: .
+    volumes:
+      - ./dist-docker:/robscore-web/dist

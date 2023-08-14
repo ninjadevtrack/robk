@@ -4,13 +4,17 @@
             <div class="flex-table">
                 <table>
                     <thead>
-                        <th width="100px">General People Reports</th>
+                        <th width="100px">General People Search</th>
                     </thead>
                     <tbody class="m-b-s font-size-s">
                         <tr>
                             <td>
-                                <a [routerLink]="['/i/reports/search-employees']"
-                                    >Search By Keyword Over All Crawled Employees</a
+                                <a
+                                    [routerLink]="[
+                                        '/i/reports/search-employees'
+                                    ]"
+                                    >Search By Keyword Over All Crawled
+                                    Employees</a
                                 >
                             </td>
                         </tr>
@@ -47,14 +51,29 @@
                         <tr>
                             <td>
                                 <a [routerLink]="['/i/reports/employer-change']"
-                                    >Recent People Change Report</a
+                                    >Recent Employee Job Changes</a
                                 >
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a [routerLink]="['/i/reports/new-founders']"
-                                    >New Founders</a
+                                    >Newly Announced Founders</a
+                                >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a [routerLink]="['/i/reports/new-leavers']"
+                                    >Coming soon - Recent Leavers With No New
+                                    Active Role</a
+                                >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a [routerLink]="['/i/reports/in-stealth']"
+                                    >Coming soon - Founders in Stealth</a
                                 >
                             </td>
                         </tr>

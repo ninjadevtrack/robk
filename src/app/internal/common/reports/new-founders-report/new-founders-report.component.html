@@ -3,7 +3,12 @@
         <div class="p-l-l p-r-l m-b-xl">
             <div class="flex-container flex-wrap">
                 <div class="report-header">
-                    <h1>Stealth Founders</h1>
+                    <h1>Founders Currently in Stealth</h1>
+                    <h3>
+                        This returns matches any employees who have "stealth",
+                        "something new", in their occupation or current employer
+                        name.
+                    </h3>
                 </div>
                 <div>
                     <form [formGroup]="form">
@@ -35,7 +40,13 @@
                     <tbody class="m-b-s font-size-m">
                         <tr *ngFor="let entity of getFilteredEntities()">
                             <td>
-                                <a href="https://linkedin.com/in/{{ entity.profile_id }}">{{ entity.firstName }} {{ entity.lastName }}</a>
+                                <a
+                                    href="https://linkedin.com/in/{{
+                                        entity.profile_id
+                                    }}"
+                                    >{{ entity.firstName }}
+                                    {{ entity.lastName }}</a
+                                >
                             </td>
                             <td>
                                 {{ entity.current_employer_linkedin_name }}
@@ -47,10 +58,10 @@
                                 {{ entity.location }}
                             </td>
                             <td>
-                                {{ entity.last_updated | date:"mediumDate" }}
+                                {{ entity.last_updated | date : "mediumDate" }}
                             </td>
                             <td>
-                                {{ entity.start_date | date:"mediumDate" }}
+                                {{ entity.start_date | date : "mediumDate" }}
                             </td>
                         </tr>
                     </tbody>

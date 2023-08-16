@@ -88,9 +88,9 @@ export class PeopleWatchService {
     public getEmployeeSearchFieldName(searchField: EmployeeSearchField) {
         switch (searchField) {
             case EmployeeSearchField.OCCUPATION:
-                return "Occupation";
+                return "Occupation History";
             case EmployeeSearchField.HISTORY_DESCRIPTION:
-                return "History";
+                return "Role History";
             default:
                 return "";
         }

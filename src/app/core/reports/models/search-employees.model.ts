@@ -10,4 +10,5 @@ export interface ISearchEmployeesEntity {
     educationScore: any;
     historyDescription: string;
     historyDescriptionShortened: string;
+    resultCount: number;
 }

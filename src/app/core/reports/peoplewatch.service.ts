@@ -91,6 +91,14 @@ export class PeopleWatchService {
                 return "Occupation History";
             case EmployeeSearchField.HISTORY_DESCRIPTION:
                 return "Role History";
+            case EmployeeSearchField.BOTH:
+                return "Both Role & Occupation History";
+            case EmployeeSearchField.OCCUPATION_EU:
+                return "Occupation History (Europe Only)";
+            case EmployeeSearchField.HISTORY_DESCRIPTION_EU:
+                return "Role History (Europe Only)";
+            case EmployeeSearchField.BOTH_EU:
+                return "Both Role & Occupation History (Europe Only)";
             default:
                 return "";
         }

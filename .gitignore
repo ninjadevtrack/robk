@@ -1,3 +1,7 @@
+*.tmp
+*.swp
+~*
+.angular/
 node_modules
 *.swp
 *log
@@ -5,3 +9,4 @@ node_modules
 .idea/
 .history/
 dist
+dist-docker/

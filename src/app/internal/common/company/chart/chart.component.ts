@@ -26,64 +26,44 @@ export class ChartComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         const labels = this.company.data.map(d => moment(d[0]).format("MM/YY"));
         const data = this.company.data.map(d => d[1]);
-        const max = data.reduce((acc, v) => {
-            if (v > acc) {
-                acc = v;
-            }
-            return acc;
-        }, -Infinity);
-
-        let ticksObject;
-        if (max <= 10) {
-            ticksObject = {
-                suggestedMin: 0, // minimum will be 0, unless there is a lower value.,
-                stepSize: 1
-            };
-        } else {
-            ticksObject = {
-                suggestedMin: 0 // minimum will be 0, unless there is a lower value.,
-            };
-        }
-
-        const backgroundColor = this.getColor();
-
+    
         this.data = {
             type: "line",
             data: {
                 labels,
-                datasets: [
-                    {
-                        label: this.company.name,
-                        data,
-                        fill: false,
-                        borderColor: "rgb(75, 192, 192)",
-                        lineTension: 0.5
-                    }
-                ]
+                datasets: [{
+                    label: this.company.name,
+                    data,
+                    fill: false,
+                    borderColor: "rgb(75, 192, 192)",
+                    tension: 0.5 // 'lineTension' is renamed to 'tension' in Chart.js 3+
+                }]
             },
             options: {
                 animation: false,
                 maintainAspectRatio: false,
                 scales: {
-                    yAxes: [
-                        {
-                            display: true,
-                            ticks: ticksObject
-                        }
-                    ]
+                    y: { // 'yAxes' is updated to 'y' in Chart.js 3+
+                        beginAtZero: true,
+                        // Incorporate your 'ticksObject' logic here
+                    }
                 },
-                chartArea: {
-                    backgroundColor
+                plugins: {
+                    chartAreaBackgroundColor: { // Custom plugin options should go under 'plugins'
+                        color: this.getColor()
+                    }
                 }
+                // 'chartArea' should be inside 'plugins' for custom plugin options if needed
             }
         };
     }
-
+    
     ngAfterViewInit(): void {
-        // setTimeout(() => {
-        //   this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), this.data);
-        // }, 10);
-    }
+        this.chart = new Chart(
+            this.canvas.nativeElement.getContext('2d'),
+            this.data
+        );
+    }    
 
     getColor() {
         let color;

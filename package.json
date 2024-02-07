@@ -30,7 +30,7 @@
         "angular-draggable-droppable": "4.5.3",
         "angular-resizable-element": "3.3.3",
         "calendar-utils": "0.10.4",
-        "chart.js": "4.4.1",
+        "chart.js": "^3.9.1",
         "core-js": "3.35.1",
         "date-fns": "3.3.1",
         "file-saver": "2.0.5",

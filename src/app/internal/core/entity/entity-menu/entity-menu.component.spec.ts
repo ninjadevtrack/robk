@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { EntityMenuComponent } from './entity-menu.component';
 
@@ -6,7 +6,7 @@ describe('EntityMenuComponent', () => {
   let component: EntityMenuComponent;
   let fixture: ComponentFixture<EntityMenuComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ EntityMenuComponent ]
     })

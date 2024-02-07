@@ -54,9 +54,10 @@ type StoreType = {
         BrowserAnimationsModule,
         FlexLayoutModule,
         RouterModule.forRoot(ROUTES, {
-            useHash: Boolean(history.pushState) === false,
-            preloadingStrategy: PreloadAllModules
-        }),
+    useHash: Boolean(history.pushState) === false,
+    preloadingStrategy: PreloadAllModules,
+    relativeLinkResolution: 'legacy'
+}),
         InternalModule
     ],
     /**

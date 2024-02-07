@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 import { ConfigService } from "../common/config.service";
 import { HttpHelperService } from "../http-helper.service";
 import { ICompaniesResult, ICompany } from "./model/company.model";
 import { ICapsuleNote } from "./model/capsule-note.model";
-import { map } from "rxjs/operators";
 import { ICapsuleDetails } from "./model/capsule-details.model";
 
 @Injectable()

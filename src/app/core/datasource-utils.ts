@@ -1,17 +1,14 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { Observable, of, concat, combineLatest } from "rxjs";
-import { MatPaginator, PageEvent } from "@angular/material/paginator";
-import { MatSort, Sort } from "@angular/material/sort";
-import {
-    distinctUntilChanged,
+import { Observable, of, concat, combineLatest,
+ distinctUntilChanged,
     map,
     startWith,
     switchMap,
-    tap
-} from "rxjs/operators";
-import { defer } from "rxjs";
+    tap, defer, merge
+ } from "rxjs";
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
+import { MatSort, Sort } from "@angular/material/sort";
 import { QueryList } from "@angular/core";
-import { merge } from "rxjs";
 
 export class SimpleDataSource<T> extends DataSource<T> {
     constructor(private rows$: Observable<T[]>) {
@@ -91,36 +88,31 @@ function toSortFn<U>(
 }
 
 /** Creates an Observable stream of Sort objects from a MatSort component */
+/** Creates an Observable stream of Sort objects from a MatSort component */
 export function fromMatSort(sort: MatSort): Observable<Sort> {
     return concat(
-        defer(() =>
-            of({
-                active: sort.active,
-                direction: sort.direction
-            })
-        ),
-        sort.sortChange.asObservable()
+        defer(() => of({ active: sort.active, direction: sort.direction })),
+        sort.sortChange // Directly use sort.sortChange without asObservable()
     );
 }
 
 /** RxJs operator to sort an array based on an Observable of material Sort events **/
+
 export function sortRows<U>(
     sort$: Observable<Sort>,
     sortFns: PropertySortFns<U> = {},
     useDefault = true
 ): (obs$: Observable<U[]>) => Observable<U[]> {
     return (rows$: Observable<U[]>) =>
-        combineLatest(
-            rows$,
-            sort$.pipe(toSortFn(sortFns, useDefault)),
-            (rows, sortFn) => {
+        combineLatest([rows$, sort$.pipe(toSortFn(sortFns, useDefault))]).pipe(
+            map(([rows, sortFn]) => {
                 if (!sortFn) {
                     return rows;
                 }
 
                 const copy = rows.slice();
                 return copy.sort(sortFn);
-            }
+            })
         );
 }
 
@@ -159,16 +151,15 @@ export function fromMatPaginators(pagers: QueryList<MatPaginator>): Observable<P
  */
 
 /** Creates an Observable stream of PageEvent objects from a MatPaginator component */
+/** Creates an Observable stream of PageEvent objects from a MatPaginator component */
 export function fromMatPaginator(pager: MatPaginator): Observable<PageEvent> {
     return concat(
-        defer(() =>
-            of({
-                pageIndex: pager.pageIndex,
-                pageSize: pager.pageSize,
-                length: pager.length
-            })
-        ),
-        pager.page.asObservable()
+        defer(() => of({
+            pageIndex: pager.pageIndex,
+            pageSize: pager.pageSize,
+            length: pager.length
+        })),
+        pager.page // Directly use pager.page without asObservable()
     );
 }
 
@@ -177,9 +168,11 @@ export function paginateRows<U>(
     page$: Observable<PageEvent>
 ): (obs$: Observable<U[]>) => Observable<U[]> {
     return (rows$: Observable<U[]>) =>
-        combineLatest(rows$, page$, (rows, page) => {
-            const startIndex = page.pageIndex * page.pageSize;
-            const copy = rows.slice();
-            return copy.splice(startIndex, page.pageSize);
-        });
+        combineLatest([rows$, page$]).pipe(
+            map(([rows, page]) => {
+                const startIndex = page.pageIndex * page.pageSize;
+                const copy = rows.slice();
+                return copy.splice(startIndex, page.pageSize);
+            })
+        );
 }

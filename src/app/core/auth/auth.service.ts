@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ConfigService } from "../common/config.service";
 import { ISignInResult } from "./models/sign-in.model";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, map } from "rxjs";
 import { SignInModel } from "./models/sign-in.model";
 import { SignUpModel } from "./models/sign-up.model";
 import { RecoverPasswordModel } from "./models/recover-password.model";

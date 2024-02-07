@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from "rxjs/operators";
-import { Observable, throwError } from "rxjs/index";
+import { catchError, Observable, throwError } from "rxjs";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { AuthStorageService } from "./common/auth-storage.service";
 import { Consts } from './common/config.service';

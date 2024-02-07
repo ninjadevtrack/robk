@@ -5,8 +5,7 @@ import {
     OnInit,
     ViewChild
 } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, map } from "rxjs";
 import { Chart } from "chart.js";
 import { MatSort, Sort } from "@angular/material/sort";
 import { PageEvent } from "@angular/material/paginator";

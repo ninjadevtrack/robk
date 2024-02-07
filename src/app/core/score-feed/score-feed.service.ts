@@ -2,8 +2,7 @@ import { Injectable } from "@angular/core";
 import * as stream from "getstream";
 import { Consts, ConfigService } from "../common/config.service";
 import { AuthStorageService } from "../common/auth-storage.service";
-import { Observable, from, Subject } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, from, Subject, map } from "rxjs";
 import {
     IScoreResult,
     IScoreNotificationResult

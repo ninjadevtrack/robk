@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, map } from "rxjs";
 import { ConfigService } from "../common/config.service";
 import { HttpHelperService } from "../http-helper.service";
 import { IEmployerChange } from "./models/employer-change.model";

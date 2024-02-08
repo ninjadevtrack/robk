@@ -6,7 +6,7 @@ import { Observable, of, concat, combineLatest,
     switchMap,
     tap, defer, merge
  } from "rxjs";
-import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from "@angular/material/legacy-paginator";
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatSort, Sort } from "@angular/material/sort";
 import { QueryList } from "@angular/core";
 

@@ -3,7 +3,7 @@ import { UserService } from "../../../../core/user/user.service";
 import { EntityListComponentResolver } from "../../../core/entity/entity-list/entity-list.component.resolver";
 import { EEntityEventType } from "../../../core/entity/entity-event-type.enum";
 import { ComponentType } from "@angular/cdk/portal";
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { IEntityService } from "../../../../core/entity-service.model";
 import { UserAddComponent } from "../user-add/user-add.component";
 import { UserEditComponent } from "../user-edit/user-edit.component";

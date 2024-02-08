@@ -8,7 +8,7 @@ import {
 import { Observable, map } from "rxjs";
 import { Chart } from "chart.js";
 import { MatSort, Sort } from "@angular/material/sort";
-import { LegacyPageEvent as PageEvent } from "@angular/material/legacy-paginator";
+import { PageEvent } from "@angular/material/paginator";
 import { fromMatSort, sortRows } from "../../../../core/datasource-utils";
 import { CompanyService } from "../../../../core/company/company.service";
 import {

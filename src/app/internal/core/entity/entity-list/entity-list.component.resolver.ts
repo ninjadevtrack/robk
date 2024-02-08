@@ -3,7 +3,7 @@ import { EEntityEventType } from "../entity-event-type.enum";
 import { IEntityService } from "../../../../core/entity-service.model";
 import { IEntityEvent } from "../entity-event.model";
 import { ConfirmDialogComponent } from "../../confirm-dialog/confirm-dialog.component";
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { ComponentType } from "@angular/cdk/portal";
 
 @Component({

@@ -93,7 +93,7 @@ nav a:hover {
     color: $font-color-pale;
 }
 
-.mat-card {
+.mat-mdc-card {
     color: $font-color;
 }
 
@@ -916,7 +916,7 @@ media-plan-view {
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }
 
-.mat-card:not([class*="mat-elevation-z"]) {
+.mat-mdc-card:not([class*="mat-elevation-z"]) {
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }
 
@@ -948,38 +948,38 @@ media-plan-view {
     word-break: break-all;
 }
 
-.mat-accordion .mat-header-row {
+.mat-accordion .mat-mdc-header-row {
     padding-left: 1.5rem;
     padding-right: 2rem;
     border-bottom: none;
 }
 
-.mat-expansion-panel-header.mat-row {
+.mat-expansion-panel-header.mat-mdc-row {
     border-bottom: none;
 }
 
 //copied from https://github.com/angular/material2/blob/master/src/lib/table/table.scss
-//$mat-header-row-height: 56px;
-//$mat-row-height: 48px;
-//$mat-row-horizontal-padding: 24px;
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
 
-.mat-table {
+.mat-mdc-table {
     display: block;
 }
 
-.mat-header-row {
+.mat-mdc-header-row {
     min-height: $mat-header-row-height;
     margin-bottom: 10px;
     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
     border-radius: 4px;
 }
 
-.mat-row {
+.mat-mdc-row {
     min-height: $mat-row-height;
 }
 
-.mat-row,
-.mat-header-row {
+.mat-mdc-row,
+.mat-mdc-header-row {
     display: flex;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -997,14 +997,14 @@ media-plan-view {
     }
 }
 
-.mat-cell,
-.mat-header-cell {
+.mat-mdc-cell,
+.mat-mdc-header-cell {
     flex: 1;
     overflow: hidden;
     word-wrap: break-word;
 }
 
-.mat-paginator {
+.mat-mdc-paginator {
     font-size: 18px;
     background-color: transparent;
 }

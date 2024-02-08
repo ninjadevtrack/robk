@@ -43,21 +43,19 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent
-    ],
-    entryComponents: [
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
         RouterModule.forRoot(ROUTES, {
-    useHash: Boolean(history.pushState) === false,
-    preloadingStrategy: PreloadAllModules,
-    relativeLinkResolution: 'legacy'
-}),
+            useHash: Boolean(history.pushState) === false,
+            preloadingStrategy: PreloadAllModules,
+            relativeLinkResolution: 'legacy'
+        }),
         InternalModule
     ],
     /**

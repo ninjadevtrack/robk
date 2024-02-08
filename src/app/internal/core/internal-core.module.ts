@@ -60,7 +60,6 @@ import { EntityModule } from "./entity/entity.module";
         ConfirmDialogComponent,
         IconLinkButtonComponent,
         CardTemplateComponent
-    ],
-    entryComponents: [ConfirmDialogComponent]
+    ]
 })
 export class InternalCoreModule {}

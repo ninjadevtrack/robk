@@ -46,7 +46,6 @@ import { RouterModule } from "@angular/router";
         UserMenuComponent,
         UserTableComponent,
         UserViewComponent
-    ],
-    entryComponents: [UserViewComponent, UserEditComponent, UserAddComponent]
+    ]
 })
 export class UserModule {}

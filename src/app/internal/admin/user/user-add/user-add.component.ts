@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { NotSpacesStringValidator } from "../../../../core/validators/not-spaces-string-validator";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../../core/user/user.service";
 import { UserModel } from "../../../../core/user/model/user.model";
 
@@ -11,14 +11,14 @@ import { UserModel } from "../../../../core/user/model/user.model";
     styleUrls: ["./user-add.component.scss"]
 })
 export class UserAddComponent implements OnInit {
-    form: FormGroup;
+    form: UntypedFormGroup;
     serverErrorMessage: string;
     allAvailableRoles: string[];
 
     constructor(
         private _userService: UserService,
         public dialogRef: MatDialogRef<UserAddComponent>,
-        private _formBuilder: FormBuilder,
+        private _formBuilder: UntypedFormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: any
     ) {}
 

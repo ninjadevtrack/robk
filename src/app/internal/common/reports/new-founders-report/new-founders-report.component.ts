@@ -3,7 +3,7 @@ import * as moment from "moment";
 import { Observable } from "rxjs";
 import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { INewFoundersEntity } from "src/app/core/reports/models/new-founders.model";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 
@@ -15,11 +15,11 @@ import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 export class NewFoundersReportComponent implements OnInit {
     entities: INewFoundersEntity[];
     searchPipe: SearchPipe = new SearchPipe();
-    form: FormGroup;
+    form: UntypedFormGroup;
     searchFields: string;
 
     constructor(
-        private _formBuilder: FormBuilder,
+        private _formBuilder: UntypedFormBuilder,
         private _peopleWatchService: PeopleWatchService,
         private _smoothScrollService: SmoothScrollService
     ) {}

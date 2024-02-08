@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../../core/user/user.service";
 import {NotSpacesStringValidator} from "../../../../core/validators/not-spaces-string-validator";
 import {IUser, UserModel} from "../../../../core/user/model/user.model";
@@ -14,7 +14,7 @@ export class UserEditComponent implements OnInit {
 
   id: string;
   userId: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   serverErrorMessage: string;
   appeals: string[];
   user: UserModel;
@@ -27,7 +27,7 @@ export class UserEditComponent implements OnInit {
       private _router: Router,
       private _route: ActivatedRoute,
       private _userService: UserService,
-      private _formBuilder: FormBuilder
+      private _formBuilder: UntypedFormBuilder
   ) { }
 
   ngOnInit() {

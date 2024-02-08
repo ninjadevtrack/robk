@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EEntityEventType} from '../entity-event-type.enum';
 import {IEntityEvent} from '../entity-event.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {SearchPipe} from '../../search.pipe';
 
 @Component({
@@ -23,11 +23,11 @@ export class EntityListComponent implements OnInit {
   @Input() eventTypesForArchivedEntities: EEntityEventType[];
   @Output() event = new EventEmitter<IEntityEvent>();
   searchPipe: SearchPipe = new SearchPipe();
-  form: FormGroup;
+  form: UntypedFormGroup;
   addEntityButtonClass: string = 'floating-button';
 
   constructor(
-      private _formBuilder: FormBuilder,
+      private _formBuilder: UntypedFormBuilder,
   ) { }
 
   ngOnInit() {

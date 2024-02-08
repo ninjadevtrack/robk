@@ -3,7 +3,7 @@ import * as moment from "moment";
 import { Observable } from "rxjs";
 import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { IEmployerChange } from "src/app/core/reports/models/employer-change.model";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder } from "@angular/forms";
 import { SearchPipe } from "src/app/internal/core/search.pipe";
 
 @Component({
@@ -14,11 +14,11 @@ import { SearchPipe } from "src/app/internal/core/search.pipe";
 export class EmployerChangeReportComponent implements OnInit {
     employerChanges: IEmployerChange[];
     searchPipe: SearchPipe = new SearchPipe();
-    form: FormGroup;
+    form: UntypedFormGroup;
     searchFields: string;
 
     constructor(
-        private _formBuilder: FormBuilder,
+        private _formBuilder: UntypedFormBuilder,
         private _peopleWatchService: PeopleWatchService
     ) {}
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ISearchEmployeesEntity } from "src/app/core/reports/models/search-employees.model";
 import { NotSpacesStringValidator } from "src/app/core/validators/not-spaces-string-validator";
@@ -13,7 +13,7 @@ import { EmployeeSearchField } from "src/app/core/reports/models/search-employee
 })
 export class SearchEmployeesReportComponent implements OnInit {
     entities: ISearchEmployeesEntity[];
-    form: FormGroup;
+    form: UntypedFormGroup;
     isDataLoading: boolean;
     isExporting: boolean;
     searchFields: EmployeeSearchField[] = [
@@ -26,7 +26,7 @@ export class SearchEmployeesReportComponent implements OnInit {
     ];
 
     constructor(
-        private _formBuilder: FormBuilder,
+        private _formBuilder: UntypedFormBuilder,
         private _peopleWatchService: PeopleWatchService,
         private _smoothScrollService: SmoothScrollService
     ) {}

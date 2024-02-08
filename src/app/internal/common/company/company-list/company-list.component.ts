@@ -15,7 +15,7 @@ import {
     ICompaniesResult,
     ICompany
 } from "../../../../core/company/model/company.model";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { of } from "rxjs";
 import { EScaling } from "../../../../core/scaling/scaling.enum";
 import { ScalingService } from "../../../../core/scaling/scaling.service";
@@ -39,7 +39,7 @@ export class CompanyListComponent implements OnInit {
         EScaling.ALL_DEALS
     ];
     companiesToDisplay$: Observable<ICompany[]>;
-    form: FormGroup;
+    form: UntypedFormGroup;
     sortEvents$: Observable<Sort>;
     filteredCompanyValuesCount: number = 0;
     isDataLoading = false;
@@ -52,7 +52,7 @@ export class CompanyListComponent implements OnInit {
     constructor(
         private _companyService: CompanyService,
         private _scalingSerivce: ScalingService,
-        private _formBuilder: FormBuilder,
+        private _formBuilder: UntypedFormBuilder,
         private _elementRef: ElementRef,
         private _chartService: ChartService,
         private _smoothScrollService: SmoothScrollService

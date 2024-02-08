@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
 import { UserViewComponent } from "../user-view/user-view.component";
 import { UserModel } from "../../../../core/user/model/user.model";
 

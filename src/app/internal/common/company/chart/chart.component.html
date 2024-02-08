@@ -5,7 +5,7 @@
 <div
     *ngIf="company && chart"
     inViewport
-    [inViewportOptions]="{ threshold: [1000] }"
+    [inViewportOptions]="{ threshold: 1000 }"
     (inViewportAction)="onIntersection($event)"
 >
     <div class="chart-container">

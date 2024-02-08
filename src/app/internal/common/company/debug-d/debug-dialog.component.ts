@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from "@angular/material/legacy-dialog";
 import { ICompany } from "src/app/core/company/model/company.model";
 import { ICapsuleNote } from "src/app/core/company/model/capsule-note.model";
 import { ICapsuleDetails } from "src/app/core/company/model/capsule-details.model";

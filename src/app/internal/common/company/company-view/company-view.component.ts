@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { MatDialog } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
 import { Consts } from "src/app/core/common/config.service";
 import { Chart } from "chart.js";
 import { CompanyService } from "src/app/core/company/company.service";

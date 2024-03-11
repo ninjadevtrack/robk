@@ -10,7 +10,7 @@ exports.config = {
         browserName: "chrome"
     },
     directConnect: true,
-    baseUrl: "https://dev.hoxtonventures.com/",
+    baseUrl: "https://htree.dev/",
     framework: "jasmine",
     jasmineNodeOpts: {
         showColors: true,

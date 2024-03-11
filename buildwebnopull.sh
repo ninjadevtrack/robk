@@ -1,6 +1,6 @@
 #!/bin/bash
 export NODE_OPTIONS=--openssl-legacy-provider
-cd /home/robk/Dropbox/robscore-web
+cd /home/robk/robscore-web
 mv ./dist ./dist-previous
     npx ng build --configuration production && \
     find "/var/html/dev.hoxtonventures.com/public_html" -type f -mtime +5 -name 'main.*.js' -delete && \

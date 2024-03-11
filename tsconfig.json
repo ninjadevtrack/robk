@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
-  "target": "es2020",
+  "target": "es5",
+  "allowSyntheticDefaultImports": true,
+  "esModuleInterop": true,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -10,6 +12,8 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "typeRoots": [
       "node_modules/@types"
     ],

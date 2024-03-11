@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms
 import { SmoothScrollService } from "src/app/core/smooth-scroll.service";
 import { ISearchEmployeesEntity } from "src/app/core/reports/models/search-employees.model";
 import { NotSpacesStringValidator } from "src/app/core/validators/not-spaces-string-validator";
-import * as moment from "moment";
+import moment from "moment";
 import { EmployeeSearchField } from "src/app/core/reports/models/search-employees-params.model";
 @Component({
     selector: "app-search-employees-report",

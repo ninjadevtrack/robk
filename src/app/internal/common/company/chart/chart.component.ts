@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { Chart } from "chart.js";
 import { ICompany } from "../../../../core/company/model/company.model";
-import * as moment from "moment";
+import moment from "moment";
 
 @Component({
     selector: "app-chart",

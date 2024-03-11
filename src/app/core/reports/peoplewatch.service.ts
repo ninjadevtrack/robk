@@ -11,7 +11,7 @@ import {
     EmployeeSearchField,
     ISearchEmployeesParams
 } from "./models/search-employees-params.model";
-import * as moment from "moment";
+import moment from "moment";
 @Injectable()
 export class PeopleWatchService {
     constructor(

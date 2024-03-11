@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { IScoreResult } from "src/app/core/score-feed/model/score-feed.model";
-import * as moment from "moment";
+import moment from "moment";
 
 @Component({
     selector: "app-score",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import * as moment from "moment";
+import moment from "moment";
 import { Observable } from "rxjs";
 import { PeopleWatchService } from "src/app/core/reports/peoplewatch.service";
 import { IReportBEntity } from "src/app/core/reports/models/report-b.model";

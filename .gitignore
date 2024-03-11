@@ -1,4 +1,6 @@
 /.angular/cache
+**/dist
+**/dist-previous
 *.tmp
 *.swp
 ~*

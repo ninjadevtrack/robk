@@ -12,9 +12,8 @@ import {
 export class ScoreFeedService {
     private client: stream.StreamClient;
     private feed: stream.Feed; // StreamF
-    private notificationsDS: Subject<IScoreNotificationResult> = new Subject<
-        IScoreNotificationResult
-    >();
+    private notificationsDS: Subject<IScoreNotificationResult> =
+        new Subject<IScoreNotificationResult>();
     notifications$: Observable<IScoreNotificationResult>;
 
     constructor(
@@ -46,15 +45,11 @@ export class ScoreFeedService {
             this.notificationsDS.next(res);
         };
 
-        this.feed
-            .subscribe(notificationsCallback)
-            .then(
-                () =>
-                    console.log(
-                        `Listening to the feed notifications in realtime`
-                    ),
-                err => console.log(`Can't listen feed's notifications ${err}`)
-            );
+        this.feed.subscribe(notificationsCallback).then(
+            () =>
+                console.log(`Listening to the feed notifications in realtime`),
+            err => console.log(`Can't listen feed's notifications ${err}`)
+        );
     }
 
     private convert(results: any[]): IScoreResult[] {

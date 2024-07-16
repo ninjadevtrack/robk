@@ -30,6 +30,7 @@
     "@angularclass/hmr": "^3.0.0",
     "@angularclass/hmr-loader": "3.0.4",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@popperjs/core": "^2.11.8",
     "angular-draggable-droppable": "^6.1.0",
     "angular-resizable-element": "^5.0.0",
     "calendar-utils": "0.10.4",
